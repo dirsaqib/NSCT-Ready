@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: nsct
+      POSTGRES_PASSWORD: change-me
+      POSTGRES_DB: nsct
+    volumes: [pgdata:/var/lib/postgresql/data]
+    ports: ["5432:5432"]
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://nsct:change-me@db:5432/nsct?schema=public
+    depends_on: [db]
+    ports: ["3000:3000"]
+volumes:
+  pgdata:

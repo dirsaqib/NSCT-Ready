@@ -27,6 +27,8 @@ export const QuestionInput = z
     source: z.enum(["FACULTY", "AI_REVIEWED", "IMPORT"]).default("FACULTY"),
     secure: z.boolean().default(false),
     replacesId: z.string().optional(),
+    bank: z.enum(["NATIONAL", "DEPARTMENT"]).default("NATIONAL"),
+    departmentId: z.string().optional(),
   })
   .superRefine((q, ctx) => {
     if (q.type === "CODE") {
@@ -72,7 +74,12 @@ export async function saveVersion(questionId: string, editorId: string) {
   await prisma.questionVersion.create({ data: { questionId, version: q.version, snapshot: snap as any, editedById: editorId } });
 }
 
-export async function createQuestion(d: QuestionData, authorId: string, authorUniversityId: string | null, live: boolean) {
+/**
+ * DEPARTMENT questions go live at once in the owner department's own bank and are used only in its lab tests.
+ * NATIONAL questions wait for review unless the super admin adds them.
+ */
+export async function createQuestion(d: QuestionData, authorId: string, authorUniversityId: string | null, live: boolean, ownerDepartmentId: string | null = null) {
+  const dept = d.bank === "DEPARTMENT";
   const contentHashValue = await assertNotDuplicate({ text: d.text, options: d.options });
   let scenarioId = d.scenarioId;
   if (!scenarioId && d.scenario) scenarioId = (await prisma.scenario.create({ data: d.scenario })).id;
@@ -80,8 +87,19 @@ export async function createQuestion(d: QuestionData, authorId: string, authorUn
     data: {
       type: d.type, subject: d.subject, topic: d.topic, difficulty: d.difficulty, skillLevel: d.skillLevel, text: d.text, code: d.code || null,
       options: d.type === "CODE" ? [] : d.options, answers: d.type === "CODE" ? [] : d.answers, explanation: d.explanation, scenarioId,
-      language: d.language, starterCode: d.starterCode, tests: d.tests, source: d.source, secure: d.secure, replacesId: d.replacesId,
-      contentHash: contentHashValue, authorId, authorUniversityId, status: live ? "LIVE" : "SUBMITTED",
+      language: d.language, starterCode: d.starterCode, tests: d.tests, source: d.source, replacesId: d.replacesId,
+      contentHash: contentHashValue, authorId, authorUniversityId, status: live || dept ? "LIVE" : "SUBMITTED",
+      scope: dept ? "DEPARTMENT" : "NATIONAL", ownerDepartmentId: dept ? ownerDepartmentId : null, secure: dept ? false : d.secure,
     },
   });
+}
+
+/** The department a staff member's department-bank questions belong to. Focal persons and admins must name one. */
+export async function ownerDepartmentFor(u: { role: string; universityId: string | null; departmentId: string | null }, requested?: string | null) {
+  if (u.departmentId && u.role !== "ADMIN" && u.role !== "FOCAL" && u.role !== "CHAIR" && u.role !== "CAMPUS_ADMIN") return u.departmentId;
+  const id = requested || u.departmentId;
+  if (!id) throw new HttpError(400, "Choose the department this question bank belongs to.");
+  const d = await prisma.department.findUnique({ where: { id }, include: { campus: true } });
+  if (!d || (u.role !== "ADMIN" && d.campus.universityId !== u.universityId)) throw new HttpError(403, "That department is not in your university.");
+  return d.id;
 }

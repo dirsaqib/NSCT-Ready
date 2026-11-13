@@ -8,7 +8,7 @@ import { api } from "./api";
 
 type Item = [string, string]; // href, label or i18n key
 const STUDENT: Item[] = [["/dashboard", "nav.dashboard"], ["/learn", "nav.learn"], ["/diagnostic", "nav.diagnostic"], ["/mock", "nav.mock"], ["/practice", "nav.practice"], ["/plan", "nav.plan"], ["/results", "nav.results"], ["/mistakes", "nav.mistakes"], ["/bookmarks", "nav.bookmarks"], ["/tutor", "nav.tutor"], ["/discuss", "nav.discuss"], ["/leaderboard", "nav.leaderboard"], ["/messages", "nav.messages"], ["/pro", "nav.pro"], ["/profile", "nav.profile"]];
-const UNI: Item[] = [["/university", "University dashboard"], ["/students", "Students and verification"], ["/admin/notices", "Announcements"], ["/contribute", "Improve question bank"], ["/discuss", "Answer student doubts"]];
+const UNI: Item[] = [["/university", "University dashboard"], ["/students", "Students and verification"], ["/admin/notices", "Announcements"], ["/labtests", "Lab tests (CBT and offline)"], ["/contribute", "Question bank and upload"], ["/discuss", "Answer student doubts"]];
 const PANELS: Record<string, { label: string; items: Item[] }[]> = {
   STUDENT: [{ label: "nav.prepare", items: STUDENT }],
   FACULTY: [{ label: "Faculty", items: [["/contribute", "Question bank"], ["/discuss", "Answer student doubts"]] }],
@@ -20,7 +20,7 @@ const PANELS: Record<string, { label: string; items: Item[] }[]> = {
   EMPLOYER: [{ label: "Employer portal", items: [["/employer", "Find talent"]] }],
   SPONSOR: [{ label: "Sponsor portal", items: [["/sponsor", "Impact dashboard"]] }],
   ADMIN: [
-    { label: "Super admin panel", items: [["/admin/analytics", "Analytics"], ["/admin/drilldown", "Drill down"], ["/admin/live", "Live activity"], ["/admin/users", "Users and roles"], ["/admin/structure", "Universities and campuses"], ["/university", "University view"], ["/admin/questions", "Question bank"], ["/admin/tests", "Tests and schedule"], ["/admin/content", "Lessons, FAQ, surveys, events"], ["/admin/publish", "HEC reports"], ["/admin/notices", "Announcements"], ["/admin/business", "Business and payments"], ["/admin/support", "Support and re-checks"], ["/admin/audit", "Audit log"], ["/admin/settings", "Settings"]] },
+    { label: "Super admin panel", items: [["/admin/analytics", "Analytics"], ["/admin/drilldown", "Drill down"], ["/admin/live", "Live activity"], ["/admin/users", "Users and roles"], ["/admin/structure", "Universities and campuses"], ["/university", "University view"], ["/admin/questions", "Question bank"], ["/admin/tests", "Tests and schedule"], ["/labtests", "Lab tests"], ["/contribute", "Upload questions"], ["/admin/content", "Lessons, FAQ, surveys, events"], ["/admin/publish", "HEC reports"], ["/admin/notices", "Announcements"], ["/admin/business", "Business and payments"], ["/admin/support", "Support and re-checks"], ["/admin/audit", "Audit log"], ["/admin/settings", "Settings"]] },
     { label: "Panels preview", items: [["/gov", "HEC view"], ["/employer", "Employer view"], ["/dashboard", "Student view"]] },
   ],
 };

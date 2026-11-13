@@ -47,6 +47,17 @@ Staff scoping is enforced on the server (`profileScope` in `lib/auth.ts`). Staff
 - PDF and Excel reports, per-student PDF
 - Announcements by in-app, email, SMS and WhatsApp
 
+**Department lab tests (CBT and offline)**
+- HODs, campus admins and focal persons schedule a test for their own students, by program, section and semester
+- Paper drawn from the department's own bank, the national bank or both, or picked question by question
+- **Online lab (CBT):** students use the portal on lab PCs. Locked to the lab's network address and a 6-character access code shown on the projector. The invigilator sees every student live, adds time, restarts a crashed PC, and ends the test for everyone
+- **Offline (internet off):** download an encrypted package, run the NSCT Lab Server (`lab-server` folder, Node.js only) on one lab PC, and students connect over the lab network. Answers are saved on that PC after every change and survive a restart. The signed results file is uploaded afterwards and the portal marks every answer again
+- Results stay hidden until the department releases them
+
+**Department question bank**
+- Faculty, HODs and focal persons upload questions from Excel or CSV (template included), up to 1,000 per file, or write them one by one
+- Department questions are live at once for that department's lab tests and never appear in national mocks. National submissions still go through review
+
 **Question bank**
 - Submitted, peer review, expert review, live. Only the super admin makes a question live
 - Exact and near-duplicate detection, version history, a secure pool for national mocks that contributors never see

@@ -11,7 +11,7 @@ type Item = {
   language: string | null; starterCode: string | null; sampleTests: { input: string; expected: string }[]; codeAnswer: string | null; flagged: boolean;
   correctSlots?: number[]; explanation?: string; correct?: boolean | null; credit?: number | null; codePassed?: number | null; codeTotal?: number | null; timeSec?: number;
 };
-type Attempt = { id: string; type: string; label: string | null; endsAt: string | null; submitted: boolean; score: number; percentile: number | null; flags: string[]; certificate: string | null; items: Item[] };
+type Attempt = { id: string; type: string; label: string | null; endsAt: string | null; submitted: boolean; resultsHidden?: boolean; score: number; percentile: number | null; flags: string[]; certificate: string | null; items: Item[] };
 type Local = { slots: number[]; code: string; flagged: boolean; time: number; checked?: { correct: boolean; correctSlots: number[]; explanation: string } };
 
 const L = "ABCDEF";
@@ -99,6 +99,13 @@ export default function TestPage({ params }: { params: { id: string } }) {
 
   if (err && !a) return <div className="notice bad">{err}</div>;
   if (!a || !st.length) return <div className="spin" />;
+  if (a.submitted && a.resultsHidden) return (
+    <div className="card" style={{ maxWidth: 560, margin: "40px auto", textAlign: "center" }}>
+      <h1>Test submitted</h1>
+      <p>{a.label} has been submitted. Your department will release the results. You will get a notification.</p>
+      <Link className="btn" href="/dashboard">Back to dashboard</Link>
+    </div>
+  );
   if (a.submitted) return <Report a={a} />;
 
   const it = a.items[idx];

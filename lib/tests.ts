@@ -11,11 +11,12 @@ import { runTests, type CodeTest } from "./coderunner";
 import { integrityFlags, percentileFor } from "./integrity";
 import { hasPro } from "./payments";
 import { sha256 } from "./crypto";
+import { labStartCheck } from "./labtests";
 
 const GRACE_SEC = 30;
-const TIMED: AttemptType[] = ["DIAGNOSTIC", "MOCK", "MINI_MOCK", "NATIONAL_MOCK", "EMPLOYER_ASSESSMENT"];
+const TIMED: AttemptType[] = ["DIAGNOSTIC", "MOCK", "MINI_MOCK", "NATIONAL_MOCK", "EMPLOYER_ASSESSMENT", "LAB_TEST"];
 
-export type StartOptions = { type: AttemptType; subject?: Subject; topic?: string; difficulty?: number; count?: number; assessmentCode?: string };
+export type StartOptions = { type: AttemptType; subject?: Subject; topic?: string; difficulty?: number; count?: number; assessmentCode?: string; labTestId?: string; accessCode?: string; seat?: string };
 
 async function blueprint(key: string) {
   const b = await prisma.blueprint.findUnique({ where: { key } });
@@ -26,7 +27,7 @@ async function blueprint(key: string) {
 
 async function pick(subject: Subject, n: number, opts: { topic?: string; difficulty?: number; secure?: boolean; mix?: Record<string, number> | null }) {
   const rows = await prisma.question.findMany({
-    where: { subject, status: "LIVE", ...(opts.secure === false ? { secure: false } : {}), ...(opts.topic ? { topic: opts.topic } : {}), ...(opts.difficulty ? { difficulty: opts.difficulty } : {}) },
+    where: { subject, status: "LIVE", scope: "NATIONAL", ...(opts.secure === false ? { secure: false } : {}), ...(opts.topic ? { topic: opts.topic } : {}), ...(opts.difficulty ? { difficulty: opts.difficulty } : {}) },
     select: { id: true, difficulty: true },
   });
   if (!opts.mix) return shuffle(rows).slice(0, n).map((r) => r.id);
@@ -53,6 +54,7 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
   let durationMin: number | undefined;
   let windowId: string | undefined;
   let assessmentId: string | undefined;
+  let labTestId: string | undefined;
 
   if (o.type === "DIAGNOSTIC" || o.type === "MOCK" || o.type === "NATIONAL_MOCK") {
     if (o.type === "NATIONAL_MOCK") {
@@ -71,6 +73,9 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
     if (await prisma.attempt.count({ where: { userId, assessmentId: a.id } })) throw new HttpError(409, "You have already taken this assessment.");
     assessmentId = a.id; label = a.title; durationMin = a.durationMin;
     for (const [s, n] of Object.entries(a.counts as Record<string, number>)) ids.push(...(await pick(s as Subject, n, { secure: false })));
+  } else if (o.type === "LAB_TEST") {
+    const lab = await labStartCheck(userId, o.labTestId ?? "", o.accessCode ?? "", ctx.ip);
+    labTestId = lab.test.id; label = lab.test.title; durationMin = lab.durationMin; ids = lab.ids as string[];
   } else if (o.type === "MINI_MOCK" || o.type === "PRACTICE") {
     if (!o.subject) throw new HttpError(400, "Choose a subject.");
     ids = await pick(o.subject, o.type === "MINI_MOCK" ? 12 : Math.min(o.count ?? 10, 30), { topic: o.topic, difficulty: o.difficulty, secure: false });
@@ -90,7 +95,7 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
   const byId = new Map(qs.map((q) => [q.id, q]));
   const attempt = await prisma.attempt.create({
     data: {
-      userId, type: o.type, label, windowId, assessmentId,
+      userId, type: o.type, label, windowId, assessmentId, labTestId, seat: o.seat?.slice(0, 20) ?? null,
       endsAt: secs ? new Date(Date.now() + secs * 1000) : null,
       ip: ctx.ip ?? null,
       deviceHash: ctx.device ? sha256(ctx.device) : null,
@@ -110,12 +115,13 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
 export async function getAttemptForStudent(userId: string, attemptId: string) {
   const a = await prisma.attempt.findFirst({
     where: { id: attemptId, userId },
-    include: { certificate: true, items: { orderBy: { position: "asc" }, include: { question: { include: { scenario: true } } } } },
+    include: { certificate: true, labTest: { select: { resultsReleased: true } }, items: { orderBy: { position: "asc" }, include: { question: { include: { scenario: true } } } } },
   });
   if (!a) throw new HttpError(404, "Test not found.");
-  const done = !!a.submittedAt;
+  // Lab test results stay hidden until the department releases them.
+  const done = !!a.submittedAt && (!a.labTest || a.labTest.resultsReleased);
   return {
-    id: a.id, type: a.type, label: a.label, endsAt: a.endsAt, submitted: done, score: a.score, percentile: a.percentile,
+    id: a.id, type: a.type, label: a.label, endsAt: a.endsAt, submitted: !!a.submittedAt, resultsHidden: !!a.submittedAt && !done, score: done ? a.score : null, percentile: a.percentile,
     flags: done ? a.flags : [], certificate: a.certificate?.code ?? null,
     items: a.items.map((it) => {
       const q = it.question;
@@ -220,7 +226,8 @@ export async function submitAttempt(userId: string, attemptId: string, answers: 
   const late = !!a.endsAt && Date.now() > a.endsAt.getTime() + GRACE_SEC * 1000;
   const practice = a.type === "PRACTICE" || a.type === "MISTAKES";
   const partial = await getSetting<boolean>("test.multiSelectPartialCredit");
-  const negative = await getSetting<number>("test.negativeMarking");
+  const lab = a.labTestId ? await prisma.labTest.findUnique({ where: { id: a.labTestId } }) : null;
+  const negative = lab ? lab.negativeMarking : await getSetting<number>("test.negativeMarking");
   const byPos = new Map(answers.map((x) => [x.position, x]));
 
   // Grade outside the transaction because code runs can take a few seconds.

@@ -19,10 +19,15 @@ const Patch = z.object({
 });
 
 export const PATCH = handle(async (req: Request, ctx: { params: { id: string } }) => {
-  const u = await requireRole("ADMIN");
+  const u = await requireRole("FACULTY");
   const b = Patch.parse(await req.json());
   const q = await prisma.question.findUnique({ where: { id: ctx.params.id } });
   if (!q) throw new HttpError(404, "Question not found.");
+  // Department staff manage their own department bank. Everything else is for the super admin.
+  if (u.role !== "ADMIN") {
+    const ownDept = q.scope === "DEPARTMENT" && q.authorUniversityId === u.universityId && (u.role === "FOCAL" || u.role === "CHAIR" || u.role === "CAMPUS_ADMIN" || q.ownerDepartmentId === u.departmentId);
+    if (!ownDept || !["retire", "edit"].includes(b.action)) throw new HttpError(403, "Only the super admin can do this.");
+  }
 
   switch (b.action) {
     case "assign": {

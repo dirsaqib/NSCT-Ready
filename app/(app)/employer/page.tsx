@@ -72,7 +72,7 @@ export default function Employer() {
         )}
         {tab === "verify" && (
           <Card>
-            <form className="row" onSubmit={async (e) => { e.preventDefault(); const code = String(new FormData(e.currentTarget).get("code")).trim().toUpperCase(); setCert(await api(`/api/verify/${encodeURIComponent(code)}`).catch((er) => ({ error: (er as Error).message }))); }}>
+            <form className="row" onSubmit={async (e) => { e.preventDefault(); const code = String(new FormData(e.currentTarget).get("code")).trim().toUpperCase(); setCert(await api<Record<string, unknown>>(`/api/verify/${encodeURIComponent(code)}`).catch((er) => ({ error: (er as Error).message }))); }}>
               <input name="code" type="text" required placeholder="NR-XXXX-XXXX" style={{ maxWidth: 240 }} /><button className="btn" type="submit">Verify</button>
             </form>
             {cert && <pre className="code" style={{ marginTop: 12 }}>{JSON.stringify(cert, null, 2)}</pre>}

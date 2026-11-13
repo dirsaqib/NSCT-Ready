@@ -58,6 +58,23 @@ enum AttemptType {
   PRACTICE
   MISTAKES
   EMPLOYER_ASSESSMENT
+  LAB_TEST            // department test in a computer lab (online lab or offline LAN)
+}
+
+enum QuestionScope {
+  NATIONAL    // shared national bank, goes through review
+  DEPARTMENT  // a department's own bank, usable only in its own lab tests
+}
+
+enum LabMode {
+  ONLINE_LAB   // students use the portal from lab PCs, locked to the lab network
+  OFFLINE_LAN  // internet off, a lab PC runs the NSCT Lab Server over the local network
+}
+
+enum LabStatus {
+  SCHEDULED
+  LIVE
+  CLOSED
 }
 
 enum QuestionSource {
@@ -323,6 +340,8 @@ model Question {
   authorId           String?
   author             User?             @relation("author", fields: [authorId], references: [id])
   authorUniversityId String?
+  scope              QuestionScope     @default(NATIONAL)
+  ownerDepartmentId  String?           // set for DEPARTMENT scope
   replacesId         String?
   version            Int               @default(1)
   timesSeen          Int               @default(0)
@@ -340,6 +359,7 @@ model Question {
 
   @@index([subject, status])
   @@index([contentHash])
+  @@index([scope, ownerDepartmentId])
 }
 
 model QuestionVersion {
@@ -396,6 +416,9 @@ model Attempt {
   label           String?
   windowId        String?
   assessmentId    String?
+  labTestId       String?
+  labTest         LabTest?         @relation(fields: [labTestId], references: [id])
+  seat            String?
   startedAt       DateTime         @default(now())
   endsAt          DateTime?
   lastSavedAt     DateTime?
@@ -414,6 +437,7 @@ model Attempt {
   rechecks        RecheckRequest[]
 
   @@index([userId, submittedAt])
+  @@index([labTestId])
   @@index([ip])
   @@index([deviceHash])
 }
@@ -817,4 +841,39 @@ model AuditLog {
 
   @@index([actorId, createdAt])
   @@index([action, createdAt])
+}
+
+/// A test a department runs in its own computer lab, as CBT on the portal or fully offline on a LAN.
+model LabTest {
+  id               String     @id @default(cuid())
+  title            String
+  universityId     String
+  campusId         String?
+  departmentId     String?
+  createdById      String
+  mode             LabMode    @default(ONLINE_LAB)
+  status           LabStatus  @default(SCHEDULED)
+  questionIds      String[]   // the frozen paper: every student gets these questions, in shuffled order
+  durationMin      Int
+  opensAt          DateTime
+  closesAt         DateTime
+  lateJoinMin      Int        @default(15)   // no new starts after this many minutes from going live
+  accessCode       String                    // shown on the lab board by the invigilator
+  ipAllowlist      String[]                  // lab network prefixes, e.g. 10.10.4. or 203.0.113.0/24
+  programs         String[]                  // empty = all programs in scope
+  sections         String[]                  // empty = all sections
+  semesters        String[]
+  shuffle          Boolean    @default(true)
+  negativeMarking  Float      @default(0)
+  passMark         Int        @default(50)
+  resultsReleased  Boolean    @default(false)
+  wentLiveAt       DateTime?
+  extraMin         Int        @default(0)    // time added for everyone by the invigilator
+  packageSecret    String                    // signs offline result files
+  packagedAt       DateTime?
+  resultsImportedAt DateTime?
+  createdAt        DateTime   @default(now())
+  attempts         Attempt[]
+
+  @@index([universityId, departmentId])
 }

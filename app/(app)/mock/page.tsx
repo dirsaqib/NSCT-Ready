@@ -3,6 +3,7 @@ import { useState } from "react";
 import StartButton from "@/components/StartButton";
 import { BLUEPRINTS, SUBJECTS } from "@/lib/syllabus";
 import { useApi, fmtDateTime } from "@/components/ui";
+import LabTestCard from "@/components/LabTestCard";
 
 type W = { id: string; name: string; opensAt: string; closesAt: string; open: boolean; taken: boolean };
 
@@ -37,6 +38,7 @@ export default function Mock() {
           <StartButton type="MINI_MOCK" subject={sub} label="Start mini mock" className="btn sec" />
         </div>
       </div>
+      <LabTestCard />
       <div className="card" style={{ marginBottom: 16 }}>
         <h2>Employer hiring test</h2>
         <p className="muted">Got an invite code from an employer? Enter it here. Your result is shared with that employer only.</p>

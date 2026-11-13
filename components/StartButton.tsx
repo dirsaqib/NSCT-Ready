@@ -2,9 +2,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-type Props = { type: string; subject?: string; topic?: string; difficulty?: number; assessmentCode?: string; label: string; className?: string; confirmText?: string };
+type Props = { type: string; subject?: string; topic?: string; difficulty?: number; assessmentCode?: string; labTestId?: string; accessCode?: string; seat?: string; label: string; className?: string; confirmText?: string };
 
-export default function StartButton({ type, subject, topic, difficulty, assessmentCode, label, className, confirmText }: Props) {
+export default function StartButton({ type, subject, topic, difficulty, assessmentCode, labTestId, accessCode, seat, label, className, confirmText }: Props) {
   const r = useRouter();
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
@@ -20,7 +20,7 @@ export default function StartButton({ type, subject, topic, difficulty, assessme
           try {
             let device = "unknown";
             try { device = localStorage.getItem("nr-device") || crypto.randomUUID(); localStorage.setItem("nr-device", device); } catch { /* ignore */ }
-            const r0 = await fetch("/api/tests", { method: "POST", headers: { "Content-Type": "application/json", "X-Device-Id": device }, body: JSON.stringify({ type, subject, topic: topic || undefined, difficulty, assessmentCode }) });
+            const r0 = await fetch("/api/tests", { method: "POST", headers: { "Content-Type": "application/json", "X-Device-Id": device }, body: JSON.stringify({ type, subject, topic: topic || undefined, difficulty, assessmentCode, labTestId, accessCode, seat: seat || undefined }) });
             const a = await r0.json();
             if (!r0.ok) { if (a.code === "PRO_REQUIRED") { r.push("/pro"); return; } throw new Error(a.error || "Could not start."); }
             r.push(`/test/${a.id}`);

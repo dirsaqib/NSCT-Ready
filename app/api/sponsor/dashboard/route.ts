@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { sponsorImpact } from "@/lib/sponsor";
 import { requireAnyRole } from "@/lib/auth";
 import { handle } from "@/lib/http";

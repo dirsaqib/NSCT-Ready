@@ -1,3 +1,5 @@
+// Always read fresh from the database, never a copy saved at build time.
+export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/db";
 import { handle } from "@/lib/http";
 

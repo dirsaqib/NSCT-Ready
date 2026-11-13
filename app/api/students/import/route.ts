@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ExcelJS from "exceljs";
 import { prisma } from "@/lib/db";
 import { requireRole, HttpError } from "@/lib/auth";

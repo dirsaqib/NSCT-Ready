@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth";
 import { handle } from "@/lib/http";

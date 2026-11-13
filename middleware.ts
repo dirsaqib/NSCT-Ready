@@ -11,8 +11,18 @@ const LIMITS: [RegExp, number][] = [
   [/^\/api\//, 240],
 ];
 
+// One address for everyone. Sign-in cookies are tied to a domain, so starting on a Vercel preview
+// address and returning on the main one breaks Google sign-in. Production sends every *.vercel.app
+// alias to the address in NEXTAUTH_URL.
+const CANONICAL = (() => { try { return new URL(process.env.NEXTAUTH_URL ?? "").host; } catch { return ""; } })();
+
 export function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
+  const host = req.headers.get("host") ?? "";
+  if (process.env.VERCEL_ENV === "production" && CANONICAL && host !== CANONICAL && host.endsWith(".vercel.app") && !path.startsWith("/api/cron")) {
+    const to = new URL(req.nextUrl.pathname + req.nextUrl.search, `https://${CANONICAL}`);
+    return NextResponse.redirect(to, 308);
+  }
   const rule = LIMITS.find(([re]) => re.test(path));
   if (rule) {
     const ip = req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for")?.split(",")[0] || "local";

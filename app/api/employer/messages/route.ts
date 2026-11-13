@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { requireAnyRole, HttpError } from "@/lib/auth";

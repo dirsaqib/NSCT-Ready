@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/db";
 import { requireRole, profileScope } from "@/lib/auth";
 import { handle } from "@/lib/http";

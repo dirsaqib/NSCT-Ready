@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import os from "node:os";
 import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth";

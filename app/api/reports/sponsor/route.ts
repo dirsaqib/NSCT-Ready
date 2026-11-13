@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import PDFDocument from "pdfkit";
 import { requireAnyRole } from "@/lib/auth";
 import { HttpError } from "@/lib/errors";

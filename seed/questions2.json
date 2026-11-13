@@ -1,0 +1,2244 @@
+[
+{
+"id": "psb01",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next: 3, 9, 27, 81, ?",
+"o": [
+"324",
+"216",
+"243",
+"162"
+],
+"a": 2,
+"e": "Each term is the previous term multiplied by 3. 81 x 3 = 243."
+},
+{
+"id": "psb02",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next: 1, 1, 2, 3, 5, 8, ?",
+"o": [
+"15",
+"12",
+"13",
+"11"
+],
+"a": 2,
+"e": "Each term is the sum of the two before it (Fibonacci). 5 + 8 = 13."
+},
+{
+"id": "psb03",
+"s": "PS",
+"t": "Pattern recognition",
+"d": 2,
+"q": "What comes next: A, C, F, J, O, ?",
+"o": [
+"U",
+"T",
+"V",
+"S"
+],
+"a": 0,
+"e": "The gaps grow by one: +2, +3, +4, +5, so the next gap is +6. O is the 15th letter, 15 + 6 = 21, which is U."
+},
+{
+"id": "psb04",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 2,
+"q": "All programmers are logical. Some logical people are artists. Which statement must be true?",
+"o": [
+"Some programmers are artists",
+"All artists are programmers",
+"No programmer is an artist",
+"None of these must be true"
+],
+"a": 3,
+"e": "The artists may all be logical people who are not programmers, so no link between programmers and artists is guaranteed."
+},
+{
+"id": "psb05",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A train 200 m long passes a pole in 10 seconds. What is its speed?",
+"o": [
+"80 km/h",
+"72 km/h",
+"60 km/h",
+"20 km/h"
+],
+"a": 1,
+"e": "Speed = 200 m / 10 s = 20 m/s. Multiply by 3.6 to get km/h: 20 x 3.6 = 72 km/h."
+},
+{
+"id": "psb06",
+"s": "PS",
+"t": "Number systems",
+"d": 1,
+"q": "What is the binary number 1011 in decimal?",
+"o": [
+"9",
+"11",
+"13",
+"10"
+],
+"a": 1,
+"e": "1011 = 8 + 0 + 2 + 1 = 11."
+},
+{
+"id": "psb07",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the hexadecimal number 2F in decimal?",
+"o": [
+"63",
+"45",
+"32",
+"47"
+],
+"a": 3,
+"e": "2F = 2 x 16 + 15 = 47."
+},
+{
+"id": "psb08",
+"s": "PS",
+"t": "Combinatorics",
+"d": 1,
+"q": "In how many ways can the letters of the word CODE be arranged?",
+"o": [
+"120",
+"16",
+"12",
+"24"
+],
+"a": 3,
+"e": "Four different letters can be arranged in 4! = 4 x 3 x 2 x 1 = 24 ways."
+},
+{
+"id": "psb09",
+"s": "PS",
+"t": "Combinatorics",
+"d": 2,
+"q": "A team of 2 is chosen from 6 students. How many different teams are possible?",
+"o": [
+"36",
+"12",
+"15",
+"30"
+],
+"a": 2,
+"e": "Order does not matter, so use combinations: 6C2 = (6 x 5) / 2 = 15."
+},
+{
+"id": "psb10",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "How many times does the loop body run?",
+"o": [
+"6",
+"100",
+"8",
+"7"
+],
+"a": 3,
+"e": "i takes the values 1, 2, 4, 8, 16, 32, 64. After the 7th run i becomes 128, which is not less than 100, so the loop stops.",
+"code": "i = 1\nwhile i < 100:\n    i = i * 2"
+},
+{
+"id": "psb11",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this Python code print?",
+"o": [
+"Error",
+"4",
+"3",
+"[1, 2, 3]"
+],
+"a": 1,
+"e": "b = a makes b refer to the same list, not a copy. Appending through b changes a too, so len(a) is 4.",
+"code": "a = [1, 2, 3]\nb = a\nb.append(4)\nprint(len(a))"
+},
+{
+"id": "psb12",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "Two fair coins are tossed. What is the probability that both show heads?",
+"o": [
+"1/4",
+"1/2",
+"1/3",
+"3/4"
+],
+"a": 0,
+"e": "Each coin is heads with probability 1/2. Both together: 1/2 x 1/2 = 1/4."
+},
+{
+"id": "psb13",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The average of 5 numbers is 20. When one number is removed, the average of the rest is 18. Which number was removed?",
+"o": [
+"22",
+"28",
+"26",
+"30"
+],
+"a": 1,
+"e": "Total of 5 numbers = 100. Total of the remaining 4 = 72. The removed number is 100 - 72 = 28."
+},
+{
+"id": "psb14",
+"s": "PS",
+"t": "Logic",
+"d": 1,
+"q": "What is the angle between the hour and minute hands of a clock at 3:00?",
+"o": [
+"90 degrees",
+"120 degrees",
+"180 degrees",
+"60 degrees"
+],
+"a": 0,
+"e": "The hour hand is on 3 and the minute hand is on 12. Three hour marks apart, each 30 degrees, gives 90 degrees."
+},
+{
+"id": "psb15",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 2,
+"q": "If 5 machines make 5 parts in 5 minutes, how long do 100 machines take to make 100 parts?",
+"o": [
+"1 minute",
+"100 minutes",
+"5 minutes",
+"20 minutes"
+],
+"a": 2,
+"e": "Each machine makes one part in 5 minutes. 100 machines working at once make 100 parts in the same 5 minutes."
+},
+{
+"id": "psb16",
+"s": "PS",
+"t": "Logic",
+"d": 1,
+"q": "\"If it rains, the ground gets wet.\" The ground is not wet. What follows?",
+"o": [
+"Nothing can be concluded",
+"The ground is dry because of the sun",
+"It did not rain",
+"It rained"
+],
+"a": 2,
+"e": "If rain always makes the ground wet, a dry ground means it did not rain. This rule is called modus tollens."
+},
+{
+"id": "psb17",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A price rises by 20% and then falls by 20%. What is the overall change?",
+"o": [
+"4% decrease",
+"No change",
+"4% increase",
+"2% decrease"
+],
+"a": 0,
+"e": "100 becomes 120, then 120 x 0.8 = 96. That is a 4% decrease."
+},
+{
+"id": "psb18",
+"s": "PS",
+"t": "Complexity awareness",
+"d": 2,
+"q": "A program has two nested loops, each running n times. How does its running time grow?",
+"o": [
+"O(n log n)",
+"O(n)",
+"O(n squared)",
+"O(log n)"
+],
+"a": 2,
+"e": "The inner loop runs n times for each of the n outer iterations, so n x n steps in total."
+},
+{
+"id": "psb19",
+"s": "PS",
+"t": "Data-driven reasoning",
+"d": 1,
+"q": "Sales were 100 in January, 120 in February and 150 in March. What was the percentage increase from February to March?",
+"o": [
+"50%",
+"25%",
+"30%",
+"20%"
+],
+"a": 1,
+"e": "The increase is 30 on a base of 120. 30 / 120 = 0.25, which is 25%."
+},
+{
+"id": "psb20",
+"s": "PS",
+"t": "Pattern recognition",
+"d": 1,
+"q": "Which number is the odd one out: 2, 3, 5, 9, 11?",
+"o": [
+"9",
+"11",
+"3",
+"2"
+],
+"a": 0,
+"e": "All the others are prime numbers. 9 = 3 x 3 is not prime."
+},
+{
+"id": "progb01",
+"s": "PROG",
+"t": "Data types",
+"d": 1,
+"q": "What does this Python code print?",
+"o": [
+"Error",
+"<class 'double'>",
+"<class 'int'>",
+"<class 'float'>"
+],
+"a": 3,
+"e": "In Python 3, the / operator always returns a float, so 3 / 2 is 1.5.",
+"code": "print(type(3 / 2))"
+},
+{
+"id": "progb02",
+"s": "PROG",
+"t": "Data types",
+"d": 1,
+"q": "In C++, how many bytes does a char take?",
+"o": [
+"2",
+"1",
+"It depends on the compiler",
+"4"
+],
+"a": 1,
+"e": "The C++ standard defines sizeof(char) as exactly 1."
+},
+{
+"id": "progb03",
+"s": "PROG",
+"t": "OOP",
+"d": 1,
+"q": "Which Java keyword stops a class from being inherited?",
+"o": [
+"final",
+"abstract",
+"private",
+"static"
+],
+"a": 0,
+"e": "A class declared final cannot have subclasses. java.lang.String is an example."
+},
+{
+"id": "progb04",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "A subclass provides its own version of a method defined in its parent class. Which concept is this?",
+"o": [
+"Method overloading",
+"Encapsulation",
+"Abstraction",
+"Method overriding"
+],
+"a": 3,
+"e": "Overriding replaces the parent's method in the subclass. The version that runs is chosen at runtime, which is runtime polymorphism."
+},
+{
+"id": "progb05",
+"s": "PROG",
+"t": "Strings",
+"d": 1,
+"q": "What does this Python code print?",
+"o": [
+"cba",
+"a",
+"Error",
+"abc"
+],
+"a": 0,
+"e": "The slice [::-1] walks the string backwards, which reverses it.",
+"code": "print(\"abc\"[::-1])"
+},
+{
+"id": "progb06",
+"s": "PROG",
+"t": "Strings",
+"d": 2,
+"q": "What does this Java code print?",
+"o": [
+"Compile error",
+"ab",
+"b",
+"a"
+],
+"a": 3,
+"e": "Java strings are immutable. concat returns a new string, but the result is not assigned, so s is still \"a\".",
+"code": "String s = \"a\";\ns.concat(\"b\");\nSystem.out.println(s);"
+},
+{
+"id": "progb07",
+"s": "PROG",
+"t": "Functions",
+"d": 2,
+"q": "Which C++ function signature lets a swap function change the caller's variables?",
+"o": [
+"void swap(int a, int b)",
+"void swap(int &a, int &b)",
+"void swap(const int a, const int b)",
+"int swap(int a, int b)"
+],
+"a": 1,
+"e": "Passing by reference with & gives the function access to the original variables. Passing by value only swaps copies."
+},
+{
+"id": "progb08",
+"s": "PROG",
+"t": "Functions",
+"d": 3,
+"q": "What does this Python code print?",
+"o": [
+"[2]",
+"[1]",
+"[1, 2]",
+"Error"
+],
+"a": 2,
+"e": "The default list is created once, when the function is defined. Every call that uses the default shares the same list, so the second call sees [1] and adds 2.",
+"code": "def f(x, items=[]):\n    items.append(x)\n    return items\n\nf(1)\nprint(f(2))"
+},
+{
+"id": "progb09",
+"s": "PROG",
+"t": "Operators",
+"d": 1,
+"q": "In Java, what is the value of 7 / 2 when both are int?",
+"o": [
+"3.5",
+"4",
+"3.0",
+"3"
+],
+"a": 3,
+"e": "Dividing two integers in Java gives an integer. The fractional part is dropped, so the result is 3."
+},
+{
+"id": "progb10",
+"s": "PROG",
+"t": "Exception handling",
+"d": 2,
+"q": "In Java, when does a finally block run?",
+"o": [
+"Only when an exception is thrown",
+"After the try and catch blocks, whether or not an exception was thrown",
+"Never, unless called directly",
+"Only when no exception is thrown"
+],
+"a": 1,
+"e": "finally is meant for clean-up such as closing files, so it runs in both cases."
+},
+{
+"id": "progb11",
+"s": "PROG",
+"t": "OOP",
+"d": 1,
+"q": "Keeping a class's data private and allowing access only through its methods is called:",
+"o": [
+"Overloading",
+"Inheritance",
+"Encapsulation",
+"Polymorphism"
+],
+"a": 2,
+"e": "Encapsulation hides internal state and exposes a controlled interface."
+},
+{
+"id": "progb12",
+"s": "PROG",
+"t": "Functions",
+"d": 2,
+"q": "A recursive function never stops and the program crashes with a stack overflow. What is most likely missing?",
+"o": [
+"A return type",
+"A base case",
+"A loop",
+"A global variable"
+],
+"a": 1,
+"e": "Without a base case that stops the recursion, each call makes another call until the call stack runs out."
+},
+{
+"id": "progb13",
+"s": "PROG",
+"t": "Arrays and collections",
+"d": 1,
+"q": "What does this Python code print?",
+"o": [
+"[0, 1, 2, 3]",
+"[1, 2, 3, 4]",
+"[1, 4, 9, 16]",
+"[0, 1, 4, 9]"
+],
+"a": 3,
+"e": "range(4) gives 0, 1, 2, 3 and each is squared.",
+"code": "print([x * x for x in range(4)])"
+},
+{
+"id": "progb14",
+"s": "PROG",
+"t": "Memory management",
+"d": 2,
+"q": "In C++, after int *p = &x; what does *p give?",
+"o": [
+"A compile error",
+"The address of p",
+"The address of x",
+"The value of x"
+],
+"a": 3,
+"e": "p holds the address of x. Dereferencing with * reads the value stored at that address."
+},
+{
+"id": "progb15",
+"s": "PROG",
+"t": "OOP",
+"d": 1,
+"q": "How many classes can a Java class directly extend?",
+"o": [
+"None",
+"Any number",
+"One",
+"Two"
+],
+"a": 2,
+"e": "Java allows single inheritance of classes. A class can implement many interfaces, but extend only one class."
+},
+{
+"id": "dsab01",
+"s": "DSA",
+"t": "Searching",
+"d": 1,
+"q": "What is the time complexity of binary search on a sorted array?",
+"o": [
+"O(n)",
+"O(1)",
+"O(n log n)",
+"O(log n)"
+],
+"a": 3,
+"e": "Each step halves the remaining range, so about log2(n) steps are needed."
+},
+{
+"id": "dsab02",
+"s": "DSA",
+"t": "Linear structures",
+"d": 1,
+"q": "In which order does a queue remove elements?",
+"o": [
+"First in, first out",
+"Last in, first out",
+"Smallest first",
+"Random"
+],
+"a": 0,
+"e": "A queue is FIFO: the element added first is removed first, like a line at a bank."
+},
+{
+"id": "dsab03",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "An in-order traversal of a binary search tree visits the keys in which order?",
+"o": [
+"Random order",
+"Descending order",
+"Level by level",
+"Ascending order"
+],
+"a": 3,
+"e": "In-order visits left subtree, node, then right subtree. In a BST that gives sorted ascending order."
+},
+{
+"id": "dsab04",
+"s": "DSA",
+"t": "Sorting",
+"d": 2,
+"q": "What is the worst-case time complexity of quicksort?",
+"o": [
+"O(log n)",
+"O(n log n)",
+"O(n)",
+"O(n squared)"
+],
+"a": 3,
+"e": "If the pivot is always the smallest or largest element, partitions are very uneven and the work becomes n squared."
+},
+{
+"id": "dsab05",
+"s": "DSA",
+"t": "Sorting",
+"d": 1,
+"q": "What is the time complexity of merge sort in every case?",
+"o": [
+"O(n log n)",
+"O(n squared)",
+"O(n)",
+"O(log n)"
+],
+"a": 0,
+"e": "Merge sort always splits in half (log n levels) and merges each level in linear time."
+},
+{
+"id": "dsab06",
+"s": "DSA",
+"t": "Hashing",
+"d": 1,
+"q": "What is the average time to look up a key in a well-designed hash table?",
+"o": [
+"O(n)",
+"O(1)",
+"O(n log n)",
+"O(log n)"
+],
+"a": 1,
+"e": "A good hash function spreads keys evenly, so a lookup checks only a few entries on average."
+},
+{
+"id": "dsab07",
+"s": "DSA",
+"t": "Graphs",
+"d": 1,
+"q": "Which data structure does breadth-first search use?",
+"o": [
+"Queue",
+"Hash table",
+"Stack",
+"Heap"
+],
+"a": 0,
+"e": "BFS explores level by level, so it processes nodes in the order they were found, which needs a queue."
+},
+{
+"id": "dsab08",
+"s": "DSA",
+"t": "Graphs",
+"d": 1,
+"q": "Which data structure does depth-first search use?",
+"o": [
+"Queue",
+"Stack, or recursion",
+"Priority queue",
+"Linked list only"
+],
+"a": 1,
+"e": "DFS goes as deep as possible before backtracking. A stack, or the call stack through recursion, gives that order."
+},
+{
+"id": "dsab09",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "Dijkstra's shortest path algorithm does not work correctly when the graph has:",
+"o": [
+"Cycles",
+"More than 100 nodes",
+"Undirected edges",
+"Negative edge weights"
+],
+"a": 3,
+"e": "Dijkstra assumes a node's distance is final once it is chosen. A negative edge found later could make that distance shorter. Use Bellman-Ford instead."
+},
+{
+"id": "dsab10",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "What is the height of a balanced binary search tree with n nodes?",
+"o": [
+"O(n)",
+"O(n squared)",
+"O(1)",
+"O(log n)"
+],
+"a": 3,
+"e": "A balanced tree roughly doubles its nodes with each level, so the height grows logarithmically."
+},
+{
+"id": "dsab11",
+"s": "DSA",
+"t": "Linked lists",
+"d": 2,
+"q": "Which technique detects a cycle in a linked list using constant extra memory?",
+"o": [
+"Binary search",
+"Slow and fast pointers (Floyd's algorithm)",
+"A second linked list",
+"Sorting the list"
+],
+"a": 1,
+"e": "One pointer moves one step and the other two steps. If there is a cycle, they eventually meet."
+},
+{
+"id": "dsab12",
+"s": "DSA",
+"t": "Linear structures",
+"d": 1,
+"q": "Checking whether brackets in an expression are balanced is best done with a:",
+"o": [
+"Stack",
+"Graph",
+"Queue",
+"Tree"
+],
+"a": 0,
+"e": "Push each opening bracket and pop when a matching closing bracket appears. The most recent opening bracket must close first."
+},
+{
+"id": "dsab13",
+"s": "DSA",
+"t": "Trees",
+"d": 1,
+"q": "How many edges does a tree with n nodes have?",
+"o": [
+"n + 1",
+"n - 1",
+"2n",
+"n"
+],
+"a": 1,
+"e": "Every node except the root has exactly one edge to its parent."
+},
+{
+"id": "dsab14",
+"s": "DSA",
+"t": "Linked lists",
+"d": 1,
+"q": "What is the time to insert a new node at the head of a singly linked list?",
+"o": [
+"O(log n)",
+"O(n)",
+"O(1)",
+"O(n squared)"
+],
+"a": 2,
+"e": "Point the new node to the old head and update the head pointer. No traversal is needed."
+},
+{
+"id": "dsab15",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "What is the time to remove the maximum element from a binary max-heap?",
+"o": [
+"O(log n)",
+"O(n)",
+"O(1)",
+"O(n log n)"
+],
+"a": 0,
+"e": "The root is removed, the last element moves to the root and sifts down one path, which is the height of the heap."
+},
+{
+"id": "dbb01",
+"s": "DB",
+"t": "Relational concepts",
+"d": 1,
+"q": "A primary key must be:",
+"o": [
+"Unique and not null",
+"A number",
+"Not null only",
+"Unique only"
+],
+"a": 0,
+"e": "A primary key identifies each row, so it cannot repeat and cannot be empty."
+},
+{
+"id": "dbb02",
+"s": "DB",
+"t": "Relational concepts",
+"d": 1,
+"q": "A foreign key usually refers to:",
+"o": [
+"Any column in the same table",
+"The primary key of another table",
+"A view",
+"An index"
+],
+"a": 1,
+"e": "A foreign key links a row to a row in another table through that table's primary key."
+},
+{
+"id": "dbb03",
+"s": "DB",
+"t": "SQL",
+"d": 1,
+"q": "Which SQL statement counts the rows in table students?",
+"o": [
+"SELECT COUNT(*) FROM students",
+"SELECT TOTAL FROM students",
+"SELECT SUM(*) FROM students",
+"COUNT students"
+],
+"a": 0,
+"e": "COUNT(*) returns the number of rows."
+},
+{
+"id": "dbb04",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which clause filters groups after GROUP BY?",
+"o": [
+"ORDER BY",
+"WHERE",
+"HAVING",
+"LIMIT"
+],
+"a": 2,
+"e": "WHERE filters rows before grouping. HAVING filters the groups, for example HAVING COUNT(*) > 5."
+},
+{
+"id": "dbb05",
+"s": "DB",
+"t": "Normalization",
+"d": 2,
+"q": "Second normal form (2NF) removes which kind of dependency?",
+"o": [
+"Transitive dependency",
+"Multivalued dependency",
+"Join dependency",
+"Partial dependency on part of a composite key"
+],
+"a": 3,
+"e": "In 2NF every non-key column depends on the whole primary key, not just part of it."
+},
+{
+"id": "dbb06",
+"s": "DB",
+"t": "Normalization",
+"d": 2,
+"q": "Third normal form (3NF) removes which kind of dependency?",
+"o": [
+"Primary keys",
+"Repeating groups",
+"Partial dependency",
+"Transitive dependency between non-key columns"
+],
+"a": 3,
+"e": "In 3NF non-key columns depend only on the key, not on other non-key columns."
+},
+{
+"id": "dbb07",
+"s": "DB",
+"t": "SQL",
+"d": 1,
+"q": "Which join returns all rows from the left table, with matching rows from the right table or NULL?",
+"o": [
+"INNER JOIN",
+"CROSS JOIN",
+"RIGHT JOIN",
+"LEFT JOIN"
+],
+"a": 3,
+"e": "LEFT JOIN keeps every row of the left table, and fills NULL where the right table has no match."
+},
+{
+"id": "dbb08",
+"s": "DB",
+"t": "Transactions",
+"d": 2,
+"q": "In ACID, what does Isolation mean?",
+"o": [
+"A transaction is all or nothing",
+"Data is stored on one disk",
+"Concurrent transactions do not see each other's partial changes",
+"Committed data survives a crash"
+],
+"a": 2,
+"e": "Isolation makes concurrent transactions behave as if they ran one after another."
+},
+{
+"id": "dbb09",
+"s": "DB",
+"t": "Indexing",
+"d": 2,
+"q": "Adding an index to a column usually:",
+"o": [
+"Speeds up everything",
+"Slows down searches",
+"Removes duplicate rows",
+"Speeds up searches but slows down inserts and updates"
+],
+"a": 3,
+"e": "The index must be updated on every write, but it lets the database find matching rows without scanning the whole table."
+},
+{
+"id": "dbb10",
+"s": "DB",
+"t": "Concurrency control",
+"d": 2,
+"q": "A dirty read happens when a transaction:",
+"o": [
+"Reads data another transaction has not yet committed",
+"Reads deleted data",
+"Reads data without an index",
+"Reads from a backup"
+],
+"a": 0,
+"e": "If the other transaction rolls back, the value read never really existed."
+},
+{
+"id": "dbb11",
+"s": "DB",
+"t": "NoSQL",
+"d": 1,
+"q": "Which of these is a document database?",
+"o": [
+"Oracle",
+"PostgreSQL",
+"MySQL",
+"MongoDB"
+],
+"a": 3,
+"e": "MongoDB stores JSON-like documents. The others are relational databases."
+},
+{
+"id": "dbb12",
+"s": "DB",
+"t": "SQL",
+"d": 1,
+"q": "Which SQL command removes a table and its structure completely?",
+"o": [
+"DROP",
+"TRUNCATE",
+"REMOVE",
+"DELETE"
+],
+"a": 0,
+"e": "DELETE and TRUNCATE remove rows but keep the table. DROP removes the table itself."
+},
+{
+"id": "dbb13",
+"s": "DB",
+"t": "SQL",
+"d": 1,
+"q": "WHERE name LIKE 'A%' returns names that:",
+"o": [
+"Are exactly A%",
+"End with A",
+"Contain only A",
+"Start with A"
+],
+"a": 3,
+"e": "% matches any sequence of characters, so 'A%' matches anything starting with A."
+},
+{
+"id": "dbb14",
+"s": "DB",
+"t": "Relational concepts",
+"d": 2,
+"q": "How is a many-to-many relationship, such as students and courses, stored in a relational database?",
+"o": [
+"One table with repeated columns",
+"It cannot be stored",
+"A junction table holding pairs of keys",
+"A foreign key in each table"
+],
+"a": 2,
+"e": "A table such as enrollments holds one row per student-course pair, with a foreign key to each side."
+},
+{
+"id": "dbb15",
+"s": "DB",
+"t": "Concurrency control",
+"d": 2,
+"q": "Two transactions each hold a lock the other needs and both wait forever. This is called:",
+"o": [
+"A phantom read",
+"A deadlock",
+"Normalization",
+"A dirty read"
+],
+"a": 1,
+"e": "The database detects the deadlock and rolls back one transaction so the other can continue."
+},
+{
+"id": "seb01",
+"s": "SE",
+"t": "Process models",
+"d": 1,
+"q": "The waterfall model works best when:",
+"o": [
+"The client wants to see a demo every week",
+"Requirements change every week",
+"The team has no plan",
+"Requirements are clear and stable from the start"
+],
+"a": 3,
+"e": "Waterfall completes each phase before the next, so late changes are costly."
+},
+{
+"id": "seb02",
+"s": "SE",
+"t": "Agile",
+"d": 1,
+"q": "In Scrum, the fixed time period in which a usable increment is built is called a:",
+"o": [
+"Phase",
+"Sprint",
+"Milestone",
+"Release train"
+],
+"a": 1,
+"e": "A sprint usually lasts one to four weeks."
+},
+{
+"id": "seb03",
+"s": "SE",
+"t": "Agile",
+"d": 1,
+"q": "Who owns and prioritises the product backlog in Scrum?",
+"o": [
+"Project sponsor",
+"Scrum Master",
+"Development team",
+"Product Owner"
+],
+"a": 3,
+"e": "The Product Owner decides what is most valuable to build next."
+},
+{
+"id": "seb04",
+"s": "SE",
+"t": "Testing",
+"d": 1,
+"q": "Unit testing checks:",
+"o": [
+"The smallest parts of the code, such as single functions, on their own",
+"Only the user interface",
+"The whole system with real users",
+"Network speed"
+],
+"a": 0,
+"e": "Unit tests isolate one function or class so failures point to a specific place."
+},
+{
+"id": "seb05",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Why is regression testing done?",
+"o": [
+"To measure performance only",
+"To test a feature for the first time",
+"To check that new changes have not broken existing features",
+"To write documentation"
+],
+"a": 2,
+"e": "Every change can break something that worked before, so earlier tests are run again."
+},
+{
+"id": "seb06",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Black-box testing designs test cases based on:",
+"o": [
+"The database schema",
+"The requirements and expected behaviour, without looking at the code",
+"The developer's opinion",
+"The source code structure"
+],
+"a": 1,
+"e": "The tester treats the system as a box with inputs and outputs. White-box testing looks inside the code."
+},
+{
+"id": "seb07",
+"s": "SE",
+"t": "Requirements",
+"d": 1,
+"q": "\"The system must respond within 2 seconds\" is an example of a:",
+"o": [
+"Non-functional requirement",
+"Business rule",
+"Use case",
+"Functional requirement"
+],
+"a": 0,
+"e": "It describes how well the system performs, not what it does. Performance is a non-functional quality."
+},
+{
+"id": "seb08",
+"s": "SE",
+"t": "Design",
+"d": 2,
+"q": "Which combination indicates a good software design?",
+"o": [
+"Low coupling, high cohesion",
+"High coupling, high cohesion",
+"High coupling, low cohesion",
+"Low coupling, low cohesion"
+],
+"a": 0,
+"e": "Modules should depend little on each other (low coupling) and each should do one focused job (high cohesion)."
+},
+{
+"id": "seb09",
+"s": "SE",
+"t": "Design",
+"d": 1,
+"q": "The Singleton design pattern ensures that:",
+"o": [
+"A class has only one instance",
+"A class has no methods",
+"Objects are created in bulk",
+"A class cannot be used"
+],
+"a": 0,
+"e": "Singleton gives one shared instance with a global access point, for example a configuration object."
+},
+{
+"id": "seb10",
+"s": "SE",
+"t": "Configuration management",
+"d": 1,
+"q": "Which Git command creates a new branch and switches to it?",
+"o": [
+"git checkout -b new",
+"git push new",
+"git merge new",
+"git clone new"
+],
+"a": 0,
+"e": "git checkout -b creates the branch and moves to it in one step. git switch -c does the same in newer Git."
+},
+{
+"id": "seb11",
+"s": "SE",
+"t": "Risk management",
+"d": 2,
+"q": "Risk exposure is commonly calculated as:",
+"o": [
+"Probability x impact",
+"Probability + impact",
+"Impact - probability",
+"Cost / time"
+],
+"a": 0,
+"e": "A likely risk with a big impact needs attention first."
+},
+{
+"id": "seb12",
+"s": "SE",
+"t": "Design",
+"d": 2,
+"q": "Which UML diagram shows how objects interact through messages over time?",
+"o": [
+"Use case diagram",
+"Class diagram",
+"Deployment diagram",
+"Sequence diagram"
+],
+"a": 3,
+"e": "A sequence diagram places objects across the top and messages in time order going down."
+},
+{
+"id": "seb13",
+"s": "SE",
+"t": "Configuration management",
+"d": 2,
+"q": "Continuous integration means:",
+"o": [
+"Merging all branches at the end of the project",
+"Automatically building and testing the code on every commit",
+"Releasing to users once a year",
+"Writing code without tests"
+],
+"a": 1,
+"e": "Problems are found within minutes of the change that caused them."
+},
+{
+"id": "seb14",
+"s": "SE",
+"t": "Process models",
+"d": 2,
+"q": "Which process model puts the most emphasis on risk analysis in each cycle?",
+"o": [
+"Waterfall",
+"Code and fix",
+"Big bang",
+"Spiral"
+],
+"a": 3,
+"e": "Each loop of the spiral model starts by identifying and reducing the biggest risks."
+},
+{
+"id": "seb15",
+"s": "SE",
+"t": "Testing",
+"d": 1,
+"q": "What is the main benefit of code reviews?",
+"o": [
+"Faster typing",
+"Reducing the number of developers",
+"Finding defects and design problems early",
+"Replacing all testing"
+],
+"a": 2,
+"e": "A second person often spots bugs, unclear code and security issues before they reach users."
+},
+{
+"id": "webb01",
+"s": "WEB",
+"t": "Protocols",
+"d": 1,
+"q": "What does HTTP status code 404 mean?",
+"o": [
+"Not found",
+"Redirect",
+"Server error",
+"Unauthorized"
+],
+"a": 0,
+"e": "404 means the server could not find the requested resource."
+},
+{
+"id": "webb02",
+"s": "WEB",
+"t": "APIs",
+"d": 1,
+"q": "Which HTTP status code means a resource was created successfully?",
+"o": [
+"301",
+"200",
+"204",
+"201"
+],
+"a": 3,
+"e": "201 Created is returned after a successful POST that creates a resource."
+},
+{
+"id": "webb03",
+"s": "WEB",
+"t": "APIs",
+"d": 2,
+"q": "Which HTTP method is NOT idempotent?",
+"o": [
+"PUT",
+"DELETE",
+"POST",
+"GET"
+],
+"a": 2,
+"e": "Sending the same POST twice usually creates two resources. GET, PUT and DELETE give the same result if repeated."
+},
+{
+"id": "webb04",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "An element has both an id selector rule and a class selector rule setting its colour. Which wins?",
+"o": [
+"The id rule",
+"Neither, the browser default",
+"The one written first",
+"The class rule"
+],
+"a": 0,
+"e": "An id selector is more specific than a class selector, so its rule wins unless !important is used."
+},
+{
+"id": "webb05",
+"s": "WEB",
+"t": "HTML",
+"d": 1,
+"q": "Which HTML element is meant for a block of navigation links?",
+"o": [
+"<menu-bar>",
+"<div>",
+"<nav>",
+"<section>"
+],
+"a": 2,
+"e": "<nav> is a semantic element that tells browsers and screen readers it holds navigation."
+},
+{
+"id": "webb06",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "What does typeof null return in JavaScript?",
+"o": [
+"\"object\"",
+"\"null\"",
+"\"undefined\"",
+"\"number\""
+],
+"a": 0,
+"e": "This is a long-standing quirk of JavaScript: typeof null is \"object\"."
+},
+{
+"id": "webb07",
+"s": "WEB",
+"t": "JavaScript",
+"d": 1,
+"q": "What is the difference between == and === in JavaScript?",
+"o": [
+"=== compares value and type, == converts types first",
+"There is none",
+"=== is only for strings",
+"== compares type only"
+],
+"a": 0,
+"e": "0 == \"0\" is true because of type conversion, but 0 === \"0\" is false."
+},
+{
+"id": "webb08",
+"s": "WEB",
+"t": "APIs",
+"d": 1,
+"q": "In a REST API, which method is normally used to create a new resource?",
+"o": [
+"GET",
+"POST",
+"HEAD",
+"DELETE"
+],
+"a": 1,
+"e": "POST /students with the new student's data creates a student."
+},
+{
+"id": "webb09",
+"s": "WEB",
+"t": "Security",
+"d": 2,
+"q": "What does CORS control?",
+"o": [
+"How passwords are hashed",
+"The size of cookies",
+"Which origins a browser lets call an API from a web page",
+"Which CSS files load"
+],
+"a": 2,
+"e": "The server sends headers saying which other sites' pages may read its responses."
+},
+{
+"id": "webb10",
+"s": "WEB",
+"t": "Security",
+"d": 2,
+"q": "Which measure best prevents cross-site scripting (XSS)?",
+"o": [
+"Using HTTP instead of HTTPS",
+"Bigger servers",
+"Escaping user input when it is shown in a page",
+"Longer passwords"
+],
+"a": 2,
+"e": "Escaping turns characters like < into harmless text so injected scripts do not run. A Content Security Policy adds more protection."
+},
+{
+"id": "webb11",
+"s": "WEB",
+"t": "Security",
+"d": 2,
+"q": "Which cookie flag stops JavaScript from reading the cookie?",
+"o": [
+"SameSite",
+"Secure",
+"HttpOnly",
+"Path"
+],
+"a": 2,
+"e": "HttpOnly cookies are sent with requests but cannot be read by document.cookie, which protects session cookies from XSS."
+},
+{
+"id": "webb12",
+"s": "WEB",
+"t": "Protocols",
+"d": 1,
+"q": "HTTPS secures HTTP traffic using:",
+"o": [
+"TLS",
+"FTP",
+"UDP",
+"SMTP"
+],
+"a": 0,
+"e": "TLS encrypts the connection and verifies the server's identity with a certificate."
+},
+{
+"id": "webb13",
+"s": "WEB",
+"t": "CSS",
+"d": 1,
+"q": "In a flex container, which property centres items along the main axis?",
+"o": [
+"justify-content: center",
+"align-items: center",
+"text-align: center",
+"float: center"
+],
+"a": 0,
+"e": "justify-content controls the main axis. align-items controls the cross axis."
+},
+{
+"id": "webb14",
+"s": "WEB",
+"t": "JavaScript",
+"d": 1,
+"q": "How does let differ from var in JavaScript?",
+"o": [
+"let is function-scoped, var is block-scoped",
+"let is block-scoped, var is function-scoped",
+"They are identical",
+"let cannot be changed"
+],
+"a": 1,
+"e": "A let variable declared inside { } only exists inside that block."
+},
+{
+"id": "webb15",
+"s": "WEB",
+"t": "APIs",
+"d": 1,
+"q": "JSON stands for:",
+"o": [
+"Java Standard Object Notation",
+"JavaScript Online Node",
+"JavaScript Object Notation",
+"Joint Server Object Network"
+],
+"a": 2,
+"e": "JSON is a text format for data, based on JavaScript object syntax."
+},
+{
+"id": "aib01",
+"s": "AI",
+"t": "Supervised learning",
+"d": 1,
+"q": "Supervised learning needs:",
+"o": [
+"Unlabelled data",
+"Labelled data with known answers",
+"Only images",
+"No data"
+],
+"a": 1,
+"e": "The model learns from examples where the correct output is given."
+},
+{
+"id": "aib02",
+"s": "AI",
+"t": "Unsupervised learning",
+"d": 1,
+"q": "K-means is an example of:",
+"o": [
+"Regression",
+"Classification",
+"Reinforcement learning",
+"Clustering"
+],
+"a": 3,
+"e": "K-means groups unlabelled data into k clusters by distance to cluster centres."
+},
+{
+"id": "aib03",
+"s": "AI",
+"t": "Evaluation",
+"d": 2,
+"q": "A model has 99% accuracy on training data but 60% on test data. This is a sign of:",
+"o": [
+"Overfitting",
+"A perfect model",
+"Too little training",
+"Underfitting"
+],
+"a": 0,
+"e": "The model memorised the training data instead of learning patterns that generalise."
+},
+{
+"id": "aib04",
+"s": "AI",
+"t": "Evaluation",
+"d": 2,
+"q": "Precision is calculated as:",
+"o": [
+"FP / (FP + TN)",
+"(TP + TN) / total",
+"TP / (TP + FP)",
+"TP / (TP + FN)"
+],
+"a": 2,
+"e": "Precision answers: of everything predicted positive, how much was actually positive?"
+},
+{
+"id": "aib05",
+"s": "AI",
+"t": "Evaluation",
+"d": 2,
+"q": "Recall is calculated as:",
+"o": [
+"TP / (TP + FP)",
+"FP / total",
+"TN / (TN + FP)",
+"TP / (TP + FN)"
+],
+"a": 3,
+"e": "Recall answers: of all real positives, how many did the model find?"
+},
+{
+"id": "aib06",
+"s": "AI",
+"t": "Regularization",
+"d": 2,
+"q": "What does L2 regularisation do?",
+"o": [
+"Removes data",
+"Adds more layers",
+"Penalises large weights",
+"Increases the learning rate"
+],
+"a": 2,
+"e": "Adding the squared weights to the loss keeps weights small, which reduces overfitting."
+},
+{
+"id": "aib07",
+"s": "AI",
+"t": "Evaluation",
+"d": 1,
+"q": "Why is data split into training and test sets?",
+"o": [
+"To estimate how the model performs on unseen data",
+"To remove labels",
+"To reduce file size",
+"To train faster"
+],
+"a": 0,
+"e": "Testing on data the model never saw shows whether it generalises."
+},
+{
+"id": "aib08",
+"s": "AI",
+"t": "Supervised learning",
+"d": 1,
+"q": "Which algorithm is used for binary classification despite its name?",
+"o": [
+"Linear regression",
+"Logistic regression",
+"PCA",
+"K-means"
+],
+"a": 1,
+"e": "Logistic regression outputs a probability between 0 and 1 for the positive class."
+},
+{
+"id": "aib09",
+"s": "AI",
+"t": "Deep learning",
+"d": 1,
+"q": "Which activation function is most common in hidden layers of modern neural networks?",
+"o": [
+"ReLU",
+"Identity",
+"Step function",
+"Linear"
+],
+"a": 0,
+"e": "ReLU outputs max(0, x). It is cheap and adds non-linearity without vanishing gradients for positive inputs."
+},
+{
+"id": "aib10",
+"s": "AI",
+"t": "Computer vision",
+"d": 1,
+"q": "Convolutional neural networks (CNNs) are especially suited to:",
+"o": [
+"Plain text files",
+"Images",
+"Spreadsheets",
+"Audio volume only"
+],
+"a": 1,
+"e": "Convolution filters detect local patterns like edges and shapes anywhere in an image."
+},
+{
+"id": "aib11",
+"s": "AI",
+"t": "Data pre-processing",
+"d": 2,
+"q": "Feature scaling is most important for which algorithm?",
+"o": [
+"Decision tree",
+"Random forest",
+"K-nearest neighbours",
+"Naive Bayes"
+],
+"a": 2,
+"e": "KNN uses distances, so a feature with large values would dominate unless features are scaled."
+},
+{
+"id": "aib12",
+"s": "AI",
+"t": "Data pre-processing",
+"d": 1,
+"q": "Filling missing values with the column mean is called:",
+"o": [
+"Normalisation",
+"Imputation",
+"Encoding",
+"Sampling"
+],
+"a": 1,
+"e": "Imputation replaces missing values with estimates such as the mean, median or most common value."
+},
+{
+"id": "aib13",
+"s": "AI",
+"t": "Evaluation",
+"d": 1,
+"q": "A confusion matrix is used to evaluate:",
+"o": [
+"Clustering speed",
+"Classification models",
+"Database queries",
+"Regression models"
+],
+"a": 1,
+"e": "It counts true positives, false positives, true negatives and false negatives."
+},
+{
+"id": "aib14",
+"s": "AI",
+"t": "Math foundations",
+"d": 2,
+"q": "Gradient descent updates the weights in the direction of:",
+"o": [
+"The negative gradient",
+"The positive gradient",
+"Zero",
+"Random directions"
+],
+"a": 0,
+"e": "The gradient points uphill. Moving against it lowers the loss."
+},
+{
+"id": "aib15",
+"s": "AI",
+"t": "Math foundations",
+"d": 1,
+"q": "What is the median of 3, 1, 9, 5, 7?",
+"o": [
+"5",
+"3",
+"5.5",
+"7"
+],
+"a": 0,
+"e": "Sorted: 1, 3, 5, 7, 9. The middle value is 5."
+},
+{
+"id": "netb01",
+"s": "NET",
+"t": "Network layer",
+"d": 1,
+"q": "Which OSI layer is responsible for routing packets between networks?",
+"o": [
+"Network",
+"Transport",
+"Data link",
+"Session"
+],
+"a": 0,
+"e": "The network layer (layer 3) uses IP addresses to choose paths between networks."
+},
+{
+"id": "netb02",
+"s": "NET",
+"t": "Transport layer",
+"d": 1,
+"q": "Which protocol gives reliable, ordered delivery?",
+"o": [
+"TCP",
+"ICMP",
+"IP",
+"UDP"
+],
+"a": 0,
+"e": "TCP uses acknowledgements and retransmission. UDP does not guarantee delivery."
+},
+{
+"id": "netb03",
+"s": "NET",
+"t": "Application layer",
+"d": 1,
+"q": "What does DNS do?",
+"o": [
+"Routes packets",
+"Assigns MAC addresses",
+"Encrypts traffic",
+"Translates domain names into IP addresses"
+],
+"a": 3,
+"e": "DNS turns a name like hec.gov.pk into the IP address a computer can connect to."
+},
+{
+"id": "netb04",
+"s": "NET",
+"t": "Application layer",
+"d": 1,
+"q": "What is the default port for HTTPS?",
+"o": [
+"443",
+"80",
+"21",
+"25"
+],
+"a": 0,
+"e": "HTTP uses port 80 and HTTPS uses port 443."
+},
+{
+"id": "netb05",
+"s": "NET",
+"t": "Network layer",
+"d": 1,
+"q": "How many bits are in an IPv4 address?",
+"o": [
+"32",
+"16",
+"64",
+"128"
+],
+"a": 0,
+"e": "IPv4 addresses are 32 bits, written as four numbers from 0 to 255. IPv6 uses 128 bits."
+},
+{
+"id": "netb06",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "How many usable host addresses does a /24 subnet have?",
+"o": [
+"254",
+"256",
+"128",
+"255"
+],
+"a": 0,
+"e": "A /24 has 256 addresses. The network address and broadcast address cannot be given to hosts, leaving 254."
+},
+{
+"id": "netb07",
+"s": "NET",
+"t": "Data link layer",
+"d": 1,
+"q": "Which device forwards frames using MAC addresses?",
+"o": [
+"Switch",
+"Router",
+"Hub",
+"Modem"
+],
+"a": 0,
+"e": "A switch works at layer 2 and learns which MAC address is on which port."
+},
+{
+"id": "netb08",
+"s": "NET",
+"t": "Data link layer",
+"d": 2,
+"q": "What does ARP do?",
+"o": [
+"Encrypts frames",
+"Maps names to IP addresses",
+"Maps IP addresses to MAC addresses",
+"Assigns IP addresses"
+],
+"a": 2,
+"e": "Before sending on a local network, a host asks with ARP which MAC address owns a given IP."
+},
+{
+"id": "netb09",
+"s": "NET",
+"t": "Application layer",
+"d": 1,
+"q": "What does DHCP provide?",
+"o": [
+"Email delivery",
+"Web pages",
+"Automatic IP configuration for devices",
+"File transfer"
+],
+"a": 2,
+"e": "DHCP gives a device its IP address, subnet mask, gateway and DNS server when it joins the network."
+},
+{
+"id": "netb10",
+"s": "NET",
+"t": "Transport layer",
+"d": 2,
+"q": "What is the correct order of the TCP three-way handshake?",
+"o": [
+"SYN, SYN-ACK, ACK",
+"ACK, SYN, SYN-ACK",
+"SYN, ACK, FIN",
+"SYN-ACK, SYN, ACK"
+],
+"a": 0,
+"e": "The client sends SYN, the server replies SYN-ACK, and the client confirms with ACK."
+},
+{
+"id": "netb11",
+"s": "NET",
+"t": "Cloud computing",
+"d": 1,
+"q": "Renting virtual machines from a cloud provider is an example of:",
+"o": [
+"IaaS",
+"PaaS",
+"SaaS",
+"On-premises hosting"
+],
+"a": 0,
+"e": "Infrastructure as a Service gives raw computing resources such as virtual machines, for example AWS EC2."
+},
+{
+"id": "netb12",
+"s": "NET",
+"t": "Cloud computing",
+"d": 1,
+"q": "Using Gmail in a browser is an example of:",
+"o": [
+"SaaS",
+"PaaS",
+"Edge computing",
+"IaaS"
+],
+"a": 0,
+"e": "Software as a Service is a complete application run by the provider."
+},
+{
+"id": "netb13",
+"s": "NET",
+"t": "Cloud computing",
+"d": 2,
+"q": "What is the main job of a load balancer?",
+"o": [
+"Spread incoming traffic across several servers",
+"Encrypt data",
+"Store backups",
+"Assign domain names"
+],
+"a": 0,
+"e": "Spreading requests prevents one server from being overloaded and keeps the service up if one server fails."
+},
+{
+"id": "netb14",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "Which of these is a private IPv4 address range?",
+"o": [
+"8.8.8.0/24",
+"172.217.0.0/16",
+"192.168.0.0/16",
+"1.1.1.0/24"
+],
+"a": 2,
+"e": "192.168.0.0/16, 10.0.0.0/8 and 172.16.0.0/12 are reserved for private networks."
+},
+{
+"id": "netb15",
+"s": "NET",
+"t": "Network layer",
+"d": 1,
+"q": "Which protocol does the ping command use?",
+"o": [
+"TCP",
+"ICMP",
+"UDP",
+"HTTP"
+],
+"a": 1,
+"e": "ping sends ICMP echo requests and waits for echo replies."
+},
+{
+"id": "osb01",
+"s": "OS",
+"t": "Threads",
+"d": 1,
+"q": "Threads of the same process share:",
+"o": [
+"The process's memory and open files",
+"Separate address spaces",
+"Nothing",
+"Only the CPU"
+],
+"a": 0,
+"e": "Threads share code, data and files but each has its own stack and registers."
+},
+{
+"id": "osb02",
+"s": "OS",
+"t": "CPU scheduling",
+"d": 1,
+"q": "Round robin scheduling gives each process:",
+"o": [
+"Priority based on size",
+"CPU only when idle",
+"Unlimited CPU time",
+"A fixed time slice in turn"
+],
+"a": 3,
+"e": "Each process runs for a time quantum and then goes to the back of the queue."
+},
+{
+"id": "osb03",
+"s": "OS",
+"t": "CPU scheduling",
+"d": 2,
+"q": "Which scheduling algorithm gives the lowest average waiting time when all burst times are known?",
+"o": [
+"Priority with aging",
+"Round robin",
+"First come first served",
+"Shortest job first"
+],
+"a": 3,
+"e": "Running short jobs first means fewer processes wait behind long ones."
+},
+{
+"id": "osb04",
+"s": "OS",
+"t": "Deadlocks",
+"d": 2,
+"q": "How many conditions must hold at the same time for a deadlock to occur?",
+"o": [
+"Two",
+"Three",
+"Four",
+"Five"
+],
+"a": 2,
+"e": "Mutual exclusion, hold and wait, no preemption and circular wait (the Coffman conditions)."
+},
+{
+"id": "osb05",
+"s": "OS",
+"t": "Synchronization",
+"d": 1,
+"q": "A semaphore is used for:",
+"o": [
+"Memory allocation",
+"Process synchronisation",
+"File compression",
+"Disk formatting"
+],
+"a": 1,
+"e": "Semaphores control access to shared resources by counting available permits."
+},
+{
+"id": "osb06",
+"s": "OS",
+"t": "Memory management",
+"d": 1,
+"q": "Virtual memory lets a computer:",
+"o": [
+"Delete files faster",
+"Avoid using the CPU",
+"Run programs larger than physical RAM",
+"Increase screen size"
+],
+"a": 2,
+"e": "Parts of a program not in use are kept on disk and loaded when needed."
+},
+{
+"id": "osb07",
+"s": "OS",
+"t": "Memory management",
+"d": 2,
+"q": "A page fault occurs when:",
+"o": [
+"A program accesses a page that is not currently in RAM",
+"A page is found in RAM",
+"The disk is full",
+"The CPU overheats"
+],
+"a": 0,
+"e": "The operating system then loads the page from disk into memory."
+},
+{
+"id": "osb08",
+"s": "OS",
+"t": "Process management",
+"d": 2,
+"q": "What happens during a context switch?",
+"o": [
+"The OS saves the state of one process and loads another's",
+"Memory is cleared",
+"A file is copied",
+"The computer restarts"
+],
+"a": 0,
+"e": "Registers and the program counter are saved so the process can resume later exactly where it stopped."
+},
+{
+"id": "osb09",
+"s": "OS",
+"t": "Memory management",
+"d": 3,
+"q": "Thrashing happens when:",
+"o": [
+"The system spends more time swapping pages than doing useful work",
+"The CPU is idle",
+"Too few processes run",
+"The disk is defragmented"
+],
+"a": 0,
+"e": "When processes do not have enough frames, page faults pile up and performance collapses."
+},
+{
+"id": "osb10",
+"s": "OS",
+"t": "Synchronization",
+"d": 2,
+"q": "A correct solution to the critical section problem must guarantee:",
+"o": [
+"Processes never wait",
+"Unlimited memory",
+"Mutual exclusion, so only one process is in the critical section at a time",
+"All processes run at once"
+],
+"a": 2,
+"e": "Progress and bounded waiting are also required."
+},
+{
+"id": "osb11",
+"s": "OS",
+"t": "CPU scheduling",
+"d": 2,
+"q": "The convoy effect, where short processes wait behind one long process, is a problem of:",
+"o": [
+"Multilevel queue",
+"First come first served",
+"Round robin",
+"Shortest job first"
+],
+"a": 1,
+"e": "In FCFS a long CPU-bound job at the front delays everything behind it."
+},
+{
+"id": "osb12",
+"s": "OS",
+"t": "Process management",
+"d": 1,
+"q": "Which mode can execute privileged instructions such as accessing hardware directly?",
+"o": [
+"Guest mode",
+"Safe mode",
+"User mode",
+"Kernel mode"
+],
+"a": 3,
+"e": "User programs ask the kernel through system calls to perform privileged operations."
+},
+{
+"id": "secb01",
+"s": "SEC",
+"t": "Fundamentals",
+"d": 1,
+"q": "The CIA triad in information security stands for:",
+"o": [
+"Confidentiality, Integrity, Availability",
+"Control, Identity, Access",
+"Code, Inspection, Audit",
+"Cyber, Internet, Authentication"
+],
+"a": 0,
+"e": "These are the three core goals of security."
+},
+{
+"id": "secb02",
+"s": "SEC",
+"t": "Cryptography",
+"d": 1,
+"q": "Which is a symmetric encryption algorithm?",
+"o": [
+"ECC",
+"RSA",
+"Diffie-Hellman",
+"AES"
+],
+"a": 3,
+"e": "AES uses the same key to encrypt and decrypt."
+},
+{
+"id": "secb03",
+"s": "SEC",
+"t": "Cryptography",
+"d": 1,
+"q": "Which is an asymmetric (public key) algorithm?",
+"o": [
+"SHA-256",
+"RSA",
+"DES",
+"AES"
+],
+"a": 1,
+"e": "RSA uses a public key to encrypt and a private key to decrypt."
+},
+{
+"id": "secb04",
+"s": "SEC",
+"t": "Authentication",
+"d": 2,
+"q": "What is the best way to store user passwords?",
+"o": [
+"Base64 encoded",
+"Hashed with a slow, salted algorithm such as bcrypt",
+"Encrypted with a shared key",
+"Plain text"
+],
+"a": 1,
+"e": "Salting stops precomputed tables and a slow hash makes guessing expensive. Base64 is encoding, not protection."
+},
+{
+"id": "secb05",
+"s": "SEC",
+"t": "Web security",
+"d": 2,
+"q": "Which technique prevents SQL injection?",
+"o": [
+"Hiding the database server",
+"Using GET instead of POST",
+"Parameterised queries (prepared statements)",
+"Longer table names"
+],
+"a": 2,
+"e": "User input is sent as data, never as part of the SQL command."
+},
+{
+"id": "secb06",
+"s": "SEC",
+"t": "Fundamentals",
+"d": 1,
+"q": "Phishing is:",
+"o": [
+"A type of firewall",
+"Encrypting a hard disk",
+"Tricking people into revealing information or clicking malicious links",
+"A fast network protocol"
+],
+"a": 2,
+"e": "Fake emails or messages pretend to come from a trusted source."
+},
+{
+"id": "secb07",
+"s": "SEC",
+"t": "Authentication",
+"d": 1,
+"q": "Multi-factor authentication combines:",
+"o": [
+"Two passwords",
+"A password and a security question",
+"Two usernames",
+"Factors of different types, such as a password and a phone code"
+],
+"a": 3,
+"e": "Something you know, something you have, or something you are. Two passwords are the same type."
+},
+{
+"id": "secb08",
+"s": "SEC",
+"t": "Network security",
+"d": 1,
+"q": "A firewall:",
+"o": [
+"Speeds up the internet",
+"Allows or blocks traffic based on rules",
+"Removes viruses from files",
+"Stores passwords"
+],
+"a": 1,
+"e": "Firewalls filter traffic by address, port and protocol."
+},
+{
+"id": "secb09",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "A digital signature provides:",
+"o": [
+"Compression",
+"Authenticity and integrity of a message",
+"Confidentiality only",
+"Faster delivery"
+],
+"a": 1,
+"e": "It proves who signed the message and that it has not been changed."
+},
+{
+"id": "secb10",
+"s": "SEC",
+"t": "Fundamentals",
+"d": 1,
+"q": "The principle of least privilege means:",
+"o": [
+"Passwords are never changed",
+"Users get only the access they need for their work",
+"Everyone gets admin rights",
+"Only managers use computers"
+],
+"a": 1,
+"e": "Limiting access reduces the damage if an account is compromised."
+},
+{
+"id": "secb11",
+"s": "SEC",
+"t": "Network security",
+"d": 1,
+"q": "A distributed denial of service (DDoS) attack aims to:",
+"o": [
+"Encrypt files for ransom",
+"Guess usernames",
+"Steal passwords",
+"Make a service unavailable by flooding it with traffic"
+],
+"a": 3,
+"e": "Many machines send traffic at once until the target cannot serve real users."
+},
+{
+"id": "secb12",
+"s": "SEC",
+"t": "Web security",
+"d": 1,
+"q": "Who issues the certificates browsers trust for HTTPS?",
+"o": [
+"Certificate authorities",
+"Browsers themselves",
+"Internet service providers",
+"Web hosting companies only"
+],
+"a": 0,
+"e": "A certificate authority verifies the domain owner and signs the certificate."
+}
+]

@@ -1,0 +1,242 @@
+[
+ {
+  "subject": "PS",
+  "topic": "Number series",
+  "title": "Cracking number and letter series",
+  "notes": "Look at the differences first. If the differences are constant, it is an arithmetic series (2, 5, 8, 11: add 3).\nIf the differences themselves grow steadily, look at the second differences (2, 6, 12, 20, 30: differences 4, 6, 8, 10, next is 42).\nIf each term is a multiple of the last, it is geometric (3, 9, 27: multiply by 3).\nFibonacci style: each term is the sum of the two before (1, 1, 2, 3, 5, 8).\nFor letters, convert to positions: A=1, B=2 ... Z=26. Then treat it as a number series.\nExam tip: spend at most 60 seconds. If no pattern appears, flag the question and move on.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "PS",
+  "topic": "Logical reasoning",
+  "title": "Syllogisms and if-then logic",
+  "notes": "\"All A are B\" and \"some B are C\" does NOT mean some A are C. Draw circles (Venn diagrams) to check.\nIf P then Q. Not Q, therefore not P: this is valid (modus tollens).\nIf P then Q. Q is true, therefore P: this is NOT valid. Wet ground does not prove it rained.\nWatch the words all, some, none and only. \"Only A are B\" means every B is an A.\nChoose \"cannot be determined\" when the statements allow more than one picture.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "PS",
+  "topic": "Quantitative reasoning",
+  "title": "Percentages, averages and speed",
+  "notes": "Percentage change = (new - old) / old x 100.\nA rise of x% followed by a fall of x% is always a net loss. 20% up then 20% down is 4% down.\nAverage = total / count. To find a removed number: old total - new total.\nSpeed = distance / time. To convert m/s to km/h multiply by 3.6.\nCombinations (order does not matter): nCr = n! / (r! (n - r)!). Arrangements (order matters): n!.\nProbability of independent events happening together: multiply them.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "PROG",
+  "topic": "OOP",
+  "title": "Object-oriented programming in one page",
+  "notes": "Encapsulation: keep data private, expose methods. In Java use private fields with getters and setters.\nInheritance: a subclass reuses a parent class. Java allows one parent class, many interfaces.\nPolymorphism: overloading = same name, different parameters (compile time). Overriding = subclass replaces a parent method (runtime).\nAbstraction: abstract classes and interfaces describe what an object does, not how.\nKeywords to know: final (no subclass, no override), static (belongs to the class), super (call the parent), this (the current object).",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "PROG",
+  "topic": "Data types",
+  "title": "Types, operators and common traps",
+  "notes": "Java and C++: int / int gives an int. 7 / 2 = 3. Use 7.0 / 2 for 3.5.\nPython 3: / always gives a float, // gives the floor. 7 // 2 = 3.\nStrings in Java and Python are immutable. s.concat(\"b\") returns a new string and leaves s unchanged.\nPython lists are passed by reference. b = a does not copy the list. Use a.copy() or list(a).\nNever use a mutable default argument in Python (def f(x, items=[])). Use None and create the list inside.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "PROG",
+  "topic": "Functions",
+  "title": "Functions, recursion and memory",
+  "notes": "Every recursive function needs a base case that stops the recursion, otherwise the stack overflows.\nC++ pass by value copies the argument. Pass by reference (int &x) lets the function change the caller's variable.\nPointers: &x is the address of x. *p is the value at the address stored in p.\nIn C++ every new needs a matching delete. Prefer smart pointers (unique_ptr) to avoid leaks.\nJava and Python free memory automatically with garbage collection.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "DSA",
+  "topic": "Complexity",
+  "title": "Big-O for the test",
+  "notes": "O(1) constant: array index, hash table lookup on average, push and pop on a stack.\nO(log n): binary search, balanced BST operations, heap insert and remove.\nO(n): scanning a list, linked list search.\nO(n log n): merge sort, heap sort, average quicksort.\nO(n squared): bubble, insertion and selection sort, nested loops, worst-case quicksort.\nRule: drop constants and keep the biggest term. 3n squared + 5n becomes O(n squared).",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "DSA",
+  "topic": "Linear structures",
+  "title": "Stacks, queues and linked lists",
+  "notes": "Stack = last in, first out. Uses: undo, function calls, balanced brackets, DFS.\nQueue = first in, first out. Uses: printing jobs, BFS, task scheduling.\nLinked list: inserting at the head is O(1), finding an element is O(n).\nArrays give O(1) access by index but inserting in the middle is O(n).\nCycle detection: slow pointer one step, fast pointer two steps. They meet if there is a cycle.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "DSA",
+  "topic": "Trees",
+  "title": "Trees and graphs",
+  "notes": "A tree with n nodes has n - 1 edges.\nBST: left child smaller, right child larger. In-order traversal gives sorted order.\nBalanced trees (AVL, red-black) keep height O(log n).\nHeap: the root is the largest (max-heap) or smallest (min-heap). Used for priority queues.\nBFS uses a queue and finds shortest paths in unweighted graphs. DFS uses a stack or recursion.\nDijkstra finds shortest paths with non-negative weights. Use Bellman-Ford when weights can be negative.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "DB",
+  "topic": "SQL",
+  "title": "SQL you must know",
+  "notes": "SELECT columns FROM table WHERE condition GROUP BY column HAVING group_condition ORDER BY column.\nWHERE filters rows before grouping. HAVING filters groups after grouping.\nINNER JOIN keeps matches only. LEFT JOIN keeps every row of the left table.\nCOUNT(*), SUM, AVG, MIN, MAX are aggregate functions.\nLIKE 'A%' starts with A, LIKE '%A' ends with A, LIKE '%A%' contains A.\nDELETE removes rows, TRUNCATE removes all rows quickly, DROP removes the whole table.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "DB",
+  "topic": "Normalization",
+  "title": "Keys and normalisation",
+  "notes": "Primary key: unique and not null. Foreign key: points to a primary key in another table.\n1NF: every cell holds one value, no repeating groups.\n2NF: 1NF and no partial dependency on part of a composite key.\n3NF: 2NF and no transitive dependency (non-key column depending on another non-key column).\nMany-to-many relationships need a junction table, for example enrollments(student_id, course_id).",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "DB",
+  "topic": "Transactions",
+  "title": "Transactions, ACID and indexes",
+  "notes": "Atomicity: all or nothing. Consistency: rules stay valid. Isolation: transactions do not see each other's partial work. Durability: committed data survives a crash.\nDirty read: reading uncommitted data. Deadlock: two transactions wait on each other's locks.\nAn index speeds up searching but slows inserts and updates, because the index must be updated too.\nNoSQL types: document (MongoDB), key-value (Redis), column (Cassandra), graph (Neo4j).",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "SE",
+  "topic": "Process models",
+  "title": "Process models and agile",
+  "notes": "Waterfall: one phase after another. Good for stable, clear requirements.\nSpiral: repeated cycles with risk analysis at the start of each.\nAgile values working software, collaboration and responding to change.\nScrum roles: Product Owner (owns the backlog), Scrum Master (removes blockers), development team.\nScrum events: sprint, sprint planning, daily scrum, sprint review, retrospective.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "SE",
+  "topic": "Testing",
+  "title": "Software testing",
+  "notes": "Unit testing checks single functions. Integration testing checks parts working together. System testing checks the whole system. Acceptance testing checks it meets the user's needs.\nBlack-box testing uses requirements. White-box testing uses the code structure.\nRegression testing re-runs earlier tests after a change.\nEquivalence partitioning and boundary value analysis reduce the number of test cases. Test values at and around each limit.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "SE",
+  "topic": "Design",
+  "title": "Requirements and design",
+  "notes": "Functional requirements say what the system does. Non-functional requirements say how well (speed, security, availability).\nAim for low coupling and high cohesion.\nDesign patterns to know: Singleton (one instance), Factory (creates objects), Observer (notifies subscribers), MVC (model, view, controller).\nUML: class diagram (structure), sequence diagram (messages over time), use case diagram (actors and goals).\nGit basics: clone, branch, commit, push, pull, merge. Continuous integration builds and tests every commit.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "WEB",
+  "topic": "Protocols",
+  "title": "HTTP and REST",
+  "notes": "Methods: GET reads, POST creates, PUT replaces, PATCH updates part, DELETE removes.\nGET, PUT and DELETE are idempotent. POST is not.\nStatus codes: 200 OK, 201 Created, 301 Moved, 400 Bad request, 401 Not signed in, 403 Forbidden, 404 Not found, 500 Server error.\nHTTPS = HTTP over TLS. Default ports: 80 for HTTP, 443 for HTTPS.\nJSON is the usual format for REST APIs.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "WEB",
+  "topic": "JavaScript",
+  "title": "HTML, CSS and JavaScript essentials",
+  "notes": "Semantic HTML: header, nav, main, section, article, footer. They help accessibility and search engines.\nCSS specificity: inline style > id > class > element.\nFlexbox: justify-content for the main axis, align-items for the cross axis.\nJavaScript: === compares value and type. let and const are block-scoped, var is function-scoped.\ntypeof null is \"object\", a famous quirk.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "WEB",
+  "topic": "Security",
+  "title": "Web security basics",
+  "notes": "XSS: attacker's script runs in your page. Prevent by escaping output and using a Content Security Policy.\nSQL injection: prevent with parameterised queries.\nCSRF: a site tricks the browser into sending a request. Prevent with SameSite cookies and CSRF tokens.\nCookie flags: HttpOnly (no JavaScript access), Secure (HTTPS only), SameSite.\nCORS lets a server say which other origins may call it from a browser.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "AI",
+  "topic": "Supervised learning",
+  "title": "Machine learning basics",
+  "notes": "Supervised learning uses labelled data: classification (categories) and regression (numbers).\nUnsupervised learning finds structure without labels: clustering (k-means) and dimensionality reduction (PCA).\nSplit data into training, validation and test sets.\nOverfitting: great on training data, poor on test data. Fix with more data, regularisation or a simpler model.\nUnderfitting: poor on both. Use a more powerful model or better features.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "AI",
+  "topic": "Evaluation",
+  "title": "Evaluating models",
+  "notes": "Confusion matrix: TP, FP, TN, FN.\nAccuracy = (TP + TN) / total. Misleading when classes are unbalanced.\nPrecision = TP / (TP + FP): how many predicted positives were right.\nRecall = TP / (TP + FN): how many real positives were found.\nF1 score balances precision and recall.\nFor regression use MAE, MSE or R squared.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "AI",
+  "topic": "Deep learning",
+  "title": "Neural networks and data preparation",
+  "notes": "A neural network has layers of neurons. Activation functions such as ReLU add non-linearity.\nTraining uses gradient descent: move weights against the gradient to lower the loss.\nCNNs suit images. RNNs and transformers suit sequences such as text.\nData preparation: handle missing values (imputation), scale features (needed for KNN and gradient descent), encode categories (one-hot).\nRegularisation: L1 and L2 penalties, dropout, early stopping.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "NET",
+  "topic": "Network layer",
+  "title": "OSI model and IP addressing",
+  "notes": "OSI layers from bottom: Physical, Data link, Network, Transport, Session, Presentation, Application.\nSwitches work at layer 2 with MAC addresses. Routers work at layer 3 with IP addresses.\nIPv4 is 32 bits. A /24 subnet has 256 addresses and 254 usable hosts.\nPrivate ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.\nARP maps IP to MAC. ICMP is used by ping.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "NET",
+  "topic": "Transport layer",
+  "title": "TCP, UDP and key protocols",
+  "notes": "TCP: connection-based, reliable, ordered. Handshake: SYN, SYN-ACK, ACK.\nUDP: no connection, faster, no delivery guarantee. Used for video calls, DNS and games.\nDNS turns names into IP addresses. DHCP gives devices their IP settings.\nPorts: HTTP 80, HTTPS 443, SSH 22, FTP 21, SMTP 25, DNS 53.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "NET",
+  "topic": "Cloud computing",
+  "title": "Cloud computing",
+  "notes": "IaaS: virtual machines and storage (AWS EC2). PaaS: a platform to run your code (Google App Engine). SaaS: finished software (Gmail).\nPublic, private and hybrid clouds.\nScaling up means a bigger server. Scaling out means more servers behind a load balancer.\nA load balancer spreads traffic and keeps the service running if one server fails.\nBenefits: pay for what you use, fast scaling. Risks: cost control, vendor lock-in, data location.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "OS",
+  "topic": "Process management",
+  "title": "Processes, threads and scheduling",
+  "notes": "A process has its own memory. Threads inside a process share memory but have their own stacks.\nA context switch saves one process's state and loads another's.\nFCFS is simple but suffers from the convoy effect. SJF minimises average waiting time. Round robin gives each process a time slice.\nKernel mode can run privileged instructions. User programs use system calls.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "OS",
+  "topic": "Synchronization",
+  "title": "Synchronisation and deadlock",
+  "notes": "Critical section: code that touches shared data. Only one process may be inside at a time (mutual exclusion).\nTools: mutex locks and semaphores.\nDeadlock needs all four: mutual exclusion, hold and wait, no preemption, circular wait. Break one to prevent it.\nBanker's algorithm avoids deadlock by checking for a safe state before granting resources.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "OS",
+  "topic": "Memory management",
+  "title": "Memory management",
+  "notes": "Paging splits memory into fixed-size pages and frames.\nVirtual memory keeps unused pages on disk so programs can be larger than RAM.\nA page fault happens when the page needed is not in RAM.\nPage replacement: FIFO, LRU (least recently used), Optimal.\nThrashing: too much paging and too little useful work.",
+  "videoUrl": null,
+  "order": 3
+ },
+ {
+  "subject": "SEC",
+  "topic": "Fundamentals",
+  "title": "Security fundamentals",
+  "notes": "CIA triad: confidentiality, integrity, availability.\nLeast privilege: give only the access a person needs.\nCommon attacks: phishing, malware, ransomware, DDoS, social engineering.\nDefence in depth: several layers such as firewall, updates, antivirus, training and backups.",
+  "videoUrl": null,
+  "order": 1
+ },
+ {
+  "subject": "SEC",
+  "topic": "Cryptography",
+  "title": "Cryptography basics",
+  "notes": "Symmetric encryption uses one shared key (AES). Fast, but the key must be shared safely.\nAsymmetric encryption uses a public and a private key (RSA, ECC).\nHashing is one-way (SHA-256). For passwords use slow salted hashes such as bcrypt or Argon2.\nDigital signatures prove who signed and that nothing changed.\nHTTPS certificates are issued by certificate authorities.",
+  "videoUrl": null,
+  "order": 2
+ },
+ {
+  "subject": "SEC",
+  "topic": "Web security",
+  "title": "Authentication and web attacks",
+  "notes": "Multi-factor authentication combines different factor types: something you know, have or are.\nSQL injection: use parameterised queries.\nXSS: escape output. CSRF: use tokens and SameSite cookies.\nKeep software updated. Most breaches use known, unpatched vulnerabilities.\nFirewalls filter traffic. Intrusion detection systems watch for attacks.",
+  "videoUrl": null,
+  "order": 3
+ }
+]

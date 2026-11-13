@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { requireRole } from "@/lib/auth";
 import { clientIp } from "@/lib/audit";
 import { handle } from "@/lib/http";

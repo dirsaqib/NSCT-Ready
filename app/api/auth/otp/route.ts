@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { z } from "zod";
 import { handle } from "@/lib/http";
 import { issueOtp } from "@/lib/otp";

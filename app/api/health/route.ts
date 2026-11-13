@@ -1,3 +1,5 @@
+// Always read fresh from the database, never a copy saved at build time.
+export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 

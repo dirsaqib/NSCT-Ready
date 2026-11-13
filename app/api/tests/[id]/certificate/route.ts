@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { requireUser } from "@/lib/auth";
 import { handle } from "@/lib/http";
 import { issueCertificate, qrSvg, verifyUrl } from "@/lib/certificates";

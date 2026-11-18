@@ -35,7 +35,7 @@ export default function SignIn() {
     setBusy(true); setMsg("");
     const r = await signIn("password", { login, password, universityId: mode === "student" && !login.includes("@") ? universityId : "", redirect: false });
     setBusy(false);
-    if (r?.error) return setMsg(ERRORS[r.error] ?? ERRORS.CredentialsSignin);
+    if (r?.error) return setMsg(ERRORS[r.error] ?? `Sign-in failed: ${r.error}`);
     location.href = "/dashboard";
   };
 

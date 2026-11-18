@@ -107,6 +107,91 @@ const UNIVERSITIES: [string, string, string][] = [
   ["University of Kotli", "Kotli", "Azad Jammu and Kashmir"],
   ["Women University of AJK Bagh", "Bagh", "Azad Jammu and Kashmir"],
   ["University of Baltistan", "Skardu", "Gilgit-Baltistan"],
+  // More universities and degree awarding institutes that run computing programs (HEC and NCEAC lists).
+  ["Abasyn University", "Peshawar", "Khyber Pakhtunkhwa"],
+  ["Abbottabad University of Science and Technology", "Havelian", "Khyber Pakhtunkhwa"],
+  ["Al-Ghazali University", "Karachi", "Sindh"],
+  ["Al-Hamd Islamic University", "Quetta", "Balochistan"],
+  ["Al-Kawthar University", "Karachi", "Sindh"],
+  ["Aror University of Art, Architecture, Design and Heritage", "Sukkur", "Sindh"],
+  ["Bacha Khan University", "Charsadda", "Khyber Pakhtunkhwa"],
+  ["Balochistan University of Engineering and Technology", "Khuzdar", "Balochistan"],
+  ["Baqai Medical University", "Karachi", "Sindh"],
+  ["Beaconhouse National University", "Lahore", "Punjab"],
+  ["Begum Nusrat Bhutto Women University", "Sukkur", "Sindh"],
+  ["Benazir Bhutto Shaheed University Lyari", "Karachi", "Sindh"],
+  ["CECOS University of IT and Emerging Sciences", "Peshawar", "Khyber Pakhtunkhwa"],
+  ["Center for Advanced Studies in Engineering (CASE)", "Islamabad", "Islamabad Capital Territory"],
+  ["Dadabhoy Institute of Higher Education", "Karachi", "Sindh"],
+  ["GIFT University", "Gujranwala", "Punjab"],
+  ["Government College University Hyderabad", "Hyderabad", "Sindh"],
+  ["Government College Women University Faisalabad", "Faisalabad", "Punjab"],
+  ["Government Sadiq College Women University", "Bahawalpur", "Punjab"],
+  ["Grand Asian University", "Sialkot", "Punjab"],
+  ["Greenwich University", "Karachi", "Sindh"],
+  ["Hajvery University", "Lahore", "Punjab"],
+  ["Ibadat International University", "Islamabad", "Islamabad Capital Territory"],
+  ["Institute of Business and Technology (BIZTEK)", "Karachi", "Sindh"],
+  ["Institute of Business Management (IoBM)", "Karachi", "Sindh"],
+  ["Institute of Southern Punjab", "Multan", "Punjab"],
+  ["Iqra National University", "Peshawar", "Khyber Pakhtunkhwa"],
+  ["Isra University", "Hyderabad", "Sindh"],
+  ["Jinnah University for Women", "Karachi", "Sindh"],
+  ["Karachi Institute of Economics and Technology (KIET)", "Karachi", "Sindh"],
+  ["Karachi School of Business and Leadership", "Karachi", "Sindh"],
+  ["KASB Institute of Technology", "Karachi", "Sindh"],
+  ["Khushal Khan Khattak University", "Karak", "Khyber Pakhtunkhwa"],
+  ["Kohsar University Murree", "Murree", "Punjab"],
+  ["Lahore Leads University", "Lahore", "Punjab"],
+  ["Mir Chakar Khan Rind University", "Sibi", "Balochistan"],
+  ["Mohi-ud-Din Islamic University", "Nerian Sharif", "Azad Jammu and Kashmir"],
+  ["Muhammad Nawaz Shareef University of Agriculture", "Multan", "Punjab"],
+  ["Muhammad Nawaz Sharif University of Engineering and Technology", "Multan", "Punjab"],
+  ["Muslim Youth University", "Islamabad", "Islamabad Capital Territory"],
+  ["NAMAL University", "Mianwali", "Punjab"],
+  ["National College of Business Administration and Economics", "Lahore", "Punjab"],
+  ["National Skills University", "Islamabad", "Islamabad Capital Territory"],
+  ["National University of Technology (NUTECH)", "Islamabad", "Islamabad Capital Territory"],
+  ["Nazeer Hussain University", "Karachi", "Sindh"],
+  ["Newports Institute of Communications and Economics", "Karachi", "Sindh"],
+  ["Northern University", "Nowshera", "Khyber Pakhtunkhwa"],
+  ["Nur International University", "Lahore", "Punjab"],
+  ["Pak-Austria Fachhochschule Institute of Applied Sciences and Technology", "Haripur", "Khyber Pakhtunkhwa"],
+  ["Preston University", "Kohat", "Khyber Pakhtunkhwa"],
+  ["Qarshi University", "Lahore", "Punjab"],
+  ["Qurtuba University of Science and IT", "Dera Ismail Khan", "Khyber Pakhtunkhwa"],
+  ["Rashid Latif Khan University", "Lahore", "Punjab"],
+  ["Salim Habib University", "Karachi", "Sindh"],
+  ["Sarhad University of Science and IT", "Peshawar", "Khyber Pakhtunkhwa"],
+  ["Shaheed Benazir Bhutto University, Shaheed Benazirabad", "Shaheed Benazirabad", "Sindh"],
+  ["Shaheed Benazir Bhutto University, Sheringal", "Sheringal", "Khyber Pakhtunkhwa"],
+  ["Shifa Tameer-e-Millat University", "Islamabad", "Islamabad Capital Territory"],
+  ["Shuhada-e-Army Public School University of Technology", "Nowshera", "Khyber Pakhtunkhwa"],
+  ["Sindh Agriculture University", "Tandojam", "Sindh"],
+  ["Sindh Madressatul Islam University", "Karachi", "Sindh"],
+  ["Sir Syed CASE Institute of Technology", "Islamabad", "Islamabad Capital Territory"],
+  ["Sohail University", "Karachi", "Sindh"],
+  ["Thal University Bhakkar", "Bhakkar", "Punjab"],
+  ["The University of Agriculture Peshawar", "Peshawar", "Khyber Pakhtunkhwa"],
+  ["The University of Faisalabad", "Faisalabad", "Punjab"],
+  ["Times Institute Multan", "Multan", "Punjab"],
+  ["University of Buner", "Buner", "Khyber Pakhtunkhwa"],
+  ["University of Chenab", "Gujrat", "Punjab"],
+  ["University of Chitral", "Chitral", "Khyber Pakhtunkhwa"],
+  ["University of Gwadar", "Gwadar", "Balochistan"],
+  ["University of Haripur", "Haripur", "Khyber Pakhtunkhwa"],
+  ["University of Home Economics", "Lahore", "Punjab"],
+  ["University of Lakki Marwat", "Lakki Marwat", "Khyber Pakhtunkhwa"],
+  ["University of Loralai", "Loralai", "Balochistan"],
+  ["University of Makran", "Panjgur", "Balochistan"],
+  ["University of Narowal", "Narowal", "Punjab"],
+  ["University of Poonch", "Rawalakot", "Azad Jammu and Kashmir"],
+  ["University of Science and Technology Bannu", "Bannu", "Khyber Pakhtunkhwa"],
+  ["University of Sufism and Modern Sciences", "Bhitshah", "Sindh"],
+  ["University of Swabi", "Swabi", "Khyber Pakhtunkhwa"],
+  ["Usman Institute of Technology University", "Karachi", "Sindh"],
+  ["Women University Swabi", "Swabi", "Khyber Pakhtunkhwa"],
+  ["Ziauddin University", "Karachi", "Sindh"],
   ["Other", "", ""],
 ];
 
@@ -129,18 +214,14 @@ async function main() {
   const force = !!process.env.FORCE_SEED;
   const uniCount = await prisma.university.count();
   if (force || uniCount < UNIVERSITIES.length) {
-  const PUBLIC = /(University of|UET|NED|Mehran|Quaid|COMSATS|NUST|NUML|GC University|Bahauddin|Islamia|Hazara|Malakand|Karakoram|Virtual University|International Islamic|Air University|Bahria|Lahore College|Abdul Wali|BUITEMS|MUST|PMAS|Sukkur IBA|IBA Karachi|IMSciences)/;
+  const PRIVATE = /^(University of (Lahore|Management|Central Punjab|South Asia|Sialkot|Faisalabad|Chenab)|The University of Faisalabad)/;
+  const PUBLIC = /(University of|UET|NED|Mehran|Quaid|COMSATS|NUST|NUML|GC University|Government|Bahauddin|Islamia|Hazara|Malakand|Karakoram|Virtual University|International Islamic|Air University|Bahria|Lahore College|Abdul Wali|BUITEMS|MUST|PMAS|Sukkur IBA|IBA Karachi|IMSciences|Bacha Khan|Khushal|Kohsar|Thal|Benazir|Begum|Aror|Sindh|Muhammad Nawaz|National Skills|NUTECH|Pak-Austria|Shuhada|Mir Chakar|Women University|Abbottabad|Balochistan|Federal Urdu|Dawood|Fatima Jinnah|Institute of Space|PIEAS|Shah Abdul|Quaid-e-Awam|Ghazi|Khwaja|Kohat|Gomal|Shaheed Benazir|Sardar Bahadur|Lasbela|Turbat)/;
   for (const [name, city, province] of UNIVERSITIES) {
-    const sector = name === "Other" ? null : PUBLIC.test(name) ? "Public" : "Private";
+    const sector = name === "Other" ? null : !PRIVATE.test(name) && PUBLIC.test(name) ? "Public" : "Private";
     const u = await prisma.university.upsert({ where: { name }, create: { name, city, province, sector }, update: { city, province, sector } });
-    // Every university starts with one main campus and a computing department. Edit in Super admin > Structure.
+    // Every university starts with one main campus. Its focal person adds the real departments and programs.
     if (name !== "Other" && name !== "Air University, Islamabad" && !CAMPUSES[name]) {
-      const c = await prisma.campus.upsert({ where: { universityId_name: { universityId: u.id, name: "Main campus" } }, create: { universityId: u.id, name: "Main campus", city }, update: {} });
-      await prisma.department.upsert({
-        where: { campusId_name: { campusId: c.id, name: "Computing" } },
-        create: { campusId: c.id, name: "Computing", programs: ["BS Computer Science", "BS Software Engineering", "BS Information Technology", "BS Artificial Intelligence", "BS Data Science"] },
-        update: {},
-      });
+      await prisma.campus.upsert({ where: { universityId_name: { universityId: u.id, name: "Main campus" } }, create: { universityId: u.id, name: "Main campus", city }, update: {} });
     }
   }
 
@@ -160,8 +241,7 @@ async function main() {
     const u = await prisma.university.findUnique({ where: { name: uni } });
     if (!u) continue;
     for (const [campus, city] of list) {
-      const c = await prisma.campus.upsert({ where: { universityId_name: { universityId: u.id, name: campus } }, create: { universityId: u.id, name: campus, city }, update: {} });
-      await prisma.department.upsert({ where: { campusId_name: { campusId: c.id, name: "Computing" } }, create: { campusId: c.id, name: "Computing", programs: COMPUTING_PROGRAMS }, update: {} });
+      await prisma.campus.upsert({ where: { universityId_name: { universityId: u.id, name: campus } }, create: { universityId: u.id, name: campus, city }, update: {} });
     }
   }
   console.log(`Seed: universities ready (${await prisma.university.count()}).`);
@@ -281,6 +361,44 @@ async function main() {
     title: "How is NSCT Ready working for you?", audience: "STUDENT", active: true,
     questions: [{ q: "How useful are the mock tests?", type: "scale" }, { q: "How clear are the explanations?", type: "scale" }, { q: "How easy is the site to use?", type: "scale" }, { q: "What should we add or improve?", type: "text" }],
   } });
+  // ---------- Study material videos (verified YouTube links from Harvard CS50, MIT and others) ----------
+  if ((await prisma.studyVideo.count()) === 0) {
+    const CS50_FULL = "LfaMVlDaQ24"; // Harvard CS50 (2023) full course, freeCodeCamp
+    const V: [string, string, string, { v?: string; list?: string; t?: number }][] = [
+      ["PS", "Computational thinking and problem solving (CS50x 2024 lectures)", "Harvard CS50", { list: "PLhQjrBD2T381WAHyx1pq-sBfykqMBI7V4" }],
+      ["PS", "Algorithms: searching, sorting and running time", "Harvard CS50", { v: CS50_FULL, t: 25178 }],
+      ["PROG", "Harvard CS50: full computer science course", "Harvard CS50 on freeCodeCamp", { v: CS50_FULL }],
+      ["PROG", "Python, topic by topic (CS50 Python shorts)", "Harvard CS50", { list: "PLhQjrBD2T381eWtNm274cXo8zxUFX-lyn" }],
+      ["DSA", "Introduction to Algorithms (MIT 6.006)", "MIT OpenCourseWare", { list: "PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb" }],
+      ["DSA", "Data structures: linked lists, trees, hash tables", "Harvard CS50", { v: CS50_FULL, t: 41193 }],
+      ["DB", "SQL and relational databases", "Harvard CS50", { v: CS50_FULL, t: 57482 }],
+      ["SE", "Testing, CI/CD and scalability (CS50 Web)", "Harvard CS50", { list: "PLhQjrBD2T380xvFSUmToMMzERZ3qB5Ueu" }],
+      ["WEB", "Web programming with Python and JavaScript (CS50 Web)", "Harvard CS50", { list: "PLhQjrBD2T380xvFSUmToMMzERZ3qB5Ueu" }],
+      ["WEB", "HTML, CSS and JavaScript", "Harvard CS50", { v: CS50_FULL, t: 65910 }],
+      ["WEB", "HTTP and REST APIs, full course", "freeCodeCamp", { v: "2JYT5f2isg4" }],
+      ["AI", "Artificial Intelligence with Python, full course", "Harvard CS50 on freeCodeCamp", { v: "5NgNicANyqM" }],
+      ["AI", "CS50 AI lectures, one by one", "Harvard CS50", { list: "PLhQjrBD2T381PopUTYtMSstgk-hsTGkVm" }],
+      ["NET", "How does the internet work? Full course", "freeCodeCamp", { v: "zN8YNNHcaZc" }],
+      ["NET", "Computer networking course", "freeCodeCamp", { v: "qiQR5rTSshw" }],
+      ["OS", "Operating systems lectures", "IIT Bombay, Prof. Mythili Vutukuru", { list: "PLDW872573QAb4bj0URobvQTD41IV6gRkx" }],
+      ["SEC", "Cybersecurity", "Harvard CS50", { v: CS50_FULL, t: 90328 }],
+    ];
+    await prisma.studyVideo.createMany({ data: V.map(([subject, title, channel, x], i) => ({ subject: subject as never, title, channel, youtubeId: x.v ?? null, playlist: x.list ?? null, startSec: x.t ?? 0, order: i })) });
+    console.log(`Seed: ${V.length} study videos.`);
+  }
+
+  // ---------- Remove the old placeholder "Computing" departments nobody uses ----------
+  // Earlier versions gave every campus a generic "Computing" department. Each university now keeps its own list.
+  {
+    const used = new Set([
+      ...(await prisma.labTest.findMany({ where: { departmentId: { not: null } }, select: { departmentId: true } })).map((x) => x.departmentId),
+      ...(await prisma.question.findMany({ where: { ownerDepartmentId: { not: null } }, select: { ownerDepartmentId: true }, distinct: ["ownerDepartmentId"] })).map((x) => x.ownerDepartmentId),
+    ]);
+    const stale = await prisma.department.findMany({ where: { name: "Computing", profiles: { none: {} }, users: { none: {} } }, select: { id: true } });
+    const ids = stale.map((d) => d.id).filter((id) => !used.has(id));
+    if (ids.length) { await prisma.department.deleteMany({ where: { id: { in: ids } } }); console.log(`Seed: removed ${ids.length} placeholder departments.`); }
+  }
+
   // ---------- Super admin account ----------
   // Set SUPERADMIN_EMAIL and SUPERADMIN_PASSWORD in Vercel. The password is set only if the account has none,
   // so changing it later on the Security page sticks. SUPERADMIN_RESET=1 sets it again from the variable.

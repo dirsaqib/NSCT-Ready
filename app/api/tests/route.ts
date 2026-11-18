@@ -15,6 +15,8 @@ const Body = z.object({
   labTestId: z.string().max(40).optional(),
   accessCode: z.string().max(12).optional(),
   seat: z.string().max(20).optional(),
+  mockNo: z.number().int().min(1).max(3).optional(),
+  universityOnly: z.boolean().optional(),
 });
 
 export const POST = handle(async (req: Request) => {

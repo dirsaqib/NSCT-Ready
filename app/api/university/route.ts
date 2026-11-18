@@ -48,8 +48,16 @@ export const GET = handle(async (req: Request) => {
     if (i >= 0) national = { rank: i + 1, of: sorted.length, nationalAvg: Math.round(nat._avg.readiness ?? 0) };
   }
 
+  // Mock 1, 2 and 3: how many students took each, and their average best score.
+  const fixed = await prisma.attempt.groupBy({ by: ["label", "userId"], where: { userId: { in: ids }, type: "MOCK", label: { in: ["Mock 1", "Mock 2", "Mock 3"] }, submittedAt: { not: null } }, _max: { score: true } });
+  const mockProgress = [1, 2, 3].map((n) => {
+    const rows = fixed.filter((f) => f.label === `Mock ${n}`);
+    return { n, students: rows.length, avgBest: rows.length ? Math.round(rows.reduce((t, r) => t + (r._max.score ?? 0), 0) / rows.length) : null, above90: rows.filter((r) => (r._max.score ?? 0) >= 90).length };
+  });
+  const prepSessions = await prisma.attempt.count({ where: { userId: { in: ids }, type: { in: ["PRACTICE", "MINI_MOCK"] }, submittedAt: { not: null }, startedAt: { gte: new Date(Date.now() - 7 * 86400000) } } });
+
   return {
-    scope,
+    scope, mockProgress, prepSessions,
     registered: students.length,
     pending: students.filter((s) => s.status === "PENDING").length,
     active: active.length,

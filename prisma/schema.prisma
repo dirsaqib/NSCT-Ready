@@ -1,7 +1,8 @@
 // NSCT Ready: database schema (PostgreSQL)
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi"]
 }
 
 datasource db {
@@ -231,6 +232,7 @@ model University {
   city     String?
   province String?
   sector   String?          // Public | Private
+  listed   Boolean          @default(true) // false = typed by a user at sign-up, waiting for the super admin to check
   users    User[]
   campuses Campus[]
   profiles Profile[]
@@ -280,6 +282,10 @@ model Profile {
   rollNumber      String
   city            String?
   gender          String?
+  campusName      String?     // typed by the student at sign-up
+  departmentName  String?     // typed or picked at sign-up
+  cnicHash        String?     @unique // keyed hash, stops duplicate accounts
+  cnicEnc         String?     // CNIC, encrypted with APP_ENCRYPTION_KEY
   alias           String?
   verifiedById    String?
   verifiedAt      DateTime?
@@ -922,4 +928,27 @@ model CoachAdvice {
   day       String
   content   Json
   updatedAt DateTime @updatedAt
+}
+
+/// The three fixed mock papers. Built once from the bank, then the same for every student.
+model MockPaper {
+  number      Int      @id
+  questionIds String[]
+  durationMin Int
+  createdAt   DateTime @default(now())
+}
+
+/// Videos in Study materials: a YouTube video or playlist, optionally from a start time.
+model StudyVideo {
+  id        String   @id @default(cuid())
+  subject   Subject
+  title     String
+  channel   String
+  youtubeId String?  // a single video
+  playlist  String?  // or a playlist id
+  startSec  Int      @default(0)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([subject, order])
 }

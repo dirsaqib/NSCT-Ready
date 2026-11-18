@@ -39,7 +39,7 @@ export default function CoachCard({ compact = false }: { compact?: boolean }) {
           <ul className="small" style={{ marginTop: 0 }}>{a.weekPlan.map((w, i) => <li key={i}>{w}</li>)}</ul>
         </>
       )}
-      <div className="row"><Link className="btn sm" href="/practice">Practise now</Link><Link className="btn sm sec" href="/mistakes">My mistakes</Link><Link className="btn sm ghost" href="/tutor">Ask the tutor</Link></div>
+      <div className="row"><Link className="btn sm" href="/prepare">Preparation</Link><Link className="btn sm sec" href="/learn">Study materials</Link><Link className="btn sm ghost" href="/mock">Mock tests</Link></div>
     </div>
   );
 }

@@ -47,10 +47,10 @@ export async function coachData(userId: string): Promise<CoachData | null> {
 export function ruleCoach(d: CoachData): CoachAdviceT {
   if (d.tests === 0) {
     return {
-      headline: "Start with the diagnostic test",
-      summary: "We do not know your strengths yet. The 30 minute diagnostic shows where you stand in every NSCT subject.",
-      focus: [{ title: "Take the diagnostic", why: "Your plan is built from your own answers.", action: "Open Diagnostic and finish it in one sitting." }],
-      weekPlan: ["Day 1: diagnostic test", "Day 2: read your results and the explanations of every wrong answer", "Day 3 to 7: 20 practice questions a day in your two weakest subjects"],
+      headline: "Start with Mock 1",
+      summary: "We do not know your strengths yet. Mock 1 shows where you stand in every NSCT subject and tells you what to study.",
+      focus: [{ title: "Take Mock 1", why: "Your plan is built from your own answers.", action: "Open Mock tests and finish Mock 1 in one sitting." }, { title: "Or warm up first", why: "Short levels build confidence.", action: "Play level 1 of Problem Solving in Preparation." }],
+      weekPlan: ["Day 1: Mock 1", "Day 2: read the guidance and the explanation of every wrong answer", "Day 3 to 7: two preparation levels a day in your weakest subjects, and one video lecture"],
       source: "rules",
     };
   }
@@ -64,7 +64,7 @@ export function ruleCoach(d: CoachData): CoachAdviceT {
     focus.push({
       title: s.name,
       why: s.acc == null ? `You have not practised it yet and it carries ${s.weight}% of the exam.` : `Your accuracy is ${s.acc}% and it carries ${s.weight}% of the exam, so it can add up to ${Math.round(s.gain)} marks.`,
-      action: topic ? `Start with "${topic.topic}" (${topic.acc}% so far). Do 15 practice questions, then read every explanation.` : `Do 15 practice questions a day and review your mistakes list.`,
+      action: topic ? `Watch its lecture in Study materials, then replay the "${topic.topic}" level (${topic.acc}% so far) until you get three stars.` : `Watch its lecture in Study materials, then play its levels in Preparation.`,
     });
   }
   const level = d.readiness >= 70 ? "on track" : d.readiness >= 50 ? "close" : "building up";
@@ -75,10 +75,10 @@ export function ruleCoach(d: CoachData): CoachAdviceT {
     summary: `${d.daysToExam} days to NSCT. Your best mock is ${d.bestMock}%.${trendTxt}${untouched.length ? ` You have barely touched ${untouched.map((s) => s.name).slice(0, 2).join(" and ")}.` : ""}`,
     focus,
     weekPlan: [
-      `Daily: 20 practice questions in ${focus[0]?.title ?? "your weakest subject"}`,
-      `Every second day: 20 questions in ${focus[1]?.title ?? "your second weakest subject"}`,
-      "Daily: clear 10 items from your mistakes list",
-      mocksDone < 2 ? "This week: one full mock test under timed conditions" : "Weekend: one full mock, then compare subject scores with last time",
+      `Daily: two preparation levels in ${focus[0]?.title ?? "your weakest subject"}`,
+      `Every second day: one video lecture and one level in ${focus[1]?.title ?? "your second weakest subject"}`,
+      "Aim for three stars on every level before moving on",
+      mocksDone < 1 ? "This week: Mock 1 under timed conditions" : "Weekend: the next mock, then follow its guidance",
       ...(d.strongTopics.length ? [`Keep ${d.strongTopics[0].topic} fresh with 5 questions twice a week`] : []),
     ],
     source: "rules",
@@ -96,7 +96,8 @@ export async function getCoach(userId: string, lang = "English"): Promise<CoachA
   if (process.env.ANTHROPIC_API_KEY && d.tests > 0) {
     try {
       const { coachRewrite } = await import("./ai");
-      advice = { ...(await coachRewrite(advice, d, lang)), source: "ai" };
+      const { name: _n, ...anon } = d; // the AI never gets the name
+      advice = { ...(await coachRewrite(advice, anon, lang)), source: "ai" };
     } catch { /* keep the rule-based plan */ }
   }
   await prisma.coachAdvice.upsert({ where: { userId }, create: { userId, day, content: advice as object }, update: { day, content: advice as object } });

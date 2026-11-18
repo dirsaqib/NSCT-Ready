@@ -10,14 +10,14 @@ export const GET = handle(async () => {
   await requireRole("ADMIN");
   return {
     universities: await prisma.university.findMany({
-      orderBy: { name: "asc" },
+      orderBy: [{ listed: "asc" }, { name: "asc" }],
       include: { campuses: { include: { departments: true }, orderBy: { name: "asc" } }, _count: { select: { profiles: true } } },
     }),
   };
 });
 
 const Op = z.discriminatedUnion("kind", [
-  z.object({ kind: z.literal("university"), id: z.string().optional(), name: z.string().min(2).max(150), city: z.string().max(60).optional(), province: z.string().max(60).optional(), sector: z.enum(["Public", "Private"]).optional() }),
+  z.object({ kind: z.literal("university"), id: z.string().optional(), name: z.string().min(2).max(150), city: z.string().max(60).optional(), province: z.string().max(60).optional(), sector: z.enum(["Public", "Private"]).optional(), listed: z.boolean().optional() }),
   z.object({ kind: z.literal("campus"), id: z.string().optional(), universityId: z.string(), name: z.string().min(2).max(120), city: z.string().max(60).optional(), district: z.string().max(60).optional() }),
   z.object({ kind: z.literal("department"), id: z.string().optional(), campusId: z.string(), name: z.string().min(2).max(120), programs: z.array(z.string().min(2).max(80)).max(30).default([]) }),
 ]);

@@ -112,3 +112,21 @@ export async function coachRewrite(plan: { headline: string; summary: string; fo
   );
   return CoachOut.parse(JSON.parse(out.slice(out.indexOf("{"), out.lastIndexOf("}") + 1)));
 }
+
+/**
+ * Second opinion: a separate model answers the question without seeing the key.
+ * Returns true only if it picks the same option, so doubtful questions go to a human reviewer.
+ */
+export async function verifyAnswer(q: { text: string; code?: string | null; options: string[] }, answer: number) {
+  try {
+    const out = await text(
+      SMART,
+      "You are taking a computing exam. Reply with the number of the single correct option only (0, 1, 2 or 3). If no option or more than one option is correct, reply X.",
+      [{ role: "user", content: `${q.text}${q.code ? `\n\n${q.code}` : ""}\n\n${q.options.map((o, i) => `${i}. ${o}`).join("\n")}` }],
+      5,
+    );
+    return out.trim().startsWith(String(answer));
+  } catch {
+    return false;
+  }
+}

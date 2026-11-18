@@ -16,7 +16,7 @@ import { labStartCheck } from "./labtests";
 const GRACE_SEC = 30;
 const TIMED: AttemptType[] = ["DIAGNOSTIC", "MOCK", "MINI_MOCK", "NATIONAL_MOCK", "EMPLOYER_ASSESSMENT", "LAB_TEST"];
 
-export type StartOptions = { type: AttemptType; subject?: Subject; topic?: string; difficulty?: number; count?: number; assessmentCode?: string; labTestId?: string; accessCode?: string; seat?: string };
+export type StartOptions = { type: AttemptType; subject?: Subject; topic?: string; difficulty?: number; count?: number; assessmentCode?: string; labTestId?: string; accessCode?: string; seat?: string; mockNo?: number; universityOnly?: boolean };
 
 async function blueprint(key: string) {
   const b = await prisma.blueprint.findUnique({ where: { key } });
@@ -39,13 +39,38 @@ async function pick(subject: Subject, n: number, opts: { topic?: string; difficu
   return [...out, ...rest].slice(0, n);
 }
 
+// Mock 1 is the gentlest and Mock 3 the hardest, so students can see themselves improve.
+const MOCK_MIX: Record<number, Record<string, number>> = { 1: { "1": 40, "2": 45, "3": 15 }, 2: { "1": 25, "2": 50, "3": 25 }, 3: { "1": 10, "2": 45, "3": 45 } };
+
+/** The fixed paper for Mock 1, 2 or 3. Built from the national bank the first time anyone opens it. */
+export async function mockPaper(n: number) {
+  const have = await prisma.mockPaper.findUnique({ where: { number: n } });
+  if (have?.questionIds.length) return have;
+  const bp = await blueprint("MOCK");
+  const used = new Set((await prisma.mockPaper.findMany({ select: { questionIds: true } })).flatMap((p) => p.questionIds));
+  const ids: string[] = [];
+  for (const [s, count] of Object.entries(bp.counts)) {
+    const rows = await prisma.question.findMany({ where: { subject: s as Subject, status: "LIVE", scope: "NATIONAL", secure: false }, select: { id: true, difficulty: true } });
+    const fresh = rows.filter((r) => !used.has(r.id));
+    const pool = fresh.length >= count ? fresh : rows; // reuse only when the bank is too small
+    const out: string[] = [];
+    for (const [d, pct] of Object.entries(MOCK_MIX[n] ?? MOCK_MIX[2])) out.push(...shuffle(pool.filter((r) => String(r.difficulty) === d)).slice(0, Math.round((count * pct) / 100)).map((r) => r.id));
+    out.push(...shuffle(pool.filter((r) => !out.includes(r.id))).map((r) => r.id));
+    ids.push(...out.slice(0, count));
+  }
+  return prisma.mockPaper.upsert({ where: { number: n }, create: { number: n, questionIds: ids, durationMin: bp.durationMin }, update: { questionIds: ids, durationMin: bp.durationMin } });
+}
+
 export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: string | null; device?: string | null } = {}) {
   const user = await prisma.user.findUnique({ where: { id: userId }, include: { profile: true } });
   if (!user?.profile) throw new HttpError(400, "Please complete your profile first.");
   if (["MOCK", "NATIONAL_MOCK"].includes(o.type) && user.status === "PENDING")
     throw new HttpError(403, "Your university focal person has not verified your account yet. You can use the diagnostic and practice meanwhile.");
 
-  if (o.type === "MOCK" && !(await hasPro(userId))) {
+  if (o.type === "MOCK" && o.mockNo) {
+    if (o.mockNo > 1 && !(await prisma.attempt.count({ where: { userId, type: "MOCK", label: `Mock ${o.mockNo - 1}`, submittedAt: { not: null } } })))
+      throw new HttpError(409, `Finish Mock ${o.mockNo - 1} first.`);
+  } else if (o.type === "MOCK" && !(await hasPro(userId))) {
     const limit = await getSetting<number>("pricing.freeMockLimit");
     const used = await prisma.attempt.count({ where: { userId, type: "MOCK", label: null } });
     if (used >= limit) throw new HttpError(402, "You have used your free mock test. Get Pro access for unlimited mocks.", "PRO_REQUIRED");
@@ -58,7 +83,12 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
   let assessmentId: string | undefined;
   let labTestId: string | undefined;
 
-  if (o.type === "DIAGNOSTIC" || o.type === "MOCK" || o.type === "NATIONAL_MOCK") {
+  if (o.type === "MOCK" && o.mockNo) {
+    const paper = await mockPaper(o.mockNo);
+    ids = shuffle([...paper.questionIds]);
+    durationMin = paper.durationMin;
+    label = `Mock ${o.mockNo}`;
+  } else if (o.type === "DIAGNOSTIC" || o.type === "MOCK" || o.type === "NATIONAL_MOCK") {
     if (o.type === "NATIONAL_MOCK") {
       const now = new Date();
       const w = await prisma.testWindow.findFirst({ where: { opensAt: { lte: now }, closesAt: { gte: now }, OR: [{ universityId: null }, { universityId: user.universityId ?? "-" }] } });
@@ -78,6 +108,13 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
   } else if (o.type === "LAB_TEST") {
     const lab = await labStartCheck(userId, o.labTestId ?? "", o.accessCode ?? "", ctx.ip);
     labTestId = lab.test.id; label = lab.test.title; durationMin = lab.durationMin; ids = lab.ids as string[];
+  } else if (o.type === "PRACTICE" && o.universityOnly) {
+    // University test: only the questions the student's own university added for its students.
+    if (!user.universityId) throw new HttpError(400, "Your account has no university.");
+    const rows = await prisma.question.findMany({ where: { status: "LIVE", scope: "UNIVERSITY", authorUniversityId: user.universityId, ...(o.subject ? { subject: o.subject } : {}) }, select: { id: true } });
+    ids = shuffle(rows.map((r) => r.id)).slice(0, Math.min(o.count ?? 20, 30));
+    label = "University test";
+    durationMin = Math.max(10, ids.length);
   } else if (o.type === "MINI_MOCK" || o.type === "PRACTICE") {
     if (!o.subject) throw new HttpError(400, "Choose a subject.");
     ids = await pick(o.subject, o.type === "MINI_MOCK" ? 12 : Math.min(o.count ?? 10, 30), { topic: o.topic, difficulty: o.difficulty, secure: false, universityId: user.universityId });

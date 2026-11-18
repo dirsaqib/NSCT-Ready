@@ -19,10 +19,10 @@ export const TWO_FACTOR_ROLES: Role[] = ["HOD", "CAMPUS_ADMIN", "FOCAL", "CHAIR"
 /** Find the account for a login: email, or university plus roll number. */
 async function findLogin(login: string, universityId?: string) {
   const l = login.trim();
-  if (l.includes("@")) return prisma.user.findUnique({ where: { email: l.toLowerCase() } });
+  if (l.includes("@")) return prisma.user.findUnique({ where: { email: l.toLowerCase() }, omit: { passwordHash: false } });
   if (!universityId) return null;
   const p = await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: l } }, select: { userId: true } });
-  return p ? prisma.user.findUnique({ where: { id: p.userId } }) : null;
+  return p ? prisma.user.findUnique({ where: { id: p.userId }, omit: { passwordHash: false } }) : null;
 }
 
 export const authOptions: NextAuthOptions = {

@@ -5,7 +5,7 @@ import { Page, Card, useApi, Loading, JsonForm, Pill } from "@/components/ui";
 
 type Dept = { id: string; name: string; programs: string[] };
 type Campus = { id: string; name: string; city: string | null; district: string | null; departments: Dept[] };
-type U = { id: string; name: string; city: string | null; province: string | null; sector: string | null; campuses: Campus[]; _count: { profiles: number } };
+type U = { id: string; name: string; city: string | null; province: string | null; sector: string | null; listed?: boolean; campuses: Campus[]; _count: { profiles: number } };
 const PROVINCES = ["Punjab", "Sindh", "Khyber Pakhtunkhwa", "Balochistan", "Islamabad", "Gilgit-Baltistan", "Azad Kashmir"];
 
 /** University, campus and department hierarchy with programs. */
@@ -36,6 +36,7 @@ export default function Structure() {
         <div className="card" key={u.id} style={{ marginBottom: 10 }}>
           <div className="row between">
             <button className="btn ghost" onClick={() => setOpen(open === u.id ? null : u.id)}><b>{u.name}</b></button>
+            {u.listed === false && <span className="row"><Pill tone="warn">typed by a user</Pill><button className="btn sm" onClick={() => save({ kind: "university", id: u.id, name: u.name, listed: true })}>Confirm</button></span>}
             <span className="small muted">{u.city} · {u.province} · {u.sector} · {u._count.profiles} students · {u.campuses.length} campuses</span>
           </div>
           {open === u.id && (

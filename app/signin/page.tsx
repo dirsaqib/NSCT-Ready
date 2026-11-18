@@ -1,6 +1,8 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
+import SearchSelect from "@/components/SearchSelect";
+import { AKA } from "@/components/universityAka";
 
 const ERRORS: Record<string, string> = {
   CredentialsSignin: "Login details or password are wrong. After 5 wrong tries the account locks for 15 minutes.",
@@ -29,6 +31,7 @@ export default function SignIn() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (mode === "student" && !login.includes("@") && !universityId) return setMsg("Choose your university from the list.");
     setBusy(true); setMsg("");
     const r = await signIn("password", { login, password, universityId: mode === "student" && !login.includes("@") ? universityId : "", redirect: false });
     setBusy(false);
@@ -50,9 +53,7 @@ export default function SignIn() {
         <form className="grid" style={{ gap: 10 }} onSubmit={submit}>
           {mode === "student" && !login.includes("@") && (
             <label className="f">University
-              <select required value={universityId} onChange={(e) => setUni(e.target.value)}>
-                <option value="">Select your university</option>{unis.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}
-              </select>
+              <SearchSelect options={unis.map((u) => ({ id: u.id, name: u.name, hint: (u as { city?: string }).city, keywords: AKA[u.name] }))} value={universityId} onChange={setUni} placeholder="Type to search your university" required />
             </label>
           )}
           <label className="f">{mode === "student" ? "Roll number or email" : "Official email"}

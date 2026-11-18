@@ -2,11 +2,11 @@
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, SUBJECT_SHORT } from "@/components/api";
-import { Page, Card, useApi, Loading, Table, Pill, Tabs, fmtDate, download, upload } from "@/components/ui";
+import { Page, Card, Stat, useApi, Loading, Table, Pill, Tabs, fmtDate, download, upload } from "@/components/ui";
 
 type S = {
   userId: string; fullName: string; rollNumber: string; program: string; semester: string; section: string | null; rejectReason: string | null; extraTimePct: number;
-  readiness: number; createdAt: string; campus: { name: string } | null; department: { name: string } | null;
+  readiness: number; createdAt: string; campus: { name: string } | null; department: { name: string } | null; campusName?: string | null; departmentName?: string | null; gender?: string | null;
   user: { id: string; email: string | null; phone: string | null; status: string; lastSeenAt: string | null; uploads?: { id: string; filename: string }[]; _count: { attempts: number } };
 };
 type Detail = { user: { email: string | null; phone: string | null; status: string; profile: S }; mastery: { subject: string; correct: number; total: number }[]; topics: { subject: string; topic: string; correct: number; total: number }[]; attempts: { id: string; type: string; score: number; percentile: number | null; submittedAt: string; tabSwitches: number; flags: string[] }[] };
@@ -50,7 +50,7 @@ function Students() {
         </form>
       </Card>
       {creds && creds.length > 0 && <Credentials rows={creds} onClose={() => setCreds(null)} />}
-      <HodReports onError={setMsg} />
+      <div id="reports"><HodReports onError={setMsg} /></div>
       {msg && <div className="notice info" style={{ marginBottom: 12 }}>{msg}</div>}
       <div className="card">
         <Tabs value={status} onChange={setStatus} tabs={[["PENDING", "Waiting for verification"], ["VERIFIED", "Verified"], ["ACTIVE", "Active"], ["BLOCKED", "Deactivated"], ["ALL", "All"]]} />
@@ -60,7 +60,7 @@ function Students() {
             ["Name", (s) => <button className="btn ghost sm" onClick={async () => setOpen(await api<Detail>(`/api/students/${s.userId}`))}><b>{s.fullName}</b></button>],
             ["Roll number", (s) => s.rollNumber],
             ["Program", (s) => <span className="small">{s.program} · {s.semester}{s.section ?? ""}</span>],
-            ["Campus / dept.", (s) => <span className="small">{s.campus?.name ?? ""} {s.department ? `· ${s.department.name}` : ""}</span>],
+            ["Campus / dept.", (s) => <span className="small">{s.campus?.name ?? s.campusName ?? ""} {s.department?.name ?? s.departmentName ? `· ${s.department?.name ?? s.departmentName}` : ""}{!s.department && s.departmentName && <> <a className="tiny" href="/departments">not on list</a></>}</span>],
             ["Contact", (s) => <span className="tiny">{s.user.email ?? s.user.phone}</span>],
             ["Status", (s) => <><Pill tone={s.user.status === "PENDING" ? "warn" : s.user.status === "BLOCKED" ? "bad" : undefined}>{s.user.status.toLowerCase()}</Pill>{s.rejectReason && <div className="tiny" style={{ color: "var(--bad)" }}>Asked to fix</div>}</>],
             ["Proof", (s) => s.user.uploads?.length ? <a className="small" href={`/api/uploads/${s.user.uploads[0].id}`} target="_blank" rel="noreferrer">View proof</a> : <span className="tiny muted">Uploaded by university</span>],
@@ -92,6 +92,7 @@ function Students() {
             <div><h3>Subject accuracy</h3><table><tbody>{open.mastery.map((m) => <tr key={m.subject}><td>{SUBJECT_SHORT[m.subject]}</td><td><b>{Math.round((100 * m.correct) / (m.total || 1))}%</b></td><td className="tiny muted">{m.total} answers</td></tr>)}</tbody></table></div>
             <div><h3>Tests</h3><Table rows={open.attempts} cols={[["Type", (a) => a.type], ["Score", (a) => `${a.score}%`], ["Date", (a) => fmtDate(a.submittedAt)], ["Flags", (a) => a.flags.length ? <Pill tone="bad">{a.flags.length}</Pill> : ""]]} empty="No tests yet." /></div>
           </div>
+          <PrepLog id={open.user.profile.userId} />
         </div>
       )}
     </Page>
@@ -148,5 +149,38 @@ function HodReports({ onError }: { onError: (m: string) => void }) {
         <button className="btn ghost" type="button" onClick={() => download("/api/reports/university?format=pdf", "class-summary.pdf").catch((er) => onError(er.message))}>Class summary PDF</button>
       </form>
     </Card>
+  );
+}
+
+type Act = {
+  summary: { tests: number; prepSessions: number; mocks: number; minutes: number; videos: number; streakDays?: number; readiness?: number; bestMock?: number; lastActiveDay?: string | null };
+  attempts: { id: string; type: string; label: string | null; score: number; correct: number; total: number; submittedAt: string; minutes: number; tabSwitches: number }[];
+  videos: { at: string; video: { title: string; subject: string } | null }[];
+};
+const KIND: Record<string, string> = { PRACTICE: "Preparation level", MINI_MOCK: "Boss round", MOCK: "Mock test", DIAGNOSTIC: "Diagnostic", NATIONAL_MOCK: "National mock", LAB_TEST: "Lab test", MISTAKES: "Mistakes review" };
+
+/** The student's preparation log: every level, mock and video, with time spent. */
+function PrepLog({ id }: { id: string }) {
+  const { data } = useApi<Act>(`/api/students/${id}/activity`, [id]);
+  if (!data) return null;
+  const s = data.summary;
+  return (
+    <div style={{ marginTop: 16 }}>
+      <h3>Preparation log</h3>
+      <div className="grid g4" style={{ marginBottom: 10 }}>
+        <Stat k="Preparation sessions" v={s.prepSessions} />
+        <Stat k="Mock tests" v={s.mocks} d={s.bestMock ? `best ${s.bestMock}%` : undefined} />
+        <Stat k="Time on tests" v={`${Math.floor(s.minutes / 60)}h ${s.minutes % 60}m`} />
+        <Stat k="Videos opened" v={s.videos} d={s.lastActiveDay ? `last active ${s.lastActiveDay}` : undefined} />
+      </div>
+      <Table rows={data.attempts.slice(0, 40)} empty="Nothing yet." cols={[
+        ["When", (a) => <span className="tiny">{fmtDate(a.submittedAt)}</span>],
+        ["Activity", (a) => <span className="small">{KIND[a.type] ?? a.type}{a.label ? `: ${a.label}` : ""}</span>],
+        ["Score", (a) => <b>{a.score}%</b>],
+        ["Time", (a) => <span className="tiny">{a.minutes} min</span>],
+        ["Tab switches", (a) => (a.tabSwitches ? <Pill tone="warn">{a.tabSwitches}</Pill> : "")],
+      ]} />
+      {data.videos.length > 0 && <p className="tiny muted">Recent videos: {data.videos.slice(0, 6).map((v) => v.video?.title).filter(Boolean).join(", ")}</p>}
+    </div>
   );
 }

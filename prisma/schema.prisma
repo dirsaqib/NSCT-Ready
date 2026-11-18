@@ -284,7 +284,7 @@ model Profile {
   gender          String?
   campusName      String?     // typed by the student at sign-up
   departmentName  String?     // typed or picked at sign-up
-  cnicHash        String?     @unique // keyed hash, stops duplicate accounts
+  cnicHash        String?     // keyed hash, stops duplicate accounts (checked in code)
   cnicEnc         String?     // CNIC, encrypted with APP_ENCRYPTION_KEY
   alias           String?
   verifiedById    String?
@@ -307,6 +307,8 @@ model Profile {
 
   @@unique([universityId, rollNumber])
   @@index([universityId, campusId, departmentId])
+
+  @@index([cnicHash])
 }
 
 // ---------- Content ----------

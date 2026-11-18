@@ -44,7 +44,7 @@ export const POST = handle(async (req: Request) => {
   const email = b.email.toLowerCase();
   if (await emailTaken(email)) throw new HttpError(409, "This email is already registered. Sign in instead.");
   if (await prisma.user.findUnique({ where: { phone } })) throw new HttpError(409, "This mobile number is already registered.");
-  if (await prisma.profile.findUnique({ where: { cnicHash: cnic.cnicHash } })) throw new HttpError(409, "An account with this CNIC already exists. Sign in, or ask your focal person to reset your password.");
+  if (await prisma.profile.findFirst({ where: { cnicHash: cnic.cnicHash }, select: { userId: true } })) throw new HttpError(409, "An account with this CNIC already exists. Sign in, or ask your focal person to reset your password.");
   const universityId = await resolveUniversity(b.universityId, b.universityName);
   if (await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: b.rollNumber } } }))
     throw new HttpError(409, "This roll number is already registered at your university. Sign in, or ask your focal person to reset your password.");

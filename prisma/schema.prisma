@@ -887,7 +887,7 @@ model LabTest {
 }
 
 
-/** Files users upload as proof: student enrollment proof, focal person appointment letter. */
+/// Files users upload as proof: student enrollment proof, focal person appointment letter.
 model Upload {
   id        String   @id @default(cuid())
   userId    String
@@ -902,7 +902,7 @@ model Upload {
   @@index([userId, kind])
 }
 
-/** Server errors, for the super admin logs page. */
+/// Server errors, for the super admin logs page.
 model ErrorLog {
   id        String   @id @default(cuid())
   path      String
@@ -915,7 +915,7 @@ model ErrorLog {
   @@index([createdAt])
 }
 
-/** AI coach advice, refreshed at most once a day per student. */
+/// AI coach advice, refreshed at most once a day per student.
 model CoachAdvice {
   userId    String   @id
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)

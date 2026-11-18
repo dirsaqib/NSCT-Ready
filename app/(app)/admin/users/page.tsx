@@ -3,7 +3,7 @@ import { useState } from "react";
 import { api } from "@/components/api";
 import { Page, Card, useApi, Loading, Table, Pill, fmtDate } from "@/components/ui";
 
-const ROLES = ["STUDENT", "FACULTY", "HOD", "CAMPUS_ADMIN", "FOCAL", "CHAIR", "GOV", "EMPLOYER", "SPONSOR", "ADMIN"];
+const ROLES = ["STUDENT", "FOCAL", "ADMIN"]; // other roles are hidden for now
 const STATUSES = ["PENDING", "VERIFIED", "ACTIVE", "BLOCKED"];
 type U = { id: string; email: string | null; phone: string | null; role: string; status: string; totpEnabled: boolean; lastSeenAt: string | null; createdAt: string; proUntil: string | null; universityId: string | null; campusId: string | null; departmentId: string | null; employerId: string | null; sponsorId: string | null; university: { name: string } | null; profile: { fullName: string; rollNumber: string } | null };
 type Uni = { id: string; name: string; campuses: { id: string; name: string; departments: { id: string; name: string }[] }[] };
@@ -16,7 +16,12 @@ export default function Users() {
   const structure = useApi<{ universities: Uni[] }>("/api/admin/structure");
   const biz = useApi<{ employers: { id: string; name: string }[]; sponsors: { id: string; name: string }[] }>("/api/admin/business");
   const [edit, setEdit] = useState<U | null>(null);
-  const patch = async (id: string, body: object) => { await api(`/api/admin/users/${id}`, { method: "PATCH", body }).catch((e) => alert(e.message)); reload(); };
+  const [note, setNote] = useState("");
+  const patch = async (id: string, body: object) => {
+    const r = await api<{ tempPassword?: string }>(`/api/admin/users/${id}`, { method: "PATCH", body }).catch((e) => { alert(e.message); return null; });
+    if (r?.tempPassword) setNote(`Temporary password: ${r.tempPassword} (shown once, must be changed at sign-in)`);
+    reload();
+  };
   const uni = structure.data?.universities.find((u) => u.id === edit?.universityId);
   const campus = uni?.campuses.find((c) => c.id === edit?.campusId);
   return (
@@ -26,6 +31,22 @@ export default function Users() {
         <select value={f.role} onChange={(e) => setF({ ...f, role: e.target.value, page: 0 })} style={{ width: "auto" }}><option value="">All roles</option>{ROLES.map((r) => <option key={r} value={r}>{r.toLowerCase().replace("_", " ")}</option>)}</select>
         <select value={f.status} onChange={(e) => setF({ ...f, status: e.target.value, page: 0 })} style={{ width: "auto" }}><option value="">All statuses</option>{STATUSES.map((s) => <option key={s} value={s}>{s.toLowerCase()}</option>)}</select>
       </div>
+      <Card title="Add a focal person or super admin" style={{ marginBottom: 16 }}>
+        <form className="row" onSubmit={async (e) => {
+          e.preventDefault(); const el = e.currentTarget; const fd = new FormData(el);
+          try {
+            const r = await api<{ tempPassword: string }>("/api/admin/users", { body: { name: fd.get("name"), email: fd.get("email"), role: fd.get("role"), universityId: fd.get("universityId") || undefined } });
+            setNote(`Account created. Temporary password: ${r.tempPassword} (shown once, must be changed at sign-in)`); el.reset(); reload();
+          } catch (er) { setNote((er as Error).message); }
+        }}>
+          <input name="name" required placeholder="Full name" style={{ width: 180 }} />
+          <input name="email" type="email" required placeholder="Email" style={{ width: 220 }} />
+          <select name="role" defaultValue="FOCAL" style={{ width: "auto" }}><option value="FOCAL">Focal person</option><option value="ADMIN">Super admin</option></select>
+          <select name="universityId" defaultValue="" style={{ width: 260 }}><option value="">University (for focal person)</option>{structure.data?.universities.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select>
+          <button className="btn" type="submit">Create</button>
+        </form>
+      </Card>
+      {note && <div className="notice info" style={{ marginBottom: 12 }}>{note}</div>}
       {edit && (
         <Card title={`Edit ${edit.profile?.fullName ?? edit.email ?? edit.phone}`} style={{ marginBottom: 16, borderColor: "var(--brand)" }}>
           <div className="grid g4">
@@ -41,6 +62,7 @@ export default function Users() {
           <div className="row" style={{ marginTop: 12 }}>
             <button className="btn" onClick={async () => { await patch(edit.id, { role: edit.role, status: edit.status, universityId: edit.universityId, campusId: edit.campusId, departmentId: edit.departmentId, employerId: edit.employerId, sponsorId: edit.sponsorId, proUntil: edit.proUntil }); setEdit(null); }}>Save</button>
             {edit.totpEnabled && <button className="btn sec" onClick={() => window.confirm("Reset two-factor? The user must set it up again.") && patch(edit.id, { reset2fa: true })}>Reset two-factor</button>}
+            <button className="btn sec" onClick={() => window.confirm("Give this user a new temporary password?") && patch(edit.id, { resetPassword: true })}>Reset password</button>
             <button className="btn ghost" onClick={() => setEdit(null)}>Cancel</button>
           </div>
           <p className="tiny muted">Staff roles need two-factor sign-in. Every change is written to the audit log.</p>

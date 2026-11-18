@@ -1,52 +1,58 @@
-// Sign-in: Google, email magic link, or phone number with a one-time SMS code.
+// Sign-in with a password only. Students use university plus roll number (or email), staff use email.
 // Staff roles must also pass a second factor (authenticator app) before they can use their panel.
 import type { NextAuthOptions } from "next-auth";
 import { getServerSession } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-import EmailProvider from "next-auth/providers/email";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import type { Role } from "@prisma/client";
 import { prisma } from "./db";
-import { verifyOtp } from "./otp";
 import { verifyTotp } from "./totp";
 import { decrypt } from "./crypto";
 import { HttpError } from "./errors";
+import { verifyPassword } from "./password";
+import { audit } from "./audit";
 
 export { HttpError };
 
 /** Roles that must use two-factor authentication. */
 export const TWO_FACTOR_ROLES: Role[] = ["HOD", "CAMPUS_ADMIN", "FOCAL", "CHAIR", "GOV", "ADMIN"];
 
+/** Find the account for a login: email, or university plus roll number. */
+async function findLogin(login: string, universityId?: string) {
+  const l = login.trim();
+  if (l.includes("@")) return prisma.user.findUnique({ where: { email: l.toLowerCase() } });
+  if (!universityId) return null;
+  const p = await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: l } }, select: { userId: true } });
+  return p ? prisma.user.findUnique({ where: { id: p.userId } }) : null;
+}
+
 export const authOptions: NextAuthOptions = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  adapter: PrismaAdapter(prisma) as any,
   session: { strategy: "jwt", maxAge: 7 * 24 * 3600 },
   providers: [
-    GoogleProvider({ clientId: process.env.GOOGLE_CLIENT_ID ?? "", clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "" }),
-    EmailProvider({ server: process.env.EMAIL_SERVER, from: process.env.EMAIL_FROM }),
     CredentialsProvider({
-      id: "phone",
-      name: "Phone",
-      credentials: { phone: { type: "text" }, code: { type: "text" } },
+      id: "password",
+      name: "Password",
+      credentials: { login: { type: "text" }, universityId: { type: "text" }, password: { type: "password" } },
       async authorize(c) {
-        if (!c?.phone || !c?.code) return null;
-        const phone = await verifyOtp(c.phone, c.code);
-        if (!phone) return null;
-        const user = await prisma.user.upsert({ where: { phone }, create: { phone, phoneVerified: new Date() }, update: { phoneVerified: new Date() } });
-        if (user.status === "BLOCKED") return null;
+        if (!c?.login || !c?.password) return null;
+        const user = await findLogin(c.login, c.universityId || undefined);
+        if (!user) return null;
+        if (user.lockedUntil && user.lockedUntil > new Date()) throw new Error("LOCKED");
+        if (!verifyPassword(c.password, user.passwordHash)) {
+          const fails = user.failedLogins + 1;
+          await prisma.user.update({ where: { id: user.id }, data: { failedLogins: fails, lockedUntil: fails >= 5 ? new Date(Date.now() + 15 * 60000) : undefined } });
+          await audit(user.id, "signin.fail").catch(() => {});
+          return null;
+        }
+        if (user.status === "BLOCKED") throw new Error("BLOCKED");
+        if (user.role !== "STUDENT" && user.status === "PENDING") throw new Error("PENDING_APPROVAL");
+        await prisma.user.update({ where: { id: user.id }, data: { failedLogins: 0, lockedUntil: null, lastSeenAt: new Date() } });
+        await audit(user.id, "signin.ok").catch(() => {});
         return { id: user.id, email: user.email, name: user.name };
       },
     }),
   ],
   pages: { signIn: "/signin" },
   callbacks: {
-    async signIn({ user }) {
-      const u = await prisma.user.findUnique({ where: { id: user.id }, select: { status: true, lockedUntil: true } });
-      if (u?.status === "BLOCKED") return false;
-      if (u?.lockedUntil && u.lockedUntil > new Date()) return false;
-      return true;
-    },
     async jwt({ token, user, trigger, session }) {
       if (user) token.uid = user.id;
       if (!token.uid) return token;
@@ -64,7 +70,7 @@ export const authOptions: NextAuthOptions = {
       }
       const db = await prisma.user.findUnique({
         where: { id: token.uid as string },
-        select: { role: true, status: true, universityId: true, campusId: true, departmentId: true, employerId: true, sponsorId: true, totpEnabled: true, locale: true },
+        select: { role: true, status: true, universityId: true, campusId: true, departmentId: true, employerId: true, sponsorId: true, totpEnabled: true, locale: true, mustChangePassword: true },
       });
       if (db) Object.assign(token, db);
       return token;
@@ -74,7 +80,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user, id: token.uid, role: token.role, status: token.status, universityId: token.universityId, campusId: token.campusId,
-          departmentId: token.departmentId, employerId: token.employerId, sponsorId: token.sponsorId, totpEnabled: token.totpEnabled, tfa: !!token.tfa, locale: token.locale,
+          departmentId: token.departmentId, employerId: token.employerId, sponsorId: token.sponsorId, totpEnabled: token.totpEnabled, tfa: !!token.tfa, locale: token.locale, mustChangePassword: !!token.mustChangePassword,
         },
       };
     },
@@ -84,7 +90,7 @@ export const authOptions: NextAuthOptions = {
 export type SessionUser = {
   id: string; role: Role; status: string; email?: string | null;
   universityId: string | null; campusId: string | null; departmentId: string | null;
-  employerId: string | null; sponsorId: string | null; totpEnabled: boolean; tfa: boolean; locale: string;
+  employerId: string | null; sponsorId: string | null; totpEnabled: boolean; tfa: boolean; locale: string; mustChangePassword?: boolean;
 };
 
 export async function currentUser(): Promise<SessionUser | null> {
@@ -92,10 +98,12 @@ export async function currentUser(): Promise<SessionUser | null> {
   return (s?.user as SessionUser) ?? null;
 }
 
-export async function requireUser(opts: { allowWithout2fa?: boolean } = {}): Promise<SessionUser> {
+export async function requireUser(opts: { allowWithout2fa?: boolean; allowPasswordChange?: boolean } = {}): Promise<SessionUser> {
   const u = await currentUser();
   if (!u?.id) throw new HttpError(401, "Please sign in.");
   if (u.status === "BLOCKED") throw new HttpError(403, "Your account is blocked. Contact support.");
+  if (u.role !== "STUDENT" && u.status === "PENDING") throw new HttpError(403, "Your registration is waiting for approval by the NSCT super admin.", "PENDING_APPROVAL");
+  if (!opts.allowPasswordChange && u.mustChangePassword) throw new HttpError(403, "Please set a new password to continue.", "PASSWORD_CHANGE");
   if (!opts.allowWithout2fa && TWO_FACTOR_ROLES.includes(u.role)) {
     if (!u.totpEnabled) throw new HttpError(403, "Set up two-factor authentication to continue.", "2FA_SETUP");
     if (!u.tfa) throw new HttpError(403, "Enter your authenticator code to continue.", "2FA_REQUIRED");

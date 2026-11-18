@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth";
 import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
-import { ownerDepartmentFor, QuestionInput, SubjectEnum, createQuestion, similarQuestions } from "@/lib/questions";
+import { ownerDepartmentFor, ownerUniversityFor, QuestionInput, SubjectEnum, createQuestion, similarQuestions } from "@/lib/questions";
 
 /**
  * Faculty, HODs and focal persons see their own submissions, items assigned to them for review, and
@@ -22,7 +22,7 @@ export const GET = handle(async (req: Request) => {
   let where: object;
   if (u.role === "ADMIN" && view === "all") where = base;
   else if (view === "assigned") where = { ...base, reviews: { some: { reviewerId: u.id, decision: null } } };
-  else if (view === "department") where = { ...base, scope: "DEPARTMENT", ownerDepartmentId: { in: await departmentsInScope(u, sp.get("departmentId")) } };
+  else if (view === "department") where = { ...base, OR: [{ scope: "DEPARTMENT", ownerDepartmentId: { in: await departmentsInScope(u, sp.get("departmentId")) } }, { scope: "UNIVERSITY", ...(u.role === "ADMIN" ? {} : { authorUniversityId: u.universityId ?? "-" }) }] };
   else if (view === "weak") where = { ...base, scope: "NATIONAL", status: "LIVE", secure: false, OR: [{ reports: { some: { resolved: false } } }, { discrimination: { lt: 0.1 } }, { timesSeen: { gte: 30 }, timesRight: { lte: 5 } }] };
   else where = { ...base, authorId: u.id };
 
@@ -52,7 +52,8 @@ export const POST = handle(async (req: Request) => {
   const d = QuestionInput.parse(await req.json());
   if (u.role !== "ADMIN") d.secure = false;
   const owner = d.bank === "DEPARTMENT" ? await ownerDepartmentFor(u, d.departmentId) : null;
-  const q = await createQuestion(d, u.id, u.universityId, u.role === "ADMIN", owner);
+  const authorUni = d.bank === "UNIVERSITY" ? ownerUniversityFor(u, d.universityId) : u.universityId;
+  const q = await createQuestion(d, u.id, authorUni, u.role === "ADMIN", owner);
   await audit(u.id, "question.create", q.id);
   return { question: q, similar: await similarQuestions(d.subject, d.text, q.id) };
 });

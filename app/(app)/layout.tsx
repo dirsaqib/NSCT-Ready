@@ -10,6 +10,8 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const u = await currentUser();
   if (!u?.id) redirect("/signin");
   if (u.status === "BLOCKED") redirect("/help?blocked=1");
+  if (u.role !== "STUDENT" && u.status === "PENDING") redirect("/signin?pending=1");
+  if (u.mustChangePassword) redirect("/change-password");
   const needs2fa = TWO_FACTOR_ROLES.includes(u.role) && (!u.totpEnabled || !u.tfa);
   const brand = await getSetting<string>("branding.name");
   return (

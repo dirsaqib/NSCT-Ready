@@ -23,7 +23,10 @@ Staff scoping is enforced on the server (`profileScope` in `lib/auth.ts`). Staff
 ## Features
 
 **Sign-in and accounts**
-- Google, email link, or phone number with SMS code. No CNIC: students are identified by roll number, unique within each university
+- Password sign-in only. Students sign in with university plus roll number (or email), staff with email. No CNIC
+- Students self-register with proof of enrollment; their focal person approves. Focal persons self-register with an appointment letter; the super admin approves
+- Bulk upload gives every student a temporary password that must be changed at first sign-in. Focal persons reset student passwords, the super admin resets focal passwords
+- Three panels: Student (tests, results, lessons, AI coach), Focal person (own university only: verification, logins, question bank, lab tests, detailed PDF reports for HODs) and Super admin (everything plus system logs)
 - Two-factor (authenticator app) for all staff, with reset by the super admin
 - Account lock after 5 wrong codes, rate limits on sign-in, OTP, AI and payments
 - Status: pending, verified, active, blocked. Focal persons verify or ask the student to fix details. Changing roll number or university sends the account back to pending

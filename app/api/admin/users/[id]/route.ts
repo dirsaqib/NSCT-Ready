@@ -5,6 +5,7 @@ import { requireRole, HttpError } from "@/lib/auth";
 import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
+import { hashPassword, tempPassword } from "@/lib/password";
 
 /** One user's full record. */
 export const GET = handle(async (_req: Request, ctx: { params: { id: string } }) => {
@@ -39,6 +40,7 @@ const Patch = z.object({
   employerId: z.string().nullable().optional(),
   sponsorId: z.string().nullable().optional(),
   reset2fa: z.boolean().optional(),
+  resetPassword: z.boolean().optional(),
   proUntil: z.string().datetime().nullable().optional(),
 });
 
@@ -53,12 +55,13 @@ export const PATCH = handle(async (req: Request, ctx: { params: { id: string } }
   if (role === "EMPLOYER" && !b.employerId) throw new HttpError(400, "Choose the employer.");
   if (role === "SPONSOR" && !b.sponsorId) throw new HttpError(400, "Choose the sponsor.");
   if (ctx.params.id === u.id && (b.status === "BLOCKED" || (role && role !== "ADMIN"))) throw new HttpError(400, "You cannot block or demote yourself.");
-  const { reset2fa, proUntil, ...rest } = b;
+  const { reset2fa, resetPassword, proUntil, ...rest } = b;
+  const temp = resetPassword ? tempPassword() : null;
   await prisma.user.update({
     where: { id: ctx.params.id },
-    data: { ...rest, ...(reset2fa ? { totpEnabled: false, totpSecret: null } : {}), ...(proUntil !== undefined ? { proUntil: proUntil ? new Date(proUntil) : null } : {}) },
+    data: { ...rest, ...(reset2fa ? { totpEnabled: false, totpSecret: null } : {}), ...(temp ? { passwordHash: hashPassword(temp, true), mustChangePassword: true, failedLogins: 0, lockedUntil: null } : {}), ...(proUntil !== undefined ? { proUntil: proUntil ? new Date(proUntil) : null } : {}) },
   });
   if (b.status === "BLOCKED") await notify([ctx.params.id], "Your account has been blocked", "Contact support if you think this is a mistake.", ["EMAIL"]);
-  await audit(u.id, "user.update", ctx.params.id, b);
-  return { ok: true };
+  await audit(u.id, "user.update", ctx.params.id, { ...b, resetPassword: !!temp });
+  return { ok: true, tempPassword: temp ?? undefined };
 });

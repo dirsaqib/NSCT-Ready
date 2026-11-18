@@ -26,7 +26,8 @@ export const PATCH = handle(async (req: Request, ctx: { params: { id: string } }
   if (!q) throw new HttpError(404, "Question not found.");
   // Department staff manage their own department bank. Everything else is for the super admin.
   if (u.role !== "ADMIN") {
-    const ownDept = q.scope === "DEPARTMENT" && q.authorUniversityId === u.universityId && (u.role === "FOCAL" || u.role === "CHAIR" || u.role === "CAMPUS_ADMIN" || q.ownerDepartmentId === u.departmentId);
+    const uniStaff = u.role === "FOCAL" || u.role === "CHAIR" || u.role === "CAMPUS_ADMIN";
+    const ownDept = q.authorUniversityId === u.universityId && ((q.scope === "DEPARTMENT" && (uniStaff || q.ownerDepartmentId === u.departmentId)) || (q.scope === "UNIVERSITY" && (uniStaff || q.authorId === u.id)));
     if (!ownDept || !["retire", "edit"].includes(b.action)) throw new HttpError(403, "Only the super admin can do this.");
   }
 

@@ -25,9 +25,11 @@ async function blueprint(key: string) {
   return { counts: fb as Record<string, number>, difficulty: null, durationMin: Math.round((DURATION_SEC[key as AttemptType] ?? 3600) / 60) };
 }
 
-async function pick(subject: Subject, n: number, opts: { topic?: string; difficulty?: number; secure?: boolean; mix?: Record<string, number> | null }) {
+async function pick(subject: Subject, n: number, opts: { topic?: string; difficulty?: number; secure?: boolean; mix?: Record<string, number> | null; universityId?: string | null }) {
+  // The national bank, plus questions the student's own university added for its students only.
+  const scope = opts.universityId ? { OR: [{ scope: "NATIONAL" as const }, { scope: "UNIVERSITY" as const, authorUniversityId: opts.universityId }] } : { scope: "NATIONAL" as const };
   const rows = await prisma.question.findMany({
-    where: { subject, status: "LIVE", scope: "NATIONAL", ...(opts.secure === false ? { secure: false } : {}), ...(opts.topic ? { topic: opts.topic } : {}), ...(opts.difficulty ? { difficulty: opts.difficulty } : {}) },
+    where: { subject, status: "LIVE", ...scope, ...(opts.secure === false ? { secure: false } : {}), ...(opts.topic ? { topic: opts.topic } : {}), ...(opts.difficulty ? { difficulty: opts.difficulty } : {}) },
     select: { id: true, difficulty: true },
   });
   if (!opts.mix) return shuffle(rows).slice(0, n).map((r) => r.id);
@@ -66,19 +68,19 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
     }
     const bp = await blueprint(o.type);
     durationMin = bp.durationMin;
-    for (const [s, n] of Object.entries(bp.counts)) ids.push(...(await pick(s as Subject, n, { secure: o.type === "NATIONAL_MOCK" ? undefined : false, mix: bp.difficulty })));
+    for (const [s, n] of Object.entries(bp.counts)) ids.push(...(await pick(s as Subject, n, { secure: o.type === "NATIONAL_MOCK" ? undefined : false, mix: bp.difficulty, universityId: o.type === "MOCK" ? user.universityId : null })));
   } else if (o.type === "EMPLOYER_ASSESSMENT") {
     const a = await prisma.employerAssessment.findUnique({ where: { inviteCode: o.assessmentCode ?? "" } });
     if (!a) throw new HttpError(404, "Assessment not found.");
     if (await prisma.attempt.count({ where: { userId, assessmentId: a.id } })) throw new HttpError(409, "You have already taken this assessment.");
     assessmentId = a.id; label = a.title; durationMin = a.durationMin;
-    for (const [s, n] of Object.entries(a.counts as Record<string, number>)) ids.push(...(await pick(s as Subject, n, { secure: false })));
+    for (const [s, n] of Object.entries(a.counts as Record<string, number>)) ids.push(...(await pick(s as Subject, n, { secure: false, universityId: user.universityId })));
   } else if (o.type === "LAB_TEST") {
     const lab = await labStartCheck(userId, o.labTestId ?? "", o.accessCode ?? "", ctx.ip);
     labTestId = lab.test.id; label = lab.test.title; durationMin = lab.durationMin; ids = lab.ids as string[];
   } else if (o.type === "MINI_MOCK" || o.type === "PRACTICE") {
     if (!o.subject) throw new HttpError(400, "Choose a subject.");
-    ids = await pick(o.subject, o.type === "MINI_MOCK" ? 12 : Math.min(o.count ?? 10, 30), { topic: o.topic, difficulty: o.difficulty, secure: false });
+    ids = await pick(o.subject, o.type === "MINI_MOCK" ? 12 : Math.min(o.count ?? 10, 30), { topic: o.topic, difficulty: o.difficulty, secure: false, universityId: user.universityId });
     label = [o.subject, o.topic, o.difficulty ? `level ${o.difficulty}` : ""].filter(Boolean).join(" · ");
     if (o.type === "MINI_MOCK") durationMin = 15;
   } else if (o.type === "MISTAKES") {

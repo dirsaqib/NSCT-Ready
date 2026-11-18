@@ -3,6 +3,7 @@ import { PrismaClient, type Subject } from "@prisma/client";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { contentHash } from "../lib/crypto";
+import { hashPassword } from "../lib/password";
 
 const prisma = new PrismaClient();
 
@@ -280,6 +281,21 @@ async function main() {
     title: "How is NSCT Ready working for you?", audience: "STUDENT", active: true,
     questions: [{ q: "How useful are the mock tests?", type: "scale" }, { q: "How clear are the explanations?", type: "scale" }, { q: "How easy is the site to use?", type: "scale" }, { q: "What should we add or improve?", type: "text" }],
   } });
+  // ---------- Super admin account ----------
+  // Set SUPERADMIN_EMAIL and SUPERADMIN_PASSWORD in Vercel. The password is set only if the account has none,
+  // so changing it later on the Security page sticks. SUPERADMIN_RESET=1 sets it again from the variable.
+  const saEmail = process.env.SUPERADMIN_EMAIL?.trim().toLowerCase();
+  const saPw = process.env.SUPERADMIN_PASSWORD;
+  if (saEmail && saPw) {
+    const ex = await prisma.user.findUnique({ where: { email: saEmail } });
+    const setPw = !ex?.passwordHash || !!process.env.SUPERADMIN_RESET;
+    await prisma.user.upsert({
+      where: { email: saEmail },
+      create: { email: saEmail, name: "Super admin", role: "ADMIN", status: "ACTIVE", passwordHash: hashPassword(saPw) },
+      update: { role: "ADMIN", status: "ACTIVE", failedLogins: 0, lockedUntil: null, ...(setPw ? { passwordHash: hashPassword(saPw), mustChangePassword: false } : {}) },
+    });
+    console.log(`Seed: super admin ${saEmail} ready${setPw ? " (password set)" : ""}.`);
+  }
   console.log("Seed: complete.");
 }
 

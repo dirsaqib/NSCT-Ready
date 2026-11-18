@@ -4,7 +4,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const buckets = new Map<string, { n: number; reset: number }>();
 const LIMITS: [RegExp, number][] = [
-  [/^\/api\/auth\/otp/, 5],        // OTP requests per minute per IP
+  [/^\/api\/signup\//, 20],        // registrations per minute per IP (a lab shares one IP)
   [/^\/api\/auth\//, 30],
   [/^\/api\/ai\//, 20],
   [/^\/api\/payments\//, 10],

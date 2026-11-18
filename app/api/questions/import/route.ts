@@ -4,7 +4,7 @@ import { requireRole } from "@/lib/auth";
 import { HttpError } from "@/lib/errors";
 import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
-import { QuestionInput, createQuestion, ownerDepartmentFor } from "@/lib/questions";
+import { QuestionInput, createQuestion, ownerDepartmentFor, ownerUniversityFor } from "@/lib/questions";
 
 /** Splits one CSV line, honouring quotes. */
 function csvRow(line: string) {
@@ -32,8 +32,9 @@ export const POST = handle(async (req: Request) => {
   const file = form.get("file");
   if (!(file instanceof File)) throw new HttpError(400, "Upload an .xlsx or .csv file.");
   if (file.size > 5 * 1024 * 1024) throw new HttpError(400, "The file is larger than 5 MB. Split it into smaller files.");
-  const bank = form.get("bank") === "DEPARTMENT" ? "DEPARTMENT" : "NATIONAL";
+  const bank = form.get("bank") === "DEPARTMENT" ? "DEPARTMENT" : form.get("bank") === "UNIVERSITY" ? "UNIVERSITY" : "NATIONAL";
   const owner = bank === "DEPARTMENT" ? await ownerDepartmentFor(u, String(form.get("departmentId") || "") || null) : null;
+  const authorUni = bank === "UNIVERSITY" ? ownerUniversityFor(u, String(form.get("universityId") || "") || null) : u.universityId;
 
   let rows: Record<string, string>[] = [];
   if (/\.csv$/i.test(file.name)) {
@@ -66,7 +67,7 @@ export const POST = handle(async (req: Request) => {
         code: col("code") || null, options, answers, explanation: col("explanation") || "See your instructor.", source: "IMPORT",
         secure: u.role === "ADMIN" && /^y/i.test(col("secure")), bank,
       });
-      added.push((await createQuestion(d, u.id, u.universityId, u.role === "ADMIN", owner)).id);
+      added.push((await createQuestion(d, u.id, authorUni, u.role === "ADMIN", owner)).id);
     } catch (e) {
       failed.push({ row: i + 2, error: e instanceof Error ? e.message.slice(0, 200) : "Invalid row" });
     }

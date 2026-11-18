@@ -1,13 +1,14 @@
 "use client";
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { api } from "@/components/api";
 import { Page, Stat, useApi, Loading, Tabs, Pill } from "@/components/ui";
 import QuestionEditor, { type QDraft } from "@/components/QuestionEditor";
 import { download, upload, Table } from "@/components/ui";
 import { SUBJECTS } from "@/lib/syllabus";
 
-type Q = { id: string; type: string; subject: string; topic: string; difficulty: number; text: string; code: string | null; options: string[]; answers: number[]; explanation: string; status: string; timesSeen: number; timesRight: number; discrimination: number | null; reviews: { stage: string; decision: string | null; note: string | null }[]; _count: { reports: number } };
+type Q = { id: string; scope?: string; type: string; subject: string; topic: string; difficulty: number; text: string; code: string | null; options: string[]; answers: number[]; explanation: string; status: string; timesSeen: number; timesRight: number; discrimination: number | null; reviews: { stage: string; decision: string | null; note: string | null }[]; _count: { reports: number } };
 const STATUS: Record<string, [string, "warn" | "bad" | "grey" | undefined]> = { DRAFT: ["Sent back", "bad"], SUBMITTED: ["Submitted", "warn"], PEER_REVIEW: ["Peer review", "warn"], EXPERT_REVIEW: ["Expert review", "warn"], LIVE: ["Live", undefined], RETIRED: ["Retired", "grey"] };
 
 export default function ContributePage() { return <Suspense fallback={<div className="spin" />}><Contribute /></Suspense>; }
@@ -21,7 +22,10 @@ function Contribute() {
   const weak = useApi<{ questions: Q[] }>(tab === "fix" ? "/api/questions?view=weak" : null, [tab]);
   const deptBank = useApi<{ questions: Q[] }>(tab === "dept" ? "/api/questions?view=department" : null, [tab]);
   const scope = useApi<{ departments: { id: string; name: string; campus: { name: string } }[] }>(tab === "upload" || tab === "add" ? "/api/labtests" : null, [tab]);
-  const [bank, setBank] = useState<"DEPARTMENT" | "NATIONAL">("DEPARTMENT");
+  const role = (useSession().data?.user as { role?: string } | undefined)?.role;
+  const [bank, setBank] = useState<"UNIVERSITY" | "DEPARTMENT" | "NATIONAL">("UNIVERSITY");
+  const [uniId, setUniId] = useState("");
+  const unis = useApi<{ universities: { id: string; name: string }[] }>(role === "ADMIN" && bank === "UNIVERSITY" ? "/api/universities" : null, [role, bank]);
   const [deptId, setDeptId] = useState("");
   const [up, setUp] = useState<{ added: number; failed: { row: number; error: string }[]; bank: string } | null>(null);
   const [upErr, setUpErr] = useState("");
@@ -29,7 +33,7 @@ function Contribute() {
   const [aiSub, setAiSub] = useState("PS");
   const [similar, setSimilar] = useState<{ id: string; text: string }[]>([]);
   const send = async (q: QDraft, source = "FACULTY") => {
-    const r = await api<{ similar: { id: string; text: string }[] }>("/api/questions", { body: { ...q, source, bank, departmentId: deptId || undefined } });
+    const r = await api<{ similar: { id: string; text: string }[] }>("/api/questions", { body: { ...q, source, bank, departmentId: deptId || undefined, universityId: uniId || undefined } });
     setSimilar(r.similar ?? []);
   };
   const m = mine.data?.questions ?? [];
@@ -42,13 +46,17 @@ function Contribute() {
       </div>
       {similar.length > 0 && <div className="notice" style={{ marginBottom: 12 }}>Saved. Similar questions already exist, please check yours is different: {similar.map((s) => s.text.slice(0, 60)).join(" | ")}</div>}
       <div className="card">
-        <Tabs value={tab} onChange={(t) => { setTab(t); setEdit(undefined); }} tabs={[["add", "Write a question"], ["upload", "Upload from Excel or CSV"], ["dept", "Department bank"], ["ai", "Draft with AI"], ["review", "Assigned to me"], ["fix", "Fix weak questions"], ["mine", "My submissions"]]} />
+        <Tabs value={tab} onChange={(t) => { setTab(t); setEdit(undefined); }} tabs={[["add", "Write a question"], ["upload", "Upload from Excel or CSV"], ["dept", "Our university bank"], ["ai", "Draft with AI"], ["review", "Assigned to me"], ["fix", "Fix weak questions"], ["mine", "My submissions"]]} />
         {(tab === "add" || tab === "upload") && (
           <div className="grid g3" style={{ marginBottom: 12 }}>
             <label className="f">Save to<select value={bank} onChange={(e) => setBank(e.target.value as typeof bank)}>
-              <option value="DEPARTMENT">Our department bank (live at once, for our own lab tests)</option>
-              <option value="NATIONAL">National NSCT bank (reviewed before use)</option>
+              <option value="UNIVERSITY">Only our university's students (live at once in their practice and mocks)</option>
+              <option value="DEPARTMENT">One department only (live at once, for its lab tests)</option>
+              <option value="NATIONAL">Everyone in Pakistan, national NSCT bank (reviewed before use)</option>
             </select></label>
+            {bank === "UNIVERSITY" && role === "ADMIN" && (
+              <label className="f">University<select value={uniId} onChange={(e) => setUniId(e.target.value)} required><option value="">Choose</option>{unis.data?.universities.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}</select></label>
+            )}
             {bank === "DEPARTMENT" && (scope.data?.departments.length ?? 0) > 1 && (
               <label className="f">Department<select value={deptId} onChange={(e) => setDeptId(e.target.value)} required><option value="">Choose</option>{scope.data!.departments.map((d) => <option key={d.id} value={d.id}>{d.campus.name} · {d.name}</option>)}</select></label>
             )}
@@ -66,7 +74,7 @@ function Contribute() {
             </div>
             <form className="row" onSubmit={async (e) => {
               e.preventDefault(); setUpErr(""); setUp(null);
-              const fd = new FormData(e.currentTarget); fd.set("bank", bank); if (deptId) fd.set("departmentId", deptId);
+              const fd = new FormData(e.currentTarget); fd.set("bank", bank); if (deptId) fd.set("departmentId", deptId); if (uniId) fd.set("universityId", uniId);
               try { setUp(await upload("/api/questions/import", fd)); } catch (er) { setUpErr((er as Error).message); }
             }}>
               <input type="file" name="file" accept=".xlsx,.csv" required />
@@ -75,7 +83,7 @@ function Contribute() {
             {upErr && <div className="notice bad" style={{ marginTop: 12 }}>{upErr}</div>}
             {up && (
               <div className={`notice ${up.failed.length ? "" : "info"}`} style={{ marginTop: 12 }}>
-                Added {up.added} questions {up.bank === "DEPARTMENT" ? "to your department bank. They are ready for your lab tests." : "for review in the national bank."}
+                Added {up.added} questions {up.bank === "UNIVERSITY" ? "for your university's students. They now appear in their practice, mini mocks and your lab tests." : up.bank === "DEPARTMENT" ? "to your department bank. They are ready for your lab tests." : "for review in the national bank."}
                 {up.failed.length > 0 && <Table rows={up.failed} cols={[["Row", (f) => f.row], ["Problem", (f) => <span className="small">{f.error}</span>]]} />}
               </div>
             )}
@@ -83,18 +91,18 @@ function Contribute() {
         )}
         {tab === "dept" && (!deptBank.data ? <Loading error={deptBank.error} /> : (
           <>
-            <p className="small muted" style={{ marginTop: 0 }}>{deptBank.data.questions.length} questions in your department bank. Use them in Lab tests. They never appear in national mocks.</p>
+            <p className="small muted" style={{ marginTop: 0 }}>{deptBank.data.questions.length} questions in your university's own bank. University-wide questions appear in your students' practice and mocks. Department questions are for lab tests. None of them appear in national mocks or for other universities.</p>
             <div className="qlist">{deptBank.data.questions.map((q) => (
               <div className="q" key={q.id}>
-                <div className="qmeta"><Pill tone="grey">{q.subject}</Pill><Pill tone="grey">{q.topic}</Pill><Pill tone="grey">{q.type}</Pill><Pill tone="grey">difficulty {q.difficulty}</Pill>{q.timesSeen > 0 && <Pill tone="grey">{Math.round((100 * q.timesRight) / q.timesSeen)}% correct of {q.timesSeen}</Pill>}</div>
+                <div className="qmeta"><Pill>{q.scope === "UNIVERSITY" ? "our students" : "department"}</Pill><Pill tone="grey">{q.subject}</Pill><Pill tone="grey">{q.topic}</Pill><Pill tone="grey">{q.type}</Pill><Pill tone="grey">difficulty {q.difficulty}</Pill>{q.timesSeen > 0 && <Pill tone="grey">{Math.round((100 * q.timesRight) / q.timesSeen)}% correct of {q.timesSeen}</Pill>}</div>
                 <b>{q.text}</b>{q.code && <pre className="code">{q.code}</pre>}
                 <ol type="A" className="small">{q.options.map((o, j) => <li key={j} style={q.answers.includes(j) ? { color: "var(--good)", fontWeight: 700 } : {}}>{o}</li>)}</ol>
-                <div className="row"><button className="btn ghost sm" onClick={async () => { if (window.confirm("Retire this question from your department bank?")) { await api(`/api/questions/${q.id}`, { method: "PATCH", body: { action: "retire" } }).catch((e) => alert(e.message)); deptBank.reload(); } }}>Retire</button></div>
+                <div className="row"><button className="btn ghost sm" onClick={async () => { if (window.confirm("Retire this question from your bank?")) { await api(`/api/questions/${q.id}`, { method: "PATCH", body: { action: "retire" } }).catch((e) => alert(e.message)); deptBank.reload(); } }}>Retire</button></div>
               </div>
             ))}{!deptBank.data.questions.length && <div className="empty">Empty. Upload questions or write one.</div>}</div>
           </>
         ))}
-        {tab === "add" && <QuestionEditor key={edit?.replacesId ?? "new"} initial={edit} submitLabel="Submit for review" onSubmit={(q) => send(q)} />}
+        {tab === "add" && <QuestionEditor key={edit?.replacesId ?? "new"} initial={edit} submitLabel={bank === "NATIONAL" ? "Submit for review" : "Save to our bank"} onSubmit={(q) => send(q)} />}
         {tab === "ai" && (
           <>
             <form className="row" onSubmit={async (e) => { e.preventDefault(); const f = new FormData(e.currentTarget); const r = await api<{ drafts: { q: string; code: string; options: string[]; answer: number; explanation: string; topic: string; difficulty?: number }[] }>("/api/ai/generate", { body: { subject: aiSub, topic: f.get("topic") || undefined, count: 5 } }); setDrafts(r.drafts.map((x) => ({ type: "SINGLE", subject: aiSub, topic: x.topic, difficulty: x.difficulty ?? 2, text: x.q, code: x.code, options: x.options, answers: [x.answer], explanation: x.explanation }))); }}>

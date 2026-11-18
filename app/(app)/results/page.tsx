@@ -1,4 +1,5 @@
 "use client";
+import CoachCard from "@/components/CoachCard";
 import { Page, Card, Stat, useApi, Loading } from "@/components/ui";
 import Radar from "@/components/Radar";
 import { ColChart } from "@/components/Charts";
@@ -17,6 +18,7 @@ export default function Results() {
   const r = data.readiness;
   return (
     <Page title="My results" sub="How you compare and how you are improving.">
+      <CoachCard compact />
       <div className="grid g4" style={{ marginBottom: 16 }}>
         <Stat k="My readiness" v={r.me} d="out of 100" />
         <Stat k="My university average" v={r.university} />

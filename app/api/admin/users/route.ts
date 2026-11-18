@@ -2,8 +2,10 @@ export const dynamic = "force-dynamic";
 import type { Role } from "@prisma/client";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
-import { requireRole } from "@/lib/auth";
+import { requireRole, HttpError } from "@/lib/auth";
 import { handle } from "@/lib/http";
+import { audit } from "@/lib/audit";
+import { hashPassword, tempPassword } from "@/lib/password";
 
 const STAFF_ROLES: Role[] = ["FACULTY", "HOD", "CAMPUS_ADMIN", "FOCAL", "CHAIR", "ADMIN"];
 
@@ -42,4 +44,24 @@ export const GET = handle(async (req: Request) => {
     }),
   ]);
   return { total, users };
+});
+
+const NewUser = z.object({
+  name: z.string().trim().min(2).max(80),
+  email: z.string().email().max(120),
+  role: z.enum(["FOCAL", "ADMIN"]),
+  universityId: z.string().optional(),
+});
+
+/** Create a focal person or another super admin directly. Returns a temporary password, shown once. */
+export const POST = handle(async (req: Request) => {
+  const u = await requireRole("ADMIN");
+  const b = NewUser.parse(await req.json());
+  if (b.role === "FOCAL" && !b.universityId) throw new HttpError(400, "Choose the university for the focal person.");
+  const email = b.email.toLowerCase();
+  if (await prisma.user.findUnique({ where: { email } })) throw new HttpError(409, "This email already has an account. Edit it instead.");
+  const temp = tempPassword();
+  const created = await prisma.user.create({ data: { name: b.name, email, role: b.role, status: "ACTIVE", universityId: b.role === "FOCAL" ? b.universityId : null, passwordHash: hashPassword(temp, true), mustChangePassword: true } });
+  await audit(u.id, "user.create", created.id, { role: b.role });
+  return { ok: true, tempPassword: temp };
 });

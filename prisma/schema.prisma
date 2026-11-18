@@ -64,6 +64,7 @@ enum AttemptType {
 enum QuestionScope {
   NATIONAL    // shared national bank, goes through review
   DEPARTMENT  // a department's own bank, usable only in its own lab tests
+  UNIVERSITY  // only for students of the author's university (practice, mocks and lab tests)
 }
 
 enum LabMode {
@@ -147,7 +148,13 @@ model User {
   lastSeenAt       DateTime?
   failedLogins     Int           @default(0)
   lockedUntil      DateTime?
+  passwordHash     String?       // scrypt, see lib/password.ts
+  mustChangePassword Boolean     @default(false)
+  designation      String?       // focal persons: job title at the university
   createdAt        DateTime      @default(now())
+
+  uploads       Upload[]
+  coach         CoachAdvice?
 
   accounts      Account[]
   profile       Profile?
@@ -877,4 +884,42 @@ model LabTest {
   attempts         Attempt[]
 
   @@index([universityId, departmentId])
+}
+
+
+/** Files users upload as proof: student enrollment proof, focal person appointment letter. */
+model Upload {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind      String   // ENROLLMENT_PROOF, FOCAL_PROOF
+  filename  String
+  mime      String
+  size      Int
+  data      Bytes
+  createdAt DateTime @default(now())
+
+  @@index([userId, kind])
+}
+
+/** Server errors, for the super admin logs page. */
+model ErrorLog {
+  id        String   @id @default(cuid())
+  path      String
+  method    String
+  message   String
+  stack     String?
+  userId    String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+/** AI coach advice, refreshed at most once a day per student. */
+model CoachAdvice {
+  userId    String   @id
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  day       String
+  content   Json
+  updatedAt DateTime @updatedAt
 }

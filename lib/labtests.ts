@@ -41,7 +41,9 @@ export const LabTestInput = z.object({
 
 /** Which questions a staff member may put on a lab paper. */
 export function paperPoolWhere(u: SessionUser, source: "DEPARTMENT" | "NATIONAL" | "BOTH", departmentId?: string | null): Prisma.QuestionWhereInput {
-  const dept: Prisma.QuestionWhereInput = { scope: "DEPARTMENT", status: "LIVE", ...(departmentId ? { ownerDepartmentId: departmentId } : u.role === "ADMIN" ? {} : { authorUniversityId: u.universityId ?? "-" }) };
+  const own: Prisma.QuestionWhereInput = { scope: "DEPARTMENT", status: "LIVE", ...(departmentId ? { ownerDepartmentId: departmentId } : u.role === "ADMIN" ? {} : { authorUniversityId: u.universityId ?? "-" }) };
+  const uniBank: Prisma.QuestionWhereInput = { scope: "UNIVERSITY", status: "LIVE", ...(u.role === "ADMIN" ? {} : { authorUniversityId: u.universityId ?? "-" }) };
+  const dept: Prisma.QuestionWhereInput = { OR: [own, uniBank] };
   const national: Prisma.QuestionWhereInput = { scope: "NATIONAL", status: "LIVE", secure: false };
   return source === "DEPARTMENT" ? dept : source === "NATIONAL" ? national : { OR: [dept, national] };
 }

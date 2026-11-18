@@ -1,4 +1,5 @@
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 import ExcelJS from "exceljs";
 import { prisma } from "@/lib/db";
 import { requireRole, HttpError } from "@/lib/auth";
@@ -6,12 +7,14 @@ import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
 import { normalisePhone } from "@/lib/otp";
+import { hashPassword, tempPassword } from "@/lib/password";
 
 /**
  * Bulk upload students from Excel or a Moodle user export (CSV saved as .xlsx).
  * Columns: full_name, roll_number, email, phone, program, semester, section, campus, department.
  * Moodle exports use firstname, lastname, idnumber, email, which are also accepted.
- * Uploaded students are created as VERIFIED because the university supplied them.
+ * Uploaded students are created as VERIFIED because the university supplied them. Each new student gets a
+ * temporary password that must be changed at first sign-in. The login is university plus roll number.
  */
 export const POST = handle(async (req: Request) => {
   const u = await requireRole("CAMPUS_ADMIN");
@@ -32,6 +35,8 @@ export const POST = handle(async (req: Request) => {
   let created = 0, updated = 0;
   const failed: { row: number; error: string }[] = [];
   const newIds: string[] = [];
+  const credentials: { name: string; rollNumber: string; password: string; status: string }[] = [];
+  const resetExisting = form.get("resetExisting") === "yes";
 
   for (let r = 2; r <= ws.rowCount; r++) {
     const row = ws.getRow(r);
@@ -43,14 +48,19 @@ export const POST = handle(async (req: Request) => {
       const email = col(row, "email").toLowerCase() || null;
       const phoneRaw = col(row, "phone", "mobile");
       const phone = phoneRaw ? normalisePhone(phoneRaw) : null;
-      if (!email && !phone) throw new Error("Email or phone is required so the student can sign in.");
       const campus = campuses.find((c) => c.name.toLowerCase() === col(row, "campus").toLowerCase()) ?? (campuses.length === 1 ? campuses[0] : undefined);
       const dept = campus?.departments.find((d) => d.name.toLowerCase() === col(row, "department").toLowerCase());
       const existing = await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: roll } } });
-      const userId = existing?.userId ?? (await prisma.user.findFirst({ where: { OR: [...(email ? [{ email }] : []), ...(phone ? [{ phone }] : [])] } }))?.id;
+      const byContact = existing ? null : email || phone ? await prisma.user.findFirst({ where: { OR: [...(email ? [{ email }] : []), ...(phone ? [{ phone }] : [])] } }) : null;
+      if (byContact && byContact.role !== "STUDENT") throw new Error("This email or phone belongs to a staff account.");
+      const userId = existing?.userId ?? byContact?.id;
+      const prev = userId ? await prisma.user.findUnique({ where: { id: userId }, select: { passwordHash: true } }) : null;
+      const temp = !userId || !prev?.passwordHash || resetExisting ? tempPassword() : null;
+      const pw = temp ? { passwordHash: hashPassword(temp, true), mustChangePassword: true } : {};
       const user = userId
-        ? await prisma.user.update({ where: { id: userId }, data: { status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id, name } })
-        : await prisma.user.create({ data: { email, phone, name, status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id } });
+        ? await prisma.user.update({ where: { id: userId }, data: { status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id, name, ...pw } })
+        : await prisma.user.create({ data: { email, phone, name, role: "STUDENT", status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id, ...pw } });
+      if (temp) credentials.push({ name, rollNumber: roll, password: temp, status: userId ? "password reset" : "new" });
       const data = {
         fullName: name, universityId, rollNumber: roll, program: col(row, "program") || "Not given", semester: col(row, "semester") || "7",
         section: col(row, "section") || null, campusId: campus?.id ?? null, departmentId: dept?.id ?? null, verifiedById: u.id, verifiedAt: new Date(),
@@ -61,7 +71,7 @@ export const POST = handle(async (req: Request) => {
       failed.push({ row: r, error: (e as Error).message.slice(0, 200) });
     }
   }
-  if (newIds.length) await notify(newIds, "Your NSCT Ready account is ready", "Your university has registered you. Sign in with your email or phone to start preparing.", ["EMAIL", "SMS"], "/signin");
-  await audit(u.id, "students.import", universityId, { created, updated, failed: failed.length });
-  return { created, updated, failed };
+  if (newIds.length) await notify(newIds, "Your NSCT Ready account is ready", "Your university has registered you. Your focal person will give you a temporary password. Sign in with your university and roll number.", ["EMAIL"], "/signin").catch(() => {});
+  await audit(u.id, "students.import", universityId, { created, updated, failed: failed.length, passwords: credentials.length });
+  return { created, updated, failed, credentials };
 });

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api, SUBJECT_SHORT, fmtTime } from "@/components/api";
 import { StatusTracker, SurveyWidget } from "@/components/StudentWidgets";
+import CoachCard from "@/components/CoachCard";
 
 type Dash = {
   profile: { fullName: string; program: string; university: { name: string }; streakDays: number; points: number } | null;
@@ -52,6 +53,7 @@ export default function Dashboard() {
         <div className="row"><Link className="btn sec" href="/plan">My study plan</Link><Link className="btn" href="/mock">Start a mock test</Link></div>
       </div>
       <StatusTracker />
+      <CoachCard />
       <SurveyWidget />
       <div className="card hero" style={{ marginBottom: 16 }}>
         <div className="row between">

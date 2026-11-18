@@ -27,7 +27,7 @@ export const GET = handle(async (req: Request) => {
     prisma.profile.count({ where }),
     prisma.profile.findMany({
       where, orderBy: { createdAt: "desc" }, skip: f.page * 200, take: 200,
-      include: { user: { select: { id: true, email: true, phone: true, status: true, lastSeenAt: true, _count: { select: { attempts: true } } } }, campus: { select: { name: true } }, department: { select: { name: true } } },
+      include: { user: { select: { id: true, email: true, phone: true, status: true, lastSeenAt: true, uploads: { where: { kind: "ENROLLMENT_PROOF" }, select: { id: true, filename: true } }, _count: { select: { attempts: true } } } }, campus: { select: { name: true } }, department: { select: { name: true } } },
     }),
   ]);
   return { total, students: rows };

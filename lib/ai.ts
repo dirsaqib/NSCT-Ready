@@ -94,3 +94,21 @@ Return {"questions":[{"q":"","code":"","options":["","","",""],"answer":0,"expla
     return p.success ? [{ ...p.data, topic: (p.data.topic || topic || "General").slice(0, 60) }] : [];
   });
 }
+
+const CoachOut = z.object({
+  headline: z.string().min(3).max(120),
+  summary: z.string().min(3).max(600),
+  focus: z.array(z.object({ title: z.string(), why: z.string(), action: z.string() })).min(1).max(4),
+  weekPlan: z.array(z.string()).min(1).max(7),
+});
+
+/** Rewrites the rule-based coach plan in a warmer voice. Numbers and subjects must stay the same. */
+export async function coachRewrite(plan: { headline: string; summary: string; focus: { title: string; why: string; action: string }[]; weekPlan: string[] }, data: unknown, lang: string) {
+  const out = await text(
+    FAST,
+    `You are an encouraging NSCT preparation coach for a Pakistani computing student. ${langLine((lang as Lang) || "English")} Rewrite the plan below so it feels personal and motivating. Keep every number, subject and topic exactly as given, do not invent new facts, keep it short. Reply with JSON only, same keys: headline, summary, focus[{title, why, action}], weekPlan[].`,
+    [{ role: "user", content: `Student data: ${JSON.stringify(data).slice(0, 4000)}\n\nPlan: ${JSON.stringify(plan)}` }],
+    900,
+  );
+  return CoachOut.parse(JSON.parse(out.slice(out.indexOf("{"), out.lastIndexOf("}") + 1)));
+}

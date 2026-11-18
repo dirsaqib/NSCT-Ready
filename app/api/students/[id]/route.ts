@@ -5,6 +5,7 @@ import { requireRole, profileScope, HttpError, type SessionUser } from "@/lib/au
 import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
+import { hashPassword, tempPassword } from "@/lib/password";
 
 async function inScope(u: SessionUser, userId: string) {
   const p = await prisma.profile.findFirst({ where: { userId, ...profileScope(u) } });
@@ -27,7 +28,7 @@ export const GET = handle(async (_req: Request, ctx: { params: { id: string } })
 });
 
 const Patch = z.object({
-  action: z.enum(["verify", "reject", "activate", "deactivate", "edit"]),
+  action: z.enum(["verify", "reject", "activate", "deactivate", "edit", "resetPassword"]),
   reason: z.string().max(300).optional(),
   edit: z.object({
     fullName: z.string().trim().min(2).max(80).optional(), rollNumber: z.string().trim().min(2).max(40).optional(), program: z.string().max(80).optional(),
@@ -56,6 +57,11 @@ export const PATCH = handle(async (req: Request, ctx: { params: { id: string } }
     await prisma.user.update({ where: { id }, data: { status: "ACTIVE" } });
   } else if (b.action === "deactivate") {
     await prisma.user.update({ where: { id }, data: { status: "BLOCKED" } });
+  } else if (b.action === "resetPassword") {
+    const temp = tempPassword();
+    await prisma.user.update({ where: { id }, data: { passwordHash: hashPassword(temp, true), mustChangePassword: true, failedLogins: 0, lockedUntil: null } });
+    await audit(u.id, "student.resetPassword", id);
+    return { ok: true, tempPassword: temp };
   } else if (b.edit) {
     await prisma.profile.update({ where: { userId: id }, data: b.edit });
   }

@@ -1,67 +1,73 @@
 "use client";
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-/** Sign in with Google, an email link, or a mobile number and SMS code. */
+const ERRORS: Record<string, string> = {
+  CredentialsSignin: "Login details or password are wrong. After 5 wrong tries the account locks for 15 minutes.",
+  LOCKED: "Too many wrong tries. The account is locked for 15 minutes.",
+  BLOCKED: "This account is deactivated. Contact your university focal person.",
+  PENDING_APPROVAL: "Your focal person registration is waiting for approval by the NSCT super admin. You will get an email once it is approved.",
+};
+
+/** Sign in with a password. Students: university plus roll number, or email. Staff: email. */
 export default function SignIn() {
-  const [mode, setMode] = useState<"phone" | "email">("phone");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [code, setCode] = useState("");
-  const [step, setStep] = useState<"enter" | "code" | "sent">("enter");
+  const [mode, setMode] = useState<"student" | "staff">("student");
+  const [unis, setUnis] = useState<{ id: string; name: string }[]>([]);
+  const [universityId, setUni] = useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const [busy, setBusy] = useState(false);
+  const [registered, setRegistered] = useState<string | null>(null);
 
-  const sendCode = async () => {
+  useEffect(() => {
+    fetch("/api/universities").then((r) => r.json()).then((x) => setUnis(x.universities ?? [])).catch(() => {});
+    const q = new URLSearchParams(location.search);
+    if (q.get("pending")) setMsg(ERRORS.PENDING_APPROVAL);
+    setRegistered(q.get("registered"));
+  }, []);
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setBusy(true); setMsg("");
-    const r = await fetch("/api/auth/otp", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ phone }) });
-    const d = await r.json().catch(() => ({}));
+    const r = await signIn("password", { login, password, universityId: mode === "student" && !login.includes("@") ? universityId : "", redirect: false });
     setBusy(false);
-    if (!r.ok) return setMsg(d.error || "Could not send the code.");
-    setStep("code");
-  };
-  const verify = async () => {
-    setBusy(true); setMsg("");
-    const r = await signIn("phone", { phone, code, redirect: false, callbackUrl: "/dashboard" });
-    setBusy(false);
-    if (r?.error) return setMsg("That code is wrong or has expired. Request a new code.");
+    if (r?.error) return setMsg(ERRORS[r.error] ?? ERRORS.CredentialsSignin);
     location.href = "/dashboard";
   };
 
   return (
     <main className="loading-screen">
-      <div className="card" style={{ maxWidth: 420, width: "100%" }}>
+      <div className="card" style={{ maxWidth: 440, width: "100%" }}>
         <div className="logo-mark" style={{ marginBottom: 14 }}>NR</div>
         <h1>Sign in to NSCT Ready</h1>
         <p className="muted">For every computing student in Pakistan.</p>
-        <button className="btn" style={{ width: "100%", marginTop: 8 }} onClick={() => signIn("google", { callbackUrl: "/dashboard" })}>Continue with Google</button>
-        <div className="tabs" style={{ marginTop: 16 }}>
-          <button className={mode === "phone" ? "on" : ""} onClick={() => setMode("phone")}>Mobile number</button>
-          <button className={mode === "email" ? "on" : ""} onClick={() => setMode("email")}>Email link</button>
+        {registered && <div className="notice info">Registration received. {registered === "focal" ? "The NSCT super admin will review it." : "You can sign in now. Full mocks unlock once your focal person approves you."}</div>}
+        <div className="tabs" style={{ marginTop: 8 }}>
+          <button type="button" className={mode === "student" ? "on" : ""} onClick={() => setMode("student")}>Student</button>
+          <button type="button" className={mode === "staff" ? "on" : ""} onClick={() => setMode("staff")}>Focal person or admin</button>
         </div>
-        {mode === "phone" ? (
-          step === "enter" ? (
-            <div className="grid" style={{ gap: 10 }}>
-              <input type="tel" placeholder="0300 1234567" value={phone} onChange={(e) => setPhone(e.target.value)} />
-              <button className="btn sec" disabled={busy || phone.replace(/\D/g, "").length < 10} onClick={sendCode}>Send code by SMS</button>
-            </div>
-          ) : (
-            <div className="grid" style={{ gap: 10 }}>
-              <p className="small">Enter the 6 digit code sent to {phone}.</p>
-              <input type="text" inputMode="numeric" autoComplete="one-time-code" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))} />
-              <button className="btn" disabled={busy || code.length !== 6} onClick={verify}>Sign in</button>
-              <button className="btn ghost sm" onClick={() => { setStep("enter"); setCode(""); }}>Use a different number</button>
-            </div>
-          )
-        ) : step === "sent" ? (
-          <div className="notice info">Check your inbox for the sign-in link. It works once and expires in 24 hours.</div>
-        ) : (
-          <form className="grid" style={{ gap: 10 }} onSubmit={async (e) => { e.preventDefault(); await signIn("email", { email, callbackUrl: "/dashboard", redirect: false }); setStep("sent"); }}>
-            <input type="email" required placeholder="you@university.edu.pk" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <button className="btn sec" type="submit">Email me a link</button>
-          </form>
-        )}
+        <form className="grid" style={{ gap: 10 }} onSubmit={submit}>
+          {mode === "student" && !login.includes("@") && (
+            <label className="f">University
+              <select required value={universityId} onChange={(e) => setUni(e.target.value)}>
+                <option value="">Select your university</option>{unis.map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}
+              </select>
+            </label>
+          )}
+          <label className="f">{mode === "student" ? "Roll number or email" : "Official email"}
+            <input type={mode === "staff" ? "email" : "text"} required autoComplete="username" value={login} onChange={(e) => setLogin(e.target.value)} placeholder={mode === "student" ? "As on your university card" : "you@university.edu.pk"} />
+          </label>
+          <label className="f">Password<input type="password" required autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+          <button className="btn" disabled={busy} type="submit">{busy ? "Signing in" : "Sign in"}</button>
+        </form>
         {msg && <div className="notice bad" style={{ marginTop: 12 }}>{msg}</div>}
+        <div className="small" style={{ marginTop: 16, display: "grid", gap: 6 }}>
+          {mode === "student"
+            ? <span>New student? <a href="/signup">Register with your enrollment proof</a></span>
+            : <span>University focal person? <a href="/signup/focal">Register your university</a></span>}
+          <span className="muted">Forgot your password? Students ask their focal person to reset it. Focal persons contact the NSCT super admin.</span>
+        </div>
         <p className="tiny muted" style={{ marginTop: 16 }}>By signing in you agree to the <a href="/terms">terms</a> and <a href="/privacy">privacy policy</a>.</p>
       </div>
     </main>

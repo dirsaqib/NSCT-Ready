@@ -14,8 +14,9 @@ export default function Landing() {
           AI tutor that explains your mistakes in English or Urdu.
         </p>
         <div className="row" style={{ marginTop: 20 }}>
-          <Link className="btn acc" href="/signin">Start free</Link>
-          <Link className="btn sec" href="/signin">For universities</Link>
+          <Link className="btn acc" href="/signup">Register free</Link>
+          <Link className="btn sec" href="/signup/focal">For university focal persons</Link>
+          <Link className="btn ghost" href="/signin">Sign in</Link>
         </div>
       </div>
       <div className="grid g3" style={{ marginTop: 20 }}>

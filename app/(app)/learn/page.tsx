@@ -14,7 +14,7 @@ const src = (v: Video) =>
     ? `https://www.youtube-nocookie.com/embed/${v.youtubeId}?rel=0${v.startSec ? `&start=${v.startSec}` : ""}${v.playlist ? `&list=${v.playlist}` : ""}`
     : `https://www.youtube-nocookie.com/embed/videoseries?list=${v.playlist}&rel=0`;
 
-/** Study materials: lectures from Harvard, MIT and other top teachers, played right here, plus short notes per topic. */
+/** Study materials: top video lectures, played right here, plus short notes per topic. */
 export default function Learn() {
   const [sub, setSub] = useState("PS");
   useEffect(() => { const s = new URLSearchParams(location.search).get("subject"); if (s && SUBJECTS.some((x) => x.key === s)) setSub(s); }, []);
@@ -28,7 +28,7 @@ export default function Learn() {
   const play = (v: Video) => { setPlaying(v.id); api("/api/videos/view", { body: { id: v.id } }).catch(() => {}); };
 
   return (
-    <Page title="Study materials" sub="Watch lectures by Harvard, MIT and other top teachers without leaving the site, read short notes, then practise.">
+    <Page title="Study materials" sub="Watch top video lectures without leaving the site, read short notes, then practise.">
       <div className="tabs">{SUBJECTS.map((x) => <button key={x.key} className={sub === x.key ? "on" : ""} onClick={() => { setSub(x.key); setPlaying(null); }}>{x.short} <span className="tiny muted">{x.weight}%</span></button>)}</div>
 
       <div className="card" style={{ marginBottom: 16 }}>

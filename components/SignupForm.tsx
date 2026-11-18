@@ -47,7 +47,7 @@ export default function SignupForm({ kind }: { kind: "student" | "focal" }) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     if (!uni && uniText.trim().length < 3) return setMsg("Enter your university.");
-    if (!dept.trim()) return setMsg("Enter your department.");
+    if (kind === "student" && !dept.trim()) return setMsg("Enter your department.");
     if (fd.get("password") !== fd.get("password2")) return setMsg("The two passwords do not match.");
     fd.delete("password2");
     const f = fd.get("proof") as File | null;

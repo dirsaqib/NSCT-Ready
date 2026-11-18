@@ -55,7 +55,7 @@ export default function Dashboard() {
         <Link href="/learn" className="card">
           <div className="ico" style={{ background: "#E8F0FB" }}>🎬</div>
           <h2 style={{ margin: 0 }}>Study materials</h2>
-          <p className="small muted" style={{ margin: 0 }}>Harvard, MIT and top lectures, plus notes.</p>
+          <p className="small muted" style={{ margin: 0 }}>Top video lectures, plus notes.</p>
           <p className="small" style={{ margin: "6px 0 0" }}>All 10 NSCT subjects</p>
           <span className="btn sm sec" style={{ alignSelf: "flex-start", marginTop: 6 }}>Watch and read</span>
         </Link>

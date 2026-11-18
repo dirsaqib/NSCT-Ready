@@ -78,7 +78,7 @@ td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:0}
 .tbl-wrap{overflow:auto}
 label.f{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
-input[type=text],input[type=number],input[type=email],select,textarea{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font-weight:400;width:100%}
+input[type=text],input[type=number],input[type=email],input[type=search],input[type=tel],input[type=password],input[type=url],input[type=date],input:not([type]),select,textarea{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font-weight:400;width:100%}
 textarea{min-height:80px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:2px solid #9FD3BE;border-color:var(--brand)}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:14px;padding:10px 0}

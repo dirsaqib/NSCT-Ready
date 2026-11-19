@@ -2,11 +2,13 @@ export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
 import { handle } from "@/lib/http";
+import { finalizeExpired } from "@/lib/tests";
 import { band, readiness, studyPlan, priorities } from "@/lib/scoring";
 import { TEST_DATE } from "@/lib/syllabus";
 
 export const GET = handle(async () => {
   const u = await requireUser();
+  await finalizeExpired(u.id).catch(() => null);
   const [profile, mastery, attempts, mistakes, topics] = await Promise.all([
     prisma.profile.findUnique({ where: { userId: u.id }, include: { university: true } }),
     prisma.mastery.findMany({ where: { userId: u.id } }),

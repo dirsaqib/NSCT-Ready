@@ -107,7 +107,7 @@ const UNIVERSITIES: [string, string, string][] = [
   ["University of Kotli", "Kotli", "Azad Jammu and Kashmir"],
   ["Women University of AJK Bagh", "Bagh", "Azad Jammu and Kashmir"],
   ["University of Baltistan", "Skardu", "Gilgit-Baltistan"],
-  // More universities and degree awarding institutes that run computing programs (HEC and NCEAC lists).
+  // More universities and degree awarding institutes that run computing programs (public lists).
   ["Abasyn University", "Peshawar", "Khyber Pakhtunkhwa"],
   ["Abbottabad University of Science and Technology", "Havelian", "Khyber Pakhtunkhwa"],
   ["Al-Ghazali University", "Karachi", "Sindh"],
@@ -251,6 +251,8 @@ async function main() {
   const qs: SeedQ[] = [
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions.json"), "utf8")),
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions2.json"), "utf8")),
+    ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions3.json"), "utf8")),
+    ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions4.json"), "utf8")),
   ];
   const seeded = await prisma.question.count({ where: { source: "SEED" } });
   if (force || seeded < qs.length + 5) {
@@ -349,8 +351,8 @@ async function main() {
     ["Tests", "What is a lab test?", "A test your department runs in a computer lab. Your invigilator shows an access code on the board. Results appear after the department releases them.", 5],
     ["Certificates", "How do I get a certificate?", "Pass a full mock or the national mock with no integrity flags, on a verified account. Employers can check it with its code.", 1],
     ["Payments", "Do I have to pay?", "No. Core preparation is free. Students whose university has a plan or sponsor get Pro free. Others can buy Pro with JazzCash, Easypaisa or a card.", 1],
-    ["About NSCT", "When is NSCT 2027?", "HEC has announced 23 January 2027. Check the official HEC website for any change.", 1],
-    ["About NSCT", "Is NSCT Ready an official HEC platform?", "No. NSCT Ready is an independent preparation platform and is not affiliated with HEC, PSEB or P@SHA.", 2],
+    ["About NSCT", "When is NSCT 2027?", "The test is announced for 23 January 2027. Check the official announcement for any change.", 1],
+    ["About NSCT", "Is NSCT Ready an official platform?", "No. NSCT Ready is an independent, free preparation platform by SimFusion (Private) Limited and is not affiliated with any government body or organisation.", 2],
   ] as [string, string, string, number][])
     if (!(await prisma.faq.count({ where: { question } }))) await prisma.faq.create({ data: { category, question, answer, order } });
 
@@ -361,6 +363,10 @@ async function main() {
     title: "How is NSCT Ready working for you?", audience: "STUDENT", active: true,
     questions: [{ q: "How useful are the mock tests?", type: "scale" }, { q: "How clear are the explanations?", type: "scale" }, { q: "How easy is the site to use?", type: "scale" }, { q: "What should we add or improve?", type: "text" }],
   } });
+  // ---------- Old FAQ wording that named other organisations ----------
+  await prisma.faq.deleteMany({ where: { question: { in: ["Is NSCT Ready an official HEC platform?"] } } });
+  await prisma.faq.updateMany({ where: { question: "When is NSCT 2027?" }, data: { answer: "The test is announced for 23 January 2027. Check the official announcement for any change." } });
+
   // ---------- Study material videos (verified YouTube links from Harvard CS50, MIT and others) ----------
   if ((await prisma.studyVideo.count()) === 0) {
     const CS50_FULL = "LfaMVlDaQ24"; // Harvard CS50 (2023) full course, freeCodeCamp

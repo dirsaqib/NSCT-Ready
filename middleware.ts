@@ -3,12 +3,14 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 const buckets = new Map<string, { n: number; reset: number }>();
-const LIMITS: [RegExp, number][] = [
-  [/^\/api\/signup\//, 20],        // registrations per minute per IP (a lab shares one IP)
-  [/^\/api\/auth\//, 30],
-  [/^\/api\/ai\//, 20],
-  [/^\/api\/payments\//, 10],
-  [/^\/api\//, 240],
+// A whole university lab often shares one public IP, so limits are counted per signed-in browser where
+// possible and per IP only for anonymous requests. Account lockout separately stops password guessing.
+const LIMITS: [RegExp, number, "ip" | "user"][] = [
+  [/^\/api\/signup\//, 300, "ip"],      // registrations per minute per IP: a lab of 200 can register together
+  [/^\/api\/auth\//, 1200, "ip"],       // sign-ins and session checks per minute per IP
+  [/^\/api\/ai\//, 20, "user"],
+  [/^\/api\/payments\//, 10, "user"],
+  [/^\/api\//, 300, "user"],            // per student per minute; autosave uses about 4
 ];
 
 // One address for everyone. Sign-in cookies are tied to a domain, so starting on a Vercel preview
@@ -26,7 +28,9 @@ export function middleware(req: NextRequest) {
   const rule = LIMITS.find(([re]) => re.test(path));
   if (rule) {
     const ip = req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for")?.split(",")[0] || "local";
-    const key = `${rule[0].source}:${ip}`;
+    const session = req.cookies.get("__Secure-next-auth.session-token")?.value ?? req.cookies.get("next-auth.session-token")?.value;
+    const who = rule[2] === "user" && session ? `s:${session.slice(-24)}` : `ip:${ip}`;
+    const key = `${rule[0].source}:${who}`;
     const now = Date.now();
     const b = buckets.get(key);
     if (!b || b.reset < now) buckets.set(key, { n: 1, reset: now + 60000 });

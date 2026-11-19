@@ -1,6 +1,7 @@
 // Test engine. Questions are picked and graded on the server. Correct answers never reach the browser
 // before submission. Supports single answer, multi-select, scenario and coding questions.
 import type { AttemptType, Subject } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { z } from "zod";
 import { prisma } from "./db";
 import { HttpError } from "./errors";
@@ -25,18 +26,27 @@ async function blueprint(key: string) {
   return { counts: fb as Record<string, number>, difficulty: null, durationMin: Math.round((DURATION_SEC[key as AttemptType] ?? 3600) / 60) };
 }
 
-async function pick(subject: Subject, n: number, opts: { topic?: string; difficulty?: number; secure?: boolean; mix?: Record<string, number> | null; universityId?: string | null }) {
+async function pick(subject: Subject, n: number, opts: { topic?: string; difficulty?: number; secure?: boolean; mix?: Record<string, number> | null; universityId?: string | null; exclude?: Set<string> }) {
   // The national bank, plus questions the student's own university added for its students only.
   const scope = opts.universityId ? { OR: [{ scope: "NATIONAL" as const }, { scope: "UNIVERSITY" as const, authorUniversityId: opts.universityId }] } : { scope: "NATIONAL" as const };
-  const rows = await prisma.question.findMany({
+  const all = await prisma.question.findMany({
     where: { subject, status: "LIVE", ...scope, ...(opts.secure === false ? { secure: false } : {}), ...(opts.topic ? { topic: opts.topic } : {}), ...(opts.difficulty ? { difficulty: opts.difficulty } : {}) },
     select: { id: true, difficulty: true },
   });
-  if (!opts.mix) return shuffle(rows).slice(0, n).map((r) => r.id);
+  // Random for every student, and questions this student has not seen yet come first.
+  const ex = opts.exclude;
+  const rows = ex ? [...shuffle(all.filter((r) => !ex.has(r.id))), ...shuffle(all.filter((r) => ex.has(r.id)))] : shuffle(all);
+  if (!opts.mix) return rows.slice(0, n).map((r) => r.id);
   const out: string[] = [];
-  for (const [d, pct] of Object.entries(opts.mix)) out.push(...shuffle(rows.filter((r) => String(r.difficulty) === d)).slice(0, Math.round((n * pct) / 100)).map((r) => r.id));
-  const rest = shuffle(rows.filter((r) => !out.includes(r.id))).map((r) => r.id);
-  return [...out, ...rest].slice(0, n);
+  for (const [d, pct] of Object.entries(opts.mix)) out.push(...rows.filter((r) => String(r.difficulty) === d).slice(0, Math.round((n * pct) / 100)).map((r) => r.id));
+  const rest = rows.filter((r) => !out.includes(r.id)).map((r) => r.id);
+  return shuffle([...out, ...rest.slice(0, Math.max(0, n - out.length))]).slice(0, n);
+}
+
+/** Questions this student has already been given, so new papers prefer fresh ones. */
+async function seenBy(userId: string, types?: AttemptType[]) {
+  const rows = await prisma.attemptItem.findMany({ where: { attempt: { userId, ...(types ? { type: { in: types } } : {}) } }, select: { questionId: true }, take: 20000 });
+  return new Set(rows.map((r) => r.questionId));
 }
 
 // Mock 1 is the gentlest and Mock 3 the hardest, so students can see themselves improve.
@@ -84,9 +94,13 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
   let labTestId: string | undefined;
 
   if (o.type === "MOCK" && o.mockNo) {
-    const paper = await mockPaper(o.mockNo);
-    ids = shuffle([...paper.questionIds]);
-    durationMin = paper.durationMin;
+    // Every student gets their own random paper with the same subject weights and difficulty level,
+    // so neighbours see different questions. Questions from the student's earlier mocks are avoided.
+    const bp = await blueprint("MOCK");
+    const seen = await seenBy(userId, ["MOCK"]);
+    for (const [s, n] of Object.entries(bp.counts)) ids.push(...(await pick(s as Subject, n, { secure: false, mix: MOCK_MIX[o.mockNo] ?? MOCK_MIX[2], exclude: seen, universityId: user.universityId })));
+    ids = shuffle(ids); // a different order for every student too
+    durationMin = bp.durationMin;
     label = `Mock ${o.mockNo}`;
   } else if (o.type === "DIAGNOSTIC" || o.type === "MOCK" || o.type === "NATIONAL_MOCK") {
     if (o.type === "NATIONAL_MOCK") {
@@ -117,7 +131,8 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
     durationMin = Math.max(10, ids.length);
   } else if (o.type === "MINI_MOCK" || o.type === "PRACTICE") {
     if (!o.subject) throw new HttpError(400, "Choose a subject.");
-    ids = await pick(o.subject, o.type === "MINI_MOCK" ? 12 : Math.min(o.count ?? 10, 30), { topic: o.topic, difficulty: o.difficulty, secure: false, universityId: user.universityId });
+    const seen = await seenBy(userId, ["PRACTICE", "MINI_MOCK"]);
+    ids = await pick(o.subject, o.type === "MINI_MOCK" ? 12 : Math.min(o.count ?? 10, 30), { topic: o.topic, difficulty: o.difficulty, secure: false, universityId: user.universityId, exclude: seen });
     label = [o.subject, o.topic, o.difficulty ? `level ${o.difficulty}` : ""].filter(Boolean).join(" · ");
     if (o.type === "MINI_MOCK") durationMin = 15;
   } else if (o.type === "MISTAKES") {
@@ -198,18 +213,15 @@ export async function saveProgress(userId: string, attemptId: string, answers: A
   if (!a || a.submittedAt) throw new HttpError(409, "This test is already submitted.");
   if (a.endsAt && Date.now() > a.endsAt.getTime() + GRACE_SEC * 1000) throw new HttpError(409, "Time is up.");
   const byPos = new Map(a.items.map((i) => [i.position, i]));
-  const ops = answers.map((ans) => {
+  // One bulk update instead of one query per answer.
+  const rows = answers.map((ans) => {
     const it = byPos.get(ans.position);
     if (!it) throw new HttpError(400, "Unknown question.");
-    return prisma.attemptItem.update({
-      where: { id: it.id },
-      data: { chosen: (ans.slots ?? []).map((s) => it.optionOrder[s]).filter((x) => x != null), code: ans.code?.slice(0, 20000), flagged: !!ans.flagged, timeSec: clampTime(ans.timeSec) },
-    });
+    const chosen = (ans.slots ?? []).map((x) => it.optionOrder[x]).filter((x) => x != null);
+    return Prisma.sql`(${it.id}::text, ${chosen}::int[], ${ans.code?.slice(0, 20000) ?? null}::text, ${!!ans.flagged}::boolean, ${clampTime(ans.timeSec)}::int)`;
   });
-  await prisma.$transaction([
-    ...ops,
-    prisma.attempt.update({ where: { id: a.id }, data: { lastSavedAt: new Date(), ...(tabSwitches != null ? { tabSwitches } : {}), ...(fullscreenExits != null ? { fullscreenExits } : {}) } }),
-  ]);
+  if (rows.length) await prisma.$executeRaw`UPDATE "AttemptItem" AS t SET "chosen" = v.chosen, "code" = v.code, "flagged" = v.flagged, "timeSec" = v.ts FROM (VALUES ${Prisma.join(rows)}) AS v(id, chosen, code, flagged, ts) WHERE t.id = v.id`;
+  await prisma.attempt.update({ where: { id: a.id }, data: { lastSavedAt: new Date(), ...(tabSwitches != null ? { tabSwitches } : {}), ...(fullscreenExits != null ? { fullscreenExits } : {}) } });
   return { savedAt: new Date() };
 }
 
@@ -258,7 +270,7 @@ export async function runSample(userId: string, attemptId: string, position: num
 type Graded = { itemId: string; position: number; questionId: string; subject: Subject; topic: string; chosen: number[]; code: string | null; correct: boolean; credit: number; answered: boolean; passed?: number; total?: number; flagged: boolean; timeSec: number };
 
 /** Grade and save. Answers after the deadline (plus grace) are refused and the last auto-save is used. */
-export async function submitAttempt(userId: string, attemptId: string, answers: AnswerInput[], tabSwitches = 0, fullscreenExits = 0) {
+export async function submitAttempt(userId: string, attemptId: string, answers: AnswerInput[], tabSwitches = 0, fullscreenExits = 0, reason?: string) {
   const a = await prisma.attempt.findFirst({ where: { id: attemptId, userId }, include: { items: { include: { question: true } } } });
   if (!a) throw new HttpError(404, "Test not found.");
   if (a.submittedAt) throw new HttpError(409, "This test was already submitted.");
@@ -291,25 +303,35 @@ export async function submitAttempt(userId: string, attemptId: string, answers: 
   const total = counted.length;
   const score = total ? Math.round((100 * raw) / total) : 0;
 
+  // Few, bulk queries: the database is far from the server, so one query per answer timed out on long tests.
+  const perSubject = new Map<Subject, { c: number; t: number }>();
+  const perTopic = new Map<string, { subject: Subject; topic: string; c: number; t: number }>();
+  for (const g of counted) {
+    const s = perSubject.get(g.subject) ?? { c: 0, t: 0 }; s.t++; s.c += g.credit; perSubject.set(g.subject, s);
+    const k = `${g.subject}|${g.topic}`;
+    const tp = perTopic.get(k) ?? { subject: g.subject, topic: g.topic, c: 0, t: 0 }; tp.t++; tp.c += g.credit; perTopic.set(k, tp);
+  }
+  const rightIds = counted.filter((g) => g.correct).map((g) => g.questionId);
+  const wrongIds = counted.filter((g) => !g.correct).map((g) => g.questionId);
+
   await prisma.$transaction(async (tx) => {
-    const perSubject = new Map<Subject, { c: number; t: number }>();
-    const perTopic = new Map<string, { subject: Subject; topic: string; c: number; t: number }>();
-    for (const g of counted) {
-      await tx.attemptItem.update({
-        where: { id: g.itemId },
-        data: { chosen: g.chosen, code: g.code, correct: g.correct, credit: g.credit, flagged: g.flagged, timeSec: g.timeSec, ...(g.passed != null ? { codePassed: g.passed, codeTotal: g.total } : {}) },
-      });
-      await tx.question.update({ where: { id: g.questionId }, data: { timesSeen: { increment: 1 }, timesRight: { increment: g.correct ? 1 : 0 } } });
-      const s = perSubject.get(g.subject) ?? { c: 0, t: 0 }; s.t++; s.c += g.credit; perSubject.set(g.subject, s);
-      const k = `${g.subject}|${g.topic}`;
-      const tp = perTopic.get(k) ?? { subject: g.subject, topic: g.topic, c: 0, t: 0 }; tp.t++; tp.c += g.credit; perTopic.set(k, tp);
-      if (g.correct) await tx.mistake.deleteMany({ where: { userId, questionId: g.questionId } });
-      else if (a.type !== "EMPLOYER_ASSESSMENT") await tx.mistake.upsert({ where: { userId_questionId: { userId, questionId: g.questionId } }, create: { userId, questionId: g.questionId }, update: { addedAt: new Date() } });
+    if (counted.length) {
+      const rows = counted.map((g) => Prisma.sql`(${g.itemId}::text, ${g.chosen}::int[], ${g.code}::text, ${g.correct}::boolean, ${g.credit}::float8, ${g.flagged}::boolean, ${g.timeSec}::int, ${g.passed ?? null}::int, ${g.total ?? null}::int)`);
+      await tx.$executeRaw`UPDATE "AttemptItem" AS t SET "chosen" = v.chosen, "code" = v.code, "correct" = v.correct, "credit" = v.credit, "flagged" = v.flagged, "timeSec" = v.ts, "codePassed" = COALESCE(v.cp, t."codePassed"), "codeTotal" = COALESCE(v.ct, t."codeTotal") FROM (VALUES ${Prisma.join(rows)}) AS v(id, chosen, code, correct, credit, flagged, ts, cp, ct) WHERE t.id = v.id`;
+      await tx.question.updateMany({ where: { id: { in: counted.map((g) => g.questionId) } }, data: { timesSeen: { increment: 1 } } });
+      if (rightIds.length) {
+        await tx.question.updateMany({ where: { id: { in: rightIds } }, data: { timesRight: { increment: 1 } } });
+        await tx.mistake.deleteMany({ where: { userId, questionId: { in: rightIds } } });
+      }
+      if (wrongIds.length && a.type !== "EMPLOYER_ASSESSMENT") {
+        await tx.mistake.updateMany({ where: { userId, questionId: { in: wrongIds } }, data: { addedAt: new Date() } });
+        await tx.mistake.createMany({ data: wrongIds.map((questionId) => ({ userId, questionId })), skipDuplicates: true });
+      }
+      const ms = [...perSubject].map(([subject, v]) => Prisma.sql`(${userId}, ${subject}::"Subject", ${v.c}::float8, ${v.t}::int)`);
+      await tx.$executeRaw`INSERT INTO "Mastery" ("userId", "subject", "correct", "total") VALUES ${Prisma.join(ms)} ON CONFLICT ("userId", "subject") DO UPDATE SET "correct" = "Mastery"."correct" + EXCLUDED."correct", "total" = "Mastery"."total" + EXCLUDED."total"`;
+      const ts = [...perTopic.values()].map((v) => Prisma.sql`(${userId}, ${v.subject}::"Subject", ${v.topic}, ${v.c}::float8, ${v.t}::int)`);
+      await tx.$executeRaw`INSERT INTO "TopicMastery" ("userId", "subject", "topic", "correct", "total") VALUES ${Prisma.join(ts)} ON CONFLICT ("userId", "subject", "topic") DO UPDATE SET "correct" = "TopicMastery"."correct" + EXCLUDED."correct", "total" = "TopicMastery"."total" + EXCLUDED."total"`;
     }
-    for (const [subject, v] of perSubject)
-      await tx.mastery.upsert({ where: { userId_subject: { userId, subject } }, create: { userId, subject, correct: v.c, total: v.t }, update: { correct: { increment: v.c }, total: { increment: v.t } } });
-    for (const v of perTopic.values())
-      await tx.topicMastery.upsert({ where: { userId_subject_topic: { userId, subject: v.subject, topic: v.topic } }, create: { userId, subject: v.subject, topic: v.topic, correct: v.c, total: v.t }, update: { correct: { increment: v.c }, total: { increment: v.t } } });
 
     await tx.attempt.update({ where: { id: a.id }, data: { submittedAt: new Date(), total, correct: raw, score, tabSwitches: Math.max(a.tabSwitches, tabSwitches), fullscreenExits: Math.max(a.fullscreenExits, fullscreenExits) } });
 
@@ -320,11 +342,25 @@ export async function submitAttempt(userId: string, attemptId: string, answers: 
       const st = nextStreak(p.lastActiveDay, p.streakDays);
       await tx.profile.update({
         where: { userId },
-        data: { points: { increment: Math.round(raw * 10) }, streakDays: st.days, lastActiveDay: st.lastDay, readiness: rd.score, bestMock: (a.type === "MOCK" || a.type === "NATIONAL_MOCK") && !a.label && score > p.bestMock ? score : undefined },
+        data: { points: { increment: Math.round(raw * 10) }, streakDays: st.days, lastActiveDay: st.lastDay, readiness: rd.score, bestMock: (a.type === "MOCK" || a.type === "NATIONAL_MOCK") && (!a.label || /^Mock [123]$/.test(a.label)) && score > p.bestMock ? score : undefined },
       });
     }
-  });
+  }, { maxWait: 10000, timeout: 30000 });
 
-  if (!practice) { await percentileFor(a.id); await integrityFlags(a.id); }
+  if (!practice) { await percentileFor(a.id).catch(() => null); await integrityFlags(a.id).catch(() => null); }
+  // Locked-mode tests: record why the test was submitted automatically.
+  if (reason) {
+    const cur = await prisma.attempt.findUnique({ where: { id: a.id }, select: { flags: true } });
+    await prisma.attempt.update({ where: { id: a.id }, data: { flags: [...new Set([...(cur?.flags ?? []), `AUTO_SUBMITTED_${reason}`])] } });
+  }
   return { late, ...(await getAttemptForStudent(userId, attemptId)) };
+}
+
+/**
+ * Timed tests that were abandoned (browser closed, battery died) are submitted with whatever answers
+ * were saved, once their time plus grace has passed. Called when the student next opens the app.
+ */
+export async function finalizeExpired(userId: string) {
+  const open = await prisma.attempt.findMany({ where: { userId, submittedAt: null, endsAt: { lt: new Date(Date.now() - GRACE_SEC * 1000) } }, select: { id: true }, take: 5 });
+  for (const o of open) await submitAttempt(userId, o.id, [], 0, 0, "TIME_ENDED").catch(() => null);
 }

@@ -21,7 +21,7 @@ export default async function Verify({ params }: { params: { code: string } }) {
               <div className="stat"><div className="k">Percentile</div><div className="v">{c.percentile ?? "n/a"}</div></div>
             </div>
             <table><tbody>{Object.entries(c.bySubject).map(([k, v]) => <tr key={k}><td>{SUBJECTS.find((s) => s.key === k)?.name ?? k}</td><td><b>{v}%</b></td></tr>)}</tbody></table>
-            <p className="tiny muted" style={{ marginTop: 14 }}>Code {c.code} · {c.test.replace("_", " ").toLowerCase()} · issued {new Date(c.issuedAt).toLocaleDateString("en-GB")} by {c.issuer}. A practice platform result, not an official HEC NSCT result.</p>
+            <p className="tiny muted" style={{ marginTop: 14 }}>Code {c.code} · {c.test.replace("_", " ").toLowerCase()} · issued {new Date(c.issuedAt).toLocaleDateString("en-GB")} by {c.issuer}. A practice platform result, not an official NSCT result.</p>
           </>
         )}
       </div>

@@ -19,7 +19,7 @@ export default function Privacy() {
 
       <H n={1}>Independence and free service</H>
       <p>
-        The Platform is independent. It is not owned, operated, endorsed or sponsored by the Higher Education Commission, the body that conducts the NSCT, or any university, government department or other organisation.
+        The Platform is independent. It is not owned, operated, endorsed or sponsored by any government body, regulator, testing body, university or other organisation.
         Test names and syllabus references are used only to help students prepare. Scores, readiness estimates and certificates issued on the Platform are practice indicators and are not official NSCT results.
         The Platform is free for students. We do not sell personal data, we do not show third party advertising, and we do not use your data to build advertising profiles.
       </p>

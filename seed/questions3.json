@@ -1,0 +1,6007 @@
+[
+{
+"id": "psc01",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next: 2, 6, 12, 20, 30, ?",
+"o": [
+"44",
+"36",
+"42",
+"40"
+],
+"a": 2,
+"e": "Differences are 4, 6, 8, 10, so the next difference is 12. 30 + 12 = 42."
+},
+{
+"id": "psc02",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next: 1, 1, 2, 3, 5, 8, 13, ?",
+"o": [
+"26",
+"20",
+"21",
+"18"
+],
+"a": 2,
+"e": "Each term is the sum of the two before it. 8 + 13 = 21."
+},
+{
+"id": "psc03",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "Find the missing term: 5, 11, 23, 47, ?",
+"o": [
+"95",
+"94",
+"96",
+"93"
+],
+"a": 0,
+"e": "Each term is double the previous plus 1. 47 x 2 + 1 = 95."
+},
+{
+"id": "psc04",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next: 100, 91, 82, 73, ?",
+"o": [
+"65",
+"64",
+"63",
+"62"
+],
+"a": 1,
+"e": "The series falls by 9 each time. 73 - 9 = 64."
+},
+{
+"id": "psc05",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next: 2, 3, 5, 7, 11, 13, ?",
+"o": [
+"15",
+"17",
+"19",
+"16"
+],
+"a": 1,
+"e": "These are prime numbers. The prime after 13 is 17."
+},
+{
+"id": "psc06",
+"s": "PS",
+"t": "Letter series",
+"d": 1,
+"q": "What comes next: A, C, E, G, ?",
+"o": [
+"K",
+"I",
+"J",
+"H"
+],
+"a": 1,
+"e": "Every second letter is skipped. After G comes I."
+},
+{
+"id": "psc07",
+"s": "PS",
+"t": "Letter series",
+"d": 2,
+"q": "What comes next: AZ, BY, CX, ?",
+"o": [
+"DX",
+"DV",
+"DW",
+"EW"
+],
+"a": 2,
+"e": "The first letter moves forward and the second moves backward. Next is DW."
+},
+{
+"id": "psc08",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A shirt costs Rs. 2,000 and is sold at 25% off. What is the sale price?",
+"o": [
+"Rs. 1,250",
+"Rs. 1,500",
+"Rs. 1,600",
+"Rs. 1,750"
+],
+"a": 1,
+"e": "25% of 2,000 is 500. 2,000 - 500 = 1,500."
+},
+{
+"id": "psc09",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A car travels 180 km in 3 hours. At the same speed, how far does it go in 5 hours?",
+"o": [
+"250 km",
+"320 km",
+"300 km",
+"270 km"
+],
+"a": 2,
+"e": "Speed is 60 km per hour. 60 x 5 = 300 km."
+},
+{
+"id": "psc10",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "If 6 workers finish a job in 10 days, how many days do 15 workers take at the same rate?",
+"o": [
+"6",
+"4",
+"3",
+"5"
+],
+"a": 1,
+"e": "Total work is 60 worker-days. 60 / 15 = 4 days."
+},
+{
+"id": "psc11",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The average of 5 numbers is 18. If one number is removed, the average of the rest is 16. Which number was removed?",
+"o": [
+"26",
+"22",
+"24",
+"28"
+],
+"a": 0,
+"e": "Total was 90. The remaining four total 64. 90 - 64 = 26."
+},
+{
+"id": "psc12",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "A price rises by 20% and then falls by 20%. What is the overall change?",
+"o": [
+"No change",
+"4% increase",
+"4% decrease",
+"2% decrease"
+],
+"a": 2,
+"e": "1.2 x 0.8 = 0.96, so the price is 4% lower than at the start."
+},
+{
+"id": "psc13",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 15% of 240?",
+"o": [
+"36",
+"38",
+"40",
+"32"
+],
+"a": 0,
+"e": "0.15 x 240 = 36."
+},
+{
+"id": "psc14",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 3:2. If there are 40 students, how many are girls?",
+"o": [
+"12",
+"24",
+"16",
+"18"
+],
+"a": 2,
+"e": "Girls are 2 of every 5 students. 40 x 2/5 = 16."
+},
+{
+"id": "psc15",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "A pipe fills a tank in 6 hours and another in 3 hours. Together, how long do they take?",
+"o": [
+"4.5 hours",
+"2.5 hours",
+"2 hours",
+"1.5 hours"
+],
+"a": 2,
+"e": "Rates are 1/6 and 1/3 per hour, which add to 1/2. So 2 hours."
+},
+{
+"id": "psc16",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 1,
+"q": "All programmers are logical. Ali is a programmer. Which must be true?",
+"o": [
+"Ali is logical",
+"Ali is not logical",
+"All logical people are programmers",
+"Ali is a teacher"
+],
+"a": 0,
+"e": "Ali belongs to the set of programmers, all of whom are logical."
+},
+{
+"id": "psc17",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 2,
+"q": "Some cats are black. All black things absorb heat. Which must be true?",
+"o": [
+"No cat absorbs heat",
+"All cats absorb heat",
+"All black things are cats",
+"Some cats absorb heat"
+],
+"a": 3,
+"e": "The cats that are black absorb heat, so at least some cats do."
+},
+{
+"id": "psc18",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 2,
+"q": "If it rains, the match is cancelled. The match was not cancelled. What follows?",
+"o": [
+"Nothing can be said",
+"It did not rain",
+"The match was played indoors",
+"It rained"
+],
+"a": 1,
+"e": "This is modus tollens: if P then Q, not Q, so not P."
+},
+{
+"id": "psc19",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 2,
+"q": "Five people sit in a row. Sara is to the left of Bilal, and Bilal is to the left of Hina. Who is furthest to the right among the three?",
+"o": [
+"Hina",
+"Cannot be found",
+"Bilal",
+"Sara"
+],
+"a": 0,
+"e": "The order is Sara, Bilal, Hina from left to right."
+},
+{
+"id": "psc20",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "Which statement is the negation of 'Every test passed'?",
+"o": [
+"At least one test passed",
+"At least one test failed",
+"No test passed",
+"Every test failed"
+],
+"a": 1,
+"e": "The negation of 'for all' is 'there exists one that does not'."
+},
+{
+"id": "psc21",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 2,
+"q": "A is the brother of B. B is the daughter of C. How is A related to C?",
+"o": [
+"Son",
+"Father",
+"Uncle",
+"Brother"
+],
+"a": 0,
+"e": "A is a sibling of C's daughter, so A is C's son."
+},
+{
+"id": "psc22",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 1,
+"q": "Odd one out: Python, Java, Linux, C++",
+"o": [
+"Java",
+"C++",
+"Linux",
+"Python"
+],
+"a": 2,
+"e": "Linux is an operating system. The others are programming languages."
+},
+{
+"id": "psc23",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 2,
+"q": "Odd one out: TCP, UDP, HTTP, RAM",
+"o": [
+"TCP",
+"HTTP",
+"RAM",
+"UDP"
+],
+"a": 2,
+"e": "RAM is hardware memory. The others are network protocols."
+},
+{
+"id": "psc24",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What is printed?",
+"o": [
+"11",
+"12",
+"7",
+"10"
+],
+"a": 0,
+"e": "5 x 2 = 10, plus 1 gives 11.",
+"code": "x = 5\nx = x * 2 + 1\nprint(x)"
+},
+{
+"id": "psc25",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What is printed?",
+"o": [
+"5",
+"15",
+"9",
+"10"
+],
+"a": 3,
+"e": "range(1, 5) gives 1, 2, 3, 4. Their sum is 10.",
+"code": "s = 0\nfor i in range(1, 5):\n    s += i\nprint(s)"
+},
+{
+"id": "psc26",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "How many times does the loop body run?",
+"o": [
+"6",
+"7",
+"20",
+"8"
+],
+"a": 1,
+"e": "i takes 0, 3, 6, 9, 12, 15, 18. That is 7 values.",
+"code": "for (int i = 0; i < 20; i += 3) { ... }"
+},
+{
+"id": "psc27",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"24",
+"120",
+"60",
+"720"
+],
+"a": 1,
+"e": "f computes the factorial. 5! = 120.",
+"code": "def f(n):\n    return 1 if n <= 1 else n * f(n - 1)\nprint(f(5))"
+},
+{
+"id": "psc28",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What is the value of a after: a = 3; b = 4; a, b = b, a + b",
+"o": [
+"3",
+"7",
+"12",
+"4"
+],
+"a": 3,
+"e": "Both right-hand values are computed first: a becomes 4 and b becomes 7."
+},
+{
+"id": "psc29",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"3",
+"Error",
+"1",
+"4"
+],
+"a": 3,
+"e": "y refers to the same list as x, so appending through y changes x too.",
+"code": "x = [1, 2, 3]\ny = x\ny.append(4)\nprint(len(x))"
+},
+{
+"id": "psc30",
+"s": "PS",
+"t": "Data interpretation",
+"d": 2,
+"q": "Sales were 200 in January and 250 in February. What is the percentage increase?",
+"o": [
+"12.5%",
+"20%",
+"50%",
+"25%"
+],
+"a": 3,
+"e": "The increase is 50, which is 25% of 200."
+},
+{
+"id": "psc31",
+"s": "PS",
+"t": "Data interpretation",
+"d": 2,
+"q": "In a class of 50, 30 passed Maths and 25 passed English. 10 passed neither. How many passed both?",
+"o": [
+"10",
+"15",
+"5",
+"20"
+],
+"a": 1,
+"e": "40 passed at least one. 30 + 25 - 40 = 15 passed both."
+},
+{
+"id": "psc32",
+"s": "PS",
+"t": "Data interpretation",
+"d": 1,
+"q": "A pie chart shows 90 degrees for Networks. What percentage is that?",
+"o": [
+"30%",
+"90%",
+"20%",
+"25%"
+],
+"a": 3,
+"e": "90 out of 360 degrees is one quarter, or 25%."
+},
+{
+"id": "psc33",
+"s": "PS",
+"t": "Algorithmic thinking",
+"d": 2,
+"q": "You must find a name in a sorted list of 1,000 names by repeatedly halving the list. About how many checks are needed at most?",
+"o": [
+"1000",
+"500",
+"10",
+"100"
+],
+"a": 2,
+"e": "Binary search needs about log2(1000), which is close to 10 checks."
+},
+{
+"id": "psc34",
+"s": "PS",
+"t": "Algorithmic thinking",
+"d": 2,
+"q": "Which is the best first step when a program gives wrong output for one input?",
+"o": [
+"Rewrite the whole program",
+"Change the programming language",
+"Reproduce it with the smallest input that fails",
+"Add more features"
+],
+"a": 2,
+"e": "A minimal failing case makes the bug easiest to find."
+},
+{
+"id": "psc35",
+"s": "PS",
+"t": "Algorithmic thinking",
+"d": 1,
+"q": "Which flowchart symbol is used for a decision?",
+"o": [
+"Rectangle",
+"Parallelogram",
+"Oval",
+"Diamond"
+],
+"a": 3,
+"e": "A diamond shows a yes or no decision."
+},
+{
+"id": "psc36",
+"s": "PS",
+"t": "Algorithmic thinking",
+"d": 3,
+"q": "A task list must be done so that each task comes after the tasks it depends on. Which technique gives a valid order?",
+"o": [
+"Topological sorting",
+"Binary search",
+"Hashing",
+"Bubble sort"
+],
+"a": 0,
+"e": "Topological sorting orders the nodes of a dependency graph."
+},
+{
+"id": "psc37",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A number is increased by 10% to give 220. What was the number?",
+"o": [
+"198",
+"200",
+"242",
+"210"
+],
+"a": 1,
+"e": "x x 1.1 = 220, so x = 200."
+},
+{
+"id": "psc38",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "How many seconds are there in 2.5 hours?",
+"o": [
+"15,000",
+"7,200",
+"9,000",
+"9,600"
+],
+"a": 2,
+"e": "2.5 x 3,600 = 9,000 seconds."
+},
+{
+"id": "psc39",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "Statements: No server is slow. Some computers are servers. Conclusion?",
+"o": [
+"All computers are slow",
+"Some computers are not slow",
+"No computer is slow",
+"Some servers are slow"
+],
+"a": 1,
+"e": "The computers that are servers are not slow, so some computers are not slow."
+},
+{
+"id": "psc40",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next: 1, 4, 9, 16, 25, ?",
+"o": [
+"36",
+"30",
+"49",
+"35"
+],
+"a": 0,
+"e": "These are square numbers. 6 x 6 = 36."
+},
+{
+"id": "progc01",
+"s": "PROG",
+"t": "Basics",
+"d": 1,
+"q": "Which data type is best for storing a true or false value?",
+"o": [
+"float",
+"char",
+"int",
+"boolean"
+],
+"a": 3,
+"e": "A boolean holds only true or false."
+},
+{
+"id": "progc02",
+"s": "PROG",
+"t": "Basics",
+"d": 1,
+"q": "What does the % operator return in most languages, for example 17 % 5?",
+"o": [
+"3",
+"2",
+"3.4",
+"12"
+],
+"a": 1,
+"e": "It returns the remainder. 17 divided by 5 leaves 2."
+},
+{
+"id": "progc03",
+"s": "PROG",
+"t": "Basics",
+"d": 2,
+"q": "In integer division, what is 7 / 2 in C or Java when both are int?",
+"o": [
+"3.5",
+"4",
+"Error",
+"3"
+],
+"a": 3,
+"e": "Integer division drops the fractional part."
+},
+{
+"id": "progc04",
+"s": "PROG",
+"t": "Basics",
+"d": 2,
+"q": "Which of these is a valid variable name in most languages?",
+"o": [
+"2total",
+"total sum",
+"_total",
+"total-sum"
+],
+"a": 2,
+"e": "Names may start with a letter or underscore and cannot contain spaces or hyphens."
+},
+{
+"id": "progc05",
+"s": "PROG",
+"t": "Basics",
+"d": 1,
+"q": "Which keyword exits a loop immediately?",
+"o": [
+"continue",
+"break",
+"exit",
+"return"
+],
+"a": 1,
+"e": "break leaves the nearest loop. continue skips to the next iteration."
+},
+{
+"id": "progc06",
+"s": "PROG",
+"t": "Basics",
+"d": 2,
+"q": "What is the result of the expression 2 + 3 * 4?",
+"o": [
+"14",
+"9",
+"20",
+"24"
+],
+"a": 0,
+"e": "Multiplication comes first: 3 x 4 = 12, then 2 + 12 = 14."
+},
+{
+"id": "progc07",
+"s": "PROG",
+"t": "Control flow",
+"d": 2,
+"q": "What does continue do inside a loop?",
+"o": [
+"Skips to the next iteration",
+"Leaves the loop",
+"Restarts the loop from the first iteration",
+"Ends the program"
+],
+"a": 0,
+"e": "continue skips the rest of the current iteration."
+},
+{
+"id": "progc08",
+"s": "PROG",
+"t": "Control flow",
+"d": 2,
+"q": "Which loop always runs its body at least once?",
+"o": [
+"while",
+"do-while",
+"for",
+"foreach"
+],
+"a": 1,
+"e": "A do-while loop checks its condition after the body."
+},
+{
+"id": "progc09",
+"s": "PROG",
+"t": "Functions",
+"d": 2,
+"q": "What is recursion?",
+"o": [
+"A function that calls itself",
+"A function with no parameters",
+"A loop that never ends",
+"Calling a function from another file"
+],
+"a": 0,
+"e": "A recursive function calls itself on a smaller problem."
+},
+{
+"id": "progc10",
+"s": "PROG",
+"t": "Functions",
+"d": 3,
+"q": "Which is required to stop a recursive function from running forever?",
+"o": [
+"A return type of void",
+"A loop inside it",
+"A base case",
+"A global variable"
+],
+"a": 2,
+"e": "The base case returns without calling the function again."
+},
+{
+"id": "progc11",
+"s": "PROG",
+"t": "Functions",
+"d": 2,
+"q": "Passing an argument 'by value' means:",
+"o": [
+"The function gets a copy",
+"The function gets the original variable",
+"The value is stored in a file",
+"The value is constant"
+],
+"a": 0,
+"e": "Changes inside the function do not affect the caller's variable."
+},
+{
+"id": "progc12",
+"s": "PROG",
+"t": "OOP",
+"d": 1,
+"q": "In OOP, a class is:",
+"o": [
+"A blueprint for creating objects",
+"A function",
+"An object in memory",
+"A variable"
+],
+"a": 0,
+"e": "Objects are created from a class, which defines their data and methods."
+},
+{
+"id": "progc13",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "Which OOP principle hides internal data and exposes it only through methods?",
+"o": [
+"Encapsulation",
+"Inheritance",
+"Polymorphism",
+"Abstraction of hardware"
+],
+"a": 0,
+"e": "Encapsulation keeps fields private and controls access through methods."
+},
+{
+"id": "progc14",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "A Dog class extends an Animal class. This is an example of:",
+"o": [
+"Encapsulation",
+"Overloading",
+"Composition",
+"Inheritance"
+],
+"a": 3,
+"e": "The child class inherits fields and methods from the parent."
+},
+{
+"id": "progc15",
+"s": "PROG",
+"t": "OOP",
+"d": 3,
+"q": "Calling the same method name on different objects and getting behaviour specific to each class is called:",
+"o": [
+"Serialization",
+"Recursion",
+"Polymorphism",
+"Encapsulation"
+],
+"a": 2,
+"e": "Polymorphism lets one interface have many implementations."
+},
+{
+"id": "progc16",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "What is a constructor?",
+"o": [
+"A method that deletes an object",
+"A loop",
+"A static variable",
+"A special method that initializes a new object"
+],
+"a": 3,
+"e": "The constructor runs when an object is created."
+},
+{
+"id": "progc17",
+"s": "PROG",
+"t": "OOP",
+"d": 3,
+"q": "Two methods in one class have the same name but different parameter lists. This is:",
+"o": [
+"Hiding",
+"Overriding",
+"Overloading",
+"Inheritance"
+],
+"a": 2,
+"e": "Overloading is decided at compile time by the parameter list."
+},
+{
+"id": "progc18",
+"s": "PROG",
+"t": "OOP",
+"d": 3,
+"q": "A subclass provides its own version of a method defined in its parent. This is:",
+"o": [
+"Overriding",
+"Encapsulation",
+"Abstraction",
+"Overloading"
+],
+"a": 0,
+"e": "Overriding replaces the inherited behaviour at run time."
+},
+{
+"id": "progc19",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "An abstract class:",
+"o": [
+"Cannot have any methods",
+"Cannot be instantiated directly",
+"Must have only static methods",
+"Is the same as an object"
+],
+"a": 1,
+"e": "You create objects of its concrete subclasses instead."
+},
+{
+"id": "progc20",
+"s": "PROG",
+"t": "Python",
+"d": 1,
+"q": "What is printed by print(type(3.0))?",
+"o": [
+"<class 'str'>",
+"<class 'double'>",
+"<class 'int'>",
+"<class 'float'>"
+],
+"a": 3,
+"e": "3.0 is a floating point number in Python."
+},
+{
+"id": "progc21",
+"s": "PROG",
+"t": "Python",
+"d": 2,
+"q": "What does len('hello') return?",
+"o": [
+"6",
+"5",
+"Error",
+"4"
+],
+"a": 1,
+"e": "The string has five characters."
+},
+{
+"id": "progc22",
+"s": "PROG",
+"t": "Python",
+"d": 2,
+"q": "What is the output of print('abc'[::-1])?",
+"o": [
+"Error",
+"abc",
+"a",
+"cba"
+],
+"a": 3,
+"e": "A slice with step -1 reverses the string."
+},
+{
+"id": "progc23",
+"s": "PROG",
+"t": "Python",
+"d": 2,
+"q": "Which Python structure stores key and value pairs?",
+"o": [
+"dictionary",
+"set",
+"tuple",
+"list"
+],
+"a": 0,
+"e": "A dictionary maps keys to values."
+},
+{
+"id": "progc24",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "Which statement about Python tuples is true?",
+"o": [
+"They cannot hold different types",
+"They are immutable",
+"They are always sorted",
+"They can be changed after creation"
+],
+"a": 1,
+"e": "Tuples cannot be modified once created."
+},
+{
+"id": "progc25",
+"s": "PROG",
+"t": "Python",
+"d": 2,
+"q": "What is the result of [x * 2 for x in range(3)]?",
+"o": [
+"[1, 2, 3]",
+"[0, 2, 4]",
+"[0, 1, 2]",
+"[2, 4, 6]"
+],
+"a": 1,
+"e": "range(3) gives 0, 1, 2, each doubled."
+},
+{
+"id": "progc26",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What does this print? print(bool([]))",
+"o": [
+"None",
+"False",
+"True",
+"Error"
+],
+"a": 1,
+"e": "An empty list is falsy in Python."
+},
+{
+"id": "progc27",
+"s": "PROG",
+"t": "C and C++",
+"d": 2,
+"q": "In C, what does the & operator return when placed before a variable, as in &x?",
+"o": [
+"A reference count",
+"The value of x",
+"x squared",
+"The address of x"
+],
+"a": 3,
+"e": "& gives the memory address of the variable."
+},
+{
+"id": "progc28",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "What is a pointer?",
+"o": [
+"A type of loop",
+"A function name",
+"A variable that stores a memory address",
+"A constant value"
+],
+"a": 2,
+"e": "A pointer holds the address of another variable."
+},
+{
+"id": "progc29",
+"s": "PROG",
+"t": "C and C++",
+"d": 2,
+"q": "Which header is needed for printf in C?",
+"o": [
+"<stdlib.h>",
+"<iostream>",
+"<stdio.h>",
+"<string.h>"
+],
+"a": 2,
+"e": "printf is declared in stdio.h."
+},
+{
+"id": "progc30",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "Memory allocated with malloc in C must be released with:",
+"o": [
+"release",
+"free",
+"Nothing, it is automatic",
+"delete"
+],
+"a": 1,
+"e": "free returns heap memory. Forgetting it causes a memory leak."
+},
+{
+"id": "progc31",
+"s": "PROG",
+"t": "Java",
+"d": 2,
+"q": "In Java, which keyword creates a new object?",
+"o": [
+"new",
+"make",
+"alloc",
+"create"
+],
+"a": 0,
+"e": "Objects are created with new followed by a constructor call."
+},
+{
+"id": "progc32",
+"s": "PROG",
+"t": "Java",
+"d": 2,
+"q": "Which Java method is the entry point of a program?",
+"o": [
+"run()",
+"main()",
+"start()",
+"init()"
+],
+"a": 1,
+"e": "public static void main(String[] args) is where execution starts."
+},
+{
+"id": "progc33",
+"s": "PROG",
+"t": "Java",
+"d": 3,
+"q": "In Java, a String compared with == checks:",
+"o": [
+"Character by character equality",
+"Whether both refer to the same object",
+"Length only",
+"Alphabetical order"
+],
+"a": 1,
+"e": "Use equals() to compare the text itself."
+},
+{
+"id": "progc34",
+"s": "PROG",
+"t": "Errors and exceptions",
+"d": 2,
+"q": "Which block always runs, whether or not an exception occurs?",
+"o": [
+"catch",
+"finally",
+"try",
+"throw"
+],
+"a": 1,
+"e": "finally is used for clean-up such as closing files."
+},
+{
+"id": "progc35",
+"s": "PROG",
+"t": "Errors and exceptions",
+"d": 2,
+"q": "Dividing an integer by zero at run time usually causes:",
+"o": [
+"A run-time exception",
+"A syntax error",
+"A warning only",
+"Nothing"
+],
+"a": 0,
+"e": "The program compiles but fails while running."
+},
+{
+"id": "progc36",
+"s": "PROG",
+"t": "Errors and exceptions",
+"d": 1,
+"q": "A missing semicolon in C is an example of:",
+"o": [
+"A run-time error",
+"A logic error",
+"A security error",
+"A syntax error"
+],
+"a": 3,
+"e": "The compiler rejects code that breaks the language grammar."
+},
+{
+"id": "progc37",
+"s": "PROG",
+"t": "Basics",
+"d": 3,
+"q": "What is the value of x after: int x = 10; x += x++ + ++x; (in Java)",
+"o": [
+"30",
+"31",
+"32",
+"33"
+],
+"a": 2,
+"e": "x++ gives 10 (x becomes 11), ++x gives 12. 10 + 10 + 12 = 32."
+},
+{
+"id": "progc38",
+"s": "PROG",
+"t": "Basics",
+"d": 2,
+"q": "Which number system uses only the digits 0 and 1?",
+"o": [
+"Decimal",
+"Hexadecimal",
+"Binary",
+"Octal"
+],
+"a": 2,
+"e": "Binary is base 2."
+},
+{
+"id": "progc39",
+"s": "PROG",
+"t": "Basics",
+"d": 2,
+"q": "What is binary 1011 in decimal?",
+"o": [
+"9",
+"13",
+"10",
+"11"
+],
+"a": 3,
+"e": "8 + 0 + 2 + 1 = 11."
+},
+{
+"id": "progc40",
+"s": "PROG",
+"t": "Basics",
+"d": 3,
+"q": "What is hexadecimal FF in decimal?",
+"o": [
+"255",
+"215",
+"155",
+"256"
+],
+"a": 0,
+"e": "15 x 16 + 15 = 255."
+},
+{
+"id": "dsac01",
+"s": "DSA",
+"t": "Complexity",
+"d": 1,
+"q": "What is the time complexity of accessing an array element by index?",
+"o": [
+"O(n log n)",
+"O(1)",
+"O(n)",
+"O(log n)"
+],
+"a": 1,
+"e": "The address is computed directly from the index."
+},
+{
+"id": "dsac02",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the worst-case time of linear search on n items?",
+"o": [
+"O(log n)",
+"O(n)",
+"O(n^2)",
+"O(1)"
+],
+"a": 1,
+"e": "It may have to check every item."
+},
+{
+"id": "dsac03",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "Two nested loops, each running n times, take:",
+"o": [
+"O(2n)",
+"O(log n)",
+"O(n^2)",
+"O(n)"
+],
+"a": 2,
+"e": "n iterations times n iterations gives n squared."
+},
+{
+"id": "dsac04",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "Which grows fastest as n becomes large?",
+"o": [
+"n^2",
+"n^3",
+"2^n",
+"n log n"
+],
+"a": 2,
+"e": "Exponential growth beats any polynomial."
+},
+{
+"id": "dsac05",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "Binary search requires the data to be:",
+"o": [
+"Unique",
+"Stored in a linked list",
+"Sorted",
+"Numeric only"
+],
+"a": 2,
+"e": "It discards half of a sorted range at each step."
+},
+{
+"id": "dsac06",
+"s": "DSA",
+"t": "Sorting",
+"d": 2,
+"q": "What is the average time complexity of merge sort?",
+"o": [
+"O(n log n)",
+"O(n)",
+"O(log n)",
+"O(n^2)"
+],
+"a": 0,
+"e": "Merge sort splits in halves and merges in linear time per level."
+},
+{
+"id": "dsac07",
+"s": "DSA",
+"t": "Sorting",
+"d": 3,
+"q": "What is the worst-case time complexity of quicksort?",
+"o": [
+"O(n log n)",
+"O(n)",
+"O(log n)",
+"O(n^2)"
+],
+"a": 3,
+"e": "Bad pivots, such as always the smallest item, give quadratic time."
+},
+{
+"id": "dsac08",
+"s": "DSA",
+"t": "Sorting",
+"d": 2,
+"q": "Which sort repeatedly swaps adjacent items that are out of order?",
+"o": [
+"Bubble sort",
+"Quick sort",
+"Merge sort",
+"Heap sort"
+],
+"a": 0,
+"e": "Bubble sort moves large items to the end by adjacent swaps."
+},
+{
+"id": "dsac09",
+"s": "DSA",
+"t": "Sorting",
+"d": 3,
+"q": "A stable sort is one that:",
+"o": [
+"Never uses extra memory",
+"Works only on integers",
+"Keeps equal items in their original relative order",
+"Always runs in O(n log n)"
+],
+"a": 2,
+"e": "Stability matters when sorting records by several keys."
+},
+{
+"id": "dsac10",
+"s": "DSA",
+"t": "Sorting",
+"d": 2,
+"q": "Which sort works well on a nearly sorted array?",
+"o": [
+"Quick sort with first-element pivot",
+"Insertion sort",
+"Selection sort",
+"Heap sort"
+],
+"a": 1,
+"e": "Insertion sort runs close to O(n) when few items are out of place."
+},
+{
+"id": "dsac11",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 1,
+"q": "A stack follows which order?",
+"o": [
+"LIFO",
+"FIFO",
+"Sorted",
+"Random"
+],
+"a": 0,
+"e": "Last in, first out."
+},
+{
+"id": "dsac12",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 1,
+"q": "A queue follows which order?",
+"o": [
+"FIFO",
+"LIFO",
+"Priority only",
+"Random"
+],
+"a": 0,
+"e": "First in, first out."
+},
+{
+"id": "dsac13",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 2,
+"q": "Which data structure is used to check balanced brackets in an expression?",
+"o": [
+"Queue",
+"Stack",
+"Hash table",
+"Graph"
+],
+"a": 1,
+"e": "Push opening brackets and pop when a closing bracket appears."
+},
+{
+"id": "dsac14",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 2,
+"q": "Function calls and returns are managed using:",
+"o": [
+"A queue",
+"A graph",
+"A call stack",
+"A heap tree"
+],
+"a": 2,
+"e": "Each call pushes a frame. Returning pops it."
+},
+{
+"id": "dsac15",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 3,
+"q": "A priority queue is usually implemented with:",
+"o": [
+"A stack",
+"A binary heap",
+"An array sorted after every insert",
+"A linked list only"
+],
+"a": 1,
+"e": "A heap gives O(log n) insert and remove."
+},
+{
+"id": "dsac16",
+"s": "DSA",
+"t": "Linked lists",
+"d": 2,
+"q": "What is the time to insert a node at the head of a singly linked list?",
+"o": [
+"O(log n)",
+"O(1)",
+"O(n^2)",
+"O(n)"
+],
+"a": 1,
+"e": "Only the head pointer and one link change."
+},
+{
+"id": "dsac17",
+"s": "DSA",
+"t": "Linked lists",
+"d": 2,
+"q": "Compared with an array, a linked list is worse at:",
+"o": [
+"Random access by index",
+"Growing in size",
+"Deleting the first item",
+"Insertion at the front"
+],
+"a": 0,
+"e": "Reaching item k requires walking k links."
+},
+{
+"id": "dsac18",
+"s": "DSA",
+"t": "Linked lists",
+"d": 3,
+"q": "In a doubly linked list, each node stores:",
+"o": [
+"Two data values",
+"Data, a next pointer and a previous pointer",
+"Data and one pointer",
+"Only data"
+],
+"a": 1,
+"e": "The extra pointer allows movement in both directions."
+},
+{
+"id": "dsac19",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "In a binary search tree, an in-order traversal visits keys in:",
+"o": [
+"Descending order",
+"Level order",
+"Ascending order",
+"Random order"
+],
+"a": 2,
+"e": "Left subtree, node, right subtree gives sorted order."
+},
+{
+"id": "dsac20",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "What is the height of a balanced binary tree with n nodes, roughly?",
+"o": [
+"log n",
+"n",
+"n/2",
+"sqrt n"
+],
+"a": 0,
+"e": "Each level doubles the number of nodes."
+},
+{
+"id": "dsac21",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "Searching in an unbalanced BST can degrade to:",
+"o": [
+"O(log n)",
+"O(n log n)",
+"O(n)",
+"O(1)"
+],
+"a": 2,
+"e": "Inserting sorted keys makes the tree a chain."
+},
+{
+"id": "dsac22",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "Which traversal visits the root before its children?",
+"o": [
+"In-order",
+"Pre-order",
+"None",
+"Post-order"
+],
+"a": 1,
+"e": "Pre-order is root, left, right."
+},
+{
+"id": "dsac23",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "AVL and red-black trees are examples of:",
+"o": [
+"Heaps",
+"Graphs with cycles",
+"Self-balancing binary search trees",
+"Hash tables"
+],
+"a": 2,
+"e": "They rebalance on insert and delete to keep height logarithmic."
+},
+{
+"id": "dsac24",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "In a max-heap, the largest element is:",
+"o": [
+"In the middle",
+"At the root",
+"At a leaf",
+"Anywhere"
+],
+"a": 1,
+"e": "Every parent is at least as large as its children."
+},
+{
+"id": "dsac25",
+"s": "DSA",
+"t": "Hashing",
+"d": 2,
+"q": "What is the average time to look up a key in a hash table?",
+"o": [
+"O(1)",
+"O(n)",
+"O(log n)",
+"O(n log n)"
+],
+"a": 0,
+"e": "A good hash function sends each key straight to its bucket."
+},
+{
+"id": "dsac26",
+"s": "DSA",
+"t": "Hashing",
+"d": 2,
+"q": "When two keys hash to the same slot, this is called:",
+"o": [
+"An overflow",
+"A collision",
+"A rotation",
+"A traversal"
+],
+"a": 1,
+"e": "Collisions are handled by chaining or open addressing."
+},
+{
+"id": "dsac27",
+"s": "DSA",
+"t": "Hashing",
+"d": 3,
+"q": "Which collision method stores colliding keys in a linked list at each slot?",
+"o": [
+"Double hashing",
+"Separate chaining",
+"Rehashing",
+"Linear probing"
+],
+"a": 1,
+"e": "Each bucket holds a list of the entries that hash to it."
+},
+{
+"id": "dsac28",
+"s": "DSA",
+"t": "Graphs",
+"d": 2,
+"q": "Which traversal uses a queue?",
+"o": [
+"Breadth-first search",
+"Depth-first search",
+"Binary search",
+"In-order traversal"
+],
+"a": 0,
+"e": "BFS explores level by level using a queue."
+},
+{
+"id": "dsac29",
+"s": "DSA",
+"t": "Graphs",
+"d": 2,
+"q": "Which traversal is naturally written with recursion or a stack?",
+"o": [
+"Depth-first search",
+"Breadth-first search",
+"Prim's algorithm",
+"Dijkstra's algorithm"
+],
+"a": 0,
+"e": "DFS goes deep before backtracking."
+},
+{
+"id": "dsac30",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "Dijkstra's algorithm finds:",
+"o": [
+"Shortest paths from one source with non-negative weights",
+"All cycles",
+"A minimum spanning tree",
+"A topological order"
+],
+"a": 0,
+"e": "It fails with negative edge weights."
+},
+{
+"id": "dsac31",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "Which algorithm finds a minimum spanning tree?",
+"o": [
+"Binary search",
+"Breadth-first search",
+"Floyd's cycle detection",
+"Kruskal's algorithm"
+],
+"a": 3,
+"e": "Kruskal and Prim both build minimum spanning trees."
+},
+{
+"id": "dsac32",
+"s": "DSA",
+"t": "Graphs",
+"d": 2,
+"q": "A graph with V vertices stored as an adjacency matrix uses how much memory?",
+"o": [
+"O(log V)",
+"O(V^2)",
+"O(V)",
+"O(E)"
+],
+"a": 1,
+"e": "The matrix has one cell for every pair of vertices."
+},
+{
+"id": "dsac33",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "Shortest paths in a graph with some negative edges (no negative cycles) can be found with:",
+"o": [
+"Bellman-Ford algorithm",
+"Dijkstra's algorithm",
+"Prim's algorithm",
+"DFS only"
+],
+"a": 0,
+"e": "Bellman-Ford relaxes all edges V - 1 times."
+},
+{
+"id": "dsac34",
+"s": "DSA",
+"t": "Algorithm design",
+"d": 3,
+"q": "Solving overlapping subproblems once and storing their results is called:",
+"o": [
+"Dynamic programming",
+"Greedy method",
+"Divide and conquer",
+"Brute force"
+],
+"a": 0,
+"e": "Memoization or tabulation avoids repeated work."
+},
+{
+"id": "dsac35",
+"s": "DSA",
+"t": "Algorithm design",
+"d": 2,
+"q": "Merge sort is an example of which strategy?",
+"o": [
+"Divide and conquer",
+"Greedy",
+"Backtracking",
+"Dynamic programming"
+],
+"a": 0,
+"e": "It divides the array, sorts halves and combines them."
+},
+{
+"id": "dsac36",
+"s": "DSA",
+"t": "Algorithm design",
+"d": 3,
+"q": "Always taking the locally best choice at each step is the:",
+"o": [
+"Backtracking approach",
+"Greedy approach",
+"Dynamic programming approach",
+"Brute force approach"
+],
+"a": 1,
+"e": "Greedy works when local choices lead to a global optimum, as in coin change for standard coins."
+},
+{
+"id": "dsac37",
+"s": "DSA",
+"t": "Algorithm design",
+"d": 3,
+"q": "Solving N-Queens by placing queens and undoing bad placements is:",
+"o": [
+"Greedy",
+"Backtracking",
+"Hashing",
+"Sorting"
+],
+"a": 1,
+"e": "Backtracking explores choices and reverts on failure."
+},
+{
+"id": "dsac38",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "What is the time complexity of T(n) = 2T(n/2) + n?",
+"o": [
+"O(n^2)",
+"O(n)",
+"O(n log n)",
+"O(log n)"
+],
+"a": 2,
+"e": "By the master theorem this is the merge sort recurrence."
+},
+{
+"id": "dsac39",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 2,
+"q": "What is the postfix form of A + B * C?",
+"o": [
+"A B C * +",
+"A B + C *",
+"+ A * B C",
+"A + B C *"
+],
+"a": 0,
+"e": "B * C is done first, so it becomes A B C * +."
+},
+{
+"id": "dsac40",
+"s": "DSA",
+"t": "Complexity",
+"d": 1,
+"q": "Which notation describes an upper bound on growth?",
+"o": [
+"Big Theta",
+"Big Omega",
+"Big O",
+"Little omega"
+],
+"a": 2,
+"e": "Big O gives an upper bound."
+},
+{
+"id": "dbc01",
+"s": "DB",
+"t": "SQL",
+"d": 1,
+"q": "Which SQL command retrieves data?",
+"o": [
+"UPDATE",
+"SELECT",
+"DELETE",
+"INSERT"
+],
+"a": 1,
+"e": "SELECT reads rows from tables."
+},
+{
+"id": "dbc02",
+"s": "DB",
+"t": "SQL",
+"d": 1,
+"q": "Which clause filters rows in a SELECT?",
+"o": [
+"GROUP BY",
+"ORDER BY",
+"WHERE",
+"FROM"
+],
+"a": 2,
+"e": "WHERE keeps only rows that meet a condition."
+},
+{
+"id": "dbc03",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which clause filters groups after aggregation?",
+"o": [
+"WHERE",
+"ORDER BY",
+"HAVING",
+"LIMIT"
+],
+"a": 2,
+"e": "HAVING works on grouped results, WHERE on individual rows."
+},
+{
+"id": "dbc04",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "What does COUNT(*) return?",
+"o": [
+"The number of rows",
+"The largest value",
+"The sum of a column",
+"The number of columns"
+],
+"a": 0,
+"e": "COUNT(*) counts rows, including those with nulls."
+},
+{
+"id": "dbc05",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which keyword removes duplicate rows from a result?",
+"o": [
+"DISTINCT",
+"SINGLE",
+"UNIQUE",
+"DIFFERENT"
+],
+"a": 0,
+"e": "SELECT DISTINCT returns each row once."
+},
+{
+"id": "dbc06",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which statement changes existing rows?",
+"o": [
+"MODIFY",
+"CHANGE",
+"ALTER",
+"UPDATE"
+],
+"a": 3,
+"e": "UPDATE changes data. ALTER changes table structure."
+},
+{
+"id": "dbc07",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which statement removes a table and its structure completely?",
+"o": [
+"REMOVE",
+"DROP",
+"DELETE",
+"TRUNCATE"
+],
+"a": 1,
+"e": "DROP TABLE deletes the table itself."
+},
+{
+"id": "dbc08",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "Which is true about TRUNCATE compared with DELETE without WHERE?",
+"o": [
+"TRUNCATE can filter rows",
+"TRUNCATE removes all rows, usually faster and without row-by-row logging",
+"TRUNCATE keeps the data",
+"They are identical in every way"
+],
+"a": 1,
+"e": "TRUNCATE deallocates data pages instead of deleting row by row."
+},
+{
+"id": "dbc09",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which SQL keyword sorts results?",
+"o": [
+"SORT BY",
+"ORDER BY",
+"GROUP BY",
+"ARRANGE"
+],
+"a": 1,
+"e": "ORDER BY sorts ascending by default."
+},
+{
+"id": "dbc10",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "How do you find rows where a column has no value?",
+"o": [
+"column IS NULL",
+"column == NULL",
+"column = NULL",
+"column EMPTY"
+],
+"a": 0,
+"e": "NULL is not equal to anything, so IS NULL is needed."
+},
+{
+"id": "dbc11",
+"s": "DB",
+"t": "Joins",
+"d": 2,
+"q": "An INNER JOIN returns:",
+"o": [
+"Only rows with matching values in both tables",
+"All rows from both tables",
+"Only rows from the left table",
+"Rows with no match"
+],
+"a": 0,
+"e": "Unmatched rows are dropped."
+},
+{
+"id": "dbc12",
+"s": "DB",
+"t": "Joins",
+"d": 2,
+"q": "A LEFT JOIN returns:",
+"o": [
+"All rows from the left table and matches from the right",
+"No rows when there is no match",
+"All rows from the right table",
+"Only matching rows"
+],
+"a": 0,
+"e": "Unmatched right-side columns are filled with NULL."
+},
+{
+"id": "dbc13",
+"s": "DB",
+"t": "Joins",
+"d": 3,
+"q": "A join without any join condition produces:",
+"o": [
+"A Cartesian product",
+"An inner join",
+"A self join",
+"An error always"
+],
+"a": 0,
+"e": "Every row is paired with every other row."
+},
+{
+"id": "dbc14",
+"s": "DB",
+"t": "Joins",
+"d": 3,
+"q": "Joining a table with itself, for example employees and their managers, is a:",
+"o": [
+"Cross join",
+"Outer join",
+"Self join",
+"Natural join"
+],
+"a": 2,
+"e": "The same table is used twice with different aliases."
+},
+{
+"id": "dbc15",
+"s": "DB",
+"t": "Keys",
+"d": 1,
+"q": "A primary key must be:",
+"o": [
+"A foreign key",
+"Unique and not null",
+"Nullable and repeated",
+"A text value"
+],
+"a": 1,
+"e": "It identifies each row uniquely."
+},
+{
+"id": "dbc16",
+"s": "DB",
+"t": "Keys",
+"d": 2,
+"q": "A foreign key:",
+"o": [
+"Must be a number",
+"Cannot be null ever",
+"Identifies each row in its own table",
+"Refers to the primary key of another table"
+],
+"a": 3,
+"e": "It enforces referential integrity between tables."
+},
+{
+"id": "dbc17",
+"s": "DB",
+"t": "Keys",
+"d": 2,
+"q": "A key made of two or more columns is called:",
+"o": [
+"A composite key",
+"A candidate key",
+"An alternate key",
+"A super key only"
+],
+"a": 0,
+"e": "Together the columns identify a row uniquely."
+},
+{
+"id": "dbc18",
+"s": "DB",
+"t": "Keys",
+"d": 3,
+"q": "Any minimal set of columns that can uniquely identify a row is a:",
+"o": [
+"Index",
+"Foreign key",
+"View",
+"Candidate key"
+],
+"a": 3,
+"e": "One candidate key is chosen as the primary key."
+},
+{
+"id": "dbc19",
+"s": "DB",
+"t": "Normalization",
+"d": 2,
+"q": "First normal form (1NF) requires:",
+"o": [
+"Only one table",
+"No transitive dependencies",
+"Atomic values in every column",
+"No partial dependencies"
+],
+"a": 2,
+"e": "Each cell holds a single value, with no repeating groups."
+},
+{
+"id": "dbc20",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "Second normal form removes:",
+"o": [
+"All redundancy",
+"Transitive dependency",
+"Partial dependency on part of a composite key",
+"Repeating groups"
+],
+"a": 2,
+"e": "Every non-key column must depend on the whole key."
+},
+{
+"id": "dbc21",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "Third normal form removes:",
+"o": [
+"Repeating groups",
+"Primary keys",
+"Partial dependencies",
+"Transitive dependencies between non-key columns"
+],
+"a": 3,
+"e": "Non-key columns must depend only on the key."
+},
+{
+"id": "dbc22",
+"s": "DB",
+"t": "Normalization",
+"d": 2,
+"q": "The main goal of normalization is to:",
+"o": [
+"Increase redundancy",
+"Remove all keys",
+"Reduce redundancy and update anomalies",
+"Make queries slower"
+],
+"a": 2,
+"e": "Data is stored once, so updates stay consistent."
+},
+{
+"id": "dbc23",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "Denormalization is sometimes used to:",
+"o": [
+"Save disk space",
+"Enforce 3NF",
+"Remove keys",
+"Speed up read-heavy queries"
+],
+"a": 3,
+"e": "Duplicating some data avoids expensive joins."
+},
+{
+"id": "dbc24",
+"s": "DB",
+"t": "Transactions",
+"d": 2,
+"q": "In ACID, 'A' stands for:",
+"o": [
+"Availability",
+"Atomicity",
+"Authentication",
+"Accuracy"
+],
+"a": 1,
+"e": "A transaction happens completely or not at all."
+},
+{
+"id": "dbc25",
+"s": "DB",
+"t": "Transactions",
+"d": 2,
+"q": "Which command makes a transaction's changes permanent?",
+"o": [
+"END",
+"COMMIT",
+"SAVE",
+"ROLLBACK"
+],
+"a": 1,
+"e": "COMMIT ends the transaction and keeps its changes."
+},
+{
+"id": "dbc26",
+"s": "DB",
+"t": "Transactions",
+"d": 2,
+"q": "ROLLBACK:",
+"o": [
+"Deletes the database",
+"Undoes changes made in the current transaction",
+"Saves changes",
+"Creates a backup"
+],
+"a": 1,
+"e": "The database returns to its state before the transaction."
+},
+{
+"id": "dbc27",
+"s": "DB",
+"t": "Transactions",
+"d": 3,
+"q": "Two transactions each wait for a lock the other holds. This is:",
+"o": [
+"Commit",
+"Normalization",
+"Starvation",
+"Deadlock"
+],
+"a": 3,
+"e": "The DBMS detects it and aborts one transaction."
+},
+{
+"id": "dbc28",
+"s": "DB",
+"t": "Transactions",
+"d": 3,
+"q": "A transaction reads data written by another transaction that has not committed yet. This is a:",
+"o": [
+"Dirty read",
+"Deadlock",
+"Phantom read",
+"Lost update"
+],
+"a": 0,
+"e": "If the other transaction rolls back, the data read never existed."
+},
+{
+"id": "dbc29",
+"s": "DB",
+"t": "Indexing",
+"d": 2,
+"q": "An index on a column mainly speeds up:",
+"o": [
+"Searches and lookups on that column",
+"Backups",
+"Inserts",
+"Deletes of the whole table"
+],
+"a": 0,
+"e": "Indexes trade extra write cost for faster reads."
+},
+{
+"id": "dbc30",
+"s": "DB",
+"t": "Indexing",
+"d": 3,
+"q": "Most relational databases implement indexes as:",
+"o": [
+"B-trees or B+ trees",
+"Linked lists",
+"Queues",
+"Stacks"
+],
+"a": 0,
+"e": "B+ trees keep keys sorted with few disk reads."
+},
+{
+"id": "dbc31",
+"s": "DB",
+"t": "ER modelling",
+"d": 2,
+"q": "In an ER diagram, a rectangle usually represents:",
+"o": [
+"An entity",
+"A relationship",
+"A key",
+"An attribute"
+],
+"a": 0,
+"e": "Diamonds are relationships and ovals are attributes."
+},
+{
+"id": "dbc32",
+"s": "DB",
+"t": "ER modelling",
+"d": 2,
+"q": "A student can enrol in many courses and a course has many students. This relationship is:",
+"o": [
+"Many to many",
+"One to one",
+"None",
+"One to many"
+],
+"a": 0,
+"e": "It is stored using a junction table."
+},
+{
+"id": "dbc33",
+"s": "DB",
+"t": "ER modelling",
+"d": 3,
+"q": "A many-to-many relationship is implemented in a relational database using:",
+"o": [
+"A primary key only",
+"A view",
+"A junction table with two foreign keys",
+"One foreign key"
+],
+"a": 2,
+"e": "The junction table links both entities."
+},
+{
+"id": "dbc34",
+"s": "DB",
+"t": "NoSQL",
+"d": 2,
+"q": "Which is a key-value database?",
+"o": [
+"MySQL",
+"SQL Server",
+"Oracle",
+"Redis"
+],
+"a": 3,
+"e": "Redis stores values under keys, often in memory."
+},
+{
+"id": "dbc35",
+"s": "DB",
+"t": "NoSQL",
+"d": 3,
+"q": "The CAP theorem says a distributed database cannot fully guarantee all three of:",
+"o": [
+"Consistency, Availability, Partition tolerance",
+"Concurrency, Atomicity, Persistence",
+"Cost, Accuracy, Performance",
+"Capacity, Access, Privacy"
+],
+"a": 0,
+"e": "During a network partition you must choose between consistency and availability."
+},
+{
+"id": "dbc36",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which aggregate gives the average of a column?",
+"o": [
+"SUM",
+"MEAN",
+"MID",
+"AVG"
+],
+"a": 3,
+"e": "AVG ignores NULL values."
+},
+{
+"id": "dbc37",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "What does this return? SELECT dept, COUNT(*) FROM emp GROUP BY dept;",
+"o": [
+"List of all employees",
+"Total employees",
+"Number of employees in each department",
+"Departments without employees"
+],
+"a": 2,
+"e": "GROUP BY makes one row per department."
+},
+{
+"id": "dbc38",
+"s": "DB",
+"t": "Views",
+"d": 2,
+"q": "A view in SQL is:",
+"o": [
+"A trigger",
+"A backup copy",
+"A stored virtual table defined by a query",
+"An index"
+],
+"a": 2,
+"e": "It shows data from base tables without storing it again, unless materialized."
+},
+{
+"id": "dbc39",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which SQL category does CREATE TABLE belong to?",
+"o": [
+"DCL",
+"DML",
+"DDL",
+"TCL"
+],
+"a": 2,
+"e": "Data Definition Language defines structure."
+},
+{
+"id": "dbc40",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "GRANT and REVOKE belong to:",
+"o": [
+"DDL",
+"DML",
+"DCL",
+"TCL"
+],
+"a": 2,
+"e": "Data Control Language manages permissions."
+},
+{
+"id": "sec01",
+"s": "SE",
+"t": "SDLC",
+"d": 1,
+"q": "Which SDLC model completes each phase fully before the next begins?",
+"o": [
+"Agile",
+"Scrum",
+"Waterfall",
+"Spiral"
+],
+"a": 2,
+"e": "Waterfall is linear and sequential."
+},
+{
+"id": "sec02",
+"s": "SE",
+"t": "SDLC",
+"d": 2,
+"q": "Which model focuses on risk analysis in repeated cycles?",
+"o": [
+"V-model",
+"Big bang",
+"Waterfall",
+"Spiral"
+],
+"a": 3,
+"e": "Each spiral loop includes a risk assessment."
+},
+{
+"id": "sec03",
+"s": "SE",
+"t": "SDLC",
+"d": 2,
+"q": "In the V-model, each development phase is paired with:",
+"o": [
+"A deployment step",
+"A matching testing phase",
+"A prototype",
+"A sprint"
+],
+"a": 1,
+"e": "For example, unit tests match detailed design."
+},
+{
+"id": "sec04",
+"s": "SE",
+"t": "SDLC",
+"d": 2,
+"q": "Building a quick working model to understand requirements is:",
+"o": [
+"Deployment",
+"Maintenance",
+"Refactoring",
+"Prototyping"
+],
+"a": 3,
+"e": "Users react to the prototype, which clarifies needs."
+},
+{
+"id": "sec05",
+"s": "SE",
+"t": "Agile",
+"d": 1,
+"q": "In Scrum, a fixed time-box for building an increment is called a:",
+"o": [
+"Milestone",
+"Phase",
+"Sprint",
+"Release"
+],
+"a": 2,
+"e": "Sprints usually last one to four weeks."
+},
+{
+"id": "sec06",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "Who owns and prioritises the product backlog in Scrum?",
+"o": [
+"Development team",
+"Customer only",
+"Product Owner",
+"Scrum Master"
+],
+"a": 2,
+"e": "The Product Owner decides what gives the most value."
+},
+{
+"id": "sec07",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "The Scrum Master mainly:",
+"o": [
+"Removes obstacles and guides the Scrum process",
+"Sets the salary",
+"Approves the budget",
+"Writes all the code"
+],
+"a": 0,
+"e": "They are a servant leader for the team."
+},
+{
+"id": "sec08",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "A short daily team meeting in Scrum is called:",
+"o": [
+"Retrospective",
+"Planning poker",
+"Sprint review",
+"Daily stand-up"
+],
+"a": 3,
+"e": "Each member shares progress, plans and blockers."
+},
+{
+"id": "sec09",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "A user story is usually written as:",
+"o": [
+"A database table",
+"A class diagram",
+"A test script",
+"As a [user], I want [goal] so that [benefit]"
+],
+"a": 3,
+"e": "It describes a need from the user's view."
+},
+{
+"id": "sec10",
+"s": "SE",
+"t": "Agile",
+"d": 3,
+"q": "Which meeting is held at the end of a sprint to improve the process?",
+"o": [
+"Backlog grooming",
+"Daily stand-up",
+"Retrospective",
+"Sprint planning"
+],
+"a": 2,
+"e": "The team reflects on what went well and what to change."
+},
+{
+"id": "sec11",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "Which Agile value is listed in the Agile Manifesto?",
+"o": [
+"Contract negotiation over customer collaboration",
+"Individuals and interactions over processes and tools",
+"Following a plan over responding to change",
+"Comprehensive documentation over working software"
+],
+"a": 1,
+"e": "The manifesto values people, working software, collaboration and responding to change."
+},
+{
+"id": "sec12",
+"s": "SE",
+"t": "Requirements",
+"d": 2,
+"q": "'The system shall respond within 2 seconds' is a:",
+"o": [
+"Non-functional requirement",
+"Test case",
+"Design pattern",
+"Functional requirement"
+],
+"a": 0,
+"e": "It describes quality (performance), not a function."
+},
+{
+"id": "sec13",
+"s": "SE",
+"t": "Requirements",
+"d": 2,
+"q": "'The user can reset their password' is a:",
+"o": [
+"Functional requirement",
+"Bug",
+"Non-functional requirement",
+"Constraint only"
+],
+"a": 0,
+"e": "It describes what the system does."
+},
+{
+"id": "sec14",
+"s": "SE",
+"t": "Requirements",
+"d": 3,
+"q": "Uncontrolled growth in a project's requirements after it starts is called:",
+"o": [
+"Regression",
+"Refactoring",
+"Scope creep",
+"Technical debt"
+],
+"a": 2,
+"e": "It causes delays and budget overruns."
+},
+{
+"id": "sec15",
+"s": "SE",
+"t": "Testing",
+"d": 1,
+"q": "Testing a single function in isolation is:",
+"o": [
+"Unit testing",
+"Load testing",
+"System testing",
+"Acceptance testing"
+],
+"a": 0,
+"e": "Unit tests check the smallest pieces of code."
+},
+{
+"id": "sec16",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Testing whether modules work together correctly is:",
+"o": [
+"Alpha testing",
+"Unit testing",
+"Integration testing",
+"Usability testing"
+],
+"a": 2,
+"e": "It checks interfaces between components."
+},
+{
+"id": "sec17",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Re-running tests to make sure a change did not break existing features is:",
+"o": [
+"Regression testing",
+"Beta testing",
+"Smoke testing",
+"Stress testing"
+],
+"a": 0,
+"e": "Regression suites are often automated."
+},
+{
+"id": "sec18",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Testing without seeing the internal code, using only inputs and outputs, is:",
+"o": [
+"Static analysis",
+"White-box testing",
+"Unit testing",
+"Black-box testing"
+],
+"a": 3,
+"e": "The tester checks behaviour against the specification."
+},
+{
+"id": "sec19",
+"s": "SE",
+"t": "Testing",
+"d": 3,
+"q": "For an input that accepts ages 18 to 60, which values are best for boundary value analysis?",
+"o": [
+"30 and 40",
+"17, 18, 60, 61",
+"0 and 100",
+"Only 18"
+],
+"a": 1,
+"e": "Errors often occur at and just outside the edges."
+},
+{
+"id": "sec20",
+"s": "SE",
+"t": "Testing",
+"d": 3,
+"q": "Writing a failing test before writing the code that passes it is:",
+"o": [
+"Test-driven development",
+"Code review",
+"Pair programming",
+"Waterfall"
+],
+"a": 0,
+"e": "TDD follows red, green, refactor."
+},
+{
+"id": "sec21",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Testing done by real users in their own environment before final release is:",
+"o": [
+"Unit testing",
+"Smoke testing",
+"Alpha testing",
+"Beta testing"
+],
+"a": 3,
+"e": "Alpha testing happens at the developer's site."
+},
+{
+"id": "sec22",
+"s": "SE",
+"t": "Design",
+"d": 2,
+"q": "Low coupling and high cohesion lead to:",
+"o": [
+"Slower programs always",
+"Harder maintenance",
+"More bugs",
+"Easier maintenance and reuse"
+],
+"a": 3,
+"e": "Modules are focused and depend little on each other."
+},
+{
+"id": "sec23",
+"s": "SE",
+"t": "Design",
+"d": 3,
+"q": "Which design pattern ensures a class has only one instance?",
+"o": [
+"Adapter",
+"Factory",
+"Observer",
+"Singleton"
+],
+"a": 3,
+"e": "Singleton provides one global access point."
+},
+{
+"id": "sec24",
+"s": "SE",
+"t": "Design",
+"d": 3,
+"q": "Which pattern notifies many objects automatically when one object changes?",
+"o": [
+"Observer",
+"Decorator",
+"Builder",
+"Singleton"
+],
+"a": 0,
+"e": "Subscribers are told about the subject's changes."
+},
+{
+"id": "sec25",
+"s": "SE",
+"t": "Design",
+"d": 3,
+"q": "The 'S' in SOLID stands for:",
+"o": [
+"Secure coding",
+"Static typing",
+"Simple design",
+"Single responsibility principle"
+],
+"a": 3,
+"e": "A class should have one reason to change."
+},
+{
+"id": "sec26",
+"s": "SE",
+"t": "Design",
+"d": 2,
+"q": "MVC stands for:",
+"o": [
+"Multiple View Classes",
+"Main Visual Code",
+"Model View Controller",
+"Module Version Control"
+],
+"a": 2,
+"e": "It separates data, presentation and input handling."
+},
+{
+"id": "sec27",
+"s": "SE",
+"t": "UML",
+"d": 2,
+"q": "Which UML diagram shows classes, their attributes and relationships?",
+"o": [
+"Use case diagram",
+"Class diagram",
+"Sequence diagram",
+"Activity diagram"
+],
+"a": 1,
+"e": "It is the main static structure diagram."
+},
+{
+"id": "sec28",
+"s": "SE",
+"t": "UML",
+"d": 2,
+"q": "Which UML diagram shows the order of messages between objects over time?",
+"o": [
+"Class diagram",
+"Sequence diagram",
+"Component diagram",
+"Deployment diagram"
+],
+"a": 1,
+"e": "Time flows downward in a sequence diagram."
+},
+{
+"id": "sec29",
+"s": "SE",
+"t": "UML",
+"d": 2,
+"q": "Which UML diagram shows actors and what they can do with a system?",
+"o": [
+"Use case diagram",
+"State diagram",
+"Class diagram",
+"Package diagram"
+],
+"a": 0,
+"e": "Actors are linked to the use cases they perform."
+},
+{
+"id": "sec30",
+"s": "SE",
+"t": "Version control",
+"d": 1,
+"q": "Git is a:",
+"o": [
+"Distributed version control system",
+"Programming language",
+"Database",
+"Web server"
+],
+"a": 0,
+"e": "Every clone holds the full history."
+},
+{
+"id": "sec31",
+"s": "SE",
+"t": "Version control",
+"d": 2,
+"q": "Which Git command records staged changes in the history?",
+"o": [
+"git push",
+"git commit",
+"git clone",
+"git status"
+],
+"a": 1,
+"e": "push sends commits to a remote. commit creates them locally."
+},
+{
+"id": "sec32",
+"s": "SE",
+"t": "Version control",
+"d": 2,
+"q": "Which Git command creates a separate line of development?",
+"o": [
+"git log",
+"git branch",
+"git init",
+"git merge"
+],
+"a": 1,
+"e": "Branches let work happen without affecting main."
+},
+{
+"id": "sec33",
+"s": "SE",
+"t": "Version control",
+"d": 3,
+"q": "When Git cannot combine two branches automatically because the same lines changed, this is:",
+"o": [
+"A rebase",
+"A tag",
+"A fast-forward",
+"A merge conflict"
+],
+"a": 3,
+"e": "A person must choose the final content."
+},
+{
+"id": "sec34",
+"s": "SE",
+"t": "DevOps",
+"d": 2,
+"q": "Continuous Integration means:",
+"o": [
+"Writing documents only",
+"Merging code often with automated builds and tests",
+"Manual testing at the end",
+"Releasing once a year"
+],
+"a": 1,
+"e": "Problems are caught soon after each change."
+},
+{
+"id": "sec35",
+"s": "SE",
+"t": "Maintenance",
+"d": 2,
+"q": "Changing software to work on a new operating system is:",
+"o": [
+"Corrective maintenance",
+"Perfective maintenance",
+"Preventive maintenance",
+"Adaptive maintenance"
+],
+"a": 3,
+"e": "Adaptive maintenance adapts to a changed environment."
+},
+{
+"id": "sec36",
+"s": "SE",
+"t": "Maintenance",
+"d": 2,
+"q": "Fixing a reported bug is:",
+"o": [
+"Adaptive maintenance",
+"Corrective maintenance",
+"Perfective maintenance",
+"Preventive maintenance"
+],
+"a": 1,
+"e": "It corrects faults found in use."
+},
+{
+"id": "sec37",
+"s": "SE",
+"t": "Maintenance",
+"d": 3,
+"q": "Improving code structure without changing its behaviour is:",
+"o": [
+"Deployment",
+"Refactoring",
+"Rewriting requirements",
+"Debugging"
+],
+"a": 1,
+"e": "Refactoring makes code easier to understand and change."
+},
+{
+"id": "sec38",
+"s": "SE",
+"t": "Project management",
+"d": 2,
+"q": "The critical path in a project schedule is:",
+"o": [
+"Tasks done by the manager",
+"The longest chain of dependent tasks, which sets the minimum duration",
+"The cheapest set of tasks",
+"Optional tasks"
+],
+"a": 1,
+"e": "Any delay on it delays the whole project."
+},
+{
+"id": "sec39",
+"s": "SE",
+"t": "Estimation",
+"d": 3,
+"q": "COCOMO is used to estimate:",
+"o": [
+"Network speed",
+"Software effort and cost",
+"Database size",
+"Screen resolution"
+],
+"a": 1,
+"e": "It estimates effort from the size of the code."
+},
+{
+"id": "sec40",
+"s": "SE",
+"t": "Quality",
+"d": 2,
+"q": "Code review mainly helps to:",
+"o": [
+"Slow down releases",
+"Remove testing",
+"Find defects early and share knowledge",
+"Increase file size"
+],
+"a": 2,
+"e": "Peers spot problems the author missed."
+},
+{
+"id": "webc01",
+"s": "WEB",
+"t": "HTML",
+"d": 1,
+"q": "What does HTML stand for?",
+"o": [
+"Hyper Text Markup Language",
+"Home Tool Markup Language",
+"Hyperlink Text Management Language",
+"High Transfer Machine Language"
+],
+"a": 0,
+"e": "HTML describes the structure of web pages."
+},
+{
+"id": "webc02",
+"s": "WEB",
+"t": "HTML",
+"d": 1,
+"q": "Which tag creates a hyperlink?",
+"o": [
+"<link>",
+"<href>",
+"<url>",
+"<a>"
+],
+"a": 3,
+"e": "<a href=\"...\"> makes a clickable link."
+},
+{
+"id": "webc03",
+"s": "WEB",
+"t": "HTML",
+"d": 2,
+"q": "Which HTML element is used for the largest heading?",
+"o": [
+"<header>",
+"<head>",
+"<h6>",
+"<h1>"
+],
+"a": 3,
+"e": "Headings range from h1 (largest) to h6."
+},
+{
+"id": "webc04",
+"s": "WEB",
+"t": "HTML",
+"d": 2,
+"q": "Which attribute gives alternative text for an image?",
+"o": [
+"name",
+"title",
+"src",
+"alt"
+],
+"a": 3,
+"e": "alt text helps screen readers and shows when the image fails."
+},
+{
+"id": "webc05",
+"s": "WEB",
+"t": "HTML",
+"d": 2,
+"q": "Which tag is semantic and represents the main navigation links?",
+"o": [
+"<span>",
+"<nav>",
+"<section>",
+"<div>"
+],
+"a": 1,
+"e": "Semantic tags describe meaning, which helps accessibility."
+},
+{
+"id": "webc06",
+"s": "WEB",
+"t": "HTML",
+"d": 2,
+"q": "Which input type hides the characters the user types?",
+"o": [
+"secure",
+"hidden",
+"text",
+"password"
+],
+"a": 3,
+"e": "type=\"password\" masks the input."
+},
+{
+"id": "webc07",
+"s": "WEB",
+"t": "CSS",
+"d": 1,
+"q": "What does CSS control?",
+"o": [
+"The presentation and layout of web pages",
+"Server logic",
+"Database queries",
+"Network routing"
+],
+"a": 0,
+"e": "CSS styles HTML elements."
+},
+{
+"id": "webc08",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "Which CSS selector targets an element with id=\"main\"?",
+"o": [
+".main",
+"main",
+"*main",
+"#main"
+],
+"a": 3,
+"e": "# selects by id and . selects by class."
+},
+{
+"id": "webc09",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "In the CSS box model, the space between content and border is:",
+"o": [
+"Padding",
+"Margin",
+"Gap",
+"Outline"
+],
+"a": 0,
+"e": "Margin is outside the border."
+},
+{
+"id": "webc10",
+"s": "WEB",
+"t": "CSS",
+"d": 3,
+"q": "Which has the highest specificity?",
+"o": [
+"Universal selector",
+"Class selector",
+"ID selector",
+"Element selector"
+],
+"a": 2,
+"e": "IDs outweigh classes, which outweigh elements."
+},
+{
+"id": "webc11",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "Which CSS layout arranges items along one main axis?",
+"o": [
+"Float",
+"Table",
+"Flexbox",
+"Grid"
+],
+"a": 2,
+"e": "Flexbox is one-dimensional. Grid is two-dimensional."
+},
+{
+"id": "webc12",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "Media queries are mainly used for:",
+"o": [
+"Playing videos",
+"Server routing",
+"Database access",
+"Responsive design on different screen sizes"
+],
+"a": 3,
+"e": "Styles change based on the device width."
+},
+{
+"id": "webc13",
+"s": "WEB",
+"t": "JavaScript",
+"d": 1,
+"q": "JavaScript in a web page runs mainly in the:",
+"o": [
+"Router",
+"Database",
+"DNS server",
+"Browser"
+],
+"a": 3,
+"e": "Node.js can also run it on servers."
+},
+{
+"id": "webc14",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "What does === check in JavaScript?",
+"o": [
+"Value and type",
+"Reference only for numbers",
+"Type only",
+"Value only"
+],
+"a": 0,
+"e": "== converts types first, === does not."
+},
+{
+"id": "webc15",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "Which keyword declares a variable that cannot be reassigned?",
+"o": [
+"const",
+"static",
+"var",
+"let"
+],
+"a": 0,
+"e": "const prevents reassignment of the binding."
+},
+{
+"id": "webc16",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "What is the output of typeof null in JavaScript?",
+"o": [
+"'number'",
+"'undefined'",
+"'object'",
+"'null'"
+],
+"a": 2,
+"e": "It is a long-standing quirk of the language."
+},
+{
+"id": "webc17",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What does document.getElementById('x') return when no element has that id?",
+"o": [
+"undefined",
+"An error is thrown",
+"null",
+"An empty string"
+],
+"a": 2,
+"e": "It returns null."
+},
+{
+"id": "webc18",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "Promises and async/await in JavaScript are used for:",
+"o": [
+"Styling pages",
+"Handling asynchronous operations such as network requests",
+"Compiling code",
+"Defining database tables"
+],
+"a": 1,
+"e": "They avoid blocking while waiting for results."
+},
+{
+"id": "webc19",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "The DOM is:",
+"o": [
+"A database",
+"A tree representation of the page that scripts can change",
+"A web server",
+"A CSS framework"
+],
+"a": 1,
+"e": "Document Object Model."
+},
+{
+"id": "webc20",
+"s": "WEB",
+"t": "HTTP",
+"d": 1,
+"q": "Which HTTP method is normally used to request a page?",
+"o": [
+"GET",
+"POST",
+"DELETE",
+"PUT"
+],
+"a": 0,
+"e": "GET retrieves a resource."
+},
+{
+"id": "webc21",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "Which HTTP status code means 'Not Found'?",
+"o": [
+"200",
+"404",
+"500",
+"301"
+],
+"a": 1,
+"e": "404 means the server cannot find the resource."
+},
+{
+"id": "webc22",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "Status code 500 indicates:",
+"o": [
+"Success",
+"Client error",
+"Server error",
+"Redirect"
+],
+"a": 2,
+"e": "5xx codes are server-side failures."
+},
+{
+"id": "webc23",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "Status code 201 means:",
+"o": [
+"Created",
+"No content",
+"Forbidden",
+"OK"
+],
+"a": 0,
+"e": "A new resource was created, often after POST."
+},
+{
+"id": "webc24",
+"s": "WEB",
+"t": "HTTP",
+"d": 3,
+"q": "HTTP is described as stateless because:",
+"o": [
+"It cannot send data",
+"It never uses TCP",
+"Each request is independent, so state must be kept with cookies, tokens or sessions",
+"It encrypts everything"
+],
+"a": 2,
+"e": "The server does not remember earlier requests by default."
+},
+{
+"id": "webc25",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "HTTPS differs from HTTP because it:",
+"o": [
+"Has no headers",
+"Encrypts traffic using TLS",
+"Uses UDP",
+"Is faster always"
+],
+"a": 1,
+"e": "TLS protects confidentiality and integrity."
+},
+{
+"id": "webc26",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "Which status code means the user is not authenticated?",
+"o": [
+"401",
+"403",
+"302",
+"404"
+],
+"a": 0,
+"e": "401 Unauthorized. 403 means authenticated but not allowed."
+},
+{
+"id": "webc27",
+"s": "WEB",
+"t": "APIs",
+"d": 2,
+"q": "REST APIs usually exchange data in:",
+"o": [
+"JSON",
+"Spreadsheets",
+"Binary executables",
+"Word documents"
+],
+"a": 0,
+"e": "JSON is light and easy for programs to parse."
+},
+{
+"id": "webc28",
+"s": "WEB",
+"t": "APIs",
+"d": 2,
+"q": "In REST, which method usually updates an existing resource completely?",
+"o": [
+"POST",
+"GET",
+"PUT",
+"OPTIONS"
+],
+"a": 2,
+"e": "PUT replaces, PATCH partially updates."
+},
+{
+"id": "webc29",
+"s": "WEB",
+"t": "APIs",
+"d": 3,
+"q": "A REST endpoint /users/42 most likely refers to:",
+"o": [
+"The user with id 42",
+"Page 42 of users",
+"42 users",
+"All users"
+],
+"a": 0,
+"e": "The path identifies one resource."
+},
+{
+"id": "webc30",
+"s": "WEB",
+"t": "Web architecture",
+"d": 2,
+"q": "Cookies are stored:",
+"o": [
+"In DNS",
+"In the CSS file",
+"On the database server only",
+"In the user's browser"
+],
+"a": 3,
+"e": "The browser sends them with matching requests."
+},
+{
+"id": "webc31",
+"s": "WEB",
+"t": "Web architecture",
+"d": 2,
+"q": "Which of these is a server-side language or runtime?",
+"o": [
+"Node.js",
+"HTML",
+"SVG",
+"CSS"
+],
+"a": 0,
+"e": "Node.js runs JavaScript on the server."
+},
+{
+"id": "webc32",
+"s": "WEB",
+"t": "Web architecture",
+"d": 3,
+"q": "CORS controls:",
+"o": [
+"Which other origins may call a site's resources from a browser",
+"Server CPU usage",
+"The colour of links",
+"Database indexes"
+],
+"a": 0,
+"e": "Cross-Origin Resource Sharing is enforced by browsers."
+},
+{
+"id": "webc33",
+"s": "WEB",
+"t": "Web architecture",
+"d": 2,
+"q": "A CDN mainly improves:",
+"o": [
+"Code readability",
+"Password strength",
+"Database consistency",
+"Delivery speed by serving content from servers near users"
+],
+"a": 3,
+"e": "Content Delivery Networks cache files worldwide."
+},
+{
+"id": "webc34",
+"s": "WEB",
+"t": "Web architecture",
+"d": 2,
+"q": "In a single-page application, the page:",
+"o": [
+"Updates content dynamically without full reloads",
+"Uses only HTML",
+"Has no JavaScript",
+"Reloads fully on every click"
+],
+"a": 0,
+"e": "Frameworks like React update parts of the page."
+},
+{
+"id": "webc35",
+"s": "WEB",
+"t": "Frameworks",
+"d": 2,
+"q": "React is mainly used for:",
+"o": [
+"Managing databases",
+"Writing operating systems",
+"Configuring routers",
+"Building user interfaces"
+],
+"a": 3,
+"e": "React builds UI from reusable components."
+},
+{
+"id": "webc36",
+"s": "WEB",
+"t": "Frameworks",
+"d": 2,
+"q": "Bootstrap and Tailwind are:",
+"o": [
+"Databases",
+"Programming languages",
+"Web servers",
+"CSS frameworks"
+],
+"a": 3,
+"e": "They speed up styling and responsive layout."
+},
+{
+"id": "webc37",
+"s": "WEB",
+"t": "Web architecture",
+"d": 3,
+"q": "Which storage keeps data in the browser after it is closed and reopened?",
+"o": [
+"The DOM",
+"A JavaScript variable",
+"sessionStorage",
+"localStorage"
+],
+"a": 3,
+"e": "sessionStorage is cleared when the tab closes."
+},
+{
+"id": "webc38",
+"s": "WEB",
+"t": "HTML",
+"d": 3,
+"q": "Which HTML attribute makes a form field mandatory in the browser?",
+"o": [
+"needed",
+"validate",
+"mandatory",
+"required"
+],
+"a": 3,
+"e": "The browser blocks submission until it is filled."
+},
+{
+"id": "webc39",
+"s": "WEB",
+"t": "Accessibility",
+"d": 2,
+"q": "Why should images have alt text?",
+"o": [
+"For SEO only",
+"So screen readers can describe them to blind users",
+"For faster loading",
+"It is required for CSS"
+],
+"a": 1,
+"e": "Accessibility means everyone can use the site."
+},
+{
+"id": "webc40",
+"s": "WEB",
+"t": "Web architecture",
+"d": 2,
+"q": "DNS converts:",
+"o": [
+"Domain names to IP addresses",
+"JSON to XML",
+"IP addresses to MAC addresses",
+"HTML to CSS"
+],
+"a": 0,
+"e": "It works like a phone book for the internet."
+},
+{
+"id": "aic01",
+"s": "AI",
+"t": "ML basics",
+"d": 1,
+"q": "Training a model on data with known labels is:",
+"o": [
+"Unsupervised learning",
+"Clustering",
+"Supervised learning",
+"Reinforcement learning"
+],
+"a": 2,
+"e": "Each example has the correct answer attached."
+},
+{
+"id": "aic02",
+"s": "AI",
+"t": "ML basics",
+"d": 1,
+"q": "Grouping customers by similarity without labels is:",
+"o": [
+"Clustering",
+"Classification",
+"Regression",
+"Reinforcement learning"
+],
+"a": 0,
+"e": "Clustering finds structure in unlabelled data."
+},
+{
+"id": "aic03",
+"s": "AI",
+"t": "ML basics",
+"d": 2,
+"q": "Predicting house prices from features is a:",
+"o": [
+"Classification task",
+"Regression task",
+"Clustering task",
+"Search task"
+],
+"a": 1,
+"e": "The output is a continuous number."
+},
+{
+"id": "aic04",
+"s": "AI",
+"t": "ML basics",
+"d": 2,
+"q": "An agent learning by rewards and penalties is:",
+"o": [
+"Reinforcement learning",
+"Supervised learning",
+"Unsupervised learning",
+"Transfer learning"
+],
+"a": 0,
+"e": "It learns which actions maximise reward."
+},
+{
+"id": "aic05",
+"s": "AI",
+"t": "Model evaluation",
+"d": 2,
+"q": "A model performs very well on training data but poorly on new data. This is:",
+"o": [
+"Underfitting",
+"Regularization",
+"Overfitting",
+"Normalization"
+],
+"a": 2,
+"e": "It memorised the training data instead of general patterns."
+},
+{
+"id": "aic06",
+"s": "AI",
+"t": "Model evaluation",
+"d": 2,
+"q": "Why do we keep a separate test set?",
+"o": [
+"To train faster",
+"To store labels",
+"To increase accuracy artificially",
+"To estimate performance on unseen data"
+],
+"a": 3,
+"e": "Testing on training data gives an over-optimistic result."
+},
+{
+"id": "aic07",
+"s": "AI",
+"t": "Model evaluation",
+"d": 3,
+"q": "Precision is defined as:",
+"o": [
+"TP / (TP + FN)",
+"TP / (TP + FP)",
+"(TP + TN) / total",
+"FP / (FP + TN)"
+],
+"a": 1,
+"e": "Of everything predicted positive, how many were truly positive."
+},
+{
+"id": "aic08",
+"s": "AI",
+"t": "Model evaluation",
+"d": 3,
+"q": "Recall is defined as:",
+"o": [
+"FP / total",
+"TP / (TP + FP)",
+"TP / (TP + FN)",
+"TN / (TN + FP)"
+],
+"a": 2,
+"e": "Of all real positives, how many the model found."
+},
+{
+"id": "aic09",
+"s": "AI",
+"t": "Model evaluation",
+"d": 3,
+"q": "For detecting a rare disease, which metric is usually more important than plain accuracy?",
+"o": [
+"Recall",
+"Number of features",
+"Training time",
+"Learning rate"
+],
+"a": 0,
+"e": "Accuracy can look high by predicting 'healthy' for everyone."
+},
+{
+"id": "aic10",
+"s": "AI",
+"t": "Model evaluation",
+"d": 3,
+"q": "k-fold cross-validation:",
+"o": [
+"Uses k different algorithms",
+"Splits data into k parts and rotates the test part",
+"Removes k features",
+"Trains once on all data"
+],
+"a": 1,
+"e": "It gives a more reliable estimate with limited data."
+},
+{
+"id": "aic11",
+"s": "AI",
+"t": "Model evaluation",
+"d": 2,
+"q": "A confusion matrix shows:",
+"o": [
+"Model weights",
+"Feature importance",
+"Counts of true and false positives and negatives",
+"The learning rate"
+],
+"a": 2,
+"e": "It compares predicted labels against actual labels."
+},
+{
+"id": "aic12",
+"s": "AI",
+"t": "Algorithms",
+"d": 2,
+"q": "Which algorithm classifies a point by the majority label of its nearest neighbours?",
+"o": [
+"Apriori",
+"k-nearest neighbours",
+"k-means",
+"Linear regression"
+],
+"a": 1,
+"e": "KNN is a lazy, instance-based learner."
+},
+{
+"id": "aic13",
+"s": "AI",
+"t": "Algorithms",
+"d": 2,
+"q": "Linear regression fits:",
+"o": [
+"Clusters",
+"A straight line or hyperplane that minimises squared error",
+"A probability tree",
+"A tree"
+],
+"a": 1,
+"e": "It models a linear relationship."
+},
+{
+"id": "aic14",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "Logistic regression is mainly used for:",
+"o": [
+"Binary classification",
+"Clustering",
+"Dimensionality reduction",
+"Regression of prices"
+],
+"a": 0,
+"e": "It outputs a probability using the sigmoid function."
+},
+{
+"id": "aic15",
+"s": "AI",
+"t": "Algorithms",
+"d": 2,
+"q": "A decision tree splits data using:",
+"o": [
+"Feature tests chosen to best separate classes",
+"Only the first column",
+"Random numbers",
+"Neural layers"
+],
+"a": 0,
+"e": "Splits are chosen by measures like Gini or entropy."
+},
+{
+"id": "aic16",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "A random forest is:",
+"o": [
+"An ensemble of many decision trees",
+"A clustering method",
+"One deep tree",
+"A neural network"
+],
+"a": 0,
+"e": "Averaging many trees reduces overfitting."
+},
+{
+"id": "aic17",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "Support vector machines try to find:",
+"o": [
+"The mean of each cluster",
+"The shortest path",
+"The deepest tree",
+"The boundary with the maximum margin between classes"
+],
+"a": 3,
+"e": "Support vectors are the points closest to the boundary."
+},
+{
+"id": "aic18",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "Naive Bayes assumes that features are:",
+"o": [
+"Normally distributed always",
+"Conditionally independent given the class",
+"Correlated",
+"Always numeric"
+],
+"a": 1,
+"e": "The assumption is 'naive' but often works well, for example in spam filtering."
+},
+{
+"id": "aic19",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "PCA is used for:",
+"o": [
+"Reinforcement learning",
+"Classification",
+"Dimensionality reduction",
+"Data labelling"
+],
+"a": 2,
+"e": "It projects data onto directions of greatest variance."
+},
+{
+"id": "aic20",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "In a neural network, an activation function:",
+"o": [
+"Stores data",
+"Deletes neurons",
+"Adds non-linearity to each neuron's output",
+"Splits the dataset"
+],
+"a": 2,
+"e": "Without it, layers would collapse into one linear function."
+},
+{
+"id": "aic21",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "Which activation is common in hidden layers of deep networks?",
+"o": [
+"Identity",
+"ReLU",
+"Linear only",
+"Step function"
+],
+"a": 1,
+"e": "ReLU outputs max(0, x) and trains efficiently."
+},
+{
+"id": "aic22",
+"s": "AI",
+"t": "Neural networks",
+"d": 3,
+"q": "Backpropagation computes:",
+"o": [
+"Class labels",
+"Gradients of the loss with respect to the weights",
+"The dataset size",
+"The number of layers"
+],
+"a": 1,
+"e": "The gradients are then used by gradient descent."
+},
+{
+"id": "aic23",
+"s": "AI",
+"t": "Neural networks",
+"d": 3,
+"q": "The learning rate controls:",
+"o": [
+"The size of each weight update step",
+"The number of layers",
+"The size of the dataset",
+"The number of classes"
+],
+"a": 0,
+"e": "Too high diverges, too low learns slowly."
+},
+{
+"id": "aic24",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "Convolutional neural networks are best known for:",
+"o": [
+"Sorting numbers",
+"Spreadsheet formulas",
+"DNS lookups",
+"Image tasks"
+],
+"a": 3,
+"e": "Convolutions detect local patterns such as edges."
+},
+{
+"id": "aic25",
+"s": "AI",
+"t": "Neural networks",
+"d": 3,
+"q": "Which architecture underlies large language models such as GPT?",
+"o": [
+"CNN",
+"Decision tree",
+"k-means",
+"Transformer"
+],
+"a": 3,
+"e": "Transformers use self-attention over the input sequence."
+},
+{
+"id": "aic26",
+"s": "AI",
+"t": "Neural networks",
+"d": 3,
+"q": "Dropout during training:",
+"o": [
+"Increases the learning rate",
+"Randomly disables some neurons to reduce overfitting",
+"Removes data rows",
+"Adds new layers"
+],
+"a": 1,
+"e": "The network cannot rely on any single neuron."
+},
+{
+"id": "aic27",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "One complete pass through the whole training set is called:",
+"o": [
+"A batch",
+"An epoch",
+"A layer",
+"A label"
+],
+"a": 1,
+"e": "Training usually runs for many epochs."
+},
+{
+"id": "aic28",
+"s": "AI",
+"t": "Data preparation",
+"d": 2,
+"q": "Scaling features to a similar range is called:",
+"o": [
+"Normalization or standardization",
+"Clustering",
+"Pruning",
+"Labelling"
+],
+"a": 0,
+"e": "It helps gradient-based and distance-based methods."
+},
+{
+"id": "aic29",
+"s": "AI",
+"t": "Data preparation",
+"d": 2,
+"q": "Converting a category such as city into binary columns is:",
+"o": [
+"Sampling",
+"One-hot encoding",
+"Pruning",
+"Normalization"
+],
+"a": 1,
+"e": "Each category gets its own 0 or 1 column."
+},
+{
+"id": "aic30",
+"s": "AI",
+"t": "Data preparation",
+"d": 3,
+"q": "A dataset where 98% of samples are one class is:",
+"o": [
+"Clustered",
+"Balanced",
+"Imbalanced",
+"Normalized"
+],
+"a": 2,
+"e": "Techniques like resampling or class weights help."
+},
+{
+"id": "aic31",
+"s": "AI",
+"t": "Classical AI",
+"d": 2,
+"q": "Which search uses a heuristic plus path cost to find the shortest path?",
+"o": [
+"Breadth-first search",
+"Depth-first search",
+"Random search",
+"A* search"
+],
+"a": 3,
+"e": "A* uses f(n) = g(n) + h(n)."
+},
+{
+"id": "aic32",
+"s": "AI",
+"t": "Classical AI",
+"d": 3,
+"q": "For A* to always find the optimal path, its heuristic must be:",
+"o": [
+"Larger than the true cost",
+"Random",
+"Admissible, never overestimating the true cost",
+"Always zero"
+],
+"a": 2,
+"e": "An admissible heuristic keeps A* optimal."
+},
+{
+"id": "aic33",
+"s": "AI",
+"t": "Classical AI",
+"d": 3,
+"q": "Minimax is used in:",
+"o": [
+"Database indexing",
+"Image recognition",
+"Two-player games like chess",
+"Sorting"
+],
+"a": 2,
+"e": "It assumes the opponent plays optimally."
+},
+{
+"id": "aic34",
+"s": "AI",
+"t": "Classical AI",
+"d": 3,
+"q": "Alpha-beta pruning:",
+"o": [
+"Adds randomness",
+"Changes the result of minimax",
+"Only works for one player",
+"Skips branches that cannot affect the final decision"
+],
+"a": 3,
+"e": "It gives the same answer as minimax, faster."
+},
+{
+"id": "aic35",
+"s": "AI",
+"t": "NLP",
+"d": 2,
+"q": "Splitting text into words or sub-words is called:",
+"o": [
+"Parsing trees",
+"Encoding images",
+"Stemming",
+"Tokenization"
+],
+"a": 3,
+"e": "Tokens are the units a model processes."
+},
+{
+"id": "aic36",
+"s": "AI",
+"t": "NLP",
+"d": 2,
+"q": "Classifying a review as positive or negative is:",
+"o": [
+"Sentiment analysis",
+"Speech synthesis",
+"Object detection",
+"Machine translation"
+],
+"a": 0,
+"e": "It detects opinion or emotion in text."
+},
+{
+"id": "aic37",
+"s": "AI",
+"t": "Data analytics",
+"d": 2,
+"q": "Which measure is least affected by extreme outliers?",
+"o": [
+"Mean",
+"Median",
+"Range",
+"Standard deviation"
+],
+"a": 1,
+"e": "The median depends only on the middle value."
+},
+{
+"id": "aic38",
+"s": "AI",
+"t": "Data analytics",
+"d": 2,
+"q": "Which Python library is most used for tables of data (DataFrames)?",
+"o": [
+"pandas",
+"Flask",
+"NumPy only",
+"Django"
+],
+"a": 0,
+"e": "pandas provides DataFrame for analysis."
+},
+{
+"id": "aic39",
+"s": "AI",
+"t": "Data analytics",
+"d": 3,
+"q": "A correlation coefficient of -0.9 means:",
+"o": [
+"A strong negative linear relationship",
+"A weak positive relationship",
+"No relationship",
+"One causes the other"
+],
+"a": 0,
+"e": "As one variable rises, the other falls. Correlation is not causation."
+},
+{
+"id": "aic40",
+"s": "AI",
+"t": "Ethics",
+"d": 2,
+"q": "Bias in an AI model most often comes from:",
+"o": [
+"Using Python",
+"Unrepresentative or biased training data",
+"Too many comments in code",
+"Fast hardware"
+],
+"a": 1,
+"e": "Models learn the patterns, including unfair ones, in their data."
+},
+{
+"id": "netc01",
+"s": "NET",
+"t": "OSI model",
+"d": 1,
+"q": "How many layers does the OSI model have?",
+"o": [
+"9",
+"7",
+"5",
+"4"
+],
+"a": 1,
+"e": "Physical, Data Link, Network, Transport, Session, Presentation, Application."
+},
+{
+"id": "netc02",
+"s": "NET",
+"t": "OSI model",
+"d": 2,
+"q": "Routers work mainly at which OSI layer?",
+"o": [
+"Transport",
+"Network",
+"Physical",
+"Data link"
+],
+"a": 1,
+"e": "They forward packets using IP addresses."
+},
+{
+"id": "netc03",
+"s": "NET",
+"t": "OSI model",
+"d": 2,
+"q": "Switches work mainly at which OSI layer?",
+"o": [
+"Network",
+"Physical",
+"Data link",
+"Application"
+],
+"a": 2,
+"e": "They forward frames using MAC addresses."
+},
+{
+"id": "netc04",
+"s": "NET",
+"t": "OSI model",
+"d": 2,
+"q": "Which layer is responsible for end-to-end delivery and ports?",
+"o": [
+"Network",
+"Session",
+"Physical",
+"Transport"
+],
+"a": 3,
+"e": "TCP and UDP are transport layer protocols."
+},
+{
+"id": "netc05",
+"s": "NET",
+"t": "OSI model",
+"d": 3,
+"q": "Encryption and data format translation belong to which OSI layer?",
+"o": [
+"Session",
+"Application",
+"Presentation",
+"Network"
+],
+"a": 2,
+"e": "The presentation layer handles representation, compression and encryption."
+},
+{
+"id": "netc06",
+"s": "NET",
+"t": "Data link layer",
+"d": 2,
+"q": "A MAC address is how many bits long?",
+"o": [
+"128",
+"64",
+"48",
+"32"
+],
+"a": 2,
+"e": "It is usually written as six pairs of hex digits."
+},
+{
+"id": "netc07",
+"s": "NET",
+"t": "Data link layer",
+"d": 3,
+"q": "Which protocol finds the MAC address for a known IPv4 address on a LAN?",
+"o": [
+"DNS",
+"ARP",
+"ICMP",
+"DHCP"
+],
+"a": 1,
+"e": "ARP broadcasts a request and the owner replies."
+},
+{
+"id": "netc08",
+"s": "NET",
+"t": "Data link layer",
+"d": 3,
+"q": "CRC in a frame is used for:",
+"o": [
+"Routing",
+"Encryption",
+"Error detection",
+"Addressing"
+],
+"a": 2,
+"e": "The receiver recomputes it and discards damaged frames."
+},
+{
+"id": "netc09",
+"s": "NET",
+"t": "Data link layer",
+"d": 2,
+"q": "Ethernet uses which access method in classic shared networks?",
+"o": [
+"CSMA/CA",
+"CSMA/CD",
+"Polling",
+"Token passing"
+],
+"a": 1,
+"e": "Wi-Fi uses CSMA/CA instead."
+},
+{
+"id": "netc10",
+"s": "NET",
+"t": "Network layer",
+"d": 1,
+"q": "An IPv4 address is how many bits long?",
+"o": [
+"128",
+"64",
+"32",
+"48"
+],
+"a": 2,
+"e": "It is written as four numbers from 0 to 255."
+},
+{
+"id": "netc11",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "An IPv6 address is how many bits long?",
+"o": [
+"64",
+"128",
+"32",
+"256"
+],
+"a": 1,
+"e": "IPv6 greatly expands the address space."
+},
+{
+"id": "netc12",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "Which address range is private in IPv4?",
+"o": [
+"8.8.8.0/24",
+"1.1.1.0/24",
+"192.168.0.0/16",
+"200.0.0.0/8"
+],
+"a": 2,
+"e": "10/8, 172.16/12 and 192.168/16 are private ranges."
+},
+{
+"id": "netc13",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in a /24 IPv4 subnet?",
+"o": [
+"254",
+"128",
+"256",
+"255"
+],
+"a": 0,
+"e": "256 addresses minus the network and broadcast addresses."
+},
+{
+"id": "netc14",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "What is the subnet mask for /26?",
+"o": [
+"255.255.255.0",
+"255.255.255.192",
+"255.255.255.128",
+"255.255.255.224"
+],
+"a": 1,
+"e": "26 network bits leave 6 host bits: 256 - 64 = 192."
+},
+{
+"id": "netc15",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "Which protocol does the ping command use?",
+"o": [
+"ICMP",
+"UDP",
+"TCP",
+"ARP"
+],
+"a": 0,
+"e": "Ping sends ICMP echo requests."
+},
+{
+"id": "netc16",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "NAT is used to:",
+"o": [
+"Assign MAC addresses",
+"Encrypt traffic",
+"Resolve domain names",
+"Let many private addresses share one public address"
+],
+"a": 3,
+"e": "It translates addresses at the router."
+},
+{
+"id": "netc17",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which routing protocol is a link-state protocol?",
+"o": [
+"Static routing",
+"OSPF",
+"ARP",
+"RIP"
+],
+"a": 1,
+"e": "OSPF builds a full map and runs Dijkstra's algorithm."
+},
+{
+"id": "netc18",
+"s": "NET",
+"t": "Transport layer",
+"d": 1,
+"q": "Which protocol is connection-oriented and reliable?",
+"o": [
+"IP",
+"ICMP",
+"TCP",
+"UDP"
+],
+"a": 2,
+"e": "TCP uses acknowledgements and retransmission."
+},
+{
+"id": "netc19",
+"s": "NET",
+"t": "Transport layer",
+"d": 2,
+"q": "Which protocol is better for live video calls where speed matters more than perfect delivery?",
+"o": [
+"TCP",
+"FTP",
+"UDP",
+"SMTP"
+],
+"a": 2,
+"e": "UDP has no retransmission delays."
+},
+{
+"id": "netc20",
+"s": "NET",
+"t": "Transport layer",
+"d": 2,
+"q": "The TCP three-way handshake is:",
+"o": [
+"SYN, SYN-ACK, ACK",
+"SYN, FIN, ACK",
+"GET, POST, PUT",
+"ACK, SYN, FIN"
+],
+"a": 0,
+"e": "It sets up the connection before data flows."
+},
+{
+"id": "netc21",
+"s": "NET",
+"t": "Transport layer",
+"d": 3,
+"q": "TCP flow control uses:",
+"o": [
+"A sliding window",
+"ARP",
+"Broadcasts",
+"DNS"
+],
+"a": 0,
+"e": "The receiver advertises how much more data it can accept."
+},
+{
+"id": "netc22",
+"s": "NET",
+"t": "Application layer",
+"d": 1,
+"q": "Which port does HTTPS use by default?",
+"o": [
+"21",
+"443",
+"25",
+"80"
+],
+"a": 1,
+"e": "HTTP uses 80 and HTTPS uses 443."
+},
+{
+"id": "netc23",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "Which protocol assigns IP addresses to devices automatically?",
+"o": [
+"DHCP",
+"DNS",
+"FTP",
+"SNMP"
+],
+"a": 0,
+"e": "Dynamic Host Configuration Protocol."
+},
+{
+"id": "netc24",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "Which protocol sends email between mail servers?",
+"o": [
+"POP3",
+"HTTP",
+"SMTP",
+"IMAP"
+],
+"a": 2,
+"e": "POP3 and IMAP are used to read mail."
+},
+{
+"id": "netc25",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "DNS mainly uses which port?",
+"o": [
+"53",
+"22",
+"110",
+"80"
+],
+"a": 0,
+"e": "Port 53 over UDP, and TCP for large replies."
+},
+{
+"id": "netc26",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "SSH, used for secure remote login, uses port:",
+"o": [
+"25",
+"22",
+"21",
+"23"
+],
+"a": 1,
+"e": "Telnet uses 23 without encryption."
+},
+{
+"id": "netc27",
+"s": "NET",
+"t": "Network devices",
+"d": 1,
+"q": "Which device connects different networks and forwards packets between them?",
+"o": [
+"Router",
+"Hub",
+"Repeater",
+"Switch"
+],
+"a": 0,
+"e": "Routers choose paths between networks."
+},
+{
+"id": "netc28",
+"s": "NET",
+"t": "Network devices",
+"d": 2,
+"q": "A hub differs from a switch because a hub:",
+"o": [
+"Encrypts traffic",
+"Sends frames only to the right port",
+"Routes using IP",
+"Sends incoming data to all ports"
+],
+"a": 3,
+"e": "Hubs cause more collisions and waste bandwidth."
+},
+{
+"id": "netc29",
+"s": "NET",
+"t": "Network topologies",
+"d": 2,
+"q": "In which topology are all devices connected to one central device?",
+"o": [
+"Ring",
+"Star",
+"Bus",
+"Mesh"
+],
+"a": 1,
+"e": "If the central switch fails, the network stops."
+},
+{
+"id": "netc30",
+"s": "NET",
+"t": "Network topologies",
+"d": 2,
+"q": "Which topology gives the most redundancy?",
+"o": [
+"Star",
+"Bus",
+"Full mesh",
+"Ring"
+],
+"a": 2,
+"e": "Every device connects to every other device."
+},
+{
+"id": "netc31",
+"s": "NET",
+"t": "Wireless networks",
+"d": 2,
+"q": "Wi-Fi is defined by which IEEE standard family?",
+"o": [
+"802.1Q",
+"802.3",
+"802.15",
+"802.11"
+],
+"a": 3,
+"e": "802.3 is Ethernet and 802.15 includes Bluetooth."
+},
+{
+"id": "netc32",
+"s": "NET",
+"t": "Wireless networks",
+"d": 3,
+"q": "Which Wi-Fi security protocol is the most secure of these?",
+"o": [
+"WEP",
+"WPA",
+"WPA3",
+"WPA2"
+],
+"a": 2,
+"e": "WEP is broken and WPA3 is the latest."
+},
+{
+"id": "netc33",
+"s": "NET",
+"t": "Data communication",
+"d": 2,
+"q": "Bandwidth is measured in:",
+"o": [
+"Packets per hour",
+"Bits per second",
+"Hertz only",
+"Bytes per minute only"
+],
+"a": 1,
+"e": "For example Mbps or Gbps."
+},
+{
+"id": "netc34",
+"s": "NET",
+"t": "Data communication",
+"d": 3,
+"q": "Which transmission medium is least affected by electromagnetic interference?",
+"o": [
+"Twisted pair",
+"Unshielded copper",
+"Coaxial cable",
+"Fibre optic cable"
+],
+"a": 3,
+"e": "Fibre carries light, not electrical signals."
+},
+{
+"id": "netc35",
+"s": "NET",
+"t": "Data communication",
+"d": 2,
+"q": "Sending data in both directions at the same time is:",
+"o": [
+"Full duplex",
+"Simplex",
+"Half duplex",
+"Multiplex"
+],
+"a": 0,
+"e": "Telephones are full duplex. Walkie-talkies are half duplex."
+},
+{
+"id": "netc36",
+"s": "NET",
+"t": "Cloud computing",
+"d": 1,
+"q": "Gmail is an example of which cloud service model?",
+"o": [
+"IaaS",
+"PaaS",
+"On-premises",
+"SaaS"
+],
+"a": 3,
+"e": "The user only uses the finished software."
+},
+{
+"id": "netc37",
+"s": "NET",
+"t": "Cloud computing",
+"d": 2,
+"q": "Renting virtual machines, storage and networks is:",
+"o": [
+"IaaS",
+"FaaS",
+"SaaS",
+"PaaS"
+],
+"a": 0,
+"e": "You manage the OS and apps, the provider manages the hardware."
+},
+{
+"id": "netc38",
+"s": "NET",
+"t": "Cloud computing",
+"d": 2,
+"q": "A platform where developers deploy code without managing servers or OS, like Heroku, is:",
+"o": [
+"IaaS",
+"DaaS",
+"SaaS",
+"PaaS"
+],
+"a": 3,
+"e": "The provider manages the runtime and infrastructure."
+},
+{
+"id": "netc39",
+"s": "NET",
+"t": "Cloud computing",
+"d": 3,
+"q": "Serverless functions such as AWS Lambda charge mainly for:",
+"o": [
+"Disk only",
+"Execution time and requests",
+"Idle servers",
+"Monthly licences per user"
+],
+"a": 1,
+"e": "You pay when code runs."
+},
+{
+"id": "netc40",
+"s": "NET",
+"t": "Cloud computing",
+"d": 2,
+"q": "A cloud used only by one organisation is a:",
+"o": [
+"Hybrid cloud",
+"Private cloud",
+"Public cloud",
+"Community cloud"
+],
+"a": 1,
+"e": "Hybrid mixes private and public clouds."
+},
+{
+"id": "osc01",
+"s": "OS",
+"t": "Basics",
+"d": 1,
+"q": "The main job of an operating system is to:",
+"o": [
+"Write programs",
+"Design websites",
+"Store passwords only",
+"Manage hardware and provide services to programs"
+],
+"a": 3,
+"e": "It manages CPU, memory, storage and devices."
+},
+{
+"id": "osc02",
+"s": "OS",
+"t": "Basics",
+"d": 2,
+"q": "The core part of the OS that runs with full privileges is the:",
+"o": [
+"Kernel",
+"Browser",
+"Compiler",
+"Shell"
+],
+"a": 0,
+"e": "User programs ask the kernel for services through system calls."
+},
+{
+"id": "osc03",
+"s": "OS",
+"t": "Basics",
+"d": 2,
+"q": "A system call is:",
+"o": [
+"A hardware fault",
+"A compiler error",
+"A phone call to support",
+"A request from a program to the kernel for a service"
+],
+"a": 3,
+"e": "Examples include read, write and fork."
+},
+{
+"id": "osc04",
+"s": "OS",
+"t": "Processes",
+"d": 1,
+"q": "A program in execution is called a:",
+"o": [
+"Thread pool",
+"File",
+"Driver",
+"Process"
+],
+"a": 3,
+"e": "A process has its own memory and state."
+},
+{
+"id": "osc05",
+"s": "OS",
+"t": "Processes",
+"d": 2,
+"q": "Which is NOT a usual process state?",
+"o": [
+"Compiling",
+"Ready",
+"Waiting",
+"Running"
+],
+"a": 0,
+"e": "Processes move between new, ready, running, waiting and terminated."
+},
+{
+"id": "osc06",
+"s": "OS",
+"t": "Processes",
+"d": 2,
+"q": "The OS stores information about each process in a:",
+"o": [
+"Process control block",
+"Boot sector",
+"Cache line",
+"Page table only"
+],
+"a": 0,
+"e": "The PCB holds state, registers, priority and more."
+},
+{
+"id": "osc07",
+"s": "OS",
+"t": "Processes",
+"d": 2,
+"q": "Saving one process's state and loading another's is a:",
+"o": [
+"Context switch",
+"Deadlock",
+"System crash",
+"Page fault"
+],
+"a": 0,
+"e": "Context switches let the CPU be shared."
+},
+{
+"id": "osc08",
+"s": "OS",
+"t": "Processes",
+"d": 3,
+"q": "In Unix, which system call creates a new process?",
+"o": [
+"fork",
+"exec",
+"kill",
+"wait"
+],
+"a": 0,
+"e": "fork copies the calling process. exec then loads a new program."
+},
+{
+"id": "osc09",
+"s": "OS",
+"t": "Threads",
+"d": 2,
+"q": "Threads of the same process share:",
+"o": [
+"Different code",
+"The same memory space",
+"Nothing",
+"Separate registers and stack only, and nothing else"
+],
+"a": 1,
+"e": "Each thread has its own stack and registers but shares the address space."
+},
+{
+"id": "osc10",
+"s": "OS",
+"t": "Threads",
+"d": 3,
+"q": "A race condition happens when:",
+"o": [
+"The result depends on the unpredictable timing of threads accessing shared data",
+"Threads run too slowly",
+"A thread finishes early",
+"Memory is full"
+],
+"a": 0,
+"e": "Locks or atomic operations prevent it."
+},
+{
+"id": "osc11",
+"s": "OS",
+"t": "Scheduling",
+"d": 2,
+"q": "Which scheduling algorithm runs processes in order of arrival?",
+"o": [
+"First come, first served",
+"Round robin",
+"Shortest job first",
+"Priority"
+],
+"a": 0,
+"e": "FCFS is simple but can cause long waits."
+},
+{
+"id": "osc12",
+"s": "OS",
+"t": "Scheduling",
+"d": 2,
+"q": "Round robin scheduling gives each process:",
+"o": [
+"A fixed time slice in turn",
+"Only one run",
+"Priority by size",
+"Unlimited time"
+],
+"a": 0,
+"e": "It is fair and good for time-sharing."
+},
+{
+"id": "osc13",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "Which algorithm gives the minimum average waiting time if burst times are known?",
+"o": [
+"Shortest job first",
+"Round robin",
+"FCFS",
+"Random"
+],
+"a": 0,
+"e": "Running short jobs first reduces total waiting."
+},
+{
+"id": "osc14",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "A low-priority process never getting the CPU is called:",
+"o": [
+"Paging",
+"Thrashing",
+"Starvation",
+"Deadlock"
+],
+"a": 2,
+"e": "Aging gradually raises its priority to fix this."
+},
+{
+"id": "osc15",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "Processes P1, P2, P3 arrive together with bursts 6, 3, 1 ms. Under FCFS, what is P3's waiting time?",
+"o": [
+"10 ms",
+"6 ms",
+"0 ms",
+"9 ms"
+],
+"a": 3,
+"e": "P3 waits for P1 (6) and P2 (3), so 9 ms."
+},
+{
+"id": "osc16",
+"s": "OS",
+"t": "Synchronization",
+"d": 2,
+"q": "A section of code that accesses shared data and must not run in two threads at once is the:",
+"o": [
+"Critical section",
+"Kernel",
+"Heap",
+"Boot loader"
+],
+"a": 0,
+"e": "Mutual exclusion protects it."
+},
+{
+"id": "osc17",
+"s": "OS",
+"t": "Synchronization",
+"d": 3,
+"q": "A semaphore is:",
+"o": [
+"An integer variable used with wait and signal operations for synchronization",
+"A type of memory",
+"A CPU register",
+"A file type"
+],
+"a": 0,
+"e": "It controls access to shared resources."
+},
+{
+"id": "osc18",
+"s": "OS",
+"t": "Synchronization",
+"d": 2,
+"q": "A mutex allows:",
+"o": [
+"Only one thread at a time to hold it",
+"Only the kernel",
+"Many threads in a critical section",
+"No threads at all"
+],
+"a": 0,
+"e": "Mutual exclusion lock."
+},
+{
+"id": "osc19",
+"s": "OS",
+"t": "Deadlock",
+"d": 2,
+"q": "Which is one of the four conditions needed for deadlock?",
+"o": [
+"Preemption",
+"Circular wait",
+"Infinite memory",
+"Single process"
+],
+"a": 1,
+"e": "The others are mutual exclusion, hold and wait, and no preemption."
+},
+{
+"id": "osc20",
+"s": "OS",
+"t": "Deadlock",
+"d": 3,
+"q": "The Banker's algorithm is used for:",
+"o": [
+"Deadlock avoidance",
+"File allocation",
+"Disk scheduling",
+"Paging"
+],
+"a": 0,
+"e": "It grants requests only if the system stays in a safe state."
+},
+{
+"id": "osc21",
+"s": "OS",
+"t": "Memory",
+"d": 2,
+"q": "Dividing memory into fixed-size blocks called pages is:",
+"o": [
+"Fragmentation",
+"Paging",
+"Swapping",
+"Segmentation"
+],
+"a": 1,
+"e": "Pages map onto frames in physical memory."
+},
+{
+"id": "osc22",
+"s": "OS",
+"t": "Memory",
+"d": 2,
+"q": "When a needed page is not in RAM, a ___ occurs.",
+"o": [
+"Page fault",
+"Context switch",
+"Interrupt vector",
+"Deadlock"
+],
+"a": 0,
+"e": "The OS loads the page from disk."
+},
+{
+"id": "osc23",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "Virtual memory allows:",
+"o": [
+"No need for an OS",
+"Faster CPUs",
+"More disks",
+"Programs larger than physical RAM to run"
+],
+"a": 3,
+"e": "Parts of a program stay on disk until needed."
+},
+{
+"id": "osc24",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "Spending more time swapping pages than doing useful work is:",
+"o": [
+"Caching",
+"Spooling",
+"Thrashing",
+"Booting"
+],
+"a": 2,
+"e": "Too many processes compete for too little RAM."
+},
+{
+"id": "osc25",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "Which page replacement algorithm removes the page not used for the longest time?",
+"o": [
+"LRU",
+"Random",
+"Optimal is the same as FIFO",
+"FIFO"
+],
+"a": 0,
+"e": "Least Recently Used approximates the optimal algorithm."
+},
+{
+"id": "osc26",
+"s": "OS",
+"t": "Memory",
+"d": 2,
+"q": "Free memory split into many small unusable pieces between allocations is:",
+"o": [
+"External fragmentation",
+"Paging",
+"Internal fragmentation",
+"Thrashing"
+],
+"a": 0,
+"e": "Compaction or paging addresses it."
+},
+{
+"id": "osc27",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "The TLB is:",
+"o": [
+"A scheduling queue",
+"A fast cache of recent page table entries",
+"A disk partition",
+"A type of virus"
+],
+"a": 1,
+"e": "It speeds up address translation."
+},
+{
+"id": "osc28",
+"s": "OS",
+"t": "File systems",
+"d": 2,
+"q": "Which file system is commonly used by Windows?",
+"o": [
+"ext4",
+"NTFS",
+"XFS",
+"APFS"
+],
+"a": 1,
+"e": "Linux commonly uses ext4. macOS uses APFS."
+},
+{
+"id": "osc29",
+"s": "OS",
+"t": "File systems",
+"d": 2,
+"q": "A directory is:",
+"o": [
+"A program",
+"A type of RAM",
+"A device driver",
+"A structure that organises files"
+],
+"a": 3,
+"e": "Directories form a tree."
+},
+{
+"id": "osc30",
+"s": "OS",
+"t": "File systems",
+"d": 3,
+"q": "In Unix, file metadata such as size and permissions is stored in an:",
+"o": [
+"Interrupt",
+"Inode",
+"Index page",
+"Instruction register"
+],
+"a": 1,
+"e": "The inode does not contain the file name."
+},
+{
+"id": "osc31",
+"s": "OS",
+"t": "Disk scheduling",
+"d": 3,
+"q": "Which disk scheduling algorithm services the closest request first?",
+"o": [
+"FCFS",
+"SCAN",
+"C-LOOK",
+"SSTF"
+],
+"a": 3,
+"e": "Shortest Seek Time First can starve far requests."
+},
+{
+"id": "osc32",
+"s": "OS",
+"t": "I/O",
+"d": 2,
+"q": "An interrupt is:",
+"o": [
+"A type of memory",
+"A signal that tells the CPU an event needs attention",
+"A virus",
+"A program bug"
+],
+"a": 1,
+"e": "For example a key press or a finished disk read."
+},
+{
+"id": "osc33",
+"s": "OS",
+"t": "I/O",
+"d": 3,
+"q": "DMA allows:",
+"o": [
+"Network routing",
+"Faster typing",
+"Devices to transfer data to memory without the CPU copying every byte",
+"Encryption"
+],
+"a": 2,
+"e": "Direct Memory Access frees the CPU."
+},
+{
+"id": "osc34",
+"s": "OS",
+"t": "Linux",
+"d": 1,
+"q": "Which Linux command lists files in a directory?",
+"o": [
+"pwd",
+"cd",
+"ls",
+"rm"
+],
+"a": 2,
+"e": "cd changes directory and pwd shows the current one."
+},
+{
+"id": "osc35",
+"s": "OS",
+"t": "Linux",
+"d": 2,
+"q": "Which Linux command changes file permissions?",
+"o": [
+"chgrp",
+"chown",
+"passwd",
+"chmod"
+],
+"a": 3,
+"e": "chmod 755 gives the owner full rights and others read and execute."
+},
+{
+"id": "osc36",
+"s": "OS",
+"t": "Linux",
+"d": 2,
+"q": "In Linux, the most privileged user is:",
+"o": [
+"system",
+"root",
+"superuser1",
+"admin"
+],
+"a": 1,
+"e": "root can do anything on the system."
+},
+{
+"id": "osc37",
+"s": "OS",
+"t": "Linux",
+"d": 3,
+"q": "What does chmod 644 file.txt allow?",
+"o": [
+"Everyone can write",
+"Owner executes only",
+"Nobody can read",
+"Owner reads and writes, others only read"
+],
+"a": 3,
+"e": "6 = read and write, 4 = read."
+},
+{
+"id": "osc38",
+"s": "OS",
+"t": "Virtualization",
+"d": 2,
+"q": "A hypervisor is used to:",
+"o": [
+"Encrypt disks",
+"Send email",
+"Run multiple virtual machines on one physical machine",
+"Compile code"
+],
+"a": 2,
+"e": "Examples are VMware ESXi, Hyper-V and KVM."
+},
+{
+"id": "osc39",
+"s": "OS",
+"t": "Virtualization",
+"d": 3,
+"q": "Compared with virtual machines, containers such as Docker:",
+"o": [
+"Cannot run Linux apps",
+"Share the host kernel and are lighter",
+"Include a full separate OS kernel each",
+"Are slower to start"
+],
+"a": 1,
+"e": "Containers isolate processes, not whole machines."
+},
+{
+"id": "osc40",
+"s": "OS",
+"t": "Basics",
+"d": 2,
+"q": "Which OS type must respond within strict time limits, as in aircraft control?",
+"o": [
+"Batch OS",
+"Real-time OS",
+"Time-sharing OS",
+"Distributed OS"
+],
+"a": 1,
+"e": "Missing a deadline is a failure in a hard real-time system."
+},
+{
+"id": "secc01",
+"s": "SEC",
+"t": "Basics",
+"d": 1,
+"q": "The CIA triad in security stands for:",
+"o": [
+"Code, Identity, Audit",
+"Cyber, Internet, Authentication",
+"Control, Integrity, Access",
+"Confidentiality, Integrity, Availability"
+],
+"a": 3,
+"e": "These are the three core goals of information security."
+},
+{
+"id": "secc02",
+"s": "SEC",
+"t": "Basics",
+"d": 2,
+"q": "Making sure data has not been changed without permission is:",
+"o": [
+"Integrity",
+"Availability",
+"Non-repudiation",
+"Confidentiality"
+],
+"a": 0,
+"e": "Hashes and digital signatures help ensure integrity."
+},
+{
+"id": "secc03",
+"s": "SEC",
+"t": "Basics",
+"d": 2,
+"q": "A DDoS attack mainly targets:",
+"o": [
+"Authentication",
+"Confidentiality",
+"Integrity",
+"Availability"
+],
+"a": 3,
+"e": "It floods a service so real users cannot reach it."
+},
+{
+"id": "secc04",
+"s": "SEC",
+"t": "Basics",
+"d": 2,
+"q": "Authentication answers which question?",
+"o": [
+"Who are you?",
+"What did you do?",
+"What are you allowed to do?",
+"How fast are you?"
+],
+"a": 0,
+"e": "Authorization decides what you may do."
+},
+{
+"id": "secc05",
+"s": "SEC",
+"t": "Basics",
+"d": 2,
+"q": "Using a password plus a code from a phone app is:",
+"o": [
+"Hashing",
+"Multi-factor authentication",
+"Single sign-on",
+"Encryption"
+],
+"a": 1,
+"e": "It combines something you know with something you have."
+},
+{
+"id": "secc06",
+"s": "SEC",
+"t": "Basics",
+"d": 3,
+"q": "The principle of least privilege means:",
+"o": [
+"All data is public",
+"Users get only the access they need",
+"Passwords are optional",
+"Everyone gets admin rights"
+],
+"a": 1,
+"e": "It limits the damage of a compromised account."
+},
+{
+"id": "secc07",
+"s": "SEC",
+"t": "Malware",
+"d": 1,
+"q": "Malware that encrypts files and demands payment is:",
+"o": [
+"Ransomware",
+"Adware",
+"Spyware",
+"A worm"
+],
+"a": 0,
+"e": "Offline backups are the best defence."
+},
+{
+"id": "secc08",
+"s": "SEC",
+"t": "Malware",
+"d": 2,
+"q": "Malware that spreads by itself across networks without user action is a:",
+"o": [
+"Rootkit",
+"Trojan",
+"Worm",
+"Virus"
+],
+"a": 2,
+"e": "Viruses need a host file and usually user action."
+},
+{
+"id": "secc09",
+"s": "SEC",
+"t": "Malware",
+"d": 2,
+"q": "A program that looks useful but secretly does harm is a:",
+"o": [
+"Firewall",
+"Trojan horse",
+"Patch",
+"Worm"
+],
+"a": 1,
+"e": "It tricks the user into running it."
+},
+{
+"id": "secc10",
+"s": "SEC",
+"t": "Malware",
+"d": 3,
+"q": "Malware that hides deep in the OS to conceal its presence is a:",
+"o": [
+"Rootkit",
+"Cookie",
+"Botnet controller only",
+"Adware"
+],
+"a": 0,
+"e": "Rootkits can hide files, processes and network activity."
+},
+{
+"id": "secc11",
+"s": "SEC",
+"t": "Social engineering",
+"d": 1,
+"q": "An email pretending to be from your bank asking you to 'verify' your password is:",
+"o": [
+"Phishing",
+"Firewalling",
+"Patching",
+"Hashing"
+],
+"a": 0,
+"e": "Banks never ask for passwords by email."
+},
+{
+"id": "secc12",
+"s": "SEC",
+"t": "Social engineering",
+"d": 2,
+"q": "A phishing attack aimed at one specific person using personal details is:",
+"o": [
+"Spear phishing",
+"Vishing",
+"Smishing",
+"Whaling only for servers"
+],
+"a": 0,
+"e": "It is more convincing because it is personalised."
+},
+{
+"id": "secc13",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "Symmetric encryption uses:",
+"o": [
+"The same key to encrypt and decrypt",
+"Two different keys",
+"No key",
+"Only a public key"
+],
+"a": 0,
+"e": "AES is a common symmetric cipher."
+},
+{
+"id": "secc14",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "Which is an asymmetric (public key) algorithm?",
+"o": [
+"MD5",
+"RSA",
+"DES",
+"AES"
+],
+"a": 1,
+"e": "RSA uses a public key and a private key."
+},
+{
+"id": "secc15",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "A hash function is:",
+"o": [
+"A type of firewall",
+"Reversible encryption",
+"A one-way function producing a fixed-size digest",
+"A network protocol"
+],
+"a": 2,
+"e": "You cannot recover the input from the hash."
+},
+{
+"id": "secc16",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "Which hash algorithm is considered broken and should not be used for security?",
+"o": [
+"MD5",
+"SHA-3",
+"SHA-256",
+"bcrypt"
+],
+"a": 0,
+"e": "MD5 collisions are easy to produce."
+},
+{
+"id": "secc17",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "Passwords should be stored as:",
+"o": [
+"Plain text",
+"Salted hashes from a slow function such as bcrypt, scrypt or Argon2",
+"Base64 text",
+"Encrypted with a shared key"
+],
+"a": 1,
+"e": "Salting stops precomputed table attacks and slow hashing resists guessing."
+},
+{
+"id": "secc18",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "In public key cryptography, to send a secret message to Ali you encrypt it with:",
+"o": [
+"Ali's public key",
+"A random password",
+"Your private key",
+"Ali's private key"
+],
+"a": 0,
+"e": "Only Ali's private key can decrypt it."
+},
+{
+"id": "secc19",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "A digital signature provides:",
+"o": [
+"Integrity, authenticity and non-repudiation",
+"Confidentiality only",
+"Faster networks",
+"Compression"
+],
+"a": 0,
+"e": "It is made with the sender's private key and checked with their public key."
+},
+{
+"id": "secc20",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "Base64 encoding:",
+"o": [
+"Is not encryption, anyone can decode it",
+"Is a hash",
+"Is strong encryption",
+"Requires a private key"
+],
+"a": 0,
+"e": "It only changes how binary data is represented."
+},
+{
+"id": "secc21",
+"s": "SEC",
+"t": "Web security",
+"d": 2,
+"q": "SQL injection is prevented best by:",
+"o": [
+"Using HTTPS",
+"Parameterized queries",
+"Hiding error messages only",
+"Longer passwords"
+],
+"a": 1,
+"e": "Parameters keep user input separate from SQL code."
+},
+{
+"id": "secc22",
+"s": "SEC",
+"t": "Web security",
+"d": 2,
+"q": "Cross-site scripting (XSS) lets an attacker:",
+"o": [
+"Crash the database",
+"Change DNS servers",
+"Steal hardware",
+"Run malicious scripts in other users' browsers"
+],
+"a": 3,
+"e": "Escaping output and a content security policy prevent it."
+},
+{
+"id": "secc23",
+"s": "SEC",
+"t": "Web security",
+"d": 3,
+"q": "CSRF tricks a logged-in user's browser into:",
+"o": [
+"Revealing its IP",
+"Downloading a virus",
+"Clearing cookies",
+"Sending unwanted requests to a site where the user is authenticated"
+],
+"a": 3,
+"e": "Anti-CSRF tokens and SameSite cookies defend against it."
+},
+{
+"id": "secc24",
+"s": "SEC",
+"t": "Web security",
+"d": 3,
+"q": "The OWASP Top 10 is:",
+"o": [
+"A ranking of hackers",
+"A list of the most critical web application security risks",
+"A firewall product",
+"A list of the best antivirus tools"
+],
+"a": 1,
+"e": "It is a standard awareness guide for developers."
+},
+{
+"id": "secc25",
+"s": "SEC",
+"t": "Web security",
+"d": 2,
+"q": "HTTPS protects against:",
+"o": [
+"Weak passwords",
+"Eavesdropping and tampering in transit",
+"All malware",
+"Phishing completely"
+],
+"a": 1,
+"e": "It encrypts traffic between browser and server."
+},
+{
+"id": "secc26",
+"s": "SEC",
+"t": "Network security",
+"d": 1,
+"q": "A firewall:",
+"o": [
+"Compiles code",
+"Filters network traffic based on rules",
+"Stores backups",
+"Speeds up the internet"
+],
+"a": 1,
+"e": "It allows or blocks traffic by address, port and protocol."
+},
+{
+"id": "secc27",
+"s": "SEC",
+"t": "Network security",
+"d": 2,
+"q": "A VPN mainly provides:",
+"o": [
+"Free internet",
+"An encrypted tunnel over an untrusted network",
+"Virus removal",
+"Faster CPU"
+],
+"a": 1,
+"e": "Traffic is protected on public Wi-Fi, for example."
+},
+{
+"id": "secc28",
+"s": "SEC",
+"t": "Network security",
+"d": 3,
+"q": "An IDS:",
+"o": [
+"Encrypts disks",
+"Assigns IP addresses",
+"Detects and alerts on suspicious activity",
+"Blocks all traffic"
+],
+"a": 2,
+"e": "An IPS can also block the traffic it detects."
+},
+{
+"id": "secc29",
+"s": "SEC",
+"t": "Network security",
+"d": 3,
+"q": "An attacker secretly relaying traffic between two parties who think they talk directly is a:",
+"o": [
+"SQL injection",
+"Denial of service",
+"Brute force attack",
+"Man-in-the-middle attack"
+],
+"a": 3,
+"e": "Encryption and certificate checks defend against it."
+},
+{
+"id": "secc30",
+"s": "SEC",
+"t": "Network security",
+"d": 2,
+"q": "Trying every possible password until one works is a:",
+"o": [
+"Brute force attack",
+"XSS attack",
+"Phishing attack",
+"Replay attack"
+],
+"a": 0,
+"e": "Account lockouts and rate limits slow it down."
+},
+{
+"id": "secc31",
+"s": "SEC",
+"t": "Network security",
+"d": 3,
+"q": "A DMZ in network design is:",
+"o": [
+"The internal database",
+"A type of malware",
+"A zone for public-facing servers, separated from the internal network",
+"A Wi-Fi standard"
+],
+"a": 2,
+"e": "If a public server is breached, the internal network stays protected."
+},
+{
+"id": "secc32",
+"s": "SEC",
+"t": "Security practice",
+"d": 2,
+"q": "Regularly installing software updates mainly:",
+"o": [
+"Fixes known vulnerabilities",
+"Slows hackers' internet",
+"Deletes data",
+"Changes the colours"
+],
+"a": 0,
+"e": "Many attacks exploit flaws that already have patches."
+},
+{
+"id": "secc33",
+"s": "SEC",
+"t": "Security practice",
+"d": 2,
+"q": "The 3-2-1 backup rule means:",
+"o": [
+"3 days, 2 weeks, 1 month",
+"3 passwords, 2 users, 1 admin",
+"3 copies, 2 media types, 1 off-site",
+"3 firewalls, 2 VPNs, 1 router"
+],
+"a": 2,
+"e": "It protects against hardware failure and ransomware."
+},
+{
+"id": "secc34",
+"s": "SEC",
+"t": "Security practice",
+"d": 3,
+"q": "A zero-day vulnerability is:",
+"o": [
+"A harmless bug",
+"A password rule",
+"A flaw unknown to the vendor with no patch available yet",
+"A flaw fixed on day zero"
+],
+"a": 2,
+"e": "Attackers can exploit it before defenders can patch."
+},
+{
+"id": "secc35",
+"s": "SEC",
+"t": "Security practice",
+"d": 3,
+"q": "Penetration testing is:",
+"o": [
+"Authorised simulated attacks to find weaknesses",
+"Writing policies only",
+"Installing antivirus",
+"Illegal hacking"
+],
+"a": 0,
+"e": "It needs written permission and a defined scope."
+},
+{
+"id": "secc36",
+"s": "SEC",
+"t": "Security practice",
+"d": 2,
+"q": "Which is the strongest password?",
+"o": [
+"Ali1990",
+"qwerty",
+"Tr7#mQ!x2Lp9vB",
+"password123"
+],
+"a": 2,
+"e": "Long, random and mixed characters resist guessing."
+},
+{
+"id": "secc37",
+"s": "SEC",
+"t": "Access control",
+"d": 3,
+"q": "Giving permissions based on a user's job role is:",
+"o": [
+"RBAC",
+"ABAC only",
+"DAC",
+"MAC"
+],
+"a": 0,
+"e": "Role-Based Access Control simplifies administration."
+},
+{
+"id": "secc38",
+"s": "SEC",
+"t": "Laws and ethics",
+"d": 2,
+"q": "In Pakistan, the main law covering cyber crimes is:",
+"o": [
+"HIPAA",
+"PECA 2016",
+"GDPR",
+"DMCA"
+],
+"a": 1,
+"e": "The Prevention of Electronic Crimes Act 2016."
+},
+{
+"id": "secc39",
+"s": "SEC",
+"t": "Security practice",
+"d": 2,
+"q": "Encrypting a laptop's whole disk mainly protects data when:",
+"o": [
+"The battery is low",
+"Software updates",
+"The internet is slow",
+"The laptop is stolen"
+],
+"a": 3,
+"e": "Without the key, the data cannot be read."
+},
+{
+"id": "secc40",
+"s": "SEC",
+"t": "Basics",
+"d": 3,
+"q": "Non-repudiation means:",
+"o": [
+"Users are anonymous",
+"Data is always available",
+"Data is compressed",
+"A sender cannot later deny having sent a message"
+],
+"a": 3,
+"e": "Digital signatures provide it."
+}
+]

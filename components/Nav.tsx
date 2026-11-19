@@ -24,7 +24,7 @@ const PANELS: Record<string, { label: string; items: Item[] }[]> = {
   CAMPUS_ADMIN: [{ label: "Campus admin", items: UNI }],
   FOCAL: [{ label: "Focal person", items: UNI }],
   CHAIR: [{ label: "Chair panel", items: UNI }],
-  GOV: [{ label: "HEC and government panel", items: [["/gov", "National dashboard"], ["/gov/archive", "Report archive"]] }],
+  GOV: [{ label: "Government panel", items: [["/gov", "National dashboard"], ["/gov/archive", "Report archive"]] }],
   EMPLOYER: [{ label: "Employer portal", items: [["/employer", "Find talent"]] }],
   SPONSOR: [{ label: "Sponsor portal", items: [["/sponsor", "Impact dashboard"]] }],
   ADMIN: [

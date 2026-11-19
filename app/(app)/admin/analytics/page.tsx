@@ -77,8 +77,8 @@ export default function Analytics() {
           <Table rows={a.focal} cols={[["Person", (f) => <><b>{f.email}</b><div className="tiny muted">{f.university} · {f.role.toLowerCase()}</div></>], ["Verified", (f) => f.verified], ["Avg hours to verify", (f) => f.avgHoursToVerify ?? "n/a"], ["Questions", (f) => `${f.questionsLive} live of ${f.questions}`], ["Last seen", (f) => fmtDate(f.lastSeenAt)]]} />
         </Card>
         <Card title="Consent">
-          <HBars rows={[["Research and HEC data", a.consent.research], ["Public leaderboard", a.consent.leaderboard], ["Talent pool for employers", a.consent.talentPool]].map(([l, n]) => ({ label: String(l), v: Number(n), text: `${n} (${pct(Number(n), k.registered)}%)` }))} max={k.registered} />
-          <p className="small muted">Only research-consenting students appear in HEC data. Only talent pool students are visible to employers.</p>
+          <HBars rows={[["Research and national reports", a.consent.research], ["Public leaderboard", a.consent.leaderboard], ["Talent pool for employers", a.consent.talentPool]].map(([l, n]) => ({ label: String(l), v: Number(n), text: `${n} (${pct(Number(n), k.registered)}%)` }))} max={k.registered} />
+          <p className="small muted">Only research-consenting students appear in national reports. Only talent pool students are visible to employers.</p>
         </Card>
       </div>
     </Page>

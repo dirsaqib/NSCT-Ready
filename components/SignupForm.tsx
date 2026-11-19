@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import SearchSelect from "./SearchSelect";
 import { AKA } from "./universityAka";
 
-// Bachelor computing programs under NCEAC (National Computing Education Accreditation Council).
+// Bachelor computing programs offered in Pakistan.
 const PROGRAMS = ["BS Artificial Intelligence", "BS Bioinformatics", "BS Computer Science", "BS Computer Engineering", "BS Cyber Security", "BS Data Science", "BS Information Systems", "BS Information Technology", "BS Multimedia and Gaming (Computer Games Development)", "BS Software Engineering"];
 // Common names of computing departments in Pakistani universities, offered as suggestions.
 const COMMON_DEPTS = ["Computer Science", "Software Engineering", "Information Technology", "Computer Science and Information Technology", "Computing", "Artificial Intelligence", "Data Science", "Artificial Intelligence and Data Science", "Cyber Security", "Computer Engineering", "Information Systems", "Bioinformatics", "Computer Games Development", "Creative Technologies", "Electrical and Computer Engineering"];

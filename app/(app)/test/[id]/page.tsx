@@ -38,6 +38,12 @@ export default function TestPage({ params }: { params: { id: string } }) {
   const KEY = `nr-attempt-${params.id}`;
   const practice = a?.type === "PRACTICE" || a?.type === "MISTAKES";
   const proctored = !!a && !practice;
+  // Locked mode: full screen, and leaving the test window submits the test automatically.
+  const locked = !!a && ["MOCK", "NATIONAL_MOCK", "DIAGNOSTIC", "LAB_TEST"].includes(a.type);
+  const [started, setStarted] = useState(false);
+  const ended = useRef(false);
+  const [autoMsg, setAutoMsg] = useState("");
+  const [confirming, setConfirming] = useState(false); // in-page confirm, because browser pop-ups break full screen
 
   useEffect(() => {
     api<Attempt>(`/api/tests/${params.id}`).then((x) => {
@@ -65,23 +71,58 @@ export default function TestPage({ params }: { params: { id: string } }) {
     return () => { window.removeEventListener("online", on); window.removeEventListener("offline", off); };
   }, [save]);
 
-  const submit = useCallback(async () => {
-    if (!a || busy) return;
-    if (!navigator.onLine) { setErr("You are offline. Your answers are safe on this device. Submit again when the connection returns."); return; }
+  const submit = useCallback(async (reason?: string) => {
+    if (!a || busy || (ended.current && !reason)) return;
+    if (reason) ended.current = true;
+    if (!navigator.onLine) { setErr("You are offline. Your answers are safe on this device. Submit again when the connection returns."); ended.current = false; return; }
     setBusy(true); setErr("");
     try {
-      const res = await api<Attempt>(`/api/tests/${a.id}/submit`, { body: { answers: payload(), tabSwitches: switches.current, fullscreenExits: fsExits.current } });
+      const res = await api<Attempt>(`/api/tests/${a.id}/submit`, { body: { answers: payload(), tabSwitches: switches.current, fullscreenExits: fsExits.current, reason } });
+      ended.current = true;
       try { localStorage.removeItem(KEY); } catch { /* ignore */ }
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
       setA(res); window.scrollTo(0, 0);
-    } catch (e) { setErr((e as Error).message); } finally { setBusy(false); }
+    } catch (e) { setErr((e as Error).message); ended.current = false; } finally { setBusy(false); }
   }, [a, busy, payload]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Locked mode rules. Leaving the window or full screen ends the test at once and submits the answers given so far.
+  // Closing or reloading the tab sends the answers in the background so they are still submitted.
+  const submitRef = useRef(submit); submitRef.current = submit;
+  const payloadRef = useRef(payload); payloadRef.current = payload;
+  useEffect(() => {
+    if (!locked || !started || a?.submitted) return;
+    let blurTimer: ReturnType<typeof setTimeout> | null = null;
+    const end = (reason: string, msg: string) => { if (ended.current) return; setAutoMsg(msg); submitRef.current(reason); };
+    const vis = () => { if (document.hidden) end("LEFT_TEST_WINDOW", "You left the test window, so your test was submitted automatically."); };
+    const fsc = () => { if (!document.fullscreenElement && document.fullscreenEnabled) end("EXITED_FULLSCREEN", "You left full screen, so your test was submitted automatically."); };
+    const blur = () => { blurTimer = setTimeout(() => { if (!document.hasFocus()) end("LEFT_TEST_WINDOW", "You switched to another window, so your test was submitted automatically."); }, 1500); };
+    const focus = () => { if (blurTimer) clearTimeout(blurTimer); };
+    const leave = () => {
+      if (ended.current || !a) return;
+      ended.current = true;
+      const body = JSON.stringify({ answers: payloadRef.current(), tabSwitches: switches.current, fullscreenExits: fsExits.current, reason: "CLOSED_TEST" });
+      navigator.sendBeacon?.(`/api/tests/${a.id}/submit`, new Blob([body], { type: "text/plain;charset=UTF-8" }));
+    };
+    const warn = (e: BeforeUnloadEvent) => { if (!ended.current) { e.preventDefault(); e.returnValue = ""; } };
+    document.addEventListener("visibilitychange", vis);
+    document.addEventListener("fullscreenchange", fsc);
+    window.addEventListener("blur", blur);
+    window.addEventListener("focus", focus);
+    window.addEventListener("beforeunload", warn);
+    window.addEventListener("pagehide", leave);
+    return () => {
+      document.removeEventListener("visibilitychange", vis); document.removeEventListener("fullscreenchange", fsc);
+      window.removeEventListener("blur", blur); window.removeEventListener("focus", focus);
+      window.removeEventListener("beforeunload", warn); window.removeEventListener("pagehide", leave);
+      if (blurTimer) clearTimeout(blurTimer);
+    };
+  }, [locked, started, a?.submitted, a?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Server deadline drives the timer (extra time already included). Auto-submit at zero.
   useEffect(() => {
     if (!a?.endsAt || a.submitted) return;
     const end = new Date(a.endsAt).getTime();
-    const id = setInterval(() => { const s = Math.round((end - Date.now()) / 1000); setLeft(s); if (s <= 0) { clearInterval(id); submit(); } }, 500);
+    const id = setInterval(() => { const s = Math.round((end - Date.now()) / 1000); setLeft(s); if (s <= 0) { clearInterval(id); ended.current = false; submit("TIME_UP" as never); } }, 500);
     return () => clearInterval(id);
   }, [a?.endsAt, a?.submitted, submit]);
 
@@ -106,7 +147,25 @@ export default function TestPage({ params }: { params: { id: string } }) {
       <Link className="btn" href="/dashboard">Back to dashboard</Link>
     </div>
   );
-  if (a.submitted) return <Report a={a} />;
+  if (a.submitted) return <>{autoMsg && <div className="notice bad" style={{ marginBottom: 12 }}>{autoMsg} Your score counts the questions you answered.</div>}<Report a={a} /></>;
+  if (locked && !started) return (
+    <div className="card" style={{ maxWidth: 620, margin: "30px auto" }}>
+      <h1 style={{ marginTop: 0 }}>{a.label ?? "Test"}: locked mode</h1>
+      <p className="muted">{a.items.length} questions{a.endsAt ? `, ${Math.max(1, Math.round((new Date(a.endsAt).getTime() - Date.now()) / 60000))} minutes left` : ""}. Read the rules before you start.</p>
+      <ul className="small" style={{ lineHeight: 1.9 }}>
+        <li>The test opens in <b>full screen</b> and stays locked until you submit.</li>
+        <li>If you <b>switch tab, open another window or app, or leave full screen</b>, the test <b>ends immediately</b> and is submitted.</li>
+        <li>If you <b>close or reload</b> this page, the test is submitted with the answers you have given.</li>
+        <li>Only the questions you answered are counted. Unanswered questions get no marks.</li>
+        <li>Turn off notifications and close other programs before you start. Copying and right-click are disabled.</li>
+      </ul>
+      <button className="btn" onClick={async () => {
+        try { if (document.fullscreenEnabled) await document.documentElement.requestFullscreen(); } catch { /* some phones do not support full screen */ }
+        setStarted(true); qStart.current = Date.now();
+      }}>I understand, start the test</button>
+      <Link className="btn ghost" href="/mock" style={{ marginLeft: 8 }}>Not now</Link>
+    </div>
+  );
 
   const it = a.items[idx];
   const s = st[idx];
@@ -131,11 +190,19 @@ export default function TestPage({ params }: { params: { id: string } }) {
       <div className="exam-bar">
         <div><b>{a.label ?? a.type.replace("_", " ")}</b> · {answered}/{a.items.length} answered {savedAt && !practice && <span className="tiny" style={{ opacity: 0.8 }}>· {t("test.saved")} {savedAt.toLocaleTimeString()}</span>}</div>
         <div className="row">
-          {proctored && !document.fullscreenElement && <button className="btn sm sec" onClick={() => document.documentElement.requestFullscreen().catch(() => {})}>Full screen</button>}
+          {proctored && !locked && !document.fullscreenElement && <button className="btn sm sec" onClick={() => document.documentElement.requestFullscreen().catch(() => {})}>Full screen</button>}
+          {locked && <span className="tiny" style={{ opacity: 0.85 }}>🔒 Locked mode</span>}
           {left != null && <span className={`timer ${left < 300 ? "low" : ""}`} role="timer" aria-live="off">{fmtTime(left)}</span>}
-          <button className="btn sm acc" disabled={busy} onClick={() => { const un = a.items.length - answered; if (window.confirm(practice ? "Finish practice?" : `Submit now? ${un} unanswered.`)) submit(); }}>{practice ? "Finish" : t("test.submit")}</button>
+          <button className="btn sm acc" disabled={busy} onClick={() => { if (locked) return setConfirming(true); const un = a.items.length - answered; if (window.confirm(practice ? "Finish practice?" : `Submit now? ${un} unanswered.`)) submit(); }}>{practice ? "Finish" : t("test.submit")}</button>
         </div>
       </div>
+      {confirming && (
+        <div className="notice" style={{ marginBottom: 12, display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+          <b>Submit now?</b> <span className="small">{a.items.length - answered} questions are unanswered and will get no marks.</span>
+          <button className="btn sm acc" disabled={busy} onClick={() => { setConfirming(false); submit(); }}>Yes, submit</button>
+          <button className="btn sm sec" onClick={() => setConfirming(false)}>Keep going</button>
+        </div>
+      )}
       {!online && <div className="notice" style={{ marginBottom: 12 }}>{t("test.offline")}</div>}
       {err && <div className="notice bad" style={{ marginBottom: 12 }}>{err}</div>}
       <div className="exam">
@@ -190,7 +257,7 @@ export default function TestPage({ params }: { params: { id: string } }) {
             {practice && !s.checked && it.type !== "CODE" ? (
               <button className="btn" disabled={!s.slots.length} onClick={async () => { const r = await api<{ correct: boolean; correctSlots: number[]; explanation: string }>(`/api/tests/${a.id}/check`, { body: { position: idx, slots: s.slots } }); patch({ checked: r }); }}>Check answer</button>
             ) : (
-              <button className="btn" onClick={() => (idx === a.items.length - 1 ? submit() : go(idx + 1))}>{idx === a.items.length - 1 ? t("test.submit") : t("test.next")}</button>
+              <button className="btn" onClick={() => (idx === a.items.length - 1 ? (locked ? setConfirming(true) : submit()) : go(idx + 1))}>{idx === a.items.length - 1 ? t("test.submit") : t("test.next")}</button>
             )}
           </div>
         </div>
@@ -247,13 +314,16 @@ function Report({ a }: { a: Attempt }) {
   const correct = items.filter((i) => i.correct).length;
   const by: Record<string, [number, number]> = {};
   items.forEach((i) => { const b = (by[i.subject] ??= [0, 0]); b[1]++; b[0] += i.credit ?? 0; });
-  const canCert = ["DIAGNOSTIC", "MOCK", "NATIONAL_MOCK", "EMPLOYER_ASSESSMENT"].includes(a.type) && !a.label;
+  const canCert = ["DIAGNOSTIC", "MOCK", "NATIONAL_MOCK", "EMPLOYER_ASSESSMENT"].includes(a.type) && (!a.label || /^Mock [123]$/.test(a.label));
   return (
     <>
       <div className="top"><div><h1>Your result</h1><p className="sub">{a.label ?? a.type.replace("_", " ")}</p></div>
         <div className="row">
           {canCert && !cert && <button className="btn sec" onClick={async () => { try { setCert(await api(`/api/tests/${a.id}/certificate`, { method: "POST" })); } catch (e) { setCertErr((e as Error).message); } }}>Get certificate</button>}
-          <Link className="btn" href="/results">See my progress</Link>
+          {a.type === "MOCK" && <Link className="btn acc" href="/mock">What to study next</Link>}
+          {a.type === "PRACTICE" && <Link className="btn acc" href="/prepare">Next level</Link>}
+          <Link className="btn sec" href="/dashboard">Dashboard</Link>
+          <Link className="btn ghost" href="/results">My progress</Link>
         </div>
       </div>
       {certErr && <div className="notice bad" style={{ marginBottom: 12 }}>{certErr}</div>}

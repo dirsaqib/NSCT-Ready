@@ -18,14 +18,14 @@ export default function Publish() {
   return (
     <>
       <div className="top">
-        <div><h1>HEC and government reports</h1><p className="sub">Build an anonymised snapshot and publish it to the HEC panel. HEC never sees student records.</p></div>
+        <div><h1>National reports</h1><p className="sub">Build an anonymised snapshot and publish it to the government panel. It never contains student records.</p></div>
         <div className="row">
           <label className="small"><b>Minimum group</b> <select value={mg} onChange={(e) => setMg(Number(e.target.value))} style={{ width: "auto" }}>{[5, 10, 20, 30].map((v) => <option key={v}>{v}</option>)}</select></label>
           <button className="btn acc" onClick={async () => {
-            if (!window.confirm("Publish this anonymised report to the HEC panel?")) return;
+            if (!window.confirm("Publish this anonymised report?")) return;
             await api("/api/reports/snapshots", { body: { minGroup: mg } });
             load();
-          }}>Publish to HEC panel</button>
+          }}>Publish report</button>
         </div>
       </div>
       {mg < 20 && <div className="notice" style={{ marginBottom: 16 }}>A minimum group below 20 is for pilot testing only.</div>}
@@ -36,7 +36,7 @@ export default function Publish() {
             <td><button className="btn ghost sm" onClick={async () => { if (window.confirm("Withdraw this report?")) { await api(`/api/reports/snapshots/${r.id}`, { method: "DELETE" }); load(); } }}>Withdraw</button></td></tr>)}
         </tbody></table> : <div className="empty">Nothing published yet.</div>}
       </div>
-      <h2>Preview of what HEC will see</h2>
+      <h2>Preview of the published report</h2>
       {preview ? <SnapshotView s={preview} /> : <div className="spin" />}
     </>
   );

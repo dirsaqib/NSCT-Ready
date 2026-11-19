@@ -24,7 +24,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
               <div><b>{brand}</b><small>Free prep for NSCT 2027</small></div>
             </div>
             {!needs2fa && <Nav role={u.role} />}
-            <div className="side-foot">Independent and free. Not affiliated with HEC, VU, PSEB or P@SHA.</div>
+            <div className="side-foot">A product of SimFusion (Private) Limited. Free for every student.</div>
           </aside>
           <main>
             {needs2fa ? <TwoFactorGate setup={!u.totpEnabled} /> : children}

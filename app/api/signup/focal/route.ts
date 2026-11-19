@@ -7,15 +7,15 @@ import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
 import { normalisePhone } from "@/lib/otp";
 import { hashPassword, passwordProblem } from "@/lib/password";
-import { readProof, str, emailTaken, resolveUniversity } from "@/lib/register";
+import { readProof, str, emailTaken, resolveUniversity, NAME_RE, EMAIL_RE, PHONE_RE } from "@/lib/register";
 
 const Body = z.object({
-  fullName: z.string().min(2).max(80),
-  email: z.string().email().max(120),
-  phone: z.string().min(10).max(20),
+  fullName: z.string().regex(NAME_RE, "Full name can contain letters only."),
+  email: z.string().max(120).regex(EMAIL_RE, "Enter a valid email, like name@university.edu.pk."),
+  phone: z.string().regex(PHONE_RE, "Enter a valid Pakistani mobile number, like 03001234567."),
   universityId: z.string().optional(),
   universityName: z.string().max(120).optional(),
-  designation: z.string().min(2).max(80),
+  designation: z.string().regex(/^[\p{L}][\p{L} .,&()'-]{2,79}$/u, "Designation can contain letters only."),
   password: z.string(),
 });
 

@@ -7,23 +7,23 @@ import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
 import { normalisePhone } from "@/lib/otp";
 import { hashPassword, passwordProblem } from "@/lib/password";
-import { readProof, str, emailTaken, cnicFields, matchPlace, resolveUniversity } from "@/lib/register";
+import { readProof, str, emailTaken, cnicFields, matchPlace, resolveUniversity, NAME_RE, EMAIL_RE, PHONE_RE, ROLL_RE } from "@/lib/register";
 
 const Body = z.object({
-  fullName: z.string().min(2, "Enter your full name.").max(80),
+  fullName: z.string().regex(NAME_RE, "Full name can contain letters only."),
   universityId: z.string().optional(),
   universityName: z.string().max(120).optional(),
   campusName: z.string().max(80).optional(),
   departmentName: z.string().min(2, "Enter your department.").max(100),
   program: z.string().min(2).max(80),
   semester: z.string().min(1).max(20),
-  section: z.string().max(20).optional(),
-  rollNumber: z.string().min(2).max(40),
+  section: z.string().regex(/^[A-Za-z0-9]{1,10}$/, "Section can contain letters and numbers only.").optional(),
+  rollNumber: z.string().regex(ROLL_RE, "Roll number can contain letters, numbers, - / and _ only."),
   gender: z.enum(["Male", "Female"], { errorMap: () => ({ message: "Choose Male or Female." }) }),
   cnic: z.string().min(13, "Enter your CNIC or B-Form number."),
-  email: z.string().email("Enter a valid email.").max(120),
-  phone: z.string().min(10, "Enter your mobile number.").max(20),
-  city: z.string().max(60).optional(),
+  email: z.string().max(120).regex(EMAIL_RE, "Enter a valid email, like name@example.com."),
+  phone: z.string().regex(PHONE_RE, "Enter a valid Pakistani mobile number, like 03001234567."),
+  city: z.string().regex(/^[\p{L} .'-]{2,60}$/u, "City can contain letters only.").optional(),
   password: z.string(),
 });
 const FIELDS = ["fullName", "universityId", "universityName", "campusName", "departmentName", "program", "semester", "section", "rollNumber", "gender", "cnic", "email", "phone", "city", "password"];

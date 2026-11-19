@@ -11,6 +11,12 @@ type Campus = { id: string; name: string; departments: { id: string; name: strin
 
 const OTHER = "__other__";
 const Req = () => <span style={{ color: "var(--bad, #C2453A)" }}> *</span>;
+// Clean input as it is typed, so wrong characters never get in.
+const onlyLetters = (v: string) => v.replace(/[^\p{L} .'-]/gu, "").replace(/\s{2,}/g, " ").slice(0, 80);
+const onlyDigitsPhone = (v: string) => v.replace(/[^\d+]/g, "").replace(/(?!^)\+/g, "").slice(0, 13);
+const rollChars = (v: string) => v.replace(/[^A-Za-z0-9/_-]/g, "").toUpperCase().slice(0, 30);
+const clean = (fn: (v: string) => string) => (e: React.FormEvent<HTMLInputElement>) => { const el = e.currentTarget; const v = fn(el.value); if (v !== el.value) el.value = v; };
+const EMAIL = "[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+\\.[A-Za-z]{2,}";
 const fmtCnic = (v: string) => {
   const d = v.replace(/\D/g, "").slice(0, 13);
   return d.length > 12 ? `${d.slice(0, 5)}-${d.slice(5, 12)}-${d.slice(12)}` : d.length > 5 ? `${d.slice(0, 5)}-${d.slice(5)}` : d;
@@ -56,7 +62,7 @@ export default function SignupForm({ kind }: { kind: "student" | "focal" }) {
     const r = await fetch(`/api/signup/${kind}`, { method: "POST", body: fd });
     const d = await r.json().catch(() => ({}));
     setBusy(false);
-    if (!r.ok) return setMsg(d.issues?.[0] ? `${d.issues[0].path?.join(".")}: ${d.issues[0].message}` : d.error || "Could not register.");
+    if (!r.ok) return setMsg(d.issues?.[0]?.message || d.error || "Could not register.");
     location.href = `/signin?registered=${kind}`;
   };
 
@@ -71,7 +77,7 @@ export default function SignupForm({ kind }: { kind: "student" | "focal" }) {
             : "Register as the NSCT focal person for your university. Attach your appointment letter or university staff card. The NSCT Ready super admin approves your account."}
         </p>
         <p className="tiny muted" style={{ margin: 0 }}>Fields marked <Req /> are required.</p>
-        <label className="f"><span>Full name<Req /></span><input name="fullName" required minLength={2} placeholder="As on your CNIC" /></label>
+        <label className="f"><span>Full name<Req /></span><input name="fullName" required minLength={3} onInput={clean(onlyLetters)} placeholder="As on your CNIC" /></label>
         <label className="f"><span>University<Req /></span>
           <SearchSelect name="universityId" textName="universityName" options={unis.map((u) => ({ id: u.id, name: u.name, hint: u.city ?? undefined, keywords: AKA[u.name] }))} value={uni} onChange={(id) => { setUni(id); setDept(""); }} onText={setUniText} allowFree placeholder="Type to search all universities in Pakistan" required />
           {!uni && uniText.trim().length > 2 && <span className="tiny muted">Not in the list? Keep it as typed. We will add your university after checking.</span>}
@@ -93,11 +99,11 @@ export default function SignupForm({ kind }: { kind: "student" | "focal" }) {
               {program === OTHER && <input name="program" required placeholder="Type your program name" style={{ marginTop: 6 }} />}
             </label>
             <div className="grid g2">
-              <label className="f"><span>{graduated ? "Roll or registration number" : "Roll number"}<Req /></span><input name="rollNumber" required placeholder={graduated ? "As on your degree or transcript" : "As on your student card"} /></label>
+              <label className="f"><span>{graduated ? "Roll or registration number" : "Roll number"}<Req /></span><input name="rollNumber" required minLength={2} onInput={clean(rollChars)} title="Letters, numbers, - / and _ only" placeholder={graduated ? "As on your degree or transcript" : "As on your student card"} /></label>
               <label className="f"><span>Semester<Req /></span><select name="semester" required value={semester} onChange={(e) => setSemester(e.target.value)}><option value="" disabled>Select</option>{["1", "2", "3", "4", "5", "6", "7", "8"].map((x) => <option key={x}>{x}</option>)}<option value="Graduated">Graduated</option></select></label>
             </div>
             <div className="grid g2">
-              <label className="f"><span>Section (optional)</span><input name="section" placeholder="e.g. A" /></label>
+              <label className="f"><span>Section (optional)</span><input name="section" maxLength={10} onInput={clean((v) => v.replace(/[^A-Za-z0-9]/g, "").toUpperCase())} placeholder="e.g. A" /></label>
               <label className="f"><span>Gender<Req /></span><select name="gender" required defaultValue=""><option value="" disabled>Select</option><option>Male</option><option>Female</option></select></label>
             </div>
             <label className="f"><span>CNIC or B-Form number<Req /></span>
@@ -106,13 +112,13 @@ export default function SignupForm({ kind }: { kind: "student" | "focal" }) {
             </label>
           </>
         ) : (
-          <label className="f"><span>Designation<Req /></span><input name="designation" required placeholder="e.g. Assistant Professor, NSCT focal person" /></label>
+          <label className="f"><span>Designation<Req /></span><input name="designation" required minLength={3} onInput={clean((v) => v.replace(/[^\p{L} .,&()'-]/gu, "").slice(0, 80))} title="Letters only" placeholder="e.g. Assistant Professor, NSCT focal person" /></label>
         )}
         <div className="grid g2">
-          <label className="f"><span>{kind === "student" ? "Email" : "Official university email"}<Req /></span><input name="email" type="email" required placeholder="you@example.com" /></label>
-          <label className="f"><span>Mobile number<Req /></span><input name="phone" type="tel" required pattern="(\+92|0)3\d{2}[ -]?\d{7}" title="Pakistani mobile number, like 03001234567" placeholder="03001234567" /></label>
+          <label className="f"><span>{kind === "student" ? "Email" : "Official university email"}<Req /></span><input name="email" type="email" required maxLength={120} pattern={EMAIL} onInput={clean((v) => v.replace(/\s/g, "").toLowerCase())} title="A valid email, like name@example.com" placeholder="you@example.com" /></label>
+          <label className="f"><span>Mobile number<Req /></span><input name="phone" type="tel" inputMode="numeric" required onInput={clean(onlyDigitsPhone)} pattern="(\+92|0)3\d{9}" title="Pakistani mobile number, like 03001234567" placeholder="03001234567" /></label>
         </div>
-        {kind === "student" && <label className="f"><span>City (optional)</span><input name="city" /></label>}
+        {kind === "student" && <label className="f"><span>City (optional)</span><input name="city" onInput={clean(onlyLetters)} placeholder="e.g. Lahore" /></label>}
         <div className="grid g2">
           <label className="f"><span>Password<Req /></span><input name="password" type="password" required minLength={8} autoComplete="new-password" /></label>
           <label className="f"><span>Confirm password<Req /></span><input name="password2" type="password" required minLength={8} autoComplete="new-password" /></label>

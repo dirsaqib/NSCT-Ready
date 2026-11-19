@@ -61,3 +61,9 @@ export async function resolveUniversity(id: string | undefined, typed: string | 
   const created = await prisma.university.create({ data: { name, listed: false } });
   return created.id;
 }
+
+// Field rules shared by the sign-up APIs, so fake or garbled entries are rejected even if the form is bypassed.
+export const NAME_RE = /^[\p{L}][\p{L} .'-]{1,79}$/u;
+export const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+export const PHONE_RE = /^(\+92|0)3\d{9}$/;
+export const ROLL_RE = /^[A-Za-z0-9/_-]{2,30}$/;

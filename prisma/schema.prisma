@@ -955,3 +955,16 @@ model StudyVideo {
 
   @@index([subject, order])
 }
+
+/// Messages left through the website chat. Forwarded to the team's WhatsApp when the Cloud API is set up.
+model ChatLead {
+  id           String   @id @default(cuid())
+  name         String
+  phone        String?
+  message      String
+  page         String?
+  sentWhatsApp Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  @@index([createdAt])
+}

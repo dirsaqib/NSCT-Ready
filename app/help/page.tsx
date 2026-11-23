@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { getSetting } from "@/lib/settings";
+import ChatWidget from "@/components/ChatWidget";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +12,7 @@ export default async function Help({ searchParams }: { searchParams: { blocked?:
   const cats = [...new Set(faqs.map((f) => f.category))];
   return (
     <main style={{ maxWidth: 860, margin: "0 auto", padding: "40px 20px" }}>
+      <ChatWidget />
       <h1>Help centre</h1>
       {searchParams.blocked && <div className="notice bad" style={{ marginBottom: 16 }}>Your account is blocked. Email {email} if you think this is a mistake.</div>}
       <p className="muted">Answers to common questions. Still stuck? <Link href="/support">Open a support ticket</Link> or email {email}.</p>

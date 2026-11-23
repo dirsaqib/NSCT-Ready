@@ -6,6 +6,7 @@ const buckets = new Map<string, { n: number; reset: number }>();
 // A whole university lab often shares one public IP, so limits are counted per signed-in browser where
 // possible and per IP only for anonymous requests. Account lockout separately stops password guessing.
 const LIMITS: [RegExp, number, "ip" | "user"][] = [
+  [/^\/api\/chat/, 8, "ip"],              // website chat messages per minute per IP
   [/^\/api\/signup\//, 300, "ip"],      // registrations per minute per IP: a lab of 200 can register together
   [/^\/api\/auth\//, 1200, "ip"],       // sign-ins and session checks per minute per IP
   [/^\/api\/ai\//, 20, "user"],

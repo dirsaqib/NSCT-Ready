@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LandingFx from "@/components/LandingFx";
+import ChatWidget from "@/components/ChatWidget";
 
 import { liveStats } from "@/lib/liveStats";
 
@@ -19,6 +20,7 @@ export default async function Landing() {
   const n = (c > 0 ? Math.floor(c / 10) * 10 : 1000).toLocaleString("en-US");
   return (
 <div className="lp">
+<div className="lp-announce"><span className="lp-ann-tag">NEW</span> NSCT 2027 is on 23 and 24 January 2027. Free full-length mock tests are open now. <Link href="/signup">Start preparing →</Link></div>
 <header className="lp-top"><div className="lp-wrap lp-nav">
 <Link href="/" className="lp-brand" aria-label="TayariHub home"><img src="/tayari-icon.png" alt="" width="40" height="40" /><span className="lp-word"><b>Tayari<em>Hub</em></b><small>TEST PREP &amp; ASSESSMENT PLATFORM</small></span></Link>
 <nav className="lp-links"><a href="#exams">Exams</a><a href="#features">Mock Tests</a><a href="#features">Study Materials</a><a href="#coach">AI Coach</a><Link href="/signup/focal">For Universities</Link><a href="#about">About Us</a></nav>
@@ -73,18 +75,34 @@ export default async function Landing() {
 <Link href="/signup" className="lp-feat f2" data-reveal=""><span className="lp-fart">📋</span><div><b>Full-Length Mock Tests</b><small>Realistic timed papers that get harder, with detailed diagnostic reports and AI guidance after each paper.</small><span className="lp-flink">Take a mock →</span></div></Link>
 <Link href="/signup" className="lp-feat f3" data-reveal=""><span className="lp-fart">🎬📘</span><div><b>Curated Study Materials</b><small>Top video lectures from master teachers with concise revision notes for every single topic.</small><span className="lp-flink">Browse materials →</span></div></Link>
 </section>
+<section className="lp-path" id="path">
+<h2 className="lp-h2" data-reveal="">Find Your Path</h2><p className="lp-sub" data-reveal="">One platform for everyone preparing Pakistan&apos;s computing graduates</p>
+<div className="lp-paths">
+<div className="lp-pc" data-reveal=""><span className="lp-pci">🎓</span><b>Students</b><ul><li>Gamified topic levels</li><li>Mock 1, 2 and 3 with guidance</li><li>Video lectures and notes</li><li>AI study coach</li></ul><Link href="/signup" className="lp-pcb">Register free →</Link></div>
+<div className="lp-pc" data-reveal=""><span className="lp-pci">🏛️</span><b>University Focal Persons</b><ul><li>Register students in bulk</li><li>University question bank</li><li>Run university tests</li><li>Department-wise reports</li></ul><Link href="/signup/focal" className="lp-pcb">Join as focal person →</Link></div>
+<div className="lp-pc" data-reveal=""><span className="lp-pci">👩‍🏫</span><b>Faculty and HODs</b><ul><li>Add department questions</li><li>Track class readiness</li><li>Find weak topics early</li><li>Download detailed reports</li></ul><Link href="/signup/focal" className="lp-pcb">Get staff access →</Link></div>
+<div className="lp-pc" data-reveal=""><span className="lp-pci">💼</span><b>Fresh Graduates</b><ul><li>Prepare after graduating</li><li>Measure job readiness</li><li>Practise applied problems</li><li>Close your skill gaps</li></ul><Link href="/signup" className="lp-pcb">Start practising →</Link></div>
+</div>
+</section>
 <section id="coach" className="lp-coach" data-reveal="">
 <span className="lp-robot">🤖</span>
 <div className="lp-bubble">Based on Mock 1, your sequence questions need 15 minutes of focused practice. Try Level 3 now!</div>
 <div className="lp-coach-t"><b>Meet Your AI Study Coach</b><small>Your 24/7 personal tutor. Analyzes your mistakes, provides instant explanations, and guides what to study next.</small></div>
 <Link href="/signup" className="lp-btn-out">Try AI Coach free</Link>
 </section>
+<section className="lp-band" data-reveal="">
+<div><b>Ready to start your NSCT preparation?</b><small>Join students across Pakistan preparing for free, at their own pace.</small></div>
+<div className="lp-band-btns"><Link href="/signup" className="lp-btn-gold">I&apos;m a Student <span className="lp-arr">→</span></Link><Link href="/signup/focal" className="lp-btn-white">I&apos;m a Focal Person</Link></div>
+</section>
 </main>
-<footer id="about" className="lp-foot"><div className="lp-wrap lp-foot-in">
+<footer id="about" className="lp-foot"><div className="lp-wrap lp-foot-in lp-foot-grid" data-reveal="">
 <div><span className="lp-brand light"><img src="/tayari-icon.png" alt="" width="34" height="34" /><span className="lp-word"><b>Tayari<em>Hub</em></b><small>TEST PREP &amp; ASSESSMENT PLATFORM</small></span></span><p>TayariHub is a free preparation platform built by SimFusion (Private) Limited for every student in Pakistan. It is independent and not affiliated with any testing body or government organisation.</p></div>
-<div className="lp-foot-links"><Link href="/signup">Register</Link><Link href="/signin">Sign in</Link><Link href="/signup/focal">For Universities</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/help">Help</Link></div>
-</div><div className="lp-copy">© SimFusion (Private) Limited. Free for every student in Pakistan.</div></footer>
+<div className="lp-fcol"><b>Explore</b><a href="#exams">Exams</a><a href="#features">Mock Tests</a><a href="#features">Study Materials</a><a href="#coach">AI Coach</a></div>
+<div className="lp-fcol"><b>For You</b><Link href="/signup">Students</Link><Link href="/signup/focal">Focal Persons</Link><Link href="/signin">Sign in</Link><Link href="/signup">Register</Link></div>
+<div className="lp-fcol"><b>Help &amp; Policies</b><Link href="/help">Help centre</Link><Link href="/privacy">Privacy policy</Link><Link href="/terms">Terms of use</Link></div>
+</div><div className="lp-copy">© 2026 SimFusion (Private) Limited. Free for every student in Pakistan.</div></footer>
 <LandingFx />
+<ChatWidget />
 </div>
 
   );

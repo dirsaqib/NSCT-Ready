@@ -18,7 +18,7 @@ export async function issueOtp(phone: string, purpose = "login") {
   if (recent >= 5) throw new HttpError(429, "Too many codes requested. Please wait 15 minutes.");
   const code = numericCode(6);
   await prisma.otpCode.create({ data: { target, purpose, codeHash: sha256(`${target}:${code}`), expiresAt: new Date(Date.now() + 5 * 60000) } });
-  await sendSms(target, `Your NSCT Ready code is ${code}. It expires in 5 minutes. Do not share it.`);
+  await sendSms(target, `Your TayariHub code is ${code}. It expires in 5 minutes. Do not share it.`);
   return { sent: true };
 }
 

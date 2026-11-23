@@ -2,7 +2,7 @@
 import { prisma } from "./db";
 
 export const DEFAULTS: Record<string, unknown> = {
-  "branding.name": "NSCT Ready",
+  "branding.name": "TayariHub",
   "branding.tagline": "Free preparation for NSCT 2027",
   "branding.primaryColor": "#0B6E4F",
   "notify.channels": ["EMAIL", "SMS", "WHATSAPP"],

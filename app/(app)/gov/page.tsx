@@ -16,7 +16,7 @@ type Key = "byProvince" | "byDistrict" | "byCity" | "bySector" | "byUniversity" 
 
 // Rough tile layout of Pakistan's provinces and territories (column, row).
 const TILES: [string, number, number][] = [["Gilgit-Baltistan", 2, 0], ["Azad Kashmir", 3, 1], ["Khyber Pakhtunkhwa", 1, 1], ["Islamabad", 2, 1], ["Punjab", 2, 2], ["Balochistan", 0, 3], ["Sindh", 1, 3]];
-const shade = (v: number | null | undefined) => (v == null ? "#EEF1EF" : v >= 65 ? "#0B6E4F" : v >= 55 ? "#3E9A78" : v >= 45 ? "#8CC5AE" : "#D5EADF");
+const shade = (v: number | null | undefined) => (v == null ? "#EEF1EF" : v >= 65 ? "#1D55CC" : v >= 55 ? "#4C7BE0" : v >= 45 ? "#9DB7F0" : "#DCE6FB");
 
 /** HEC and government: live anonymised national view with filters. Groups below the minimum size are withheld. */
 export default function Gov() {

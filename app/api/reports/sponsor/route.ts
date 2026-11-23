@@ -21,7 +21,7 @@ export async function GET(req: Request) {
     const fmt = (x: Date | null) => (x ? new Date(x).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "open");
 
     doc.fillColor("#0B6E4F").fontSize(20).text(`${d.sponsor.name}: impact report`);
-    doc.fillColor("#5E6B64").fontSize(10).text(`NSCT Ready · contract ${fmt(d.sponsor.contractStart)} to ${fmt(d.sponsor.contractEnd)} · generated ${fmt(new Date())}`);
+    doc.fillColor("#5E6B64").fontSize(10).text(`TayariHub · contract ${fmt(d.sponsor.contractStart)} to ${fmt(d.sponsor.contractEnd)} · generated ${fmt(new Date())}`);
     doc.moveDown(1.2).fillColor("#1B2420").fontSize(12);
     const rows: [string, string][] = [
       ["Sponsored seats", `${d.usedSeats} used of ${d.seats}`],

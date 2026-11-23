@@ -45,5 +45,5 @@ export function verifyTotp(secret: string, code: string, now = Date.now()) {
   return [-1, 0, 1].some((d) => hotp(secret, step + d) === code.replace(/\s/g, ""));
 }
 
-export const otpauthUrl = (secret: string, account: string, issuer = "NSCT Ready") =>
+export const otpauthUrl = (secret: string, account: string, issuer = "TayariHub") =>
   `otpauth://totp/${encodeURIComponent(issuer)}:${encodeURIComponent(account)}?secret=${secret}&issuer=${encodeURIComponent(issuer)}&period=30&digits=6`;

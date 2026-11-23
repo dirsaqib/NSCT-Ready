@@ -54,7 +54,7 @@ export default function SearchSelect({ options, value, onChange, name, textName,
           ))}
           {list.length === 0 && !allowFree && <div style={{ padding: "8px 12px", fontSize: 13, color: "#5E6B64" }}>No match. Check the spelling.</div>}
           {allowFree && q.trim().length > 2 && !exact && (
-            <div onMouseDown={(e) => { e.preventDefault(); setOpen(false); }} style={{ padding: "8px 12px", fontSize: 13, color: "#0B6E4F", borderTop: "1px solid #eef1ef", cursor: "pointer" }}>
+            <div onMouseDown={(e) => { e.preventDefault(); setOpen(false); }} style={{ padding: "8px 12px", fontSize: 13, color: "#1D55CC", borderTop: "1px solid #eef1ef", cursor: "pointer" }}>
               Use &ldquo;{q.trim()}&rdquo; as typed
             </div>
           )}

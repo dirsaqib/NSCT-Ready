@@ -12,6 +12,7 @@
     "db:migrate": "prisma migrate deploy",
     "db:dev": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
+    "bank": "tsx scripts/build-bank.ts",
     "test": "vitest run"
   },
   "dependencies": {

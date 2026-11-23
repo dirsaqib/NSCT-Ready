@@ -6,7 +6,7 @@ const sans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "NSCT Ready: Free NSCT 2027 Preparation",
+  title: "TayariHub: Free NSCT 2027 Preparation",
   description: "Free diagnostic tests, timed mock tests, study plans and an AI tutor for Pakistan's National Skills Competency Test.",
   // Google Search Console ownership check. Set GOOGLE_SITE_VERIFICATION in Vercel.
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,

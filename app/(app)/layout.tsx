@@ -20,7 +20,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         <div className="app">
           <aside className="side">
             <div className="logo">
-              <div className="logo-mark">NR</div>
+              <div className="logo-mark">TH</div>
               <div><b>{brand}</b><small>Free prep for NSCT 2027</small></div>
             </div>
             {!needs2fa && <Nav role={u.role} />}

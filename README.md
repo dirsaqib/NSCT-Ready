@@ -1,4 +1,4 @@
-# NSCT Ready
+# TayariHub
 
 A national platform where computing students in Pakistan prepare for the National Skills Competency Test (NSCT) 2027. Free for students, with an optional Pro plan for students whose university has no plan or sponsor.
 

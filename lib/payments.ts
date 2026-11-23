@@ -46,7 +46,7 @@ function jazzForm(paymentId: string, amountPkr: number, card: boolean) {
     pp_TxnCurrency: "PKR",
     pp_TxnDateTime: ts(now),
     pp_BillReference: paymentId,
-    pp_Description: "NSCT Ready Pro access",
+    pp_Description: "TayariHub Pro access",
     pp_TxnExpiryDateTime: ts(new Date(now.getTime() + 3600000)),
     pp_ReturnURL: `${process.env.NEXTAUTH_URL}/api/payments/callback/jazzcash`,
   };
@@ -101,7 +101,7 @@ export async function markPaid(paymentId: string, raw: unknown) {
         number: `INV-${new Date().getFullYear()}-${String(count + 1).padStart(6, "0")}`,
         paymentId: p.id,
         billTo: p.user.name || p.user.email || p.user.phone || p.userId,
-        lines: [{ item: `NSCT Ready Pro, ${p.months} month(s)`, amountPkr: p.amountPkr }],
+        lines: [{ item: `TayariHub Pro, ${p.months} month(s)`, amountPkr: p.amountPkr }],
         totalPkr: p.amountPkr,
       },
     }),

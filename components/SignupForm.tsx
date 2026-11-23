@@ -69,12 +69,12 @@ export default function SignupForm({ kind }: { kind: "student" | "focal" }) {
   return (
     <main className="loading-screen">
       <form className="card grid" style={{ maxWidth: 680, width: "100%", gap: 12, textAlign: "left" }} onSubmit={submit}>
-        <div className="logo-mark">NR</div>
+        <div className="logo-mark">TH</div>
         <h1 style={{ margin: 0 }}>{kind === "student" ? "Student registration" : "Focal person registration"}</h1>
         <p className="muted" style={{ margin: 0 }}>
           {kind === "student"
             ? "Fill in your details and attach proof that you study, or have graduated, at your university. Your university focal person checks it and approves your account."
-            : "Register as the NSCT focal person for your university. Attach your appointment letter or university staff card. The NSCT Ready super admin approves your account."}
+            : "Register as the NSCT focal person for your university. Attach your appointment letter or university staff card. The TayariHub super admin approves your account."}
         </p>
         <p className="tiny muted" style={{ margin: 0 }}>Fields marked <Req /> are required.</p>
         <label className="f"><span>Full name<Req /></span><input name="fullName" required minLength={3} onInput={clean(onlyLetters)} placeholder="As on your CNIC" /></label>

@@ -67,7 +67,7 @@ export default function Content() {
               const awards = v.awards.split("\n").map((l) => l.trim()).filter(Boolean).map((l, i) => { const [title, userId] = l.split("|").map((x) => x.trim()); return { title, rank: i + 1, ...(userId ? { userId } : {}) }; });
               await api("/api/admin/content", { body: { title: v.title, date: v.date, venue: v.venue || undefined, sponsorId: v.sponsorId || null, awards, notifyWinners: !!v.notify } }); events.reload();
             }}>
-              <label className="f">Title<input name="title" type="text" required placeholder="NSCT Ready Top Performers 2027" /></label>
+              <label className="f">Title<input name="title" type="text" required placeholder="TayariHub Top Performers 2027" /></label>
               <div className="grid g2"><label className="f">Date<input name="date" type="date" required /></label><label className="f">Venue<input name="venue" type="text" /></label></div>
               <label className="f">Sponsor<select name="sponsorId"><option value="">None</option>{sponsors.data?.sponsors.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}</select></label>
               <label className="f">Awards, one per line in rank order. Add | and the student&apos;s user id to link a winner.<textarea name="awards" rows={5} placeholder={"National topper | clx123...\nBest female performer"} /></label>

@@ -253,6 +253,7 @@ async function main() {
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions2.json"), "utf8")),
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions3.json"), "utf8")),
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions4.json"), "utf8")),
+    ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions5.json"), "utf8")),
   ];
   const seeded = await prisma.question.count({ where: { source: "SEED" } });
   if (force || seeded < qs.length + 5) {
@@ -352,7 +353,7 @@ async function main() {
     ["Certificates", "How do I get a certificate?", "Pass a full mock or the national mock with no integrity flags, on a verified account. Employers can check it with its code.", 1],
     ["Payments", "Do I have to pay?", "No. Core preparation is free. Students whose university has a plan or sponsor get Pro free. Others can buy Pro with JazzCash, Easypaisa or a card.", 1],
     ["About NSCT", "When is NSCT 2027?", "The test is announced for 23 January 2027. Check the official announcement for any change.", 1],
-    ["About NSCT", "Is NSCT Ready an official platform?", "No. NSCT Ready is an independent, free preparation platform by SimFusion (Private) Limited and is not affiliated with any government body or organisation.", 2],
+    ["About NSCT", "Is TayariHub an official platform?", "No. TayariHub is an independent, free preparation platform by SimFusion (Private) Limited and is not affiliated with any government body or organisation.", 2],
   ] as [string, string, string, number][])
     if (!(await prisma.faq.count({ where: { question } }))) await prisma.faq.create({ data: { category, question, answer, order } });
 
@@ -360,11 +361,11 @@ async function main() {
   if (!(await prisma.testWindow.count({ where: { name: "National mock 1" } }))) await prisma.testWindow.create({ data: { name: "National mock 1", blueprintKey: "NATIONAL_MOCK", opensAt: new Date("2026-12-06T09:00:00+05:00"), closesAt: new Date("2026-12-07T21:00:00+05:00") } });
   if (!(await prisma.testWindow.count({ where: { name: "National mock 2" } }))) await prisma.testWindow.create({ data: { name: "National mock 2", blueprintKey: "NATIONAL_MOCK", opensAt: new Date("2027-01-09T09:00:00+05:00"), closesAt: new Date("2027-01-10T21:00:00+05:00") } });
   if (!(await prisma.survey.count())) await prisma.survey.create({ data: {
-    title: "How is NSCT Ready working for you?", audience: "STUDENT", active: true,
+    title: "How is TayariHub working for you?", audience: "STUDENT", active: true,
     questions: [{ q: "How useful are the mock tests?", type: "scale" }, { q: "How clear are the explanations?", type: "scale" }, { q: "How easy is the site to use?", type: "scale" }, { q: "What should we add or improve?", type: "text" }],
   } });
   // ---------- Old FAQ wording that named other organisations ----------
-  await prisma.faq.deleteMany({ where: { question: { in: ["Is NSCT Ready an official HEC platform?"] } } });
+  await prisma.faq.deleteMany({ where: { question: { in: ["Is NSCT Ready an official HEC platform?", "Is NSCT Ready an official platform?"] } } });
   await prisma.faq.updateMany({ where: { question: "When is NSCT 2027?" }, data: { answer: "The test is announced for 23 January 2027. Check the official announcement for any change." } });
 
   // ---------- Study material videos (verified YouTube links from Harvard CS50, MIT and others) ----------

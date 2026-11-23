@@ -24,7 +24,7 @@ function Form() {
         if (!r.ok) return setMsg(d.error || "Could not change the password.");
         location.href = "/dashboard";
       }}>
-        <div className="logo-mark">NR</div>
+        <div className="logo-mark">TH</div>
         <h1 style={{ margin: 0 }}>Set your own password</h1>
         <p className="muted" style={{ margin: 0 }}>You signed in with a temporary password. Choose a new one to continue.</p>
         <label className="f">Temporary password<input name="current" type="password" required autoComplete="current-password" /></label>

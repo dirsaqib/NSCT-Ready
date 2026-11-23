@@ -71,7 +71,7 @@ export const POST = handle(async (req: Request) => {
       failed.push({ row: r, error: (e as Error).message.slice(0, 200) });
     }
   }
-  if (newIds.length) await notify(newIds, "Your NSCT Ready account is ready", "Your university has registered you. Your focal person will give you a temporary password. Sign in with your university and roll number.", ["EMAIL"], "/signin").catch(() => {});
+  if (newIds.length) await notify(newIds, "Your TayariHub account is ready", "Your university has registered you. Your focal person will give you a temporary password. Sign in with your university and roll number.", ["EMAIL"], "/signin").catch(() => {});
   await audit(u.id, "students.import", universityId, { created, updated, failed: failed.length, passwords: credentials.length });
   return { created, updated, failed, credentials };
 });

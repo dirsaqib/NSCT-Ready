@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Privacy policy | NSCT Ready" };
+export const metadata = { title: "Privacy policy | TayariHub" };
 
 const H = ({ n, children }: { n: number; children: React.ReactNode }) => <h2 style={{ marginTop: 28 }}>{n}. {children}</h2>;
 
@@ -12,7 +12,7 @@ export default function Privacy() {
       <p className="muted">Version 2026-11. Effective 18 November 2026.</p>
 
       <p>
-        NSCT Ready (&ldquo;the Platform&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is a free online preparation platform for the National Skills Competency Test (NSCT) for computing students in Pakistan.
+        TayariHub (&ldquo;the Platform&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is a free online preparation platform for the National Skills Competency Test (NSCT) for computing students in Pakistan.
         This policy explains what personal data we collect, why we collect it, who can see it, how we protect it and what rights you have.
         By registering or using the Platform you confirm that you have read and understood this policy.
       </p>

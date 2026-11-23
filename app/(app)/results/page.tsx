@@ -28,11 +28,11 @@ export default function Results() {
       <div className="grid g2" style={{ marginBottom: 16 }}>
         <Card title="Performance by domain">
           <Radar labels={data.radar.map((x) => x.name)} series={[
-            { name: "Me", values: data.radar.map((x) => x.me), color: "#0B6E4F" },
-            { name: "My university", values: data.radar.map((x) => x.university), color: "#E9A23B", dash: "4 3" },
+            { name: "Me", values: data.radar.map((x) => x.me), color: "#1D55CC" },
+            { name: "My university", values: data.radar.map((x) => x.university), color: "#13A47F", dash: "4 3" },
             { name: "National", values: data.radar.map((x) => x.national), color: "#5E6B64", dash: "2 3" },
           ]} />
-          <div className="legend"><span><i style={{ background: "#0B6E4F" }} />Me</span><span><i style={{ background: "#E9A23B" }} />My university</span><span><i style={{ background: "#5E6B64" }} />National</span></div>
+          <div className="legend"><span><i style={{ background: "#1D55CC" }} />Me</span><span><i style={{ background: "#13A47F" }} />My university</span><span><i style={{ background: "#5E6B64" }} />National</span></div>
         </Card>
         <Card title="Domain table">
           <table><tbody>

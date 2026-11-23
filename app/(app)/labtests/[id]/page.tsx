@@ -33,7 +33,7 @@ export default function LabTest({ params }: { params: { id: string } }) {
     <div style={{ position: "fixed", inset: 0, background: "#0B3B2C", color: "#fff", zIndex: 100, display: "grid", placeItems: "center", textAlign: "center" }} onClick={() => setBig(false)}>
       <div>
         <div style={{ fontSize: 28, opacity: 0.8 }}>{t.title}</div>
-        <div style={{ fontSize: 22, margin: "18px 0 6px" }}>Sign in to NSCT Ready, open <b>Mock tests</b>, then <b>Lab test</b>, and enter:</div>
+        <div style={{ fontSize: 22, margin: "18px 0 6px" }}>Sign in to TayariHub, open <b>Mock tests</b>, then <b>Lab test</b>, and enter:</div>
         <div style={{ fontSize: 140, fontWeight: 800, letterSpacing: 18, fontFamily: "var(--font-mono)" }}>{t.accessCode}</div>
         <div style={{ fontSize: 22, opacity: 0.8 }}>{t.durationMin + t.extraMin} minutes. Phones away. Tab switches are recorded.</div>
         <div style={{ fontSize: 14, opacity: 0.6, marginTop: 30 }}>Click anywhere to close</div>

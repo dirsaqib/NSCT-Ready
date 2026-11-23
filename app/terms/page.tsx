@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Terms of use | NSCT Ready" };
+export const metadata = { title: "Terms of use | TayariHub" };
 
 /** Terms of use, version 2026-11. Read together with the privacy policy. */
 export default function Terms() {
@@ -9,7 +9,7 @@ export default function Terms() {
       <h1>Terms of use</h1>
       <p className="muted">Version 2026-11. Effective 18 November 2026.</p>
       <h2>1. The service</h2>
-      <p>NSCT Ready is a free and independent preparation platform for the National Skills Competency Test. It is not affiliated with, endorsed or sponsored by any government body, regulator, testing body, university or other organisation. Readiness scores, predictions and certificates are practice estimates, not official results.</p>
+      <p>TayariHub is a free and independent preparation platform for the National Skills Competency Test. It is not affiliated with, endorsed or sponsored by any government body, regulator, testing body, university or other organisation. Readiness scores, predictions and certificates are practice estimates, not official results.</p>
       <h2>2. Accounts</h2>
       <p>Register with your real name, CNIC or B-Form number and university details, and upload genuine proof. Giving false information or a forged document is a serious breach and may be reported to your university. Your university focal person may approve or reject your account. Keep your password private and do not share your account. Focal persons and administrators must use two-factor authentication.</p>
       <h2>3. Fair use and test integrity</h2>

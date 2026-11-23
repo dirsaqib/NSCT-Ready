@@ -42,8 +42,8 @@ export default function SignIn() {
   return (
     <main className="loading-screen">
       <div className="card" style={{ maxWidth: 440, width: "100%" }}>
-        <div className="logo-mark" style={{ marginBottom: 14 }}>NR</div>
-        <h1>Sign in to NSCT Ready</h1>
+        <div className="logo-mark" style={{ marginBottom: 14 }}>TH</div>
+        <h1>Sign in to TayariHub</h1>
         <p className="muted">For every computing student in Pakistan.</p>
         {registered && <div className="notice info">Registration received. {registered === "focal" ? "The NSCT super admin will review it." : "You can sign in now. Full mocks unlock once your focal person approves you."}</div>}
         <div className="tabs" style={{ marginTop: 8 }}>

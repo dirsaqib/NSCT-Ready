@@ -17,7 +17,7 @@ export function ColChart({ values, labels, every, suffix = "", height = 160 }: {
         return (
           <g key={i}>
             <title>{`${labels[i]}: ${v}${suffix}`}</title>
-            <rect x={x + 1} y={H - h} width={Math.max(1, bw - 2)} height={Math.max(0, h)} rx={Math.min(3, bw / 4)} fill="#0B6E4F" />
+            <rect x={x + 1} y={H - h} width={Math.max(1, bw - 2)} height={Math.max(0, h)} rx={Math.min(3, bw / 4)} fill="#1D55CC" />
             <rect x={x} y={0} width={bw} height={H} fill="transparent" />
             {i % step === 0 && <text x={x + bw / 2} y={H + 16} textAnchor="middle" fontSize="10" fill="#5E6B64">{labels[i]}</text>}
           </g>

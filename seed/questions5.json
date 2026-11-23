@@ -1,0 +1,6478 @@
+[
+{
+"id": "q5-001",
+"s": "PROG",
+"t": "Basics",
+"d": 1,
+"q": "In Python, what does len(\"Lahore\") return?",
+"o": [
+"5",
+"6",
+"7",
+"An error"
+],
+"a": 1,
+"e": "\"Lahore\" has 6 characters."
+},
+{
+"id": "q5-002",
+"s": "PROG",
+"t": "Basics",
+"d": 2,
+"q": "In C, what is the value of 7 / 2 when both operands are int?",
+"o": [
+"3.5",
+"3",
+"4",
+"3.0"
+],
+"a": 1,
+"e": "Integer division truncates toward zero, giving 3."
+},
+{
+"id": "q5-003",
+"s": "PROG",
+"t": "Basics",
+"d": 2,
+"q": "In Python 3, what is the result of 7 // 2?",
+"o": [
+"3.5",
+"3",
+"4",
+"2"
+],
+"a": 1,
+"e": "// is floor division, so 7 // 2 is 3."
+},
+{
+"id": "q5-004",
+"s": "PROG",
+"t": "Operators",
+"d": 2,
+"q": "What is 17 % 5?",
+"o": [
+"2",
+"3",
+"3.4",
+"12"
+],
+"a": 0,
+"e": "17 = 5 x 3 + 2, so the remainder is 2."
+},
+{
+"id": "q5-005",
+"s": "PROG",
+"t": "Operators",
+"d": 2,
+"q": "In C, what is the result of: int x = 5; x += x++;",
+"o": [
+"Always 11",
+"Always 10",
+"Undefined behaviour",
+"A compile error"
+],
+"a": 2,
+"e": "Modifying x twice without a sequence point is undefined behaviour in C."
+},
+{
+"id": "q5-006",
+"s": "PROG",
+"t": "Data types",
+"d": 1,
+"q": "Which data type is best for storing true or false?",
+"o": [
+"int",
+"char",
+"boolean",
+"float"
+],
+"a": 2,
+"e": "A boolean holds exactly two values, true and false."
+},
+{
+"id": "q5-007",
+"s": "PROG",
+"t": "Data types",
+"d": 2,
+"q": "How many bits are in a byte?",
+"o": [
+"4",
+"8",
+"16",
+"32"
+],
+"a": 1,
+"e": "One byte is 8 bits."
+},
+{
+"id": "q5-008",
+"s": "PROG",
+"t": "Data types",
+"d": 2,
+"q": "A signed 8-bit integer can store values from:",
+"o": [
+"0 to 255",
+"-128 to 127",
+"-127 to 128",
+"-256 to 255"
+],
+"a": 1,
+"e": "Two's complement 8-bit range is -128 to 127."
+},
+{
+"id": "q5-009",
+"s": "PROG",
+"t": "Control flow",
+"d": 2,
+"q": "How many times does this loop print? for (i = 0; i < 10; i += 3) print(i)",
+"o": [
+"3",
+"4",
+"10",
+"9"
+],
+"a": 1,
+"e": "i takes 0, 3, 6, 9, so it prints 4 times."
+},
+{
+"id": "q5-010",
+"s": "PROG",
+"t": "Control flow",
+"d": 2,
+"q": "What does the break statement do inside a loop?",
+"o": [
+"Skips to the next iteration",
+"Exits the loop immediately",
+"Restarts the loop",
+"Ends the program"
+],
+"a": 1,
+"e": "break leaves the nearest enclosing loop."
+},
+{
+"id": "q5-011",
+"s": "PROG",
+"t": "Functions",
+"d": 2,
+"q": "A function that calls itself is called:",
+"o": [
+"Inline",
+"Recursive",
+"Virtual",
+"Static"
+],
+"a": 1,
+"e": "Recursion means a function calls itself."
+},
+{
+"id": "q5-012",
+"s": "PROG",
+"t": "Functions",
+"d": 2,
+"q": "Passing by reference means the function receives:",
+"o": [
+"A copy of the value",
+"The address or alias of the original variable",
+"Only constants",
+"Nothing"
+],
+"a": 1,
+"e": "Changes inside the function affect the original variable."
+},
+{
+"id": "q5-013",
+"s": "PROG",
+"t": "Functions",
+"d": 3,
+"q": "In Python, what is printed? def f(a, L=[]): L.append(a); return L  then print(f(1), f(2))",
+"o": [
+"[1] [2]",
+"[1, 2] [1, 2]",
+"[1] [1, 2]",
+"An error"
+],
+"a": 1,
+"e": "The default list is created once and shared, so both calls return the same list [1, 2]."
+},
+{
+"id": "q5-014",
+"s": "PROG",
+"t": "OOP",
+"d": 1,
+"q": "Which OOP principle hides internal details behind a public interface?",
+"o": [
+"Inheritance",
+"Encapsulation",
+"Polymorphism",
+"Recursion"
+],
+"a": 1,
+"e": "Encapsulation bundles data with methods and restricts direct access."
+},
+{
+"id": "q5-015",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "Method overriding happens when:",
+"o": [
+"Two methods in one class share a name with different parameters",
+"A subclass provides its own version of a parent method",
+"A method is declared static",
+"A class has two constructors"
+],
+"a": 1,
+"e": "Overriding replaces an inherited method in the subclass."
+},
+{
+"id": "q5-016",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "Method overloading means:",
+"o": [
+"Same method name with different parameter lists",
+"A subclass replacing a method",
+"Calling a method too often",
+"A method with no body"
+],
+"a": 0,
+"e": "Overloading is compile-time polymorphism by parameter list."
+},
+{
+"id": "q5-017",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "In Java, a class can extend how many classes directly?",
+"o": [
+"One",
+"Two",
+"Any number",
+"None"
+],
+"a": 0,
+"e": "Java supports single class inheritance. Multiple interfaces can be implemented."
+},
+{
+"id": "q5-018",
+"s": "PROG",
+"t": "OOP",
+"d": 3,
+"q": "Which concept lets a parent-type reference call the child's overridden method at run time?",
+"o": [
+"Static binding",
+"Dynamic dispatch",
+"Encapsulation",
+"Overloading"
+],
+"a": 1,
+"e": "Dynamic dispatch selects the method from the actual object type."
+},
+{
+"id": "q5-019",
+"s": "PROG",
+"t": "OOP",
+"d": 2,
+"q": "A constructor is:",
+"o": [
+"A method that destroys objects",
+"A special method that initialises a new object",
+"A static variable",
+"A type of loop"
+],
+"a": 1,
+"e": "Constructors run when an object is created."
+},
+{
+"id": "q5-020",
+"s": "PROG",
+"t": "Strings",
+"d": 2,
+"q": "In Python, what is \"abc\" * 2?",
+"o": [
+"\"abcabc\"",
+"\"aabbcc\"",
+"An error",
+"\"abc2\""
+],
+"a": 0,
+"e": "Multiplying a string repeats it."
+},
+{
+"id": "q5-021",
+"s": "PROG",
+"t": "Strings",
+"d": 2,
+"q": "In Python, what is \"Pakistan\"[1:4]?",
+"o": [
+"\"Pak\"",
+"\"aki\"",
+"\"akis\"",
+"\"kis\""
+],
+"a": 1,
+"e": "Slicing takes indexes 1, 2 and 3: a, k, i."
+},
+{
+"id": "q5-022",
+"s": "PROG",
+"t": "Arrays and lists",
+"d": 2,
+"q": "In most languages, the index of the first element of an array is:",
+"o": [
+"1",
+"0",
+"-1",
+"Depends on size"
+],
+"a": 1,
+"e": "Arrays in C, Java and Python start at index 0."
+},
+{
+"id": "q5-023",
+"s": "PROG",
+"t": "Arrays and lists",
+"d": 2,
+"q": "What is the last valid index of an array of size n (0-based)?",
+"o": [
+"n",
+"n+1",
+"n-1",
+"1"
+],
+"a": 2,
+"e": "Indexes run from 0 to n-1."
+},
+{
+"id": "q5-024",
+"s": "PROG",
+"t": "Errors and exceptions",
+"d": 2,
+"q": "Accessing index 10 of a 5-element Java array throws:",
+"o": [
+"NullPointerException",
+"ArrayIndexOutOfBoundsException",
+"ClassCastException",
+"IOException"
+],
+"a": 1,
+"e": "Java checks array bounds at run time."
+},
+{
+"id": "q5-025",
+"s": "PROG",
+"t": "Errors and exceptions",
+"d": 2,
+"q": "The finally block in try-catch-finally:",
+"o": [
+"Runs only if an exception occurs",
+"Runs whether or not an exception occurs",
+"Never runs",
+"Runs before try"
+],
+"a": 1,
+"e": "finally is used for clean-up that must always happen."
+},
+{
+"id": "q5-026",
+"s": "PROG",
+"t": "Memory management",
+"d": 2,
+"q": "In C, memory allocated with malloc should be released with:",
+"o": [
+"delete",
+"free",
+"release",
+"Nothing, it is automatic"
+],
+"a": 1,
+"e": "malloc and free are paired in C."
+},
+{
+"id": "q5-027",
+"s": "PROG",
+"t": "Memory management",
+"d": 3,
+"q": "A memory leak happens when:",
+"o": [
+"A program reads freed memory",
+"Allocated memory is never released after use",
+"The stack overflows",
+"A pointer is set to NULL"
+],
+"a": 1,
+"e": "Leaked memory stays reserved and cannot be reused."
+},
+{
+"id": "q5-028",
+"s": "PROG",
+"t": "C and C++",
+"d": 2,
+"q": "In C, what does the & operator do before a variable name?",
+"o": [
+"Logical AND",
+"Gives the address of the variable",
+"Dereferences a pointer",
+"Declares a reference"
+],
+"a": 1,
+"e": "&x is the address of x."
+},
+{
+"id": "q5-029",
+"s": "PROG",
+"t": "C and C++",
+"d": 2,
+"q": "In C, if int *p = &x; what does *p give?",
+"o": [
+"The address of x",
+"The value stored in x",
+"The address of p",
+"A compile error"
+],
+"a": 1,
+"e": "* dereferences the pointer to get the value."
+},
+{
+"id": "q5-030",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is the output? x = [1, 2, 3]; y = x; y.append(4); print(len(x))",
+"o": [
+"3",
+"4",
+"An error",
+"0"
+],
+"a": 1,
+"e": "y and x name the same list, so x now has 4 items."
+},
+{
+"id": "q5-031",
+"s": "PROG",
+"t": "Java",
+"d": 2,
+"q": "In Java, == on two String objects compares:",
+"o": [
+"Their characters",
+"Their references",
+"Their lengths",
+"Their hash codes"
+],
+"a": 1,
+"e": "Use equals() to compare string contents."
+},
+{
+"id": "q5-032",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "Two nested loops each running n times give a time complexity of:",
+"o": [
+"O(n)",
+"O(2n)",
+"O(n^2)",
+"O(log n)"
+],
+"a": 2,
+"e": "n iterations inside n iterations is n x n."
+},
+{
+"id": "q5-033",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "A loop where i doubles each time (i = 1, 2, 4, ... up to n) runs about:",
+"o": [
+"n times",
+"log2 n times",
+"n/2 times",
+"sqrt(n) times"
+],
+"a": 1,
+"e": "Doubling reaches n after log2 n steps."
+},
+{
+"id": "q5-034",
+"s": "DSA",
+"t": "Searching",
+"d": 2,
+"q": "Binary search requires the array to be:",
+"o": [
+"Unsorted",
+"Sorted",
+"Of even length",
+"Stored in a linked list"
+],
+"a": 1,
+"e": "Binary search halves a sorted range."
+},
+{
+"id": "q5-035",
+"s": "DSA",
+"t": "Searching",
+"d": 2,
+"q": "Worst-case comparisons for binary search on 1,024 sorted items is about:",
+"o": [
+"10",
+"11",
+"512",
+"1024"
+],
+"a": 1,
+"e": "log2(1024) = 10, plus one final check gives about 11."
+},
+{
+"id": "q5-036",
+"s": "DSA",
+"t": "Searching",
+"d": 1,
+"q": "Linear search worst-case time is:",
+"o": [
+"O(1)",
+"O(log n)",
+"O(n)",
+"O(n^2)"
+],
+"a": 2,
+"e": "It may check every element."
+},
+{
+"id": "q5-037",
+"s": "DSA",
+"t": "Sorting",
+"d": 2,
+"q": "Which sorting algorithm has O(n log n) worst-case time?",
+"o": [
+"Quick sort",
+"Merge sort",
+"Bubble sort",
+"Insertion sort"
+],
+"a": 1,
+"e": "Merge sort is always O(n log n). Quick sort can degrade to O(n^2)."
+},
+{
+"id": "q5-038",
+"s": "DSA",
+"t": "Sorting",
+"d": 2,
+"q": "Which sort is best on an almost sorted array?",
+"o": [
+"Selection sort",
+"Insertion sort",
+"Heap sort",
+"Quick sort with first pivot"
+],
+"a": 1,
+"e": "Insertion sort runs in near O(n) on nearly sorted input."
+},
+{
+"id": "q5-039",
+"s": "DSA",
+"t": "Sorting",
+"d": 3,
+"q": "A stable sort:",
+"o": [
+"Never uses extra memory",
+"Keeps equal elements in their original relative order",
+"Always runs in O(n)",
+"Works only on numbers"
+],
+"a": 1,
+"e": "Stability preserves the order of equal keys."
+},
+{
+"id": "q5-040",
+"s": "DSA",
+"t": "Sorting",
+"d": 2,
+"q": "After the first pass of bubble sort (ascending), the largest element is:",
+"o": [
+"At the first position",
+"At the last position",
+"In the middle",
+"Unchanged"
+],
+"a": 1,
+"e": "Each pass bubbles the largest remaining element to the end."
+},
+{
+"id": "q5-041",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 2,
+"q": "Push 1, 2, 3 onto a stack, then pop twice. What is on top?",
+"o": [
+"1",
+"2",
+"3",
+"Empty"
+],
+"a": 0,
+"e": "Pops remove 3 then 2, leaving 1."
+},
+{
+"id": "q5-042",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 2,
+"q": "Which data structure is used for function calls?",
+"o": [
+"Queue",
+"Stack",
+"Heap",
+"Graph"
+],
+"a": 1,
+"e": "The call stack stores return addresses and local variables."
+},
+{
+"id": "q5-043",
+"s": "DSA",
+"t": "Stacks and queues",
+"d": 3,
+"q": "The postfix form of (A + B) * C is:",
+"o": [
+"A B C + *",
+"A B + C *",
+"+ A B * C",
+"A + B C *"
+],
+"a": 1,
+"e": "Evaluate A + B first, then multiply by C."
+},
+{
+"id": "q5-044",
+"s": "DSA",
+"t": "Linked lists",
+"d": 2,
+"q": "Inserting at the head of a singly linked list takes:",
+"o": [
+"O(1)",
+"O(log n)",
+"O(n)",
+"O(n^2)"
+],
+"a": 0,
+"e": "Only the head pointer changes."
+},
+{
+"id": "q5-045",
+"s": "DSA",
+"t": "Linked lists",
+"d": 2,
+"q": "Finding the k-th element of a singly linked list takes:",
+"o": [
+"O(1)",
+"O(k)",
+"O(log k)",
+"O(k^2)"
+],
+"a": 1,
+"e": "You must walk k nodes from the head."
+},
+{
+"id": "q5-046",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "A binary tree node can have at most:",
+"o": [
+"One child",
+"Two children",
+"Three children",
+"Any number"
+],
+"a": 1,
+"e": "Binary means at most two children."
+},
+{
+"id": "q5-047",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "In-order traversal of a binary search tree gives keys in:",
+"o": [
+"Random order",
+"Sorted order",
+"Reverse insertion order",
+"Level order"
+],
+"a": 1,
+"e": "Left, root, right visits keys in ascending order."
+},
+{
+"id": "q5-048",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "The maximum number of nodes in a binary tree of height 3 (root at height 0) is:",
+"o": [
+"7",
+"8",
+"15",
+"16"
+],
+"a": 2,
+"e": "2^(h+1) - 1 = 2^4 - 1 = 15."
+},
+{
+"id": "q5-049",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "Searching an unbalanced BST built from sorted input takes worst case:",
+"o": [
+"O(1)",
+"O(log n)",
+"O(n)",
+"O(n log n)"
+],
+"a": 2,
+"e": "Sorted inserts create a chain like a linked list."
+},
+{
+"id": "q5-050",
+"s": "DSA",
+"t": "Trees",
+"d": 2,
+"q": "Which traversal visits the root first?",
+"o": [
+"In-order",
+"Pre-order",
+"Post-order",
+"Level order only"
+],
+"a": 1,
+"e": "Pre-order is root, left, right."
+},
+{
+"id": "q5-051",
+"s": "DSA",
+"t": "Heaps",
+"d": 2,
+"q": "In a max-heap, the largest element is at:",
+"o": [
+"A leaf",
+"The root",
+"The last index",
+"Any position"
+],
+"a": 1,
+"e": "The heap property keeps the maximum at the root."
+},
+{
+"id": "q5-052",
+"s": "DSA",
+"t": "Hashing",
+"d": 2,
+"q": "Average lookup time in a well-designed hash table is:",
+"o": [
+"O(1)",
+"O(log n)",
+"O(n)",
+"O(n^2)"
+],
+"a": 0,
+"e": "A good hash spreads keys so lookups are constant time on average."
+},
+{
+"id": "q5-053",
+"s": "DSA",
+"t": "Hashing",
+"d": 2,
+"q": "When two keys map to the same slot, it is called a:",
+"o": [
+"Overflow",
+"Collision",
+"Deadlock",
+"Rotation"
+],
+"a": 1,
+"e": "Collisions are handled by chaining or open addressing."
+},
+{
+"id": "q5-054",
+"s": "DSA",
+"t": "Graphs",
+"d": 2,
+"q": "BFS uses which data structure?",
+"o": [
+"Stack",
+"Queue",
+"Heap",
+"Tree"
+],
+"a": 1,
+"e": "Breadth-first search explores level by level with a queue."
+},
+{
+"id": "q5-055",
+"s": "DSA",
+"t": "Graphs",
+"d": 2,
+"q": "DFS can be implemented with:",
+"o": [
+"A queue",
+"A stack or recursion",
+"A heap only",
+"A hash table only"
+],
+"a": 1,
+"e": "Depth-first search goes deep using a stack."
+},
+{
+"id": "q5-056",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "Dijkstra's algorithm fails when the graph has:",
+"o": [
+"Cycles",
+"Negative edge weights",
+"More than 100 nodes",
+"Undirected edges"
+],
+"a": 1,
+"e": "Negative weights break its greedy choice. Use Bellman-Ford instead."
+},
+{
+"id": "q5-057",
+"s": "DSA",
+"t": "Graphs",
+"d": 2,
+"q": "A tree with n nodes has how many edges?",
+"o": [
+"n",
+"n-1",
+"n+1",
+"2n"
+],
+"a": 1,
+"e": "A connected acyclic graph with n nodes has n-1 edges."
+},
+{
+"id": "q5-058",
+"s": "DSA",
+"t": "Algorithm design",
+"d": 2,
+"q": "Merge sort is an example of:",
+"o": [
+"Greedy",
+"Divide and conquer",
+"Dynamic programming",
+"Backtracking"
+],
+"a": 1,
+"e": "It splits the problem, solves halves and merges."
+},
+{
+"id": "q5-059",
+"s": "DSA",
+"t": "Algorithm design",
+"d": 3,
+"q": "Dynamic programming is useful when a problem has:",
+"o": [
+"No sub-problems",
+"Overlapping sub-problems and optimal substructure",
+"Only one solution",
+"Random inputs"
+],
+"a": 1,
+"e": "DP stores sub-problem answers to avoid recomputation."
+},
+{
+"id": "q5-060",
+"s": "DSA",
+"t": "Recursion",
+"d": 2,
+"q": "What is needed to stop recursion?",
+"o": [
+"A loop",
+"A base case",
+"A global variable",
+"A pointer"
+],
+"a": 1,
+"e": "Without a base case, recursion never ends."
+},
+{
+"id": "q5-061",
+"s": "DSA",
+"t": "Recursion",
+"d": 3,
+"q": "Recursive fib(n) without memoisation runs in roughly:",
+"o": [
+"O(n)",
+"O(log n)",
+"O(2^n)",
+"O(n^2)"
+],
+"a": 2,
+"e": "Each call branches into two more calls."
+},
+{
+"id": "q5-062",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "COUNT(*) counts:",
+"o": [
+"Only non-null values",
+"All rows",
+"Distinct rows",
+"Columns"
+],
+"a": 1,
+"e": "COUNT(*) counts every row, including those with nulls."
+},
+{
+"id": "q5-063",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "To sort results from highest to lowest salary you use:",
+"o": [
+"ORDER BY salary ASC",
+"ORDER BY salary DESC",
+"SORT salary DOWN",
+"GROUP BY salary"
+],
+"a": 1,
+"e": "DESC sorts in descending order."
+},
+{
+"id": "q5-064",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which command removes all rows but keeps the table structure, usually fastest?",
+"o": [
+"DROP TABLE",
+"TRUNCATE TABLE",
+"DELETE DATABASE",
+"REMOVE ROWS"
+],
+"a": 1,
+"e": "TRUNCATE empties the table quickly and keeps its definition."
+},
+{
+"id": "q5-065",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "What does SELECT name FROM students WHERE marks BETWEEN 50 AND 60 include?",
+"o": [
+"Marks from 51 to 59",
+"Marks from 50 to 60 inclusive",
+"Marks below 50",
+"Only 50 and 60"
+],
+"a": 1,
+"e": "BETWEEN is inclusive at both ends."
+},
+{
+"id": "q5-066",
+"s": "DB",
+"t": "SQL",
+"d": 2,
+"q": "Which wildcard in LIKE matches any number of characters?",
+"o": [
+"_",
+"%",
+"*",
+"?"
+],
+"a": 1,
+"e": "% matches zero or more characters. _ matches exactly one."
+},
+{
+"id": "q5-067",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "To test for missing values in SQL you write:",
+"o": [
+"col = NULL",
+"col IS NULL",
+"col == NULL",
+"ISNULL = col"
+],
+"a": 1,
+"e": "NULL is not equal to anything, so use IS NULL."
+},
+{
+"id": "q5-068",
+"s": "DB",
+"t": "Keys",
+"d": 3,
+"q": "A candidate key is:",
+"o": [
+"Any column",
+"A minimal set of columns that can uniquely identify rows",
+"Always the first column",
+"A key that allows duplicates"
+],
+"a": 1,
+"e": "One candidate key is chosen as the primary key."
+},
+{
+"id": "q5-069",
+"s": "DB",
+"t": "Normalization",
+"d": 2,
+"q": "A table is in 1NF when:",
+"o": [
+"It has no primary key",
+"Every column holds atomic values",
+"It has no foreign keys",
+"It has fewer than 10 columns"
+],
+"a": 1,
+"e": "First normal form removes repeating groups and multi-valued cells."
+},
+{
+"id": "q5-070",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "2NF removes:",
+"o": [
+"Transitive dependencies",
+"Partial dependencies on part of a composite key",
+"All foreign keys",
+"Null values"
+],
+"a": 1,
+"e": "Every non-key column must depend on the whole key."
+},
+{
+"id": "q5-071",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "3NF removes:",
+"o": [
+"Partial dependencies",
+"Transitive dependencies between non-key columns",
+"Primary keys",
+"Indexes"
+],
+"a": 1,
+"e": "Non-key columns must depend only on the key."
+},
+{
+"id": "q5-072",
+"s": "DB",
+"t": "Transactions",
+"d": 2,
+"q": "The A in ACID stands for:",
+"o": [
+"Availability",
+"Atomicity",
+"Accuracy",
+"Authorisation"
+],
+"a": 1,
+"e": "Atomicity means all or nothing."
+},
+{
+"id": "q5-073",
+"s": "DB",
+"t": "Transactions",
+"d": 3,
+"q": "A dirty read happens when a transaction reads:",
+"o": [
+"Its own data",
+"Data written by another transaction that has not committed",
+"Data from a backup",
+"Encrypted data"
+],
+"a": 1,
+"e": "If the other transaction rolls back, the read value never existed."
+},
+{
+"id": "q5-074",
+"s": "DB",
+"t": "Indexing",
+"d": 2,
+"q": "An index mainly speeds up:",
+"o": [
+"INSERT operations",
+"SELECT lookups",
+"Backups",
+"Schema changes"
+],
+"a": 1,
+"e": "Indexes speed reads but add cost to writes."
+},
+{
+"id": "q5-075",
+"s": "DB",
+"t": "ER modelling",
+"d": 2,
+"q": "A student can enrol in many courses and a course has many students. This is:",
+"o": [
+"One-to-one",
+"One-to-many",
+"Many-to-many",
+"Recursive"
+],
+"a": 2,
+"e": "Both sides have many, so a junction table is needed."
+},
+{
+"id": "q5-076",
+"s": "DB",
+"t": "NoSQL",
+"d": 2,
+"q": "MongoDB stores data mainly as:",
+"o": [
+"Tables and rows",
+"Documents (JSON-like)",
+"Graphs only",
+"Key-value pairs only"
+],
+"a": 1,
+"e": "MongoDB is a document database."
+},
+{
+"id": "q5-077",
+"s": "DB",
+"t": "NoSQL",
+"d": 3,
+"q": "The CAP theorem says a distributed system can fully guarantee at most two of:",
+"o": [
+"Consistency, Availability, Partition tolerance",
+"Cost, Accuracy, Performance",
+"Concurrency, Atomicity, Persistence",
+"Caching, Auditing, Privacy"
+],
+"a": 0,
+"e": "During a network partition you must choose consistency or availability."
+},
+{
+"id": "q5-078",
+"s": "SE",
+"t": "SDLC",
+"d": 1,
+"q": "Which SDLC phase comes first?",
+"o": [
+"Testing",
+"Requirements gathering",
+"Deployment",
+"Maintenance"
+],
+"a": 1,
+"e": "You must know what to build before designing it."
+},
+{
+"id": "q5-079",
+"s": "SE",
+"t": "SDLC",
+"d": 2,
+"q": "The Waterfall model is best when:",
+"o": [
+"Requirements change weekly",
+"Requirements are clear and stable",
+"The client wants frequent demos",
+"The team is very small"
+],
+"a": 1,
+"e": "Waterfall moves through fixed phases in order."
+},
+{
+"id": "q5-080",
+"s": "SE",
+"t": "Agile",
+"d": 1,
+"q": "In Scrum, a fixed time-box of work is called a:",
+"o": [
+"Phase",
+"Sprint",
+"Milestone",
+"Release"
+],
+"a": 1,
+"e": "Sprints usually last 1 to 4 weeks."
+},
+{
+"id": "q5-081",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "Who prioritises the product backlog in Scrum?",
+"o": [
+"Scrum Master",
+"Product Owner",
+"Developers",
+"The CEO"
+],
+"a": 1,
+"e": "The Product Owner owns and orders the backlog."
+},
+{
+"id": "q5-082",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "The daily stand-up in Scrum is mainly for:",
+"o": [
+"Detailed design",
+"Syncing progress and blockers",
+"Performance reviews",
+"Client billing"
+],
+"a": 1,
+"e": "It is a short daily team sync."
+},
+{
+"id": "q5-083",
+"s": "SE",
+"t": "Agile",
+"d": 2,
+"q": "A user story usually follows the format:",
+"o": [
+"As a [role], I want [goal], so that [benefit]",
+"Input, Process, Output",
+"Given, When, Then only",
+"Problem, Cause, Fix"
+],
+"a": 0,
+"e": "User stories describe value from the user's view."
+},
+{
+"id": "q5-084",
+"s": "SE",
+"t": "Requirements",
+"d": 2,
+"q": "\"The system shall respond within 2 seconds\" is a:",
+"o": [
+"Functional requirement",
+"Non-functional requirement",
+"User story",
+"Test case"
+],
+"a": 1,
+"e": "It describes a quality (performance), not a function."
+},
+{
+"id": "q5-085",
+"s": "SE",
+"t": "Requirements",
+"d": 2,
+"q": "\"A student can reset their password\" is a:",
+"o": [
+"Functional requirement",
+"Non-functional requirement",
+"Design constraint",
+"Risk"
+],
+"a": 0,
+"e": "It describes something the system does."
+},
+{
+"id": "q5-086",
+"s": "SE",
+"t": "Testing",
+"d": 1,
+"q": "Testing individual functions or classes in isolation is called:",
+"o": [
+"System testing",
+"Unit testing",
+"Acceptance testing",
+"Load testing"
+],
+"a": 1,
+"e": "Unit tests check the smallest testable parts."
+},
+{
+"id": "q5-087",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Black-box testing is based on:",
+"o": [
+"Internal code structure",
+"Specifications and inputs/outputs",
+"Code coverage",
+"Compiler output"
+],
+"a": 1,
+"e": "The tester does not look at the code."
+},
+{
+"id": "q5-088",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Regression testing checks that:",
+"o": [
+"New code is fast",
+"Existing features still work after changes",
+"The UI looks good",
+"Users accept the system"
+],
+"a": 1,
+"e": "It catches features broken by new changes."
+},
+{
+"id": "q5-089",
+"s": "SE",
+"t": "Testing",
+"d": 3,
+"q": "For an input field accepting ages 18 to 60, boundary value analysis tests:",
+"o": [
+"Only 30",
+"17, 18, 60, 61",
+"Only negative numbers",
+"Only 0"
+],
+"a": 1,
+"e": "Bugs cluster at the edges of valid ranges."
+},
+{
+"id": "q5-090",
+"s": "SE",
+"t": "Testing",
+"d": 2,
+"q": "Acceptance testing is usually done by:",
+"o": [
+"Developers",
+"The customer or end users",
+"The compiler",
+"The database admin"
+],
+"a": 1,
+"e": "It confirms the system meets business needs."
+},
+{
+"id": "q5-091",
+"s": "SE",
+"t": "Design",
+"d": 2,
+"q": "High cohesion and low coupling means:",
+"o": [
+"Modules do many unrelated things and depend heavily on each other",
+"Each module has one focused job and few dependencies",
+"All code is in one file",
+"No modules exist"
+],
+"a": 1,
+"e": "This makes systems easier to change and test."
+},
+{
+"id": "q5-092",
+"s": "SE",
+"t": "Design",
+"d": 2,
+"q": "The Singleton pattern ensures:",
+"o": [
+"Many instances of a class",
+"Only one instance of a class exists",
+"A class has no methods",
+"Classes cannot inherit"
+],
+"a": 1,
+"e": "Used for shared resources like a configuration object."
+},
+{
+"id": "q5-093",
+"s": "SE",
+"t": "Design",
+"d": 3,
+"q": "The Observer pattern is used when:",
+"o": [
+"One object must notify many dependents of a change",
+"Objects must be copied",
+"Only one instance is allowed",
+"Algorithms must be swapped at compile time"
+],
+"a": 0,
+"e": "Subscribers are notified automatically on change."
+},
+{
+"id": "q5-094",
+"s": "SE",
+"t": "UML",
+"d": 2,
+"q": "Which UML diagram shows classes and their relationships?",
+"o": [
+"Use case diagram",
+"Class diagram",
+"Sequence diagram",
+"Activity diagram"
+],
+"a": 1,
+"e": "Class diagrams show attributes, methods and associations."
+},
+{
+"id": "q5-095",
+"s": "SE",
+"t": "UML",
+"d": 2,
+"q": "Which UML diagram shows messages between objects over time?",
+"o": [
+"Class diagram",
+"Sequence diagram",
+"Component diagram",
+"Deployment diagram"
+],
+"a": 1,
+"e": "Sequence diagrams have lifelines and ordered messages."
+},
+{
+"id": "q5-096",
+"s": "SE",
+"t": "Version control",
+"d": 1,
+"q": "Which command records changes in the local Git repository?",
+"o": [
+"git push",
+"git commit",
+"git clone",
+"git pull"
+],
+"a": 1,
+"e": "git commit saves a snapshot locally."
+},
+{
+"id": "q5-097",
+"s": "SE",
+"t": "Version control",
+"d": 2,
+"q": "Which command uploads local commits to a remote repository?",
+"o": [
+"git push",
+"git fetch",
+"git add",
+"git init"
+],
+"a": 0,
+"e": "git push sends commits to the remote."
+},
+{
+"id": "q5-098",
+"s": "SE",
+"t": "Version control",
+"d": 2,
+"q": "A merge conflict happens when:",
+"o": [
+"Two branches change the same lines differently",
+"A repository is deleted",
+"Git is offline",
+"A commit message is empty"
+],
+"a": 0,
+"e": "Git cannot decide which change to keep."
+},
+{
+"id": "q5-099",
+"s": "WEB",
+"t": "HTML",
+"d": 1,
+"q": "Which HTML tag creates a hyperlink?",
+"o": [
+"<link>",
+"<a>",
+"<href>",
+"<url>"
+],
+"a": 1,
+"e": "<a href=\"...\"> creates a clickable link."
+},
+{
+"id": "q5-100",
+"s": "WEB",
+"t": "HTML",
+"d": 1,
+"q": "Which tag is used for the largest heading?",
+"o": [
+"<h6>",
+"<h1>",
+"<head>",
+"<heading>"
+],
+"a": 1,
+"e": "h1 is the top-level heading."
+},
+{
+"id": "q5-101",
+"s": "WEB",
+"t": "HTML",
+"d": 2,
+"q": "Which attribute provides alternative text for an image?",
+"o": [
+"title",
+"alt",
+"src",
+"name"
+],
+"a": 1,
+"e": "alt text helps screen readers and shows if the image fails."
+},
+{
+"id": "q5-102",
+"s": "WEB",
+"t": "HTML",
+"d": 2,
+"q": "Which input type hides typed characters?",
+"o": [
+"text",
+"hidden",
+"password",
+"secret"
+],
+"a": 2,
+"e": "type=\"password\" masks the input."
+},
+{
+"id": "q5-103",
+"s": "WEB",
+"t": "HTML",
+"d": 2,
+"q": "Which tag groups related form fields under a caption?",
+"o": [
+"<group>",
+"<fieldset>",
+"<section>",
+"<div>"
+],
+"a": 1,
+"e": "fieldset with legend groups form controls."
+},
+{
+"id": "q5-104",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "Which selector targets an element with id=\"main\"?",
+"o": [
+".main",
+"#main",
+"main",
+"*main"
+],
+"a": 1,
+"e": "# selects by id. . selects by class."
+},
+{
+"id": "q5-105",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "In the CSS box model, which is outermost?",
+"o": [
+"Padding",
+"Border",
+"Margin",
+"Content"
+],
+"a": 2,
+"e": "Content, padding, border, then margin."
+},
+{
+"id": "q5-106",
+"s": "WEB",
+"t": "CSS",
+"d": 2,
+"q": "display: flex is used to:",
+"o": [
+"Hide an element",
+"Lay out children in a row or column with flexible sizing",
+"Add animation",
+"Load fonts"
+],
+"a": 1,
+"e": "Flexbox arranges items along one axis."
+},
+{
+"id": "q5-107",
+"s": "WEB",
+"t": "JavaScript",
+"d": 1,
+"q": "Which keyword declares a block-scoped variable that cannot be reassigned?",
+"o": [
+"var",
+"let",
+"const",
+"static"
+],
+"a": 2,
+"e": "const cannot be reassigned. let can."
+},
+{
+"id": "q5-108",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "What is typeof null in JavaScript?",
+"o": [
+"\"null\"",
+"\"object\"",
+"\"undefined\"",
+"\"number\""
+],
+"a": 1,
+"e": "A long-standing quirk: typeof null is \"object\"."
+},
+{
+"id": "q5-109",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "What does 2 + \"2\" give in JavaScript?",
+"o": [
+"4",
+"\"22\"",
+"NaN",
+"An error"
+],
+"a": 1,
+"e": "The number is converted to a string and joined."
+},
+{
+"id": "q5-110",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "=== in JavaScript checks:",
+"o": [
+"Value only",
+"Value and type",
+"Type only",
+"Reference only for numbers"
+],
+"a": 1,
+"e": "Strict equality does not convert types."
+},
+{
+"id": "q5-111",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What is logged? console.log([1, 2, 3].map(x => x * 2))",
+"o": [
+"[1, 2, 3]",
+"[2, 4, 6]",
+"6",
+"[1, 4, 9]"
+],
+"a": 1,
+"e": "map doubles each element."
+},
+{
+"id": "q5-112",
+"s": "WEB",
+"t": "JavaScript",
+"d": 2,
+"q": "Which method adds an element to the end of an array?",
+"o": [
+"shift()",
+"push()",
+"pop()",
+"unshift()"
+],
+"a": 1,
+"e": "push appends. pop removes from the end."
+},
+{
+"id": "q5-113",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "A Promise in JavaScript represents:",
+"o": [
+"A loop",
+"A value that may be available now, later or never",
+"A CSS rule",
+"A database row"
+],
+"a": 1,
+"e": "Promises handle asynchronous results."
+},
+{
+"id": "q5-114",
+"s": "WEB",
+"t": "HTTP",
+"d": 1,
+"q": "Which HTTP method is normally used to submit a form that creates data?",
+"o": [
+"GET",
+"POST",
+"HEAD",
+"TRACE"
+],
+"a": 1,
+"e": "POST sends data in the request body."
+},
+{
+"id": "q5-115",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "HTTP status 404 means:",
+"o": [
+"Server error",
+"Not found",
+"Unauthorised",
+"OK"
+],
+"a": 1,
+"e": "The requested resource does not exist."
+},
+{
+"id": "q5-116",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "HTTP status 500 means:",
+"o": [
+"Not found",
+"Internal server error",
+"Redirect",
+"Bad request"
+],
+"a": 1,
+"e": "5xx codes mean the server failed."
+},
+{
+"id": "q5-117",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "HTTP status 401 means:",
+"o": [
+"Forbidden",
+"Unauthorised (authentication needed)",
+"Not found",
+"Created"
+],
+"a": 1,
+"e": "The client must authenticate."
+},
+{
+"id": "q5-118",
+"s": "WEB",
+"t": "HTTP",
+"d": 2,
+"q": "HTTPS adds which layer on top of HTTP?",
+"o": [
+"FTP",
+"TLS encryption",
+"UDP",
+"DNS"
+],
+"a": 1,
+"e": "TLS encrypts and authenticates the connection."
+},
+{
+"id": "q5-119",
+"s": "WEB",
+"t": "APIs",
+"d": 2,
+"q": "In a REST API, which method usually deletes a resource?",
+"o": [
+"GET",
+"POST",
+"DELETE",
+"PATCH"
+],
+"a": 2,
+"e": "DELETE removes the resource at the URL."
+},
+{
+"id": "q5-120",
+"s": "WEB",
+"t": "Security",
+"d": 2,
+"q": "Cross-Site Scripting (XSS) happens when:",
+"o": [
+"A database is deleted",
+"Untrusted input is shown on a page without escaping, so scripts run",
+"A server runs out of memory",
+"Passwords are hashed"
+],
+"a": 1,
+"e": "Escape output and use a Content Security Policy."
+},
+{
+"id": "q5-121",
+"s": "WEB",
+"t": "Accessibility",
+"d": 2,
+"q": "Which practice improves web accessibility?",
+"o": [
+"Using only colour to show errors",
+"Adding alt text and labels to form fields",
+"Disabling keyboard navigation",
+"Using tiny fonts"
+],
+"a": 1,
+"e": "Screen readers rely on labels and alt text."
+},
+{
+"id": "q5-122",
+"s": "NET",
+"t": "OSI model",
+"d": 2,
+"q": "Routers operate mainly at which OSI layer?",
+"o": [
+"Layer 1",
+"Layer 2",
+"Layer 3",
+"Layer 7"
+],
+"a": 2,
+"e": "Routers forward packets using IP addresses at the network layer."
+},
+{
+"id": "q5-123",
+"s": "NET",
+"t": "OSI model",
+"d": 2,
+"q": "Switches operate mainly at which OSI layer?",
+"o": [
+"Physical",
+"Data link",
+"Transport",
+"Application"
+],
+"a": 1,
+"e": "Switches forward frames using MAC addresses."
+},
+{
+"id": "q5-124",
+"s": "NET",
+"t": "Transport layer",
+"d": 2,
+"q": "Which protocol suits live video calls where speed matters more than perfect delivery?",
+"o": [
+"TCP",
+"UDP",
+"FTP",
+"SMTP"
+],
+"a": 1,
+"e": "UDP has low overhead and no retransmission delays."
+},
+{
+"id": "q5-125",
+"s": "NET",
+"t": "Application layer",
+"d": 1,
+"q": "The default port for HTTP is:",
+"o": [
+"21",
+"25",
+"80",
+"443"
+],
+"a": 2,
+"e": "HTTP uses 80 and HTTPS uses 443."
+},
+{
+"id": "q5-126",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "The default port for HTTPS is:",
+"o": [
+"80",
+"443",
+"8080",
+"22"
+],
+"a": 1,
+"e": "HTTPS runs on 443."
+},
+{
+"id": "q5-127",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "Which port does SSH use by default?",
+"o": [
+"21",
+"22",
+"23",
+"25"
+],
+"a": 1,
+"e": "SSH listens on port 22."
+},
+{
+"id": "q5-128",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "DNS mainly converts:",
+"o": [
+"IP addresses to MAC addresses",
+"Domain names to IP addresses",
+"Files to packets",
+"Emails to web pages"
+],
+"a": 1,
+"e": "DNS resolves names like example.com to IPs."
+},
+{
+"id": "q5-129",
+"s": "NET",
+"t": "Application layer",
+"d": 2,
+"q": "DHCP is used to:",
+"o": [
+"Encrypt traffic",
+"Automatically assign IP addresses to devices",
+"Translate domain names",
+"Send email"
+],
+"a": 1,
+"e": "DHCP leases IP settings to hosts."
+},
+{
+"id": "q5-130",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "Which address range is private (RFC 1918)?",
+"o": [
+"8.8.8.0/24",
+"192.168.0.0/16",
+"1.1.1.0/24",
+"100.0.0.0/8"
+],
+"a": 1,
+"e": "10/8, 172.16/12 and 192.168/16 are private ranges."
+},
+{
+"id": "q5-131",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses does a /24 IPv4 network have?",
+"o": [
+"256",
+"254",
+"255",
+"252"
+],
+"a": 1,
+"e": "2^8 - 2 = 254, minus network and broadcast addresses."
+},
+{
+"id": "q5-132",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "NAT allows:",
+"o": [
+"Many private devices to share one public IP address",
+"Faster Wi-Fi",
+"Email encryption",
+"Domain name lookups"
+],
+"a": 0,
+"e": "Network Address Translation maps private addresses to a public one."
+},
+{
+"id": "q5-133",
+"s": "NET",
+"t": "Network layer",
+"d": 2,
+"q": "The ping command uses which protocol?",
+"o": [
+"TCP",
+"UDP",
+"ICMP",
+"ARP"
+],
+"a": 2,
+"e": "Ping sends ICMP echo requests."
+},
+{
+"id": "q5-134",
+"s": "NET",
+"t": "Data link layer",
+"d": 2,
+"q": "ARP is used to find:",
+"o": [
+"The IP address for a domain",
+"The MAC address for a known IP address",
+"The fastest route",
+"A free port"
+],
+"a": 1,
+"e": "ARP maps IPv4 addresses to MAC addresses on a LAN."
+},
+{
+"id": "q5-135",
+"s": "NET",
+"t": "Network devices",
+"d": 2,
+"q": "Which device connects different networks and chooses paths?",
+"o": [
+"Hub",
+"Switch",
+"Router",
+"Repeater"
+],
+"a": 2,
+"e": "Routers connect networks and route packets."
+},
+{
+"id": "q5-136",
+"s": "NET",
+"t": "Network topologies",
+"d": 1,
+"q": "In a star topology, all devices connect to:",
+"o": [
+"Each other directly",
+"A central hub or switch",
+"A ring",
+"A single cable"
+],
+"a": 1,
+"e": "Failure of one cable affects only one device."
+},
+{
+"id": "q5-137",
+"s": "NET",
+"t": "Wireless networks",
+"d": 2,
+"q": "Which is the most secure common Wi-Fi security standard?",
+"o": [
+"WEP",
+"WPA",
+"WPA2",
+"WPA3"
+],
+"a": 3,
+"e": "WPA3 replaces WPA2 with stronger protection."
+},
+{
+"id": "q5-138",
+"s": "NET",
+"t": "Cloud computing",
+"d": 2,
+"q": "Renting virtual machines from a cloud provider is:",
+"o": [
+"SaaS",
+"PaaS",
+"IaaS",
+"FaaS only"
+],
+"a": 2,
+"e": "Infrastructure as a Service gives raw compute, storage and network."
+},
+{
+"id": "q5-139",
+"s": "NET",
+"t": "Cloud computing",
+"d": 2,
+"q": "Using Gmail through a browser is an example of:",
+"o": [
+"IaaS",
+"PaaS",
+"SaaS",
+"On-premises"
+],
+"a": 2,
+"e": "Software as a Service delivers a full application."
+},
+{
+"id": "q5-140",
+"s": "NET",
+"t": "Cloud computing",
+"d": 3,
+"q": "Horizontal scaling means:",
+"o": [
+"Adding a bigger CPU to one server",
+"Adding more servers to share the load",
+"Reducing users",
+"Compressing data"
+],
+"a": 1,
+"e": "Scale out with more machines. Scale up with a bigger machine."
+},
+{
+"id": "q5-141",
+"s": "OS",
+"t": "Basics",
+"d": 1,
+"q": "Which is an operating system?",
+"o": [
+"MySQL",
+"Linux",
+"Chrome",
+"Python"
+],
+"a": 1,
+"e": "Linux manages hardware and runs programs."
+},
+{
+"id": "q5-142",
+"s": "OS",
+"t": "Basics",
+"d": 2,
+"q": "The kernel is:",
+"o": [
+"A user application",
+"The core of the OS that manages CPU, memory and devices",
+"A type of file",
+"A web browser"
+],
+"a": 1,
+"e": "The kernel runs in privileged mode."
+},
+{
+"id": "q5-143",
+"s": "OS",
+"t": "Processes",
+"d": 2,
+"q": "A process is:",
+"o": [
+"A program stored on disk",
+"A program in execution",
+"A CPU register",
+"A file system"
+],
+"a": 1,
+"e": "A process has code, data, stack and a state."
+},
+{
+"id": "q5-144",
+"s": "OS",
+"t": "Processes",
+"d": 2,
+"q": "Which process state means waiting for I/O to finish?",
+"o": [
+"Running",
+"Ready",
+"Blocked (waiting)",
+"Terminated"
+],
+"a": 2,
+"e": "The process cannot run until the I/O completes."
+},
+{
+"id": "q5-145",
+"s": "OS",
+"t": "Processes",
+"d": 2,
+"q": "A context switch is:",
+"o": [
+"Changing the user",
+"Saving one process's state and loading another's",
+"Restarting the computer",
+"Switching keyboards"
+],
+"a": 1,
+"e": "It lets the CPU move between processes."
+},
+{
+"id": "q5-146",
+"s": "OS",
+"t": "Scheduling",
+"d": 2,
+"q": "Which scheduling algorithm gives each process a fixed time slice in turn?",
+"o": [
+"FCFS",
+"SJF",
+"Round Robin",
+"Priority"
+],
+"a": 2,
+"e": "Round Robin uses a time quantum."
+},
+{
+"id": "q5-147",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "Processes P1, P2, P3 with burst times 24, 3, 3 arrive in that order under FCFS. Average waiting time is:",
+"o": [
+"3",
+"17",
+"10",
+"27"
+],
+"a": 1,
+"e": "Waits are 0, 24 and 27. Average = 51 / 3 = 17."
+},
+{
+"id": "q5-148",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "For the same bursts (24, 3, 3) under SJF, the average waiting time is:",
+"o": [
+"3",
+"6",
+"17",
+"9"
+],
+"a": 0,
+"e": "Order 3, 3, 24 gives waits 0, 3, 6. Average = 3."
+},
+{
+"id": "q5-149",
+"s": "OS",
+"t": "Scheduling",
+"d": 2,
+"q": "Starvation in priority scheduling is reduced by:",
+"o": [
+"Aging",
+"Paging",
+"Swapping",
+"Spooling"
+],
+"a": 0,
+"e": "Aging raises the priority of waiting processes over time."
+},
+{
+"id": "q5-150",
+"s": "OS",
+"t": "Synchronization",
+"d": 2,
+"q": "A critical section is:",
+"o": [
+"Code that accesses shared resources and must not run in two threads at once",
+"The first line of a program",
+"A kernel crash",
+"A disk sector"
+],
+"a": 0,
+"e": "Mutual exclusion protects shared data."
+},
+{
+"id": "q5-151",
+"s": "OS",
+"t": "Synchronization",
+"d": 3,
+"q": "A race condition occurs when:",
+"o": [
+"A program runs too slowly",
+"The result depends on the timing of concurrent operations on shared data",
+"Two programs use the same name",
+"The CPU overheats"
+],
+"a": 1,
+"e": "Locks or atomic operations prevent it."
+},
+{
+"id": "q5-152",
+"s": "OS",
+"t": "Deadlock",
+"d": 2,
+"q": "Which is NOT one of the four conditions for deadlock?",
+"o": [
+"Mutual exclusion",
+"Hold and wait",
+"Preemption",
+"Circular wait"
+],
+"a": 2,
+"e": "The condition is NO preemption. Allowing preemption breaks deadlock."
+},
+{
+"id": "q5-153",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "The LRU page replacement algorithm replaces the page:",
+"o": [
+"Loaded first",
+"Used least recently",
+"Used most often",
+"With the largest size"
+],
+"a": 1,
+"e": "Least Recently Used approximates optimal replacement."
+},
+{
+"id": "q5-154",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "With 3 frames and FIFO, how many page faults for reference string 1, 2, 3, 4, 1, 2?",
+"o": [
+"4",
+"5",
+"6",
+"3"
+],
+"a": 2,
+"e": "1, 2, 3 fault. 4 replaces 1, then 1 replaces 2, then 2 replaces 3: 6 faults."
+},
+{
+"id": "q5-155",
+"s": "OS",
+"t": "Linux",
+"d": 2,
+"q": "Which Linux command shows the current directory path?",
+"o": [
+"ls",
+"pwd",
+"cd",
+"whoami"
+],
+"a": 1,
+"e": "pwd prints the working directory."
+},
+{
+"id": "q5-156",
+"s": "OS",
+"t": "Linux",
+"d": 2,
+"q": "chmod 755 file gives the owner:",
+"o": [
+"Read only",
+"Read, write and execute",
+"Write only",
+"No access"
+],
+"a": 1,
+"e": "7 = read + write + execute."
+},
+{
+"id": "q5-157",
+"s": "OS",
+"t": "Disk scheduling",
+"d": 3,
+"q": "Which disk scheduling algorithm can cause starvation of far requests?",
+"o": [
+"FCFS",
+"SSTF",
+"SCAN",
+"C-SCAN"
+],
+"a": 1,
+"e": "Shortest Seek Time First keeps serving nearby requests."
+},
+{
+"id": "q5-158",
+"s": "OS",
+"t": "Virtualization",
+"d": 2,
+"q": "A hypervisor:",
+"o": [
+"Is a web server",
+"Creates and runs virtual machines",
+"Compiles code",
+"Stores passwords"
+],
+"a": 1,
+"e": "Examples are VMware ESXi, Hyper-V and KVM."
+},
+{
+"id": "q5-159",
+"s": "SEC",
+"t": "Basics",
+"d": 2,
+"q": "Ensuring data is not changed without authorisation is:",
+"o": [
+"Confidentiality",
+"Integrity",
+"Availability",
+"Non-repudiation"
+],
+"a": 1,
+"e": "Integrity protects against tampering."
+},
+{
+"id": "q5-160",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "Which is an asymmetric algorithm?",
+"o": [
+"AES",
+"DES",
+"RSA",
+"3DES"
+],
+"a": 2,
+"e": "RSA uses a public and private key pair."
+},
+{
+"id": "q5-161",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "To send a message only Ali can read, you encrypt it with:",
+"o": [
+"Your private key",
+"Ali's public key",
+"Ali's private key",
+"A shared password in the email"
+],
+"a": 1,
+"e": "Only Ali's private key can decrypt it."
+},
+{
+"id": "q5-162",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "A digital signature is created with the sender's:",
+"o": [
+"Public key",
+"Private key",
+"Session key",
+"Password"
+],
+"a": 1,
+"e": "Anyone can verify it with the sender's public key."
+},
+{
+"id": "q5-163",
+"s": "SEC",
+"t": "Cryptography",
+"d": 2,
+"q": "A hash function such as SHA-256 is:",
+"o": [
+"Reversible",
+"One-way",
+"A symmetric cipher",
+"A random number"
+],
+"a": 1,
+"e": "You cannot get the input back from the hash."
+},
+{
+"id": "q5-164",
+"s": "SEC",
+"t": "Authentication",
+"d": 2,
+"q": "Two-factor authentication combines:",
+"o": [
+"Two passwords",
+"Two different types of factor, such as a password and a phone code",
+"Two usernames",
+"Two browsers"
+],
+"a": 1,
+"e": "Factors are something you know, have or are."
+},
+{
+"id": "q5-165",
+"s": "SEC",
+"t": "Authentication",
+"d": 2,
+"q": "A fingerprint is which type of factor?",
+"o": [
+"Something you know",
+"Something you have",
+"Something you are",
+"Somewhere you are"
+],
+"a": 2,
+"e": "Biometrics are something you are."
+},
+{
+"id": "q5-166",
+"s": "SEC",
+"t": "Access control",
+"d": 3,
+"q": "Role-Based Access Control (RBAC) assigns permissions to:",
+"o": [
+"Individual files only",
+"Roles, and users get roles",
+"IP addresses only",
+"Passwords"
+],
+"a": 1,
+"e": "Users inherit permissions from their roles."
+},
+{
+"id": "q5-167",
+"s": "SEC",
+"t": "Malware",
+"d": 2,
+"q": "Ransomware:",
+"o": [
+"Shows ads",
+"Encrypts files and demands payment",
+"Speeds up the system",
+"Only steals cookies"
+],
+"a": 1,
+"e": "Offline backups are the best defence."
+},
+{
+"id": "q5-168",
+"s": "SEC",
+"t": "Malware",
+"d": 2,
+"q": "A worm differs from a virus because it:",
+"o": [
+"Needs a host file",
+"Spreads on its own across networks",
+"Cannot harm systems",
+"Only affects phones"
+],
+"a": 1,
+"e": "Worms self-replicate without user action."
+},
+{
+"id": "q5-169",
+"s": "SEC",
+"t": "Malware",
+"d": 2,
+"q": "A Trojan horse is malware that:",
+"o": [
+"Spreads by itself",
+"Pretends to be useful software",
+"Only lives in RAM",
+"Is a hardware fault"
+],
+"a": 1,
+"e": "Users install it believing it is harmless."
+},
+{
+"id": "q5-170",
+"s": "SEC",
+"t": "Social engineering",
+"d": 2,
+"q": "An email pretending to be from your bank asking for your PIN is:",
+"o": [
+"Spoofed antivirus",
+"Phishing",
+"Brute force",
+"A firewall alert"
+],
+"a": 1,
+"e": "Phishing tricks people into revealing secrets."
+},
+{
+"id": "q5-171",
+"s": "SEC",
+"t": "Social engineering",
+"d": 2,
+"q": "Following an employee through a secure door without a badge is:",
+"o": [
+"Shoulder surfing",
+"Tailgating",
+"Vishing",
+"Spoofing"
+],
+"a": 1,
+"e": "Tailgating bypasses physical access control."
+},
+{
+"id": "q5-172",
+"s": "SEC",
+"t": "Network security",
+"d": 2,
+"q": "A firewall mainly:",
+"o": [
+"Encrypts disks",
+"Filters network traffic based on rules",
+"Removes viruses from files",
+"Backs up data"
+],
+"a": 1,
+"e": "It allows or blocks traffic by rules."
+},
+{
+"id": "q5-173",
+"s": "SEC",
+"t": "Network security",
+"d": 2,
+"q": "A VPN provides:",
+"o": [
+"Faster internet always",
+"An encrypted tunnel over a public network",
+"Free Wi-Fi",
+"Antivirus scanning"
+],
+"a": 1,
+"e": "VPNs protect traffic on untrusted networks."
+},
+{
+"id": "q5-174",
+"s": "SEC",
+"t": "Network security",
+"d": 3,
+"q": "A man-in-the-middle attack is best prevented by:",
+"o": [
+"Using HTTP",
+"Using TLS with certificate validation",
+"Turning off the firewall",
+"Sharing passwords"
+],
+"a": 1,
+"e": "TLS authenticates the server and encrypts traffic."
+},
+{
+"id": "q5-175",
+"s": "SEC",
+"t": "Web security",
+"d": 2,
+"q": "SQL injection is best prevented by:",
+"o": [
+"Hiding error pages",
+"Parameterised queries",
+"Longer passwords",
+"Using HTTPS only"
+],
+"a": 1,
+"e": "Parameters keep data separate from SQL code."
+},
+{
+"id": "q5-176",
+"s": "SEC",
+"t": "Laws and ethics",
+"d": 2,
+"q": "In Pakistan, the main cybercrime law is:",
+"o": [
+"PECA 2016",
+"GDPR",
+"HIPAA",
+"SOX"
+],
+"a": 0,
+"e": "The Prevention of Electronic Crimes Act 2016."
+},
+{
+"id": "q5-177",
+"s": "AI",
+"t": "ML basics",
+"d": 1,
+"q": "Machine learning is best described as:",
+"o": [
+"Hard-coding every rule",
+"Systems learning patterns from data",
+"Only robotics",
+"Database design"
+],
+"a": 1,
+"e": "Models improve from examples rather than fixed rules."
+},
+{
+"id": "q5-178",
+"s": "AI",
+"t": "Supervised learning",
+"d": 2,
+"q": "Predicting house prices from features is:",
+"o": [
+"Classification",
+"Regression",
+"Clustering",
+"Reinforcement learning"
+],
+"a": 1,
+"e": "The output is a continuous number."
+},
+{
+"id": "q5-179",
+"s": "AI",
+"t": "Supervised learning",
+"d": 2,
+"q": "Predicting if an email is spam or not is:",
+"o": [
+"Regression",
+"Classification",
+"Clustering",
+"Dimensionality reduction"
+],
+"a": 1,
+"e": "The output is a category."
+},
+{
+"id": "q5-180",
+"s": "AI",
+"t": "Unsupervised learning",
+"d": 2,
+"q": "Grouping customers by behaviour without labels is:",
+"o": [
+"Classification",
+"Regression",
+"Clustering",
+"Supervised learning"
+],
+"a": 2,
+"e": "Clustering finds groups in unlabeled data."
+},
+{
+"id": "q5-181",
+"s": "AI",
+"t": "Unsupervised learning",
+"d": 2,
+"q": "K-means needs you to choose:",
+"o": [
+"The learning rate only",
+"The number of clusters k",
+"The number of labels",
+"The output layer size"
+],
+"a": 1,
+"e": "k decides how many clusters are formed."
+},
+{
+"id": "q5-182",
+"s": "AI",
+"t": "Reinforcement learning",
+"d": 2,
+"q": "In reinforcement learning, an agent learns from:",
+"o": [
+"Labelled examples",
+"Rewards and penalties from its actions",
+"Clusters",
+"SQL queries"
+],
+"a": 1,
+"e": "It maximises cumulative reward."
+},
+{
+"id": "q5-183",
+"s": "AI",
+"t": "Model evaluation",
+"d": 2,
+"q": "Overfitting means the model:",
+"o": [
+"Performs well on training data but poorly on new data",
+"Performs badly everywhere",
+"Is too simple",
+"Has no parameters"
+],
+"a": 0,
+"e": "It memorises noise instead of learning patterns."
+},
+{
+"id": "q5-184",
+"s": "AI",
+"t": "Model evaluation",
+"d": 2,
+"q": "Underfitting usually means the model is:",
+"o": [
+"Too complex",
+"Too simple to capture the pattern",
+"Perfect",
+"Trained too long"
+],
+"a": 1,
+"e": "Both training and test errors are high."
+},
+{
+"id": "q5-185",
+"s": "AI",
+"t": "Model evaluation",
+"d": 3,
+"q": "Precision is:",
+"o": [
+"TP / (TP + FN)",
+"TP / (TP + FP)",
+"(TP + TN) / total",
+"TN / (TN + FP)"
+],
+"a": 1,
+"e": "Of all predicted positives, how many were correct."
+},
+{
+"id": "q5-186",
+"s": "AI",
+"t": "Model evaluation",
+"d": 3,
+"q": "Recall is:",
+"o": [
+"TP / (TP + FN)",
+"TP / (TP + FP)",
+"TN / total",
+"FP / (FP + TN)"
+],
+"a": 0,
+"e": "Of all actual positives, how many were found."
+},
+{
+"id": "q5-187",
+"s": "AI",
+"t": "Model evaluation",
+"d": 3,
+"q": "For a rare disease test, which metric matters most to avoid missing sick patients?",
+"o": [
+"Accuracy",
+"Recall",
+"Precision",
+"Training loss"
+],
+"a": 1,
+"e": "High recall means few false negatives."
+},
+{
+"id": "q5-188",
+"s": "AI",
+"t": "Model evaluation",
+"d": 2,
+"q": "Data is usually split into:",
+"o": [
+"Training and test (and often validation) sets",
+"Only one set",
+"Images and text",
+"Rows and columns"
+],
+"a": 0,
+"e": "Test data checks performance on unseen examples."
+},
+{
+"id": "q5-189",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "An activation function adds:",
+"o": [
+"Linearity",
+"Non-linearity",
+"More data",
+"Labels"
+],
+"a": 1,
+"e": "Without it, stacked layers act like one linear layer."
+},
+{
+"id": "q5-190",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "ReLU outputs:",
+"o": [
+"max(0, x)",
+"1 / (1 + e^-x)",
+"x^2",
+"Always 1"
+],
+"a": 0,
+"e": "ReLU passes positives and zeroes negatives."
+},
+{
+"id": "q5-191",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "Backpropagation is used to:",
+"o": [
+"Collect data",
+"Compute gradients to update weights",
+"Draw graphs",
+"Split data"
+],
+"a": 1,
+"e": "Gradients flow backward from the loss."
+},
+{
+"id": "q5-192",
+"s": "AI",
+"t": "Neural networks",
+"d": 3,
+"q": "A learning rate that is too high can cause:",
+"o": [
+"Very slow training",
+"Training to overshoot and diverge",
+"Perfect accuracy",
+"No change in weights"
+],
+"a": 1,
+"e": "Big steps jump over the minimum."
+},
+{
+"id": "q5-193",
+"s": "AI",
+"t": "Neural networks",
+"d": 2,
+"q": "Which network type is best suited to images?",
+"o": [
+"RNN",
+"CNN",
+"Decision tree",
+"K-means"
+],
+"a": 1,
+"e": "Convolutional layers detect spatial features."
+},
+{
+"id": "q5-194",
+"s": "AI",
+"t": "Deep learning",
+"d": 3,
+"q": "Transformers rely mainly on:",
+"o": [
+"Convolutions",
+"Attention mechanisms",
+"Decision trees",
+"K-nearest neighbours"
+],
+"a": 1,
+"e": "Self-attention relates every token to every other token."
+},
+{
+"id": "q5-195",
+"s": "AI",
+"t": "Classical AI",
+"d": 2,
+"q": "Which search uses a heuristic plus the path cost so far?",
+"o": [
+"BFS",
+"DFS",
+"A*",
+"Linear search"
+],
+"a": 2,
+"e": "A* uses f(n) = g(n) + h(n)."
+},
+{
+"id": "q5-196",
+"s": "AI",
+"t": "Algorithms",
+"d": 2,
+"q": "A decision tree splits data using features that:",
+"o": [
+"Are random",
+"Best separate the classes, e.g. by information gain",
+"Have the most missing values",
+"Are always numeric"
+],
+"a": 1,
+"e": "Gini or entropy measure split quality."
+},
+{
+"id": "q5-197",
+"s": "AI",
+"t": "Algorithms",
+"d": 2,
+"q": "K-Nearest Neighbours classifies a point by:",
+"o": [
+"Training weights",
+"The majority class of its k closest points",
+"A single rule",
+"Random choice"
+],
+"a": 1,
+"e": "KNN is a lazy, instance-based method."
+},
+{
+"id": "q5-198",
+"s": "AI",
+"t": "Generative AI",
+"d": 2,
+"q": "A large language model mainly predicts:",
+"o": [
+"The next token in a sequence",
+"Image pixels only",
+"Stock prices only",
+"Database keys"
+],
+"a": 0,
+"e": "LLMs generate text one token at a time."
+},
+{
+"id": "q5-199",
+"s": "AI",
+"t": "Ethics",
+"d": 2,
+"q": "AI bias most often comes from:",
+"o": [
+"Fast GPUs",
+"Unrepresentative or biased training data",
+"Using Python",
+"Large screens"
+],
+"a": 1,
+"e": "Models learn the patterns, including unfair ones, in their data."
+},
+{
+"id": "q5-200",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 47 in binary?",
+"o": [
+"101101",
+"101111",
+"110000",
+"101110"
+],
+"a": 1,
+"e": "47 = 101111 in base 2."
+},
+{
+"id": "q5-201",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 138 in binary?",
+"o": [
+"10001010",
+"10001011",
+"10001000",
+"10001001"
+],
+"a": 0,
+"e": "138 = 10001010 in base 2."
+},
+{
+"id": "q5-202",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 40 in binary?",
+"o": [
+"101001",
+"101000",
+"100111",
+"101010"
+],
+"a": 1,
+"e": "40 = 101000 in base 2."
+},
+{
+"id": "q5-203",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 23 in binary?",
+"o": [
+"10111",
+"10101",
+"10110",
+"11000"
+],
+"a": 0,
+"e": "23 = 10111 in base 2."
+},
+{
+"id": "q5-204",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 187 in binary?",
+"o": [
+"10111001",
+"10111100",
+"10111011",
+"10111010"
+],
+"a": 2,
+"e": "187 = 10111011 in base 2."
+},
+{
+"id": "q5-205",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 102 in binary?",
+"o": [
+"1100101",
+"1100110",
+"1100111",
+"1100100"
+],
+"a": 1,
+"e": "102 = 1100110 in base 2."
+},
+{
+"id": "q5-206",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 222 in binary?",
+"o": [
+"11011110",
+"11011101",
+"11011111",
+"11011100"
+],
+"a": 0,
+"e": "222 = 11011110 in base 2."
+},
+{
+"id": "q5-207",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 123 in binary?",
+"o": [
+"1111100",
+"1111010",
+"1111001",
+"1111011"
+],
+"a": 3,
+"e": "123 = 1111011 in base 2."
+},
+{
+"id": "q5-208",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 180 in binary?",
+"o": [
+"10110100",
+"10110110",
+"10110101",
+"10110011"
+],
+"a": 0,
+"e": "180 = 10110100 in base 2."
+},
+{
+"id": "q5-209",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 226 in binary?",
+"o": [
+"11100000",
+"11100001",
+"11100011",
+"11100010"
+],
+"a": 3,
+"e": "226 = 11100010 in base 2."
+},
+{
+"id": "q5-210",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 66 in binary?",
+"o": [
+"1000011",
+"1000010",
+"1000001",
+"1000000"
+],
+"a": 1,
+"e": "66 = 1000010 in base 2."
+},
+{
+"id": "q5-211",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 122 in binary?",
+"o": [
+"1111001",
+"1111010",
+"1111000",
+"1111011"
+],
+"a": 1,
+"e": "122 = 1111010 in base 2."
+},
+{
+"id": "q5-212",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 109 in binary?",
+"o": [
+"1101111",
+"1101110",
+"1101100",
+"1101101"
+],
+"a": 3,
+"e": "109 = 1101101 in base 2."
+},
+{
+"id": "q5-213",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 172 in binary?",
+"o": [
+"10101011",
+"10101110",
+"10101101",
+"10101100"
+],
+"a": 3,
+"e": "172 = 10101100 in base 2."
+},
+{
+"id": "q5-214",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 65 in binary?",
+"o": [
+"1000011",
+"1000000",
+"1000001",
+"1000010"
+],
+"a": 2,
+"e": "65 = 1000001 in base 2."
+},
+{
+"id": "q5-215",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 90 in binary?",
+"o": [
+"1011011",
+"1011010",
+"1011000",
+"1011001"
+],
+"a": 1,
+"e": "90 = 1011010 in base 2."
+},
+{
+"id": "q5-216",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 93 in binary?",
+"o": [
+"1011110",
+"1011111",
+"1011100",
+"1011101"
+],
+"a": 3,
+"e": "93 = 1011101 in base 2."
+},
+{
+"id": "q5-217",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 195 in binary?",
+"o": [
+"11000011",
+"11000010",
+"11000001",
+"11000100"
+],
+"a": 0,
+"e": "195 = 11000011 in base 2."
+},
+{
+"id": "q5-218",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 176 in binary?",
+"o": [
+"10110001",
+"10101111",
+"10110010",
+"10110000"
+],
+"a": 3,
+"e": "176 = 10110000 in base 2."
+},
+{
+"id": "q5-219",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 39 in binary?",
+"o": [
+"100101",
+"101000",
+"100110",
+"100111"
+],
+"a": 3,
+"e": "39 = 100111 in base 2."
+},
+{
+"id": "q5-220",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 178 in hexadecimal?",
+"o": [
+"B3",
+"C2",
+"B2",
+"B1"
+],
+"a": 2,
+"e": "178 = 11 x 16 + 2, which is B2 in hex."
+},
+{
+"id": "q5-221",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 111 in hexadecimal?",
+"o": [
+"6F",
+"70",
+"6E",
+"7F"
+],
+"a": 0,
+"e": "111 = 6 x 16 + 15, which is 6F in hex."
+},
+{
+"id": "q5-222",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 147 in hexadecimal?",
+"o": [
+"92",
+"A3",
+"93",
+"94"
+],
+"a": 2,
+"e": "147 = 9 x 16 + 3, which is 93 in hex."
+},
+{
+"id": "q5-223",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 89 in hexadecimal?",
+"o": [
+"69",
+"58",
+"59",
+"5A"
+],
+"a": 2,
+"e": "89 = 5 x 16 + 9, which is 59 in hex."
+},
+{
+"id": "q5-224",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 144 in hexadecimal?",
+"o": [
+"90",
+"A0",
+"91",
+"8F"
+],
+"a": 0,
+"e": "144 = 9 x 16 + 0, which is 90 in hex."
+},
+{
+"id": "q5-225",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 114 in hexadecimal?",
+"o": [
+"72",
+"82",
+"71",
+"73"
+],
+"a": 0,
+"e": "114 = 7 x 16 + 2, which is 72 in hex."
+},
+{
+"id": "q5-226",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 226 in hexadecimal?",
+"o": [
+"E3",
+"E2",
+"E1",
+"F2"
+],
+"a": 1,
+"e": "226 = 14 x 16 + 2, which is E2 in hex."
+},
+{
+"id": "q5-227",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 139 in hexadecimal?",
+"o": [
+"8B",
+"8C",
+"9B",
+"8A"
+],
+"a": 0,
+"e": "139 = 8 x 16 + 11, which is 8B in hex."
+},
+{
+"id": "q5-228",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 134 in hexadecimal?",
+"o": [
+"96",
+"86",
+"87",
+"85"
+],
+"a": 1,
+"e": "134 = 8 x 16 + 6, which is 86 in hex."
+},
+{
+"id": "q5-229",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 68 in hexadecimal?",
+"o": [
+"45",
+"44",
+"43",
+"54"
+],
+"a": 1,
+"e": "68 = 4 x 16 + 4, which is 44 in hex."
+},
+{
+"id": "q5-230",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 224 in hexadecimal?",
+"o": [
+"DF",
+"E0",
+"F0",
+"E1"
+],
+"a": 1,
+"e": "224 = 14 x 16 + 0, which is E0 in hex."
+},
+{
+"id": "q5-231",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 113 in hexadecimal?",
+"o": [
+"72",
+"81",
+"71",
+"70"
+],
+"a": 2,
+"e": "113 = 7 x 16 + 1, which is 71 in hex."
+},
+{
+"id": "q5-232",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 63 in hexadecimal?",
+"o": [
+"3F",
+"40",
+"3E",
+"4F"
+],
+"a": 0,
+"e": "63 = 3 x 16 + 15, which is 3F in hex."
+},
+{
+"id": "q5-233",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 246 in hexadecimal?",
+"o": [
+"F6",
+"F5",
+"106",
+"F7"
+],
+"a": 0,
+"e": "246 = 15 x 16 + 6, which is F6 in hex."
+},
+{
+"id": "q5-234",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the decimal number 138 in hexadecimal?",
+"o": [
+"8A",
+"9A",
+"89",
+"8B"
+],
+"a": 0,
+"e": "138 = 8 x 16 + 10, which is 8A in hex."
+},
+{
+"id": "q5-235",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1001010 in decimal?",
+"o": [
+"74",
+"73",
+"76",
+"75"
+],
+"a": 0,
+"e": "Adding the place values of 1001010 gives 74."
+},
+{
+"id": "q5-236",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 10111000 in decimal?",
+"o": [
+"185",
+"183",
+"184",
+"186"
+],
+"a": 2,
+"e": "Adding the place values of 10111000 gives 184."
+},
+{
+"id": "q5-237",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1010011 in decimal?",
+"o": [
+"82",
+"83",
+"84",
+"85"
+],
+"a": 1,
+"e": "Adding the place values of 1010011 gives 83."
+},
+{
+"id": "q5-238",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1001110 in decimal?",
+"o": [
+"78",
+"77",
+"80",
+"79"
+],
+"a": 0,
+"e": "Adding the place values of 1001110 gives 78."
+},
+{
+"id": "q5-239",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 111010 in decimal?",
+"o": [
+"60",
+"57",
+"58",
+"59"
+],
+"a": 2,
+"e": "Adding the place values of 111010 gives 58."
+},
+{
+"id": "q5-240",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 100011 in decimal?",
+"o": [
+"35",
+"37",
+"34",
+"36"
+],
+"a": 0,
+"e": "Adding the place values of 100011 gives 35."
+},
+{
+"id": "q5-241",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1000010 in decimal?",
+"o": [
+"65",
+"66",
+"67",
+"68"
+],
+"a": 1,
+"e": "Adding the place values of 1000010 gives 66."
+},
+{
+"id": "q5-242",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1001001 in decimal?",
+"o": [
+"74",
+"72",
+"75",
+"73"
+],
+"a": 3,
+"e": "Adding the place values of 1001001 gives 73."
+},
+{
+"id": "q5-243",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1110010 in decimal?",
+"o": [
+"114",
+"115",
+"113",
+"116"
+],
+"a": 0,
+"e": "Adding the place values of 1110010 gives 114."
+},
+{
+"id": "q5-244",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 11111 in decimal?",
+"o": [
+"30",
+"33",
+"31",
+"32"
+],
+"a": 2,
+"e": "Adding the place values of 11111 gives 31."
+},
+{
+"id": "q5-245",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1100 in decimal?",
+"o": [
+"11",
+"13",
+"14",
+"12"
+],
+"a": 3,
+"e": "Adding the place values of 1100 gives 12."
+},
+{
+"id": "q5-246",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 10000000 in decimal?",
+"o": [
+"130",
+"128",
+"127",
+"129"
+],
+"a": 1,
+"e": "Adding the place values of 10000000 gives 128."
+},
+{
+"id": "q5-247",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 10011 in decimal?",
+"o": [
+"18",
+"21",
+"20",
+"19"
+],
+"a": 3,
+"e": "Adding the place values of 10011 gives 19."
+},
+{
+"id": "q5-248",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 101100 in decimal?",
+"o": [
+"43",
+"45",
+"46",
+"44"
+],
+"a": 3,
+"e": "Adding the place values of 101100 gives 44."
+},
+{
+"id": "q5-249",
+"s": "PS",
+"t": "Number systems",
+"d": 2,
+"q": "What is the binary number 1110000 in decimal?",
+"o": [
+"114",
+"112",
+"111",
+"113"
+],
+"a": 1,
+"e": "Adding the place values of 1110000 gives 112."
+},
+{
+"id": "q5-250",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 17, 20, 23, 26, 29, ?",
+"o": [
+"35",
+"31",
+"32",
+"33"
+],
+"a": 2,
+"e": "Each term adds 3, so the next is 32."
+},
+{
+"id": "q5-251",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 29, 38, 47, 56, 65, ?",
+"o": [
+"73",
+"75",
+"74",
+"83"
+],
+"a": 2,
+"e": "Each term adds 9, so the next is 74."
+},
+{
+"id": "q5-252",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 17, 22, 27, 32, 37, ?",
+"o": [
+"41",
+"47",
+"43",
+"42"
+],
+"a": 3,
+"e": "Each term adds 5, so the next is 42."
+},
+{
+"id": "q5-253",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 30, 40, 50, 60, 70, ?",
+"o": [
+"90",
+"79",
+"81",
+"80"
+],
+"a": 3,
+"e": "Each term adds 10, so the next is 80."
+},
+{
+"id": "q5-254",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 20, 32, 44, 56, 68, ?",
+"o": [
+"92",
+"79",
+"80",
+"81"
+],
+"a": 2,
+"e": "Each term adds 12, so the next is 80."
+},
+{
+"id": "q5-255",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 14, 25, 36, 47, 58, ?",
+"o": [
+"70",
+"69",
+"80",
+"68"
+],
+"a": 1,
+"e": "Each term adds 11, so the next is 69."
+},
+{
+"id": "q5-256",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 24, 29, 34, 39, 44, ?",
+"o": [
+"54",
+"49",
+"48",
+"50"
+],
+"a": 1,
+"e": "Each term adds 5, so the next is 49."
+},
+{
+"id": "q5-257",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 20, 31, 42, 53, 64, ?",
+"o": [
+"74",
+"75",
+"76",
+"86"
+],
+"a": 1,
+"e": "Each term adds 11, so the next is 75."
+},
+{
+"id": "q5-258",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 10, 12, 14, 16, 18, ?",
+"o": [
+"19",
+"22",
+"20",
+"21"
+],
+"a": 2,
+"e": "Each term adds 2, so the next is 20."
+},
+{
+"id": "q5-259",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 10, 18, 26, 34, 42, ?",
+"o": [
+"49",
+"50",
+"58",
+"51"
+],
+"a": 1,
+"e": "Each term adds 8, so the next is 50."
+},
+{
+"id": "q5-260",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 7, 11, 15, 19, 23, ?",
+"o": [
+"31",
+"26",
+"28",
+"27"
+],
+"a": 3,
+"e": "Each term adds 4, so the next is 27."
+},
+{
+"id": "q5-261",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 30, 34, 38, 42, 46, ?",
+"o": [
+"54",
+"51",
+"49",
+"50"
+],
+"a": 3,
+"e": "Each term adds 4, so the next is 50."
+},
+{
+"id": "q5-262",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 10, 19, 28, 37, 46, ?",
+"o": [
+"55",
+"56",
+"54",
+"64"
+],
+"a": 0,
+"e": "Each term adds 9, so the next is 55."
+},
+{
+"id": "q5-263",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 13, 24, 35, 46, 57, ?",
+"o": [
+"67",
+"68",
+"69",
+"79"
+],
+"a": 1,
+"e": "Each term adds 11, so the next is 68."
+},
+{
+"id": "q5-264",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 29, 35, 41, 47, 53, ?",
+"o": [
+"58",
+"59",
+"65",
+"60"
+],
+"a": 1,
+"e": "Each term adds 6, so the next is 59."
+},
+{
+"id": "q5-265",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 4, 11, 18, 25, 32, ?",
+"o": [
+"39",
+"40",
+"46",
+"38"
+],
+"a": 0,
+"e": "Each term adds 7, so the next is 39."
+},
+{
+"id": "q5-266",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 16, 18, 20, 22, 24, ?",
+"o": [
+"28",
+"26",
+"27",
+"25"
+],
+"a": 1,
+"e": "Each term adds 2, so the next is 26."
+},
+{
+"id": "q5-267",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 15, 25, 35, 45, 55, ?",
+"o": [
+"65",
+"66",
+"64",
+"75"
+],
+"a": 0,
+"e": "Each term adds 10, so the next is 65."
+},
+{
+"id": "q5-268",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 22, 30, 38, 46, 54, ?",
+"o": [
+"62",
+"63",
+"70",
+"61"
+],
+"a": 0,
+"e": "Each term adds 8, so the next is 62."
+},
+{
+"id": "q5-269",
+"s": "PS",
+"t": "Number series",
+"d": 1,
+"q": "What comes next? 10, 22, 34, 46, 58, ?",
+"o": [
+"71",
+"70",
+"82",
+"69"
+],
+"a": 1,
+"e": "Each term adds 12, so the next is 70."
+},
+{
+"id": "q5-270",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 2, 4, 8, 16, 32, ?",
+"o": [
+"34",
+"96",
+"62",
+"64"
+],
+"a": 3,
+"e": "Each term is multiplied by 2, so the next is 64."
+},
+{
+"id": "q5-271",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 5, 10, 20, 40, 80, ?",
+"o": [
+"160",
+"82",
+"158",
+"240"
+],
+"a": 0,
+"e": "Each term is multiplied by 2, so the next is 160."
+},
+{
+"id": "q5-272",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 6, 12, 24, 48, 96, ?",
+"o": [
+"192",
+"288",
+"190",
+"98"
+],
+"a": 0,
+"e": "Each term is multiplied by 2, so the next is 192."
+},
+{
+"id": "q5-273",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 5, 15, 45, 135, 405, ?",
+"o": [
+"1212",
+"1215",
+"1620",
+"408"
+],
+"a": 1,
+"e": "Each term is multiplied by 3, so the next is 1215."
+},
+{
+"id": "q5-274",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 4, 12, 36, 108, 324, ?",
+"o": [
+"972",
+"969",
+"1296",
+"327"
+],
+"a": 0,
+"e": "Each term is multiplied by 3, so the next is 972."
+},
+{
+"id": "q5-275",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 4, 8, 16, 32, 64, ?",
+"o": [
+"128",
+"66",
+"126",
+"192"
+],
+"a": 0,
+"e": "Each term is multiplied by 2, so the next is 128."
+},
+{
+"id": "q5-276",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 6, 18, 54, 162, 486, ?",
+"o": [
+"1455",
+"489",
+"1458",
+"1944"
+],
+"a": 2,
+"e": "Each term is multiplied by 3, so the next is 1458."
+},
+{
+"id": "q5-277",
+"s": "PS",
+"t": "Number series",
+"d": 2,
+"q": "What comes next? 3, 6, 12, 24, 48, ?",
+"o": [
+"144",
+"96",
+"50",
+"94"
+],
+"a": 1,
+"e": "Each term is multiplied by 2, so the next is 96."
+},
+{
+"id": "q5-278",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 8, 11, 15, 20, 26, 33, ?",
+"o": [
+"40",
+"43",
+"42",
+"41"
+],
+"a": 3,
+"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 41."
+},
+{
+"id": "q5-279",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 7, 10, 14, 19, 25, 32, ?",
+"o": [
+"42",
+"41",
+"39",
+"40"
+],
+"a": 3,
+"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 40."
+},
+{
+"id": "q5-280",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 3, 5, 8, 12, 17, 23, ?",
+"o": [
+"29",
+"30",
+"31",
+"32"
+],
+"a": 1,
+"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 30."
+},
+{
+"id": "q5-281",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 9, 10, 12, 15, 19, 24, ?",
+"o": [
+"29",
+"31",
+"30",
+"32"
+],
+"a": 2,
+"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 30."
+},
+{
+"id": "q5-282",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 2, 3, 5, 8, 12, 17, ?",
+"o": [
+"23",
+"24",
+"22",
+"25"
+],
+"a": 0,
+"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 23."
+},
+{
+"id": "q5-283",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 9, 12, 16, 21, 27, 34, ?",
+"o": [
+"42",
+"44",
+"41",
+"43"
+],
+"a": 0,
+"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 42."
+},
+{
+"id": "q5-284",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 7, 9, 12, 16, 21, 27, ?",
+"o": [
+"34",
+"33",
+"35",
+"36"
+],
+"a": 0,
+"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 34."
+},
+{
+"id": "q5-285",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 6, 7, 9, 12, 16, 21, ?",
+"o": [
+"28",
+"26",
+"29",
+"27"
+],
+"a": 3,
+"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 27."
+},
+{
+"id": "q5-286",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next? 9, 11, 14, 18, 23, 29, ?",
+"o": [
+"38",
+"35",
+"36",
+"37"
+],
+"a": 2,
+"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 36."
+},
+{
+"id": "q5-287",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 35% of 2400?",
+"o": [
+"840",
+"1080",
+"835",
+"1680"
+],
+"a": 0,
+"e": "35/100 x 2400 = 840."
+},
+{
+"id": "q5-288",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 35% of 400?",
+"o": [
+"135",
+"280",
+"180",
+"140"
+],
+"a": 3,
+"e": "35/100 x 400 = 140."
+},
+{
+"id": "q5-289",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 10% of 200?",
+"o": [
+"40",
+"20",
+"15",
+"23"
+],
+"a": 1,
+"e": "10/100 x 200 = 20."
+},
+{
+"id": "q5-290",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 12% of 1200?",
+"o": [
+"139",
+"144",
+"288",
+"264"
+],
+"a": 1,
+"e": "12/100 x 1200 = 144."
+},
+{
+"id": "q5-291",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 25% of 500?",
+"o": [
+"125",
+"120",
+"250",
+"175"
+],
+"a": 0,
+"e": "25/100 x 500 = 125."
+},
+{
+"id": "q5-292",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 12% of 800?",
+"o": [
+"176",
+"192",
+"96",
+"91"
+],
+"a": 2,
+"e": "12/100 x 800 = 96."
+},
+{
+"id": "q5-293",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 30% of 1200?",
+"o": [
+"720",
+"355",
+"480",
+"360"
+],
+"a": 3,
+"e": "30/100 x 1200 = 360."
+},
+{
+"id": "q5-294",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 30% of 1500?",
+"o": [
+"450",
+"600",
+"445",
+"900"
+],
+"a": 0,
+"e": "30/100 x 1500 = 450."
+},
+{
+"id": "q5-295",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 30% of 2000?",
+"o": [
+"600",
+"1200",
+"595",
+"800"
+],
+"a": 0,
+"e": "30/100 x 2000 = 600."
+},
+{
+"id": "q5-296",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 25% of 200?",
+"o": [
+"50",
+"70",
+"45",
+"100"
+],
+"a": 0,
+"e": "25/100 x 200 = 50."
+},
+{
+"id": "q5-297",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 15% of 2000?",
+"o": [
+"295",
+"600",
+"300",
+"500"
+],
+"a": 2,
+"e": "15/100 x 2000 = 300."
+},
+{
+"id": "q5-298",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 15% of 1500?",
+"o": [
+"450",
+"225",
+"220",
+"375"
+],
+"a": 1,
+"e": "15/100 x 1500 = 225."
+},
+{
+"id": "q5-299",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is 25% of 800?",
+"o": [
+"280",
+"195",
+"400",
+"200"
+],
+"a": 3,
+"e": "25/100 x 800 = 200."
+},
+{
+"id": "q5-300",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 3200. It is sold at a 15% discount. What is the sale price?",
+"o": [
+"3185",
+"2720",
+"2960",
+"480"
+],
+"a": 1,
+"e": "Discount = 480, so the price is 3200 - 480 = 2720."
+},
+{
+"id": "q5-301",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 800. It is sold at a 25% discount. What is the sale price?",
+"o": [
+"775",
+"200",
+"700",
+"600"
+],
+"a": 3,
+"e": "Discount = 200, so the price is 800 - 200 = 600."
+},
+{
+"id": "q5-302",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 4000. It is sold at a 25% discount. What is the sale price?",
+"o": [
+"1000",
+"3000",
+"3975",
+"3500"
+],
+"a": 1,
+"e": "Discount = 1000, so the price is 4000 - 1000 = 3000."
+},
+{
+"id": "q5-303",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 1500. It is sold at a 20% discount. What is the sale price?",
+"o": [
+"300",
+"1200",
+"1480",
+"1350"
+],
+"a": 1,
+"e": "Discount = 300, so the price is 1500 - 300 = 1200."
+},
+{
+"id": "q5-304",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 1500. It is sold at a 10% discount. What is the sale price?",
+"o": [
+"1350",
+"1425",
+"1490",
+"150"
+],
+"a": 0,
+"e": "Discount = 150, so the price is 1500 - 150 = 1350."
+},
+{
+"id": "q5-305",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 1200. It is sold at a 25% discount. What is the sale price?",
+"o": [
+"900",
+"1050",
+"1175",
+"300"
+],
+"a": 0,
+"e": "Discount = 300, so the price is 1200 - 300 = 900."
+},
+{
+"id": "q5-306",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 1500. It is sold at a 25% discount. What is the sale price?",
+"o": [
+"375",
+"1312",
+"1475",
+"1125"
+],
+"a": 3,
+"e": "Discount = 375, so the price is 1500 - 375 = 1125."
+},
+{
+"id": "q5-307",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "A book costs Rs 2500. It is sold at a 25% discount. What is the sale price?",
+"o": [
+"2475",
+"625",
+"1875",
+"2187"
+],
+"a": 2,
+"e": "Discount = 625, so the price is 2500 - 625 = 1875."
+},
+{
+"id": "q5-308",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 30 km/h for 2 hours. How far does it go?",
+"o": [
+"90",
+"30",
+"32",
+"60"
+],
+"a": 3,
+"e": "Distance = speed x time = 30 x 2 = 60 km."
+},
+{
+"id": "q5-309",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 40 km/h for 5 hours. How far does it go?",
+"o": [
+"160",
+"200",
+"45",
+"240"
+],
+"a": 1,
+"e": "Distance = speed x time = 40 x 5 = 200 km."
+},
+{
+"id": "q5-310",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 30 km/h for 5 hours. How far does it go?",
+"o": [
+"180",
+"120",
+"150",
+"35"
+],
+"a": 2,
+"e": "Distance = speed x time = 30 x 5 = 150 km."
+},
+{
+"id": "q5-311",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 45 km/h for 2 hours. How far does it go?",
+"o": [
+"45",
+"47",
+"135",
+"90"
+],
+"a": 3,
+"e": "Distance = speed x time = 45 x 2 = 90 km."
+},
+{
+"id": "q5-312",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 50 km/h for 4 hours. How far does it go?",
+"o": [
+"200",
+"54",
+"150",
+"250"
+],
+"a": 0,
+"e": "Distance = speed x time = 50 x 4 = 200 km."
+},
+{
+"id": "q5-313",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 80 km/h for 4 hours. How far does it go?",
+"o": [
+"320",
+"400",
+"84",
+"240"
+],
+"a": 0,
+"e": "Distance = speed x time = 80 x 4 = 320 km."
+},
+{
+"id": "q5-314",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 50 km/h for 2 hours. How far does it go?",
+"o": [
+"150",
+"50",
+"100",
+"52"
+],
+"a": 2,
+"e": "Distance = speed x time = 50 x 2 = 100 km."
+},
+{
+"id": "q5-315",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 40 km/h for 3 hours. How far does it go?",
+"o": [
+"120",
+"160",
+"43",
+"80"
+],
+"a": 0,
+"e": "Distance = speed x time = 40 x 3 = 120 km."
+},
+{
+"id": "q5-316",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 72 km/h for 3 hours. How far does it go?",
+"o": [
+"288",
+"144",
+"216",
+"75"
+],
+"a": 2,
+"e": "Distance = speed x time = 72 x 3 = 216 km."
+},
+{
+"id": "q5-317",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 45 km/h for 3 hours. How far does it go?",
+"o": [
+"180",
+"48",
+"135",
+"90"
+],
+"a": 2,
+"e": "Distance = speed x time = 45 x 3 = 135 km."
+},
+{
+"id": "q5-318",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 72 km/h for 2 hours. How far does it go?",
+"o": [
+"144",
+"74",
+"72",
+"216"
+],
+"a": 0,
+"e": "Distance = speed x time = 72 x 2 = 144 km."
+},
+{
+"id": "q5-319",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "A bus travels at 60 km/h for 3 hours. How far does it go?",
+"o": [
+"63",
+"120",
+"180",
+"240"
+],
+"a": 2,
+"e": "Distance = speed x time = 60 x 3 = 180 km."
+},
+{
+"id": "q5-320",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 3 and 12 days alone. Roughly how many days do they take together?",
+"o": [
+"2.4",
+"7.5",
+"15",
+"9"
+],
+"a": 0,
+"e": "Combined rate = 1/3 + 1/12, so time = 3x12/(3+12) = 2.4 days."
+},
+{
+"id": "q5-321",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 8 and 14 days alone. Roughly how many days do they take together?",
+"o": [
+"5.1",
+"11.0",
+"6",
+"22"
+],
+"a": 0,
+"e": "Combined rate = 1/8 + 1/14, so time = 8x14/(8+14) = 5.1 days."
+},
+{
+"id": "q5-322",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 6 and 12 days alone. Roughly how many days do they take together?",
+"o": [
+"6",
+"4.0",
+"9.0",
+"18"
+],
+"a": 1,
+"e": "Combined rate = 1/6 + 1/12, so time = 6x12/(6+12) = 4.0 days."
+},
+{
+"id": "q5-323",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 4 and 10 days alone. Roughly how many days do they take together?",
+"o": [
+"7.0",
+"14",
+"6",
+"2.9"
+],
+"a": 3,
+"e": "Combined rate = 1/4 + 1/10, so time = 4x10/(4+10) = 2.9 days."
+},
+{
+"id": "q5-324",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 3 and 7 days alone. Roughly how many days do they take together?",
+"o": [
+"5.0",
+"2.1",
+"4",
+"10"
+],
+"a": 1,
+"e": "Combined rate = 1/3 + 1/7, so time = 3x7/(3+7) = 2.1 days."
+},
+{
+"id": "q5-325",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 6 and 13 days alone. Roughly how many days do they take together?",
+"o": [
+"4.1",
+"9.5",
+"7",
+"19"
+],
+"a": 0,
+"e": "Combined rate = 1/6 + 1/13, so time = 6x13/(6+13) = 4.1 days."
+},
+{
+"id": "q5-326",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 8 and 10 days alone. Roughly how many days do they take together?",
+"o": [
+"18",
+"4.4",
+"2",
+"9.0"
+],
+"a": 1,
+"e": "Combined rate = 1/8 + 1/10, so time = 8x10/(8+10) = 4.4 days."
+},
+{
+"id": "q5-327",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "Two worker teams finish a job in 7 and 13 days alone. Roughly how many days do they take together?",
+"o": [
+"20",
+"10.0",
+"4.5",
+"6"
+],
+"a": 2,
+"e": "Combined rate = 1/7 + 1/13, so time = 7x13/(7+13) = 4.5 days."
+},
+{
+"id": "q5-328",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 70, 60, 20, 71, 49?",
+"o": [
+"54",
+"270",
+"51",
+"56"
+],
+"a": 0,
+"e": "Sum = 270, divided by 5 = 54."
+},
+{
+"id": "q5-329",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 89, 28, 43, 55, 50?",
+"o": [
+"53",
+"50",
+"265",
+"55"
+],
+"a": 0,
+"e": "Sum = 265, divided by 5 = 53."
+},
+{
+"id": "q5-330",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 45, 36, 24, 38, 62?",
+"o": [
+"205",
+"43",
+"41",
+"38"
+],
+"a": 2,
+"e": "Sum = 205, divided by 5 = 41."
+},
+{
+"id": "q5-331",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 61, 34, 89, 30, 36?",
+"o": [
+"50",
+"52",
+"47",
+"250"
+],
+"a": 0,
+"e": "Sum = 250, divided by 5 = 50."
+},
+{
+"id": "q5-332",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 43, 26, 20, 86, 60?",
+"o": [
+"44",
+"235",
+"49",
+"47"
+],
+"a": 3,
+"e": "Sum = 235, divided by 5 = 47."
+},
+{
+"id": "q5-333",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 45, 80, 56, 27, 82?",
+"o": [
+"60",
+"290",
+"55",
+"58"
+],
+"a": 3,
+"e": "Sum = 290, divided by 5 = 58."
+},
+{
+"id": "q5-334",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 40, 32, 23, 82, 73?",
+"o": [
+"250",
+"47",
+"52",
+"50"
+],
+"a": 3,
+"e": "Sum = 250, divided by 5 = 50."
+},
+{
+"id": "q5-335",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 90, 49, 65, 42, 89?",
+"o": [
+"67",
+"69",
+"335",
+"64"
+],
+"a": 0,
+"e": "Sum = 335, divided by 5 = 67."
+},
+{
+"id": "q5-336",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 57, 76, 60, 87, 30?",
+"o": [
+"62",
+"59",
+"310",
+"64"
+],
+"a": 0,
+"e": "Sum = 310, divided by 5 = 62."
+},
+{
+"id": "q5-337",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 35, 46, 87, 79, 58?",
+"o": [
+"63",
+"58",
+"305",
+"61"
+],
+"a": 3,
+"e": "Sum = 305, divided by 5 = 61."
+},
+{
+"id": "q5-338",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 68, 48, 77, 11, 16?",
+"o": [
+"44",
+"220",
+"46",
+"41"
+],
+"a": 0,
+"e": "Sum = 220, divided by 5 = 44."
+},
+{
+"id": "q5-339",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 1,
+"q": "What is the average of 84, 78, 81, 43, 44?",
+"o": [
+"63",
+"66",
+"68",
+"330"
+],
+"a": 1,
+"e": "Sum = 330, divided by 5 = 66."
+},
+{
+"id": "q5-340",
+"s": "PS",
+"t": "Combinatorics",
+"d": 3,
+"q": "In how many ways can a committee of 2 be chosen from 9 students?",
+"o": [
+"81",
+"18",
+"36",
+"72"
+],
+"a": 2,
+"e": "C(9,2) = 36. Order does not matter in a committee."
+},
+{
+"id": "q5-341",
+"s": "PS",
+"t": "Combinatorics",
+"d": 3,
+"q": "In how many ways can a committee of 2 be chosen from 7 students?",
+"o": [
+"49",
+"42",
+"21",
+"14"
+],
+"a": 2,
+"e": "C(7,2) = 21. Order does not matter in a committee."
+},
+{
+"id": "q5-342",
+"s": "PS",
+"t": "Combinatorics",
+"d": 3,
+"q": "In how many ways can a committee of 3 be chosen from 7 students?",
+"o": [
+"21",
+"343",
+"35",
+"210"
+],
+"a": 2,
+"e": "C(7,3) = 35. Order does not matter in a committee."
+},
+{
+"id": "q5-343",
+"s": "PS",
+"t": "Combinatorics",
+"d": 3,
+"q": "In how many ways can a committee of 2 be chosen from 5 students?",
+"o": [
+"20",
+"13",
+"25",
+"10"
+],
+"a": 3,
+"e": "C(5,2) = 10. Order does not matter in a committee."
+},
+{
+"id": "q5-344",
+"s": "PS",
+"t": "Combinatorics",
+"d": 3,
+"q": "In how many ways can a committee of 3 be chosen from 6 students?",
+"o": [
+"120",
+"18",
+"20",
+"216"
+],
+"a": 2,
+"e": "C(6,3) = 20. Order does not matter in a committee."
+},
+{
+"id": "q5-345",
+"s": "PS",
+"t": "Combinatorics",
+"d": 3,
+"q": "In how many ways can a committee of 2 be chosen from 8 students?",
+"o": [
+"28",
+"56",
+"16",
+"64"
+],
+"a": 0,
+"e": "C(8,2) = 28. Order does not matter in a committee."
+},
+{
+"id": "q5-346",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 9:9. If there are 36 boys, how many girls are there?",
+"o": [
+"45",
+"36",
+"27",
+"39"
+],
+"a": 1,
+"e": "Each ratio part is 36/9 = 4 students, so girls = 9 x 4 = 36."
+},
+{
+"id": "q5-347",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 10:7. If there are 40 boys, how many girls are there?",
+"o": [
+"28",
+"38",
+"21",
+"33"
+],
+"a": 0,
+"e": "Each ratio part is 40/10 = 4 students, so girls = 7 x 4 = 28."
+},
+{
+"id": "q5-348",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 7:8. If there are 28 boys, how many girls are there?",
+"o": [
+"32",
+"20",
+"24",
+"39"
+],
+"a": 0,
+"e": "Each ratio part is 28/7 = 4 students, so girls = 8 x 4 = 32."
+},
+{
+"id": "q5-349",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 6:8. If there are 24 boys, how many girls are there?",
+"o": [
+"32",
+"38",
+"24",
+"16"
+],
+"a": 0,
+"e": "Each ratio part is 24/6 = 4 students, so girls = 8 x 4 = 32."
+},
+{
+"id": "q5-350",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 5:5. If there are 20 boys, how many girls are there?",
+"o": [
+"20",
+"25",
+"15",
+"23"
+],
+"a": 0,
+"e": "Each ratio part is 20/5 = 4 students, so girls = 5 x 4 = 20."
+},
+{
+"id": "q5-351",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 5:3. If there are 20 boys, how many girls are there?",
+"o": [
+"12",
+"15",
+"9",
+"17"
+],
+"a": 0,
+"e": "Each ratio part is 20/5 = 4 students, so girls = 3 x 4 = 12."
+},
+{
+"id": "q5-352",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 2,
+"q": "The ratio of boys to girls in a class is 9:5. If there are 36 boys, how many girls are there?",
+"o": [
+"31",
+"20",
+"29",
+"15"
+],
+"a": 1,
+"e": "Each ratio part is 36/9 = 4 students, so girls = 5 x 4 = 20."
+},
+{
+"id": "q5-353",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"4 6",
+"6 4",
+"6 10",
+"10 4"
+],
+"a": 1,
+"e": "The three lines swap x and y without a temp variable, giving 6 4.",
+"code": "x = 4\ny = 6\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-354",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"4 2",
+"6 4",
+"2 4",
+"2 6"
+],
+"a": 2,
+"e": "The three lines swap x and y without a temp variable, giving 2 4.",
+"code": "x = 4\ny = 2\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-355",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"9 3",
+"3 12",
+"12 9",
+"3 9"
+],
+"a": 3,
+"e": "The three lines swap x and y without a temp variable, giving 3 9.",
+"code": "x = 9\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-356",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"5 7",
+"2 5",
+"5 2",
+"7 2"
+],
+"a": 2,
+"e": "The three lines swap x and y without a temp variable, giving 5 2.",
+"code": "x = 2\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-357",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"5 9",
+"5 14",
+"14 9",
+"9 5"
+],
+"a": 0,
+"e": "The three lines swap x and y without a temp variable, giving 5 9.",
+"code": "x = 9\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-358",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"8 9",
+"9 8",
+"8 17",
+"17 9"
+],
+"a": 0,
+"e": "The three lines swap x and y without a temp variable, giving 8 9.",
+"code": "x = 9\ny = 8\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-359",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"13 7",
+"6 13",
+"7 6",
+"6 7"
+],
+"a": 3,
+"e": "The three lines swap x and y without a temp variable, giving 6 7.",
+"code": "x = 7\ny = 6\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-360",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"5 12",
+"12 7",
+"5 7",
+"7 5"
+],
+"a": 2,
+"e": "The three lines swap x and y without a temp variable, giving 5 7.",
+"code": "x = 7\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-361",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"3 6",
+"6 3",
+"3 9",
+"9 6"
+],
+"a": 0,
+"e": "The three lines swap x and y without a temp variable, giving 3 6.",
+"code": "x = 6\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-362",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"3 8",
+"11 8",
+"8 3",
+"3 11"
+],
+"a": 0,
+"e": "The three lines swap x and y without a temp variable, giving 3 8.",
+"code": "x = 8\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-363",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"5 3",
+"3 2",
+"2 5",
+"2 3"
+],
+"a": 3,
+"e": "The three lines swap x and y without a temp variable, giving 2 3.",
+"code": "x = 3\ny = 2\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-364",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"2 4",
+"4 2",
+"6 2",
+"4 6"
+],
+"a": 1,
+"e": "The three lines swap x and y without a temp variable, giving 4 2.",
+"code": "x = 2\ny = 4\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-365",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"8 4",
+"8 12",
+"4 8",
+"12 4"
+],
+"a": 0,
+"e": "The three lines swap x and y without a temp variable, giving 8 4.",
+"code": "x = 4\ny = 8\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-366",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"10 7",
+"7 3",
+"3 7",
+"3 10"
+],
+"a": 2,
+"e": "The three lines swap x and y without a temp variable, giving 3 7.",
+"code": "x = 7\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-367",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"5 9",
+"5 4",
+"9 4",
+"4 5"
+],
+"a": 1,
+"e": "The three lines swap x and y without a temp variable, giving 5 4.",
+"code": "x = 4\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+},
+{
+"id": "q5-368",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"10",
+"5",
+"15",
+"21"
+],
+"a": 2,
+"e": "It adds 1 to 5: 5 x 6 / 2 = 15.",
+"code": "total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)"
+},
+{
+"id": "q5-369",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"10",
+"6",
+"15",
+"4"
+],
+"a": 0,
+"e": "It adds 1 to 4: 4 x 5 / 2 = 10.",
+"code": "total = 0\nfor i in range(1, 5):\n    total += i\nprint(total)"
+},
+{
+"id": "q5-370",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"36",
+"7",
+"28",
+"21"
+],
+"a": 2,
+"e": "It adds 1 to 7: 7 x 8 / 2 = 28.",
+"code": "total = 0\nfor i in range(1, 8):\n    total += i\nprint(total)"
+},
+{
+"id": "q5-371",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"9",
+"45",
+"55",
+"36"
+],
+"a": 1,
+"e": "It adds 1 to 9: 9 x 10 / 2 = 45.",
+"code": "total = 0\nfor i in range(1, 10):\n    total += i\nprint(total)"
+},
+{
+"id": "q5-372",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"15",
+"6",
+"21",
+"28"
+],
+"a": 2,
+"e": "It adds 1 to 6: 6 x 7 / 2 = 21.",
+"code": "total = 0\nfor i in range(1, 7):\n    total += i\nprint(total)"
+},
+{
+"id": "q5-373",
+"s": "PS",
+"t": "Code tracing",
+"d": 2,
+"q": "What does this print?",
+"o": [
+"36",
+"8",
+"45",
+"28"
+],
+"a": 0,
+"e": "It adds 1 to 8: 8 x 9 / 2 = 36.",
+"code": "total = 0\nfor i in range(1, 9):\n    total += i\nprint(total)"
+},
+{
+"id": "q5-374",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What does f(6) return?",
+"o": [
+"720",
+"36",
+"120",
+"5040"
+],
+"a": 0,
+"e": "f computes the factorial, 6! = 720.",
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+},
+{
+"id": "q5-375",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What does f(5) return?",
+"o": [
+"25",
+"720",
+"24",
+"120"
+],
+"a": 3,
+"e": "f computes the factorial, 5! = 120.",
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+},
+{
+"id": "q5-376",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What does f(7) return?",
+"o": [
+"40320",
+"5040",
+"720",
+"49"
+],
+"a": 1,
+"e": "f computes the factorial, 7! = 5040.",
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+},
+{
+"id": "q5-377",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What does f(3) return?",
+"o": [
+"24",
+"6",
+"9",
+"2"
+],
+"a": 1,
+"e": "f computes the factorial, 3! = 6.",
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+},
+{
+"id": "q5-378",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What does f(4) return?",
+"o": [
+"6",
+"120",
+"24",
+"16"
+],
+"a": 2,
+"e": "f computes the factorial, 4! = 24.",
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+},
+{
+"id": "q5-379",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"6",
+"2",
+"4",
+"3"
+],
+"a": 3,
+"e": "Halving 12 reaches 1 after 3 steps (about log2 n).",
+"code": "n = 12\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-380",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"3",
+"5",
+"4",
+"13"
+],
+"a": 2,
+"e": "Halving 26 reaches 1 after 4 steps (about log2 n).",
+"code": "n = 26\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-381",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"4",
+"5",
+"22",
+"6"
+],
+"a": 1,
+"e": "Halving 44 reaches 1 after 5 steps (about log2 n).",
+"code": "n = 44\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-382",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"7",
+"4",
+"2",
+"3"
+],
+"a": 3,
+"e": "Halving 14 reaches 1 after 3 steps (about log2 n).",
+"code": "n = 14\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-383",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"4",
+"21",
+"6",
+"5"
+],
+"a": 3,
+"e": "Halving 42 reaches 1 after 5 steps (about log2 n).",
+"code": "n = 42\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-384",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"5",
+"4",
+"6",
+"24"
+],
+"a": 0,
+"e": "Halving 48 reaches 1 after 5 steps (about log2 n).",
+"code": "n = 48\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-385",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"5",
+"4",
+"30",
+"6"
+],
+"a": 0,
+"e": "Halving 60 reaches 1 after 5 steps (about log2 n).",
+"code": "n = 60\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-386",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"12",
+"4",
+"5",
+"3"
+],
+"a": 1,
+"e": "Halving 24 reaches 1 after 4 steps (about log2 n).",
+"code": "n = 24\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-387",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"4",
+"5",
+"6",
+"18"
+],
+"a": 1,
+"e": "Halving 36 reaches 1 after 5 steps (about log2 n).",
+"code": "n = 36\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-388",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"5",
+"4",
+"10",
+"3"
+],
+"a": 1,
+"e": "Halving 21 reaches 1 after 4 steps (about log2 n).",
+"code": "n = 21\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-389",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"5",
+"6",
+"22",
+"4"
+],
+"a": 0,
+"e": "Halving 45 reaches 1 after 5 steps (about log2 n).",
+"code": "n = 45\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-390",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "How many times does the loop run?",
+"o": [
+"29",
+"6",
+"4",
+"5"
+],
+"a": 3,
+"e": "Halving 59 reaches 1 after 5 steps (about log2 n).",
+"code": "n = 59\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+},
+{
+"id": "q5-391",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"3",
+"98",
+"37",
+"6"
+],
+"a": 2,
+"e": "The loop keeps the largest value, 37.",
+"code": "nums = [11, 27, 6, 14, 37, 3]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-392",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"42",
+"26",
+"41",
+"15"
+],
+"a": 0,
+"e": "The loop keeps the largest value, 42.",
+"code": "nums = [26, 37, 42, 28, 15, 41]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-393",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"46",
+"6",
+"8",
+"168"
+],
+"a": 0,
+"e": "The loop keeps the largest value, 46.",
+"code": "nums = [8, 37, 21, 36, 46, 20]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-394",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"15",
+"4",
+"28",
+"41"
+],
+"a": 3,
+"e": "The loop keeps the largest value, 41.",
+"code": "nums = [28, 4, 19, 41, 27, 15]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-395",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"20",
+"3",
+"47",
+"15"
+],
+"a": 2,
+"e": "The loop keeps the largest value, 47.",
+"code": "nums = [15, 33, 28, 47, 3, 20]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-396",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"1",
+"6",
+"137",
+"42"
+],
+"a": 3,
+"e": "The loop keeps the largest value, 42.",
+"code": "nums = [14, 21, 26, 33, 42, 1]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-397",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"6",
+"48",
+"139",
+"9"
+],
+"a": 1,
+"e": "The loop keeps the largest value, 48.",
+"code": "nums = [13, 20, 15, 48, 34, 9]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-398",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"1",
+"22",
+"6",
+"53"
+],
+"a": 1,
+"e": "The loop keeps the largest value, 22.",
+"code": "nums = [7, 11, 2, 22, 10, 1]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-399",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"45",
+"48",
+"35",
+"11"
+],
+"a": 1,
+"e": "The loop keeps the largest value, 48.",
+"code": "nums = [45, 19, 11, 48, 32, 35]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-400",
+"s": "PS",
+"t": "Code tracing",
+"d": 1,
+"q": "What does this print?",
+"o": [
+"3",
+"10",
+"48",
+"5"
+],
+"a": 2,
+"e": "The loop keeps the largest value, 48.",
+"code": "nums = [10, 41, 48, 40, 3, 5]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+},
+{
+"id": "q5-401",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /25 subnet?",
+"o": [
+"129",
+"63",
+"128",
+"126"
+],
+"a": 3,
+"e": "2^(32-25) - 2 = 126 (minus network and broadcast)."
+},
+{
+"id": "q5-402",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /26 subnet?",
+"o": [
+"65",
+"64",
+"62",
+"31"
+],
+"a": 2,
+"e": "2^(32-26) - 2 = 62 (minus network and broadcast)."
+},
+{
+"id": "q5-403",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /27 subnet?",
+"o": [
+"30",
+"32",
+"33",
+"15"
+],
+"a": 0,
+"e": "2^(32-27) - 2 = 30 (minus network and broadcast)."
+},
+{
+"id": "q5-404",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /28 subnet?",
+"o": [
+"16",
+"14",
+"7",
+"17"
+],
+"a": 1,
+"e": "2^(32-28) - 2 = 14 (minus network and broadcast)."
+},
+{
+"id": "q5-405",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /29 subnet?",
+"o": [
+"8",
+"9",
+"6",
+"3"
+],
+"a": 2,
+"e": "2^(32-29) - 2 = 6 (minus network and broadcast)."
+},
+{
+"id": "q5-406",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /30 subnet?",
+"o": [
+"2",
+"4",
+"1",
+"5"
+],
+"a": 0,
+"e": "2^(32-30) - 2 = 2 (minus network and broadcast)."
+},
+{
+"id": "q5-407",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /23 subnet?",
+"o": [
+"510",
+"513",
+"512",
+"255"
+],
+"a": 0,
+"e": "2^(32-23) - 2 = 510 (minus network and broadcast)."
+},
+{
+"id": "q5-408",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /22 subnet?",
+"o": [
+"1025",
+"1024",
+"511",
+"1022"
+],
+"a": 3,
+"e": "2^(32-22) - 2 = 1022 (minus network and broadcast)."
+},
+{
+"id": "q5-409",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /21 subnet?",
+"o": [
+"2048",
+"2046",
+"2049",
+"1023"
+],
+"a": 1,
+"e": "2^(32-21) - 2 = 2046 (minus network and broadcast)."
+},
+{
+"id": "q5-410",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "How many usable host addresses are in an IPv4 /20 subnet?",
+"o": [
+"4097",
+"4096",
+"2047",
+"4094"
+],
+"a": 3,
+"e": "2^(32-20) - 2 = 4094 (minus network and broadcast)."
+},
+{
+"id": "q5-411",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /24?",
+"o": [
+"255.255.255.252",
+"255.255.255.240",
+"255.255.255.0",
+"255.255.255.224"
+],
+"a": 2,
+"e": "/24 means 24 leading 1 bits, which is 255.255.255.0."
+},
+{
+"id": "q5-412",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /25?",
+"o": [
+"255.255.255.128",
+"255.255.255.224",
+"255.255.0.0",
+"255.255.255.0"
+],
+"a": 0,
+"e": "/25 means 25 leading 1 bits, which is 255.255.255.128."
+},
+{
+"id": "q5-413",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /26?",
+"o": [
+"255.255.255.192",
+"255.255.0.0",
+"255.255.255.0",
+"255.255.240.0"
+],
+"a": 0,
+"e": "/26 means 26 leading 1 bits, which is 255.255.255.192."
+},
+{
+"id": "q5-414",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /27?",
+"o": [
+"255.255.255.0",
+"255.255.255.192",
+"255.255.255.252",
+"255.255.255.224"
+],
+"a": 3,
+"e": "/27 means 27 leading 1 bits, which is 255.255.255.224."
+},
+{
+"id": "q5-415",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /28?",
+"o": [
+"255.255.255.240",
+"255.255.240.0",
+"255.255.255.192",
+"255.255.255.252"
+],
+"a": 0,
+"e": "/28 means 28 leading 1 bits, which is 255.255.255.240."
+},
+{
+"id": "q5-416",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /29?",
+"o": [
+"255.255.255.224",
+"255.255.255.240",
+"255.255.252.0",
+"255.255.255.248"
+],
+"a": 3,
+"e": "/29 means 29 leading 1 bits, which is 255.255.255.248."
+},
+{
+"id": "q5-417",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /30?",
+"o": [
+"255.255.255.240",
+"255.255.255.252",
+"255.255.255.128",
+"255.255.255.224"
+],
+"a": 1,
+"e": "/30 means 30 leading 1 bits, which is 255.255.255.252."
+},
+{
+"id": "q5-418",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /16?",
+"o": [
+"255.255.0.0",
+"255.255.255.128",
+"255.255.255.192",
+"255.255.255.248"
+],
+"a": 0,
+"e": "/16 means 16 leading 1 bits, which is 255.255.0.0."
+},
+{
+"id": "q5-419",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /20?",
+"o": [
+"255.255.255.192",
+"255.255.255.252",
+"255.255.240.0",
+"255.255.255.0"
+],
+"a": 2,
+"e": "/20 means 20 leading 1 bits, which is 255.255.240.0."
+},
+{
+"id": "q5-420",
+"s": "NET",
+"t": "Network layer",
+"d": 3,
+"q": "Which subnet mask matches the prefix /22?",
+"o": [
+"255.255.252.0",
+"255.255.255.248",
+"255.255.255.0",
+"255.255.255.252"
+],
+"a": 0,
+"e": "/22 means 22 leading 1 bits, which is 255.255.252.0."
+},
+{
+"id": "q5-421",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(1)",
+"O(n)",
+"O(n^2)",
+"O(log n)"
+],
+"a": 2,
+"e": "Two nested loops over n.",
+"code": "for i in range(n):\n    for j in range(n):\n        work()"
+},
+{
+"id": "q5-422",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(n log n)",
+"O(n)",
+"O(n^2)",
+"O(n^3)"
+],
+"a": 1,
+"e": "Two loops one after another add up to 2n, which is O(n).",
+"code": "for i in range(n):\n    work()\nfor j in range(n):\n    work()"
+},
+{
+"id": "q5-423",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(n log n)",
+"O(n^2)",
+"O(log n)",
+"O(n^3)"
+],
+"a": 2,
+"e": "i doubles each step.",
+"code": "i = 1\nwhile i < n:\n    i = i * 2"
+},
+{
+"id": "q5-424",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(log n)",
+"O(1)",
+"O(n log n)",
+"O(n)"
+],
+"a": 2,
+"e": "An O(log n) loop inside an O(n) loop.",
+"code": "for i in range(n):\n    j = 1\n    while j < n:\n        j = j * 2"
+},
+{
+"id": "q5-425",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(n^2)",
+"O(n)",
+"O(log n)",
+"O(1)"
+],
+"a": 0,
+"e": "About n^2/2 steps, which is O(n^2).",
+"code": "for i in range(n):\n    for j in range(i):\n        work()"
+},
+{
+"id": "q5-426",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(n^2)",
+"O(1)",
+"O(n^3)",
+"O(n log n)"
+],
+"a": 1,
+"e": "A fixed number of steps.",
+"code": "x = arr[0] + arr[n - 1]"
+},
+{
+"id": "q5-427",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(log n)",
+"O(1)",
+"O(n)",
+"O(n^3)"
+],
+"a": 3,
+"e": "Three nested loops over n.",
+"code": "for i in range(n):\n    for j in range(n):\n        for k in range(n):\n            work()"
+},
+{
+"id": "q5-428",
+"s": "DSA",
+"t": "Complexity",
+"d": 2,
+"q": "What is the time complexity?",
+"o": [
+"O(n^2)",
+"O(n log n)",
+"O(1)",
+"O(n^3)"
+],
+"a": 2,
+"e": "The loop runs a fixed 100 times, independent of n.",
+"code": "for i in range(100):\n    work()"
+}
+]

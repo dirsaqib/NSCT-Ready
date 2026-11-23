@@ -61,7 +61,7 @@ export async function GET(req: Request) {
     for (let i = 0; i < range.count; i++) {
       doc.switchToPage(i);
       doc.page.margins.bottom = 0; // let the footer sit below the text area without adding a page
-      doc.fontSize(7.5).fillColor(MUTED).text(`NSCT Ready detailed report. Platform estimates, not official NSCT results. Confidential: for university staff only. Page ${i + 1} of ${range.count}`, 44, 805, { width: 507, align: "center" });
+      doc.fontSize(7.5).fillColor(MUTED).text(`TayariHub detailed report. Platform estimates, not official NSCT results. Confidential: for university staff only. Page ${i + 1} of ${range.count}`, 44, 805, { width: 507, align: "center" });
     }
     doc.end();
     await audit(u.id, id ? "report.student" : "report.pack", id ?? uniId, { students: profiles.length });

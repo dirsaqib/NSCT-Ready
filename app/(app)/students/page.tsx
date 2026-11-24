@@ -20,6 +20,15 @@ function Students() {
   const [q, setQ] = useState("");
   const { data, error, reload } = useApi<{ total: number; students: S[] }>(`/api/students?status=${status === "ALL" ? "" : status}&q=${encodeURIComponent(q)}`, [status, q]);
   const [open, setOpen] = useState<Detail | null>(null);
+  const [picked, setPicked] = useState<string[]>([]);
+  const [askRemove, setAskRemove] = useState(false);
+  async function bulk(action: "remove" | "deactivate" | "activate") {
+    try {
+      const r = await api<{ removed?: number; deactivated?: number; changed?: number }>("/api/students/bulk", { method: "POST", body: { ids: picked, action } });
+      setMsg(action === "remove" ? `Removed ${r.removed ?? 0}${r.deactivated ? `, deactivated ${r.deactivated} who had already practised` : ""}.` : `Updated ${r.changed ?? 0} students.`);
+      setPicked([]); setAskRemove(false); reload();
+    } catch (er) { setMsg((er as Error).message); }
+  }
   const [msg, setMsg] = useState("");
   const [creds, setCreds] = useState<Cred[] | null>(null);
 
@@ -56,8 +65,20 @@ function Students() {
       <div className="card">
         <Tabs value={status} onChange={setStatus} tabs={[["PENDING", "Waiting for verification"], ["VERIFIED", "Verified"], ["ACTIVE", "Active"], ["BLOCKED", "Deactivated"], ["ALL", "All"]]} />
         <input type="text" placeholder="Search name or roll number" value={q} onChange={(e) => setQ(e.target.value)} style={{ maxWidth: 320, marginBottom: 12 }} />
+        {picked.length > 0 && (
+          <div className="notice info" style={{ marginBottom: 12, display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+            <b>{picked.length} selected</b>
+            <button className="btn sm sec" onClick={() => bulk("deactivate")}>Deactivate selected</button>
+            <button className="btn sm sec" onClick={() => bulk("activate")}>Activate selected</button>
+            {!askRemove ? <button className="btn sm" style={{ background: "var(--bad)" }} onClick={() => setAskRemove(true)}>Remove selected</button> : (
+              <span className="row"><span className="small"><b>Remove {picked.length} students?</b> This cannot be undone.</span><button className="btn sm" style={{ background: "var(--bad)" }} onClick={() => bulk("remove")}>Yes, remove</button><button className="btn sm sec" onClick={() => setAskRemove(false)}>Cancel</button></span>
+            )}
+            <button className="btn sm ghost" onClick={() => { setPicked([]); setAskRemove(false); }}>Clear</button>
+          </div>
+        )}
         {!data ? <Loading error={error} /> : (
           <Table rows={data.students} empty="No students here." cols={[
+            [<input key="all" type="checkbox" aria-label="Select all on this page" checked={data.students.length > 0 && data.students.every((s) => picked.includes(s.userId))} onChange={(e) => setPicked(e.target.checked ? [...new Set([...picked, ...data.students.map((s) => s.userId)])] : picked.filter((id) => !data.students.some((s) => s.userId === id)))} /> as unknown as string, (s) => <input type="checkbox" aria-label={`Select ${s.fullName}`} checked={picked.includes(s.userId)} onChange={(e) => setPicked(e.target.checked ? [...picked, s.userId] : picked.filter((id) => id !== s.userId))} />],
             ["Name", (s) => <button className="btn ghost sm" onClick={async () => setOpen(await api<Detail>(`/api/students/${s.userId}`))}><b>{s.fullName}</b></button>],
             ["Roll number", (s) => s.rollNumber],
             ["Program", (s) => <span className="small">{s.program} · {s.semester}{s.section ?? ""}</span>],

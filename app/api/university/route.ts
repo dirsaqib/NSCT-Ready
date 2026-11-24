@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 import { prisma } from "@/lib/db";
 import { requireRole, profileScope } from "@/lib/auth";
 import { handle } from "@/lib/http";
+import { linkUnassigned } from "@/lib/register";
 import { SUBJECTS } from "@/lib/syllabus";
 
 /**
@@ -12,6 +13,7 @@ import { SUBJECTS } from "@/lib/syllabus";
 export const GET = handle(async (req: Request) => {
   const u = await requireRole("HOD");
   const scope = profileScope(u, new URL(req.url).searchParams.get("universityId"));
+  if (scope.universityId) await linkUnassigned(scope.universityId).catch(() => 0);
 
   const profiles = await prisma.profile.findMany({
     where: scope,

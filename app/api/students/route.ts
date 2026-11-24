@@ -3,6 +3,7 @@ import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { requireRole, profileScope } from "@/lib/auth";
 import { handle } from "@/lib/http";
+import { linkUnassigned } from "@/lib/register";
 
 /** Students in the staff member's part of the hierarchy, with filters. */
 export const GET = handle(async (req: Request) => {
@@ -14,6 +15,7 @@ export const GET = handle(async (req: Request) => {
     q: z.string().optional(), universityId: z.string().optional(), page: z.coerce.number().int().min(0).default(0),
   }).parse(Object.fromEntries(sp));
   const scope = profileScope(u, f.universityId);
+  if (scope.universityId) await linkUnassigned(scope.universityId).catch(() => 0);
   const where = {
     ...scope,
     ...(f.campusId && !scope.campusId ? { campusId: f.campusId } : {}),

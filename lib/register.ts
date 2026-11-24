@@ -48,6 +48,40 @@ export async function ensureDepartment(universityId: string, departmentName: str
   return prisma.department.create({ data: { campusId: campus.id, name, programs: [] }, select: { id: true, campusId: true } });
 }
 
+const DEPT_ALIASES: Record<string, string[]> = {
+  computerscience: ["cs", "bscs", "compsci", "computerscience"], softwareengineering: ["se", "bsse", "software"],
+  informationtechnology: ["it", "bsit"], artificialintelligence: ["ai", "bsai"], datascience: ["ds", "bsds"],
+  creativetechnologies: ["ct", "creativetechnology", "creativetech"], computergamesdevelopment: ["cgd", "bscgd", "gamesdevelopment", "gamedevelopment", "computergames"],
+  cybersecurity: ["cyber", "bscys", "infosec"], computerengineering: ["ce", "bsce", "compeng"],
+};
+const keyOf = (s: string) => s.toLowerCase().replace(/[^a-z]/g, "").replace(/^(departmentof|deptof|facultyof|schoolof|department|dept)/, "");
+
+/**
+ * Links students who registered before their department existed, or typed it differently
+ * ("CS", "Dept. of Computer Science"), or left it unclear but chose a program the department offers.
+ */
+export async function linkUnassigned(universityId: string) {
+  const depts = await prisma.department.findMany({ where: { campus: { universityId } }, select: { id: true, name: true, programs: true } });
+  if (!depts.length) return 0;
+  const loose = await prisma.profile.findMany({ where: { universityId, departmentId: null }, select: { userId: true, departmentName: true, program: true } });
+  if (!loose.length) return 0;
+  const byDept = new Map<string, string[]>();
+  for (const p of loose) {
+    const typed = keyOf(p.departmentName ?? "");
+    const prog = keyOf(p.program ?? "");
+    const d = depts.find((x) => { const k = keyOf(x.name); return typed && (k === typed || (DEPT_ALIASES[k] ?? []).includes(typed) || (typed.length > 5 && (k.includes(typed) || typed.includes(k)))); })
+      ?? depts.find((x) => prog && x.programs.some((pp) => keyOf(pp) === prog));
+    if (d) byDept.set(d.id, [...(byDept.get(d.id) ?? []), p.userId]);
+  }
+  let n = 0;
+  for (const [id, ids] of byDept) {
+    await prisma.profile.updateMany({ where: { userId: { in: ids } }, data: { departmentId: id } });
+    await prisma.user.updateMany({ where: { id: { in: ids } }, data: { departmentId: id } });
+    n += ids.length;
+  }
+  return n;
+}
+
 /** Links students who have no department yet to the department that lists their program. */
 export async function linkByProgram(universityId: string) {
   const depts = await prisma.department.findMany({ where: { campus: { universityId } }, select: { id: true, programs: true } });

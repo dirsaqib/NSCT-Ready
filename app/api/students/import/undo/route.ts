@@ -5,12 +5,15 @@ import { prisma } from "@/lib/db";
 import { requireRole, HttpError } from "@/lib/auth";
 import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
+import { recoverOlderUploads } from "@/lib/uploads";
 
 const UNDO_DAYS = 7;
 
 /** Recent uploads for this university, newest first, so a wrong one can be undone. */
 export const GET = handle(async () => {
   const u = await requireRole("CAMPUS_ADMIN");
+  // Uploads made before upload records existed are rebuilt so they can be undone too.
+  await recoverOlderUploads(u.role === "ADMIN" ? undefined : u.universityId ?? undefined).catch(() => 0);
   const where = u.role === "ADMIN" ? {} : { universityId: u.universityId ?? "-", ...(u.departmentId ? { uploaderId: u.id } : {}) };
   const rows = await prisma.importBatch.findMany({ where, orderBy: { createdAt: "desc" }, take: 15 });
   return { rows: rows.map((b) => ({ id: b.id, filename: b.filename, created: b.createdIds.length, updated: b.updatedCount, createdAt: b.createdAt, undoneAt: b.undoneAt, canUndo: !b.undoneAt && b.createdIds.length > 0 && Date.now() - b.createdAt.getTime() < UNDO_DAYS * 86400000 })) };

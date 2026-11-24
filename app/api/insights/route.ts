@@ -3,6 +3,7 @@ export const maxDuration = 60;
 import { prisma } from "@/lib/db";
 import { requireRole, profileScope } from "@/lib/auth";
 import { handle } from "@/lib/http";
+import { linkUnassigned } from "@/lib/register";
 import { SUBJECTS } from "@/lib/syllabus";
 
 const DAY = 86400000;
@@ -18,6 +19,7 @@ export const GET = handle(async (req: Request) => {
   const u = await requireRole("HOD");
   const q = new URL(req.url).searchParams;
   const scope = profileScope(u, q.get("universityId"));
+  if (scope.universityId) await linkUnassigned(scope.universityId).catch(() => 0);
   const where: Record<string, unknown> = { ...scope };
   if (q.get("department")) where.departmentId = scope.departmentId ?? q.get("department");
   if (q.get("program")) where.program = q.get("program");

@@ -515,3 +515,6 @@ html{scroll-behavior:smooth}
 .lp-fcol a:hover{color:#5BE0B5}
 @media (max-width:1000px){.lp-paths{grid-template-columns:1fr 1fr}.lp-foot-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.lp-paths,.lp-foot-grid{grid-template-columns:1fr}.lp-band{padding:24px}}
+/* Sidebar tones matched to the TayariHub palette */
+.nav-label{color:#8FA3CC}.nav a{color:#DCE4F5}.nav a.on{background:rgba(91,224,181,.16);color:#fff;box-shadow:inset 3px 0 0 #5BE0B5}.side-foot{color:#8FA3CC}
+.logo b{color:#fff}.logo small{color:#9FB0D6}

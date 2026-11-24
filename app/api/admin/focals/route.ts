@@ -6,6 +6,7 @@ import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
 import { hashPassword, tempPassword } from "@/lib/password";
+import { ensureDepartment } from "@/lib/register";
 
 /** Focal persons for the super admin: pending registrations first, then approved ones. */
 export const GET = handle(async (req: Request) => {
@@ -16,14 +17,14 @@ export const GET = handle(async (req: Request) => {
     orderBy: { createdAt: "desc" }, take: 500,
     select: {
       id: true, name: true, email: true, phone: true, designation: true, status: true, createdAt: true, lastSeenAt: true, totpEnabled: true,
-      university: { select: { name: true } }, campus: { select: { name: true } }, uploads: { where: { kind: "FOCAL_PROOF" }, select: { id: true, filename: true } },
+      university: { select: { name: true } }, campus: { select: { name: true } }, department: { select: { name: true } }, uploads: { where: { kind: "FOCAL_PROOF" }, select: { id: true, filename: true } },
     },
   });
   const students = await prisma.profile.groupBy({ by: ["universityId"], _count: true });
   return { focals, studentsByUniversity: Object.fromEntries(students.map((s) => [s.universityId, s._count])) };
 });
 
-const Patch = z.object({ id: z.string(), action: z.enum(["approve", "reject", "block", "unblock", "resetPassword", "reset2fa"]), reason: z.string().max(300).optional() });
+const Patch = z.object({ id: z.string(), action: z.enum(["approve", "reject", "block", "unblock", "resetPassword", "reset2fa", "setDepartment"]), reason: z.string().max(300).optional(), departmentName: z.string().max(100).optional() });
 
 export const PATCH = handle(async (req: Request) => {
   const u = await requireRole("ADMIN");
@@ -41,6 +42,11 @@ export const PATCH = handle(async (req: Request) => {
     await prisma.user.update({ where: { id: f.id }, data: { status: "BLOCKED" } });
   } else if (b.action === "unblock") {
     await prisma.user.update({ where: { id: f.id }, data: { status: "ACTIVE" } });
+  } else if (b.action === "setDepartment") {
+    // Empty means the whole university.
+    const name = (b.departmentName ?? "").trim();
+    const d = name && f.universityId ? await ensureDepartment(f.universityId, name) : null;
+    await prisma.user.update({ where: { id: f.id }, data: { departmentId: d?.id ?? null, campusId: d?.campusId ?? null } });
   } else if (b.action === "reset2fa") {
     await prisma.user.update({ where: { id: f.id }, data: { totpEnabled: false, totpSecret: null } });
   } else {

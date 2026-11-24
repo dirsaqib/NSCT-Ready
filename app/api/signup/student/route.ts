@@ -48,7 +48,7 @@ export const POST = handle(async (req: Request) => {
   const universityId = await resolveUniversity(b.universityId, b.universityName);
   if (await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: b.rollNumber } } }))
     throw new HttpError(409, "This roll number is already registered at your university. Sign in, or ask your focal person to reset your password.");
-  const place = await matchPlace(universityId, b.campusName ?? "", b.departmentName);
+  const place = await matchPlace(universityId, b.campusName ?? "", b.departmentName, b.program);
 
   const user = await prisma.user.create({
     data: {

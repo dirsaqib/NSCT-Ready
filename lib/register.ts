@@ -33,7 +33,38 @@ export function cnicFields(raw: string) {
 }
 
 /** Match a typed campus or department name to the university's records, if one fits. */
-export async function matchPlace(universityId: string, campusName: string, departmentName: string) {
+/** The university's "Main campus", created on first use. Departments live under it. */
+export async function mainCampus(universityId: string) {
+  const uni = await prisma.university.findUnique({ where: { id: universityId }, select: { city: true } });
+  return prisma.campus.upsert({ where: { universityId_name: { universityId, name: "Main campus" } }, create: { universityId, name: "Main campus", city: uni?.city }, update: {} });
+}
+
+/** Finds the university's department by name (ignoring case and spacing), or creates it. */
+export async function ensureDepartment(universityId: string, departmentName: string) {
+  const name = departmentName.trim().replace(/\s+/g, " ");
+  const found = await prisma.department.findFirst({ where: { campus: { universityId }, name: { equals: name, mode: "insensitive" } }, select: { id: true, campusId: true } });
+  if (found) return found;
+  const campus = await mainCampus(universityId);
+  return prisma.department.create({ data: { campusId: campus.id, name, programs: [] }, select: { id: true, campusId: true } });
+}
+
+/** Links students who have no department yet to the department that lists their program. */
+export async function linkByProgram(universityId: string) {
+  const depts = await prisma.department.findMany({ where: { campus: { universityId } }, select: { id: true, programs: true } });
+  let linked = 0;
+  for (const d of depts) {
+    if (!d.programs.length) continue;
+    const rows = await prisma.profile.findMany({ where: { universityId, departmentId: null, program: { in: d.programs, mode: "insensitive" } }, select: { userId: true } });
+    if (!rows.length) continue;
+    const ids = rows.map((r) => r.userId);
+    await prisma.profile.updateMany({ where: { userId: { in: ids } }, data: { departmentId: d.id } });
+    await prisma.user.updateMany({ where: { id: { in: ids } }, data: { departmentId: d.id } });
+    linked += ids.length;
+  }
+  return linked;
+}
+
+export async function matchPlace(universityId: string, campusName: string, departmentName: string, program?: string) {
   const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
   const campuses = await prisma.campus.findMany({ where: { universityId }, select: { id: true, name: true, city: true, departments: { select: { id: true, name: true } } } });
   const cn = norm(campusName);
@@ -45,7 +76,14 @@ export async function matchPlace(universityId: string, campusName: string, depar
     const d = c.departments.find((x) => norm(x.name) === dn);
     if (d) { department = { id: d.id, campusId: c.id }; break; }
   }
-  return { campusId: campus?.id ?? null, departmentId: department?.id ?? null };
+  // No department name match: use the department that offers the student's program (e.g. BSIT under Computer Science).
+  if (!department && program) {
+    const pn = norm(program);
+    const d = await prisma.department.findFirst({ where: { campus: { universityId }, programs: { has: program } }, select: { id: true, campusId: true } })
+      ?? (await prisma.department.findMany({ where: { campus: { universityId } }, select: { id: true, campusId: true, programs: true } })).find((x) => x.programs.some((pp) => norm(pp) === pn));
+    if (d) department = { id: d.id, campusId: d.campusId };
+  }
+  return { campusId: campus?.id ?? department?.campusId ?? null, departmentId: department?.id ?? null };
 }
 
 /** The university picked from the list, or the one typed. A typed name that is not on the list is added as unlisted. */

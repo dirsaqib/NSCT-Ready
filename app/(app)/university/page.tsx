@@ -8,6 +8,8 @@ type D = {
   mockProgress: { n: number; students: number; avgBest: number | null; above90: number }[];
   subjects: { key: string; name: string; weight: number; accuracy: number | null }[];
   atRisk: Student[]; notStarted: Student[];
+  scope: { departmentId?: string };
+  byDepartment: { group: string; registered: number; active: number; pending: number; avgReadiness: number | null }[];
 };
 
 const heat = (p: number | null) => (p == null ? "#F1F3F2" : p >= 80 ? "#CDEBDB" : p >= 60 ? "#FBE7C4" : "#F6D2CD");
@@ -17,11 +19,12 @@ export default function University() {
   const { data: d, error } = useApi<D>("/api/university");
   if (!d) return <Loading error={error} />;
   return (
-    <Page title="Focal person dashboard" sub="Your university's students only.">
+    <Page title="Focal person dashboard" sub={d.scope.departmentId ? "Your department's students only." : "All departments of your university."}>
       <div className="big3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))" }}>
         <Link href="/students" className="card"><div className="ico">👥</div><b>Register students</b><span className="small muted">Upload an Excel sheet. Everyone gets a login and password.</span></Link>
         <Link href="/students?status=PENDING" className="card"><div className="ico" style={{ background: d.pending ? "var(--accent-soft)" : undefined }}>✅</div><b>Verify students{d.pending ? ` (${d.pending})` : ""}</b><span className="small muted">Check the proof of students who registered themselves.</span></Link>
         <Link href="/contribute" className="card"><div className="ico" style={{ background: "#E8F0FB" }}>❓</div><b>Add questions</b><span className="small muted">For your university or one department only, or for everyone.</span></Link>
+        <Link href="/insights" className="card" style={{ borderColor: "var(--brand)" }}><div className="ico" style={{ background: "#E3F6F1" }}>🔎</div><b>Readiness insights</b><span className="small muted">Weak subjects and topics, groups to compare, students who need help, and what to do next.</span></Link>
         <Link href="/students#reports" className="card"><div className="ico" style={{ background: "#F1ECFB" }}>📄</div><b>Reports for HODs</b><span className="small muted">A detailed PDF page for every student.</span></Link>
       </div>
 
@@ -40,6 +43,17 @@ export default function University() {
           <table className="heat"><tbody>{d.subjects.map((s) => <tr key={s.key}><td className="small">{s.name}</td><td className="c" style={{ background: heat(s.accuracy) }}>{s.accuracy == null ? "n/a" : `${s.accuracy}%`}</td></tr>)}</tbody></table>
         </Card>
       </div>
+
+      {!d.scope.departmentId && d.byDepartment.length > 0 && (
+        <Card title="Department-wise" style={{ marginBottom: 16 }} right={<Link href="/insights" className="small">Full comparison →</Link>}>
+          <Table rows={d.byDepartment} cols={[
+            ["Department", (g) => <b>{g.group}</b>], ["Registered", (g) => g.registered],
+            ["Started", (g) => `${g.active} (${g.registered ? Math.round((100 * g.active) / g.registered) : 0}%)`],
+            ["Waiting for verification", (g) => g.pending],
+            ["Average readiness", (g) => <span style={{ background: heat(g.avgReadiness), padding: "3px 10px", borderRadius: 8, fontWeight: 700 }}>{g.avgReadiness ?? "n/a"}</span>],
+          ]} />
+        </Card>
+      )}
 
       <div className="grid g2">
         <Card title={`Need support (${d.atRisk.length})`}>

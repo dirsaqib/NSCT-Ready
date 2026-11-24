@@ -49,8 +49,16 @@ export const POST = handle(async (req: Request) => {
       const phoneRaw = col(row, "phone", "mobile");
       const phone = phoneRaw ? normalisePhone(phoneRaw) : null;
       const campus = campuses.find((c) => c.name.toLowerCase() === col(row, "campus").toLowerCase()) ?? (campuses.length === 1 ? campuses[0] : undefined);
-      const dept = campus?.departments.find((d) => d.name.toLowerCase() === col(row, "department").toLowerCase());
+      const program = col(row, "program");
+      const allDepts = campuses.flatMap((c) => c.departments);
+      // A department focal person can only add students to their own department.
+      const dept = u.departmentId && u.role !== "ADMIN"
+        ? allDepts.find((d) => d.id === u.departmentId)
+        : campus?.departments.find((d) => d.name.toLowerCase() === col(row, "department").toLowerCase())
+          ?? allDepts.find((d) => d.name.toLowerCase() === col(row, "department").toLowerCase())
+          ?? (program ? allDepts.find((d) => d.programs.some((pp) => pp.toLowerCase() === program.toLowerCase())) : undefined);
       const existing = await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: roll } } });
+      if (existing && u.role !== "ADMIN" && u.departmentId && existing.departmentId && existing.departmentId !== u.departmentId) throw new Error("This roll number belongs to a student of another department.");
       const byContact = existing ? null : email || phone ? await prisma.user.findFirst({ where: { OR: [...(email ? [{ email }] : []), ...(phone ? [{ phone }] : [])] } }) : null;
       if (byContact && byContact.role !== "STUDENT") throw new Error("This email or phone belongs to a staff account.");
       const userId = existing?.userId ?? byContact?.id;
@@ -62,8 +70,8 @@ export const POST = handle(async (req: Request) => {
         : await prisma.user.create({ data: { email, phone, name, role: "STUDENT", status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id, ...pw } });
       if (temp) credentials.push({ name, rollNumber: roll, password: temp, status: userId ? "password reset" : "new" });
       const data = {
-        fullName: name, universityId, rollNumber: roll, program: col(row, "program") || "Not given", semester: col(row, "semester") || "7",
-        section: col(row, "section") || null, campusId: campus?.id ?? null, departmentId: dept?.id ?? null, verifiedById: u.id, verifiedAt: new Date(),
+        fullName: name, universityId, rollNumber: roll, program: program || "Not given", semester: col(row, "semester") || "7",
+        section: col(row, "section") || null, campusId: campus?.id ?? (dept ? campuses.find((c) => c.departments.includes(dept))?.id ?? null : null), departmentId: dept?.id ?? null, verifiedById: u.id, verifiedAt: new Date(),
       };
       if (await prisma.profile.findUnique({ where: { userId: user.id } })) { await prisma.profile.update({ where: { userId: user.id }, data }); updated++; }
       else { await prisma.profile.create({ data: { userId: user.id, ...data } }); created++; newIds.push(user.id); }
@@ -72,6 +80,7 @@ export const POST = handle(async (req: Request) => {
     }
   }
   if (newIds.length) await notify(newIds, "Your TayariHub account is ready", "Your university has registered you. Your focal person will give you a temporary password. Sign in with your university and roll number.", ["EMAIL"], "/signin").catch(() => {});
-  await audit(u.id, "students.import", universityId, { created, updated, failed: failed.length, passwords: credentials.length });
-  return { created, updated, failed, credentials };
+  const batch = await prisma.importBatch.create({ data: { universityId, uploaderId: u.id, filename: (file as File).name?.slice(0, 200) || null, createdIds: newIds, updatedCount: updated } });
+  await audit(u.id, "students.import", universityId, { created, updated, failed: failed.length, passwords: credentials.length, batchId: batch.id });
+  return { created, updated, failed, credentials, batchId: batch.id };
 });

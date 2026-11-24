@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { requireRole, HttpError } from "@/lib/auth";
 import { handle } from "@/lib/http";
 import { audit } from "@/lib/audit";
+import { linkByProgram } from "@/lib/register";
 
 // Each university keeps its own list of departments and programs, set by its focal person.
 // Departments are stored under the university's "Main campus" because students now type their campus freely.
@@ -24,7 +25,7 @@ export const GET = handle(async (req: Request) => {
   const u = await requireRole("FOCAL");
   const universityId = await uniFor(u, new URL(req.url).searchParams.get("universityId"));
   const departments = await prisma.department.findMany({
-    where: { campus: { universityId } }, orderBy: { name: "asc" },
+    where: { campus: { universityId }, ...(u.role !== "ADMIN" && u.departmentId ? { id: u.departmentId } : {}) }, orderBy: { name: "asc" },
     select: { id: true, name: true, programs: true, campus: { select: { name: true } }, _count: { select: { profiles: true } } },
   });
   const typed = await prisma.profile.groupBy({ by: ["departmentName"], where: { universityId, departmentId: null, departmentName: { not: null } }, _count: true });
@@ -45,6 +46,7 @@ export const POST = handle(async (req: Request) => {
   const u = await requireRole("FOCAL");
   const b = Save.parse(await req.json());
   const universityId = await uniFor(u, b.universityId ?? null);
+  if (u.role !== "ADMIN" && u.departmentId && (b.action !== "save" || b.id !== u.departmentId)) throw new HttpError(403, "As a department focal person you can only edit your own department.");
   const own = async (id: string) => {
     const d = await prisma.department.findUnique({ where: { id }, include: { campus: true } });
     if (!d || d.campus.universityId !== universityId) throw new HttpError(404, "Department not found.");
@@ -83,6 +85,8 @@ export const POST = handle(async (req: Request) => {
     await prisma.profile.updateMany({ where: { userId: { in: ids } }, data: { departmentId: dept.id } });
     await prisma.user.updateMany({ where: { id: { in: ids } }, data: { departmentId: dept.id } });
   }
-  await audit(u.id, `department.${b.action}`, dept.id, { name, linked: profiles.length });
-  return { ok: true, department: dept, linked: profiles.length };
+  // Students with no department whose program is offered here (e.g. BSIT under Computer Science) are linked too.
+  const byProgram = await linkByProgram(universityId);
+  await audit(u.id, `department.${b.action}`, dept.id, { name, linked: profiles.length, byProgram });
+  return { ok: true, department: dept, linked: profiles.length + byProgram };
 });

@@ -4,7 +4,7 @@ import { api } from "@/components/api";
 import { Page, useApi, Loading, Table, Pill, Tabs, fmtDate } from "@/components/ui";
 
 type F = {
-  id: string; name: string | null; email: string | null; phone: string | null; designation: string | null; status: string; createdAt: string; lastSeenAt: string | null; totpEnabled: boolean;
+  id: string; name: string | null; email: string | null; phone: string | null; designation: string | null; status: string; createdAt: string; lastSeenAt: string | null; totpEnabled: boolean; department?: { name: string } | null;
   university: { name: string } | null; campus: { name: string } | null; uploads: { id: string; filename: string }[];
 };
 
@@ -28,7 +28,8 @@ export default function Approvals() {
         {!data ? <Loading error={error} /> : (
           <Table rows={data.focals} empty="No focal persons here." cols={[
             ["Name", (f) => <><b>{f.name}</b><div className="tiny muted">{f.designation}</div></>],
-            ["University", (f) => <span className="small">{f.university?.name}{f.campus ? ` · ${f.campus.name}` : ""}</span>],
+            ["University", (f) => <span className="small">{f.university?.name}</span>],
+            ["Looks after", (f) => <span className="small">{f.department ? <b>{f.department.name} only</b> : "Whole university"}<br /><button type="button" className="btn sm sec" style={{ marginTop: 4 }} onClick={() => { const v = window.prompt("Department this focal person looks after. Leave empty for the whole university.", f.department?.name ?? ""); if (v !== null) act(f, "setDepartment", { departmentName: v }); }}>Change</button></span>],
             ["Contact", (f) => <span className="tiny">{f.email}<br />{f.phone}</span>],
             ["Proof", (f) => f.uploads[0] ? <a className="small" href={`/api/uploads/${f.uploads[0].id}`} target="_blank" rel="noreferrer">View proof</a> : <span className="tiny muted">None</span>],
             ["Registered", (f) => <span className="tiny">{fmtDate(f.createdAt)}</span>],

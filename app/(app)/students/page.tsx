@@ -50,6 +50,7 @@ function Students() {
         </form>
       </Card>
       {creds && creds.length > 0 && <Credentials rows={creds} onClose={() => setCreds(null)} />}
+      <RecentUploads onDone={(m) => { setMsg(m); reload(); }} />
       <div id="reports"><HodReports onError={setMsg} /></div>
       {msg && <div className="notice info" style={{ marginBottom: 12 }}>{msg}</div>}
       <div className="card">
@@ -127,6 +128,29 @@ function Credentials({ rows, onClose }: { rows: Cred[]; onClose: () => void }) {
 }
 
 /** One PDF with a detailed page per student, filtered for a department, program or section, to share with HODs. */
+type Batch = { id: string; filename: string | null; created: number; updated: number; createdAt: string; undoneAt: string | null; canUndo: boolean };
+/** Recent Excel uploads with an Undo button, for when the wrong file was uploaded. */
+function RecentUploads({ onDone }: { onDone: (m: string) => void }) {
+  const { data, reload } = useApi<{ rows: Batch[] }>("/api/students/import/undo");
+  const [busy, setBusy] = useState("");
+  if (!data || !data.rows.length) return null;
+  return (
+    <Card title="Recent uploads" style={{ marginBottom: 16 }}>
+      <p className="small muted" style={{ marginTop: 0 }}>Uploaded the wrong file? Undo removes the students that upload added (within 7 days). Students who already practised are deactivated instead, so nothing they did is lost. To fix spellings or sections, just upload the corrected file again: students with the same roll number are updated, not added twice.</p>
+      <Table rows={data.rows} cols={[
+        ["When", (b) => fmtDate(b.createdAt)], ["File", (b) => b.filename ?? "Excel file"], ["Added", (b) => b.created], ["Updated", (b) => b.updated],
+        ["", (b) => b.undoneAt ? <Pill tone="grey">Undone</Pill> : b.canUndo ? (
+          <button className="btn sm sec" disabled={busy === b.id} onClick={async () => {
+            if (busy) return; setBusy(b.id);
+            try { const r = await api<{ removed: number; deactivated: number }>("/api/students/import/undo", { method: "POST", body: { batchId: b.id } }); onDone(`Upload undone: ${r.removed} removed${r.deactivated ? `, ${r.deactivated} deactivated because they had already practised` : ""}.`); reload(); }
+            catch (er) { onDone((er as Error).message); } finally { setBusy(""); }
+          }}>{busy === b.id ? "Undoing…" : "Undo this upload"}</button>
+        ) : <span className="small muted">–</span>],
+      ]} />
+    </Card>
+  );
+}
+
 function HodReports({ onError }: { onError: (m: string) => void }) {
   const scope = useApi<{ departments: { id: string; name: string; campus: { name: string } }[] }>("/api/labtests");
   const [busy, setBusy] = useState(false);

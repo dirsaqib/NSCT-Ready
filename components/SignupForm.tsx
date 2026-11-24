@@ -112,7 +112,14 @@ export default function SignupForm({ kind }: { kind: "student" | "focal" }) {
             </label>
           </>
         ) : (
-          <label className="f"><span>Designation<Req /></span><input name="designation" required minLength={3} onInput={clean((v) => v.replace(/[^\p{L} .,&()'-]/gu, "").slice(0, 80))} title="Letters only" placeholder="e.g. Assistant Professor, NSCT focal person" /></label>
+          <>
+            <label className="f"><span>Designation<Req /></span><input name="designation" required minLength={3} onInput={clean((v) => v.replace(/[^\p{L} .,&()'-]/gu, "").slice(0, 80))} title="Letters only" placeholder="e.g. Assistant Professor, NSCT focal person" /></label>
+            <label className="f"><span>Focal person for which department?</span>
+              <input name="departmentName" list="focal-depts" maxLength={100} onInput={clean((v) => v.replace(/[^\p{L} .,&()'-]/gu, "").slice(0, 100))} placeholder="e.g. Computer Science, or leave empty for the whole university" />
+              <datalist id="focal-depts">{["Computer Science", "Software Engineering", "Information Technology", "Artificial Intelligence", "Data Science", "Creative Technologies", "Computer Games Development", "Cyber Security", "Computer Engineering"].map((d) => <option key={d} value={d} />)}</datalist>
+              <span className="tiny muted">Type your department if you look after one department only. You will then see only that department&apos;s students (for example BSCS and BSIT under Computer Science). Leave it empty if you are the focal person for the whole university.</span>
+            </label>
+          </>
         )}
         <div className="grid g2">
           <label className="f"><span>{kind === "student" ? "Email" : "Official university email"}<Req /></span><input name="email" type="email" required maxLength={120} pattern={EMAIL} onInput={clean((v) => v.replace(/\s/g, "").toLowerCase())} title="A valid email, like name@example.com" placeholder="you@example.com" /></label>

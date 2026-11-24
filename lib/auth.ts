@@ -141,6 +141,8 @@ export function profileScope(u: SessionUser, requestedUniversityId?: string | nu
     if (!u.departmentId) throw new HttpError(403, "Your account is not linked to a department.");
     return { universityId: u.universityId, departmentId: u.departmentId };
   }
+  // Focal persons and chairs linked to one department see only that department.
+  if ((u.role === "FOCAL" || u.role === "CHAIR") && u.departmentId) return { universityId: u.universityId, departmentId: u.departmentId };
   if (u.role === "CAMPUS_ADMIN") {
     if (!u.campusId) throw new HttpError(403, "Your account is not linked to a campus.");
     return { universityId: u.universityId, campusId: u.campusId };

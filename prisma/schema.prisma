@@ -968,3 +968,17 @@ model ChatLead {
 
   @@index([createdAt])
 }
+
+/// One Excel upload by a focal person, so a wrong upload can be undone.
+model ImportBatch {
+  id           String    @id @default(cuid())
+  universityId String
+  uploaderId   String
+  filename     String?
+  createdIds   String[]  // students this upload created
+  updatedCount Int       @default(0)
+  createdAt    DateTime  @default(now())
+  undoneAt     DateTime?
+
+  @@index([universityId, createdAt])
+}

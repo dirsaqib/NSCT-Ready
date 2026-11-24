@@ -10,7 +10,7 @@ import SimFusionMark from "./SimFusionMark";
 type Item = [string, string]; // href, label or i18n key
 // Kept short on purpose: each role sees only what it needs. Other pages stay reachable from inside these.
 const STUDENT: Item[] = [["/dashboard", "Home"], ["/prepare", "Preparation"], ["/mock", "Mock tests"], ["/learn", "Study materials"], ["/results", "My results"], ["/profile", "nav.profile"]];
-const UNI: Item[] = [["/university", "Dashboard"], ["/students", "Students"], ["/contribute", "Question bank"], ["/departments", "Departments"]];
+const UNI: Item[] = [["/university", "Dashboard"], ["/insights", "Readiness insights"], ["/students", "Students"], ["/contribute", "Question bank"], ["/departments", "Departments"]];
 // Pages that are not in the menu but are opened from buttons inside it.
 const HIDDEN: Record<string, string[]> = {
   STUDENT: ["/test", "/register", "/tutor", "/mistakes", "/bookmarks", "/practice", "/plan", "/diagnostic", "/discuss", "/leaderboard", "/messages", "/pro"],

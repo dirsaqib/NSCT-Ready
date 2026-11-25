@@ -9,7 +9,6 @@ export default function Privacy() {
   return (
     <main style={{ maxWidth: 820, margin: "0 auto", padding: "40px 20px", lineHeight: 1.75 }}>
       <h1>Privacy policy</h1>
-      <p className="muted">Version 2026-11. Effective 18 November 2026.</p>
 
       <p>
         TayariHub (&ldquo;the Platform&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is a free online preparation platform for the National Skills Competency Test (NSCT) for computing students in Pakistan.

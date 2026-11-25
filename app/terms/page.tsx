@@ -7,7 +7,6 @@ export default function Terms() {
   return (
     <main style={{ maxWidth: 820, margin: "0 auto", padding: "40px 20px", lineHeight: 1.75 }}>
       <h1>Terms of use</h1>
-      <p className="muted">Version 2026-11. Effective 18 November 2026.</p>
       <h2>1. The service</h2>
       <p>TayariHub is a free and independent preparation platform for the National Skills Competency Test. It is not affiliated with, endorsed or sponsored by any government body, regulator, testing body, university or other organisation. Readiness scores, predictions and certificates are practice estimates, not official results.</p>
       <h2>2. Accounts</h2>

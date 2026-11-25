@@ -15,7 +15,6 @@ export default async function Help({ searchParams }: { searchParams: { blocked?:
       <ChatWidget />
       <h1>Help centre</h1>
       {searchParams.blocked && <div className="notice bad" style={{ marginBottom: 16 }}>Your account is blocked. Email {email} if you think this is a mistake.</div>}
-      <p className="muted">Answers to common questions. Still stuck? <Link href="/support">Open a support ticket</Link> or email {email}.</p>
       {cats.map((c) => (
         <div className="card" key={c} style={{ marginBottom: 14 }}>
           <h2>{c}</h2>

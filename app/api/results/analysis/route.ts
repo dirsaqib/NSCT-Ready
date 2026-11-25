@@ -110,8 +110,8 @@ export async function GET(req: Request) {
     const filters = { departments: uniq(profiles.map((p) => [p.departmentId, p.department?.name])), campuses: uniq(profiles.map((p) => [p.campusId, p.campus?.name])), universities: u.role === "ADMIN" ? uniq(profiles.map((p) => [p.universityId, p.university?.name])) : [] };
     students.sort((a, b) => (b.best ?? -1) - (a.best ?? -1) || a.rollNumber.localeCompare(b.rollNumber));
 
-    if (sp.get("format") !== "xlsx") const nationalAvg = avg(national);
-    return Response.json({ overall: { ...overall, avgPercentile: avg(took.filter((x) => x.percentile != null).map((x) => x.percentile!)), nationalTakers: national.length, nationalAvg }, departments, deptGroups, programs, campuses, universities, students, filters, isAdmin: u.role === "ADMIN", scoped: !!(scope as { departmentId?: string }).departmentId });
+    const nationalAvg = avg(national);
+    if (sp.get("format") !== "xlsx") return Response.json({ overall: { ...overall, avgPercentile: avg(took.filter((x) => x.percentile != null).map((x) => x.percentile!)), nationalTakers: national.length, nationalAvg }, departments, deptGroups, programs, campuses, universities, students, filters, isAdmin: u.role === "ADMIN", scoped: !!(scope as { departmentId?: string }).departmentId });
 
     const wb = new ExcelJS.Workbook();
     const head = (ws: ExcelJS.Worksheet) => { ws.getRow(1).font = { bold: true, color: { argb: "FFFFFFFF" } }; ws.getRow(1).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF1D55CC" } }; ws.views = [{ state: "frozen", ySplit: 1 }]; };

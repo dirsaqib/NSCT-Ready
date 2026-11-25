@@ -7,7 +7,7 @@ import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
 import { normalisePhone } from "@/lib/otp";
 import { hashPassword, passwordProblem } from "@/lib/password";
-import { readProof, str, emailTaken, cnicFields, matchPlace, resolveUniversity, NAME_RE, EMAIL_RE, PHONE_RE, ROLL_RE } from "@/lib/register";
+import { readProof, str, emailTaken, cnicFields, matchPlace, normRoll, resolveUniversity, NAME_RE, EMAIL_RE, PHONE_RE, ROLL_RE } from "@/lib/register";
 
 const Body = z.object({
   fullName: z.string().regex(NAME_RE, "Full name can contain letters only."),
@@ -35,6 +35,7 @@ const FIELDS = ["fullName", "universityId", "universityName", "campusName", "dep
 export const POST = handle(async (req: Request) => {
   const form = await req.formData();
   const b = Body.parse(Object.fromEntries(FIELDS.map((k) => [k, str(form, k) || undefined])));
+  b.rollNumber = normRoll(b.rollNumber);
   if (str(form, "consent") !== "yes") throw new HttpError(400, "Please accept the privacy policy and terms to register.");
   const bad = passwordProblem(b.password);
   if (bad) throw new HttpError(400, bad);
@@ -46,7 +47,7 @@ export const POST = handle(async (req: Request) => {
   if (await prisma.user.findUnique({ where: { phone } })) throw new HttpError(409, "This mobile number is already registered.");
   if (await prisma.profile.findFirst({ where: { cnicHash: cnic.cnicHash }, select: { userId: true } })) throw new HttpError(409, "An account with this CNIC already exists. Sign in, or ask your focal person to reset your password.");
   const universityId = await resolveUniversity(b.universityId, b.universityName);
-  if (await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: b.rollNumber } } }))
+  if (await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: b.rollNumber } } }) || (await prisma.$queryRaw<{ n: bigint }[]>`SELECT COUNT(*)::bigint AS n FROM "Profile" WHERE "universityId" = ${universityId} AND regexp_replace(upper("rollNumber"), '[^A-Z0-9]', '', 'g') = ${b.rollNumber.replace(/[^A-Z0-9]/g, "")}`)[0]?.n)
     throw new HttpError(409, "This roll number is already registered at your university. Sign in, or ask your focal person to reset your password.");
   const place = await matchPlace(universityId, b.campusName ?? "", b.departmentName, b.program);
 

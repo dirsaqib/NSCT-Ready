@@ -21,9 +21,14 @@ async function findLogin(login: string, universityId?: string) {
   const l = login.trim();
   let user;
   if (l.includes("@")) user = await prisma.user.findUnique({ where: { email: l.toLowerCase() } });
-  else if (universityId) {
-    const p = await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: l } }, select: { userId: true } });
-    user = p ? await prisma.user.findUnique({ where: { id: p.userId } }) : null;
+  else {
+    // Roll numbers are matched ignoring case, spaces, dashes and Excel formatting. If the student picked a
+    // slightly different entry for their university, a roll number that exists only once is still found.
+    const key = l.toUpperCase().replace(/[^A-Z0-9]/g, "");
+    if (!key) return null;
+    const hits = await prisma.$queryRaw<{ userId: string; universityId: string }[]>`SELECT "userId", "universityId" FROM "Profile" WHERE regexp_replace(upper("rollNumber"), '[^A-Z0-9]', '', 'g') = ${key} LIMIT 20`;
+    const pick = hits.find((h) => h.universityId === universityId) ?? (hits.length === 1 ? hits[0] : undefined);
+    user = pick ? await prisma.user.findUnique({ where: { id: pick.userId } }) : null;
   }
   if (!user) return null;
   // The hash is hidden from normal queries, so read it directly.

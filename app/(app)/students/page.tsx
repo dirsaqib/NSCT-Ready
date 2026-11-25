@@ -50,7 +50,7 @@ function Students() {
         <form className="row" onSubmit={async (e) => {
           e.preventDefault(); setMsg("Uploading...");
           const fd = new FormData(e.currentTarget);
-          try { const r = await upload<{ created: number; updated: number; failed: { row: number; error: string }[]; credentials: Cred[] }>("/api/students/import", fd); setMsg(`Added ${r.created}, updated ${r.updated}. ${r.failed.length ? `Failed rows: ${r.failed.map((f) => `${f.row} (${f.error})`).join("; ")}` : ""}`); setCreds(r.credentials); reload(); }
+          try { const r = await upload<{ created: number; updated: number; updatedRows?: { row: number; name: string; rollNumber: string; reason: string }[]; failed: { row: number; error: string }[]; credentials: Cred[] }>("/api/students/import", fd); setMsg(`Added ${r.created} new, updated ${r.updated} already registered${r.failed.length ? `, ${r.failed.length} rows skipped` : ""}.${r.updatedRows?.length ? ` Updated: ${r.updatedRows.map((x) => `row ${x.row} ${x.name} (${x.rollNumber}): ${x.reason}`).join(" | ")}` : ""}${r.failed.length ? ` Skipped: ${r.failed.map((f) => `row ${f.row}: ${f.error}`).join(" | ")}` : ""}`); setCreds(r.credentials); reload(); }
           catch (er) { setMsg((er as Error).message); }
         }}>
           <input type="file" name="file" accept=".xlsx" required />

@@ -5,7 +5,7 @@ import SearchSelect from "@/components/SearchSelect";
 import { AKA } from "@/components/universityAka";
 
 const ERRORS: Record<string, string> = {
-  CredentialsSignin: "Login details or password are wrong. After 5 wrong tries the account locks for 15 minutes.",
+  CredentialsSignin: "Login details or password are wrong. Check that you chose your university and typed your roll number exactly as the university gave it. After 5 wrong tries the account locks for 15 minutes.",
   LOCKED: "Too many wrong tries. The account is locked for 15 minutes.",
   BLOCKED: "This account is deactivated. Contact your university focal person.",
   PENDING_APPROVAL: "Your focal person registration is waiting for approval by the NSCT super admin. You will get an email once it is approved.",

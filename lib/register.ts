@@ -33,6 +33,17 @@ export function cnicFields(raw: string) {
 }
 
 /** Match a typed campus or department name to the university's records, if one fits. */
+/**
+ * Cleans a roll number the same way everywhere: trims, removes inner spaces, upper-cases, and undoes Excel
+ * number formatting ("231,234" or "231234.0" become "231234").
+ */
+export function normRoll(v: string) {
+  let r = String(v ?? "").trim().replace(/\s+/g, "").toUpperCase();
+  if (/^\d{1,3}(,\d{3})+$/.test(r)) r = r.replace(/,/g, "");
+  if (/^\d+\.0+$/.test(r)) r = r.replace(/\.0+$/, "");
+  return r;
+}
+
 /** The university's "Main campus", created on first use. Departments live under it. */
 export async function mainCampus(universityId: string) {
   const uni = await prisma.university.findUnique({ where: { id: universityId }, select: { city: true } });

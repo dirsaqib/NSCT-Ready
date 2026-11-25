@@ -148,24 +148,12 @@ export default function TestPage({ params }: { params: { id: string } }) {
     </div>
   );
   if (a.submitted) return <>{autoMsg && <div className="notice bad" style={{ marginBottom: 12 }}>{autoMsg} Your score counts the questions you answered.</div>}<Report a={a} /></>;
-  if (locked && !started) return (
-    <div className="card" style={{ maxWidth: 620, margin: "30px auto" }}>
-      <h1 style={{ marginTop: 0 }}>{a.label ?? "Test"}: locked mode</h1>
-      <p className="muted">{a.items.length} questions{a.endsAt ? `, ${Math.max(1, Math.round((new Date(a.endsAt).getTime() - Date.now()) / 60000))} minutes left` : ""}. Read the rules before you start.</p>
-      <ul className="small" style={{ lineHeight: 1.9 }}>
-        <li>The test opens in <b>full screen</b> and stays locked until you submit.</li>
-        <li>If you <b>switch tab, open another window or app, or leave full screen</b>, the test <b>ends immediately</b> and is submitted.</li>
-        <li>If you <b>close or reload</b> this page, the test is submitted with the answers you have given.</li>
-        <li>Only the questions you answered are counted. Unanswered questions get no marks.</li>
-        <li>Turn off notifications and close other programs before you start. Copying and right-click are disabled.</li>
-      </ul>
-      <button className="btn" onClick={async () => {
-        try { if (document.fullscreenEnabled) await document.documentElement.requestFullscreen(); } catch { /* some phones do not support full screen */ }
-        setStarted(true); qStart.current = Date.now();
-      }}>I understand, start the test</button>
-      <Link className="btn ghost" href="/mock" style={{ marginLeft: 8 }}>Not now</Link>
-    </div>
-  );
+  if (locked && !started) return <TestInstructions a={a} onStart={async () => {
+    try { if (document.fullscreenEnabled) await document.documentElement.requestFullscreen(); } catch { /* some phones do not support full screen */ }
+    // The clock starts now, not when the instructions opened.
+    try { const r = await api<{ endsAt: string | null }>(`/api/tests/${a.id}/begin`, { method: "POST" }); if (r.endsAt) setA({ ...a, endsAt: r.endsAt }); } catch { /* keep the original time */ }
+    setStarted(true); qStart.current = Date.now();
+  }} />;
 
   const it = a.items[idx];
   const s = st[idx];
@@ -368,5 +356,67 @@ function Report({ a }: { a: Attempt }) {
         </div>
       </div>
     </>
+  );
+}
+
+
+/** Full instructions shown in a popup before a locked test starts. The student must tick the box to begin. */
+function TestInstructions({ a, onStart }: { a: Attempt; onStart: () => void }) {
+  const [agree, setAgree] = useState(false);
+  const mins = a.endsAt ? Math.max(1, Math.round((new Date(a.endsAt).getTime() - Date.now()) / 60000)) : null;
+  const sections = new Set(a.items.map((i) => (i as unknown as { subject?: string }).subject).filter(Boolean)).size;
+  const Rule = ({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) => (
+    <div style={{ display: "flex", gap: 12, padding: "10px 0", borderBottom: "1px solid #EEF1F6" }}>
+      <span style={{ width: 34, height: 34, flex: "none", borderRadius: 10, background: "#EEF3FF", display: "grid", placeItems: "center", fontSize: 17 }}>{icon}</span>
+      <div><b style={{ fontSize: 14 }}>{title}</b><div className="small" style={{ color: "#4D5A76", marginTop: 2, lineHeight: 1.55 }}>{children}</div></div>
+    </div>
+  );
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(14,26,54,.72)", backdropFilter: "blur(4px)", display: "grid", placeItems: "center", padding: 16, overflowY: "auto" }}>
+      <div role="dialog" aria-modal="true" aria-labelledby="ti-title" style={{ width: "100%", maxWidth: 720, maxHeight: "94vh", overflowY: "auto", background: "#fff", borderRadius: 20, boxShadow: "0 30px 80px rgba(0,0,0,.4)" }}>
+        <div style={{ padding: "22px 26px", color: "#fff", background: "linear-gradient(115deg,#0E1F4D,#1D55CC 55%,#14A07E)", borderRadius: "20px 20px 0 0" }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".08em", color: "#BFD3FF" }}>BEFORE YOU BEGIN</div>
+          <h2 id="ti-title" style={{ margin: "6px 0 4px", color: "#fff", fontSize: 24 }}>{a.label ?? "Mock test"}: instructions</h2>
+          <div style={{ fontSize: 14, color: "#DCE6FB" }}>Please read everything carefully. This test runs in locked mode.</div>
+        </div>
+        <div style={{ padding: "18px 26px 6px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10, marginBottom: 14 }}>
+            {[["📝", `${a.items.length}`, "questions"], ["⏱️", mins ? `${mins} min` : "No limit", "time"], ["📚", sections ? `${sections}` : "All", "sections"], ["✅", "None", "negative marking"]].map(([i, v, k]) => (
+              <div key={k} style={{ background: "#F5F8FD", border: "1px solid #E6EBF3", borderRadius: 12, padding: "10px 8px", textAlign: "center" }}>
+                <div style={{ fontSize: 18 }}>{i}</div><b style={{ fontSize: 17, color: "#1D55CC" }}>{v}</b><div className="tiny muted">{k}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ background: "#FDECEA", border: "1px solid #F5C2BC", borderLeft: "5px solid #C2453A", borderRadius: 12, padding: "12px 14px", marginBottom: 12 }}>
+            <b style={{ color: "#B3372D" }}>⚠️ Important: the test ends automatically if you leave it</b>
+            <ul className="small" style={{ margin: "6px 0 0", paddingLeft: 18, lineHeight: 1.7, color: "#5A2620" }}>
+              <li>The test opens in <b>full screen</b>. Pressing <b>Esc</b> or leaving full screen <b>submits your test</b>.</li>
+              <li>Switching to <b>another tab, window or app</b> (including WhatsApp, calls or notifications you tap) <b>submits your test</b>.</li>
+              <li>Closing or reloading the page <b>submits your test</b> with the answers given so far.</li>
+              <li>Only the questions you answered before that are marked. You <b>cannot resume</b> an auto-submitted test.</li>
+            </ul>
+          </div>
+
+          <Rule icon="🧰" title="Before you start">Use a laptop or desktop if you can. Charge your device, keep a stable internet connection, close other programs and turn on <b>Do Not Disturb</b> so no pop-ups appear. Keep a pen and rough paper ready.</Rule>
+          <Rule icon="⏱️" title="Time">The timer starts when you press <b>Start</b>, not while you read this. The timer at the top shows the time left. When it reaches zero, the test is submitted automatically. {mins ? <>You have about <b>{mins} minutes</b>.</> : null}</Rule>
+          <Rule icon="🖱️" title="Answering">Click an option to choose it. Click another option to change your answer. Some questions may need more than one option, and the question will say so. Correct answers earn marks. There is <b>no negative marking</b>, so answer every question.</Rule>
+          <Rule icon="🧭" title="Moving between questions">Use <b>Next</b> and <b>Previous</b>, or click any number in the <b>question palette</b> to jump to it. Use <b>Flag for review</b> to mark a question you want to check again.</Rule>
+          <Rule icon="💾" title="Saving">Your answers are <b>saved automatically</b> as you go. If the internet drops briefly, keep working, and your answers are sent when you are back online.</Rule>
+          <Rule icon="🚫" title="Not allowed">Copying, pasting and right-click are switched off. Do not use phones, books, notes, other people or AI tools. Every student gets a <b>different random paper</b>, so copying from others does not help.</Rule>
+          <Rule icon="📤" title="Submitting and results">When you finish, click <b>Submit test</b> and confirm. Your score, section-wise result (correct, wrong and skipped) and guidance appear right away under <b>Mock results</b>, where you can also download a PDF or Excel copy.</Rule>
+          <Rule icon="🔓" title="Next mocks">Mock 2 opens after you finish Mock 1, and Mock 3 after Mock 2. Each one is harder than the last.</Rule>
+
+          <label style={{ display: "flex", gap: 10, alignItems: "flex-start", margin: "16px 0 8px", padding: 12, background: "#F5F8FD", borderRadius: 12, cursor: "pointer" }}>
+            <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} style={{ width: 20, height: 20, marginTop: 1 }} />
+            <span className="small"><b>I have read and understood these instructions.</b> I know the test will be submitted automatically if I leave full screen, switch tabs or apps, or close the page.</span>
+          </label>
+        </div>
+        <div style={{ display: "flex", gap: 10, justifyContent: "flex-end", padding: "12px 26px 22px", flexWrap: "wrap" }}>
+          <Link className="btn sec" href="/mock">Not now</Link>
+          <button className="btn" disabled={!agree} onClick={onStart} style={{ padding: "12px 22px", fontSize: 15, opacity: agree ? 1 : 0.5 }}>Start test in full screen →</button>
+        </div>
+      </div>
+    </div>
   );
 }

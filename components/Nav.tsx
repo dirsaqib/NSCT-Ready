@@ -10,7 +10,7 @@ import SimFusionMark from "./SimFusionMark";
 type Item = [string, string]; // href, label or i18n key
 // Kept short on purpose: each role sees only what it needs. Other pages stay reachable from inside these.
 const STUDENT: Item[] = [["/dashboard", "Home"], ["/prepare", "Preparation"], ["/mock", "Mock tests"], ["/learn", "Study materials"], ["/mock-results", "Mock results"], ["/results", "My progress"], ["/profile", "nav.profile"]];
-const UNI: Item[] = [["/university", "Dashboard"], ["/insights", "Readiness insights"], ["/mock-results", "Mock results"], ["/students", "Students"], ["/contribute", "Question bank"], ["/departments", "Departments"]];
+const UNI: Item[] = [["/university", "Dashboard"], ["/insights", "Readiness insights"], ["/mock-results", "Mock results"], ["/mock-analysis", "Mock analysis"], ["/students", "Students"], ["/contribute", "Question bank"], ["/departments", "Departments"]];
 // Pages that are not in the menu but are opened from buttons inside it.
 const HIDDEN: Record<string, string[]> = {
   STUDENT: ["/test", "/register", "/tutor", "/mistakes", "/bookmarks", "/practice", "/plan", "/diagnostic", "/discuss", "/leaderboard", "/messages", "/pro"],
@@ -28,7 +28,7 @@ const PANELS: Record<string, { label: string; items: Item[] }[]> = {
   EMPLOYER: [{ label: "Employer portal", items: [["/employer", "Find talent"]] }],
   SPONSOR: [{ label: "Sponsor portal", items: [["/sponsor", "Impact dashboard"]] }],
   ADMIN: [
-    { label: "Super admin panel", items: [["/admin/analytics", "Analytics"], ["/admin/approvals", "Focal person approvals"], ["/admin/users", "Users and passwords"], ["/students", "All students"], ["/mock-results", "Mock results"], ["/admin/logs", "System logs"], ["/admin/messages", "Website chat messages"], ["/admin/uploads", "Student uploads"], ["/admin/audit", "Audit log"], ["/admin/drilldown", "Drill down"], ["/admin/live", "Live activity"], ["/admin/structure", "Universities and campuses"], ["/university", "University view"], ["/admin/questions", "Question bank"], ["/admin/generate", "AI question generator"], ["/admin/videos", "Study videos"], ["/admin/tests", "Tests and schedule"], ["/labtests", "Lab tests"], ["/contribute", "Upload questions"], ["/admin/content", "Lessons, FAQ, surveys, events"], ["/admin/notices", "Announcements"], ["/admin/business", "Business and payments"], ["/admin/support", "Support and re-checks"], ["/admin/settings", "Settings"]] },
+    { label: "Super admin panel", items: [["/admin/analytics", "Analytics"], ["/admin/approvals", "Focal person approvals"], ["/admin/users", "Users and passwords"], ["/students", "All students"], ["/mock-results", "Mock results"], ["/mock-analysis", "Mock analysis"], ["/admin/logs", "System logs"], ["/admin/messages", "Website chat messages"], ["/admin/uploads", "Student uploads"], ["/admin/audit", "Audit log"], ["/admin/drilldown", "Drill down"], ["/admin/live", "Live activity"], ["/admin/structure", "Universities and campuses"], ["/university", "University view"], ["/admin/questions", "Question bank"], ["/admin/generate", "AI question generator"], ["/admin/videos", "Study videos"], ["/admin/tests", "Tests and schedule"], ["/labtests", "Lab tests"], ["/contribute", "Upload questions"], ["/admin/content", "Lessons, FAQ, surveys, events"], ["/admin/notices", "Announcements"], ["/admin/business", "Business and payments"], ["/admin/support", "Support and re-checks"], ["/admin/settings", "Settings"]] },
     { label: "Preview", items: [["/dashboard", "Student view"]] },
   ],
 };

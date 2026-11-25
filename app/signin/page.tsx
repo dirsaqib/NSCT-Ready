@@ -31,18 +31,17 @@ export default function SignIn() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (mode === "student" && !login.includes("@") && !universityId) return setMsg("Choose your university from the list.");
     setBusy(true); setMsg("");
     const r = await signIn("password", { login, password, universityId: mode === "student" && !login.includes("@") ? universityId : "", redirect: false });
     setBusy(false);
-    if (r?.error) return setMsg(ERRORS[r.error] ?? `Sign-in failed: ${r.error}`);
+    if (r?.error) return setMsg(r.error === "CredentialsSignin" && mode === "student" && !login.includes("@") && !universityId ? "We could not sign you in with this roll number alone. Choose your university from the list and try again, or check your password." : ERRORS[r.error] ?? `Sign-in failed: ${r.error}`);
     location.href = "/dashboard";
   };
 
   return (
     <main className="loading-screen">
       <div className="card" style={{ maxWidth: 440, width: "100%" }}>
-        <div className="logo-mark" style={{ marginBottom: 14 }}>TH</div>
+        <img src="/tayari-icon.png" alt="TayariHub" width={52} height={52} style={{ marginBottom: 10 }} />
         <h1>Sign in to TayariHub</h1>
         <p className="muted">For every computing student in Pakistan.</p>
         {registered && <div className="notice info">Registration received. {registered === "focal" ? "The NSCT super admin will review it." : "You can sign in now. Full mocks unlock once your focal person approves you."}</div>}
@@ -52,8 +51,9 @@ export default function SignIn() {
         </div>
         <form className="grid" style={{ gap: 10 }} onSubmit={submit}>
           {mode === "student" && !login.includes("@") && (
-            <label className="f">University
-              <SearchSelect options={unis.map((u) => ({ id: u.id, name: u.name, hint: (u as { city?: string }).city, keywords: AKA[u.name] }))} value={universityId} onChange={setUni} placeholder="Type to search your university" required />
+            <label className="f"><span>University <span className="tiny muted">(recommended)</span></span>
+              <SearchSelect options={unis.map((u) => ({ id: u.id, name: u.name, hint: (u as { city?: string }).city, keywords: AKA[u.name] }))} value={universityId} onChange={setUni} placeholder="Type to search your university" />
+              <span className="tiny muted">You can sign in with just your roll number if it is unique. If another university has the same roll number, choose your university.</span>
             </label>
           )}
           <label className="f">{mode === "student" ? "Roll number or email" : "Official email"}

@@ -18,7 +18,7 @@ const bg = (p: number) => (p >= 70 ? "#D9F3E8" : p >= 50 ? "#FFF1D6" : "#FBE0DC"
 /** Mock test results: section-wise right, wrong and skipped, on the web, as PDF and as Excel. */
 export default function MockResults() {
   const [label, setLabel] = useState("");
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(() => (typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("q") ?? "" : ""));
   const { data, error } = useApi<{ rows: Row[]; staff: boolean }>(`/api/results?label=${encodeURIComponent(label)}&q=${encodeURIComponent(q)}`, [label, q]);
   const [open, setOpen] = useState<string | null>(null);
   if (open) return <ResultDetail id={open} back={() => setOpen(null)} />;

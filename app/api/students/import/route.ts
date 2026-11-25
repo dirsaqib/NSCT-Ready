@@ -36,6 +36,7 @@ export const POST = handle(async (req: Request) => {
   let created = 0, updated = 0;
   const failed: { row: number; error: string }[] = [];
   const updatedRows: { row: number; name: string; rollNumber: string; reason: string }[] = [];
+  const warnings: { row: number; name: string; rollNumber: string; note: string }[] = [];
   const seenRolls = new Map<string, number>();
   const seenEmails = new Map<string, number>();
   const newIds: string[] = [];
@@ -68,15 +69,22 @@ export const POST = handle(async (req: Request) => {
       const existing = await prisma.profile.findUnique({ where: { universityId_rollNumber: { universityId, rollNumber: roll } } })
         ?? (await prisma.$queryRaw<{ userId: string; departmentId: string | null }[]>`SELECT "userId", "departmentId" FROM "Profile" WHERE "universityId" = ${universityId} AND regexp_replace(upper("rollNumber"), '[^A-Z0-9]', '', 'g') = ${roll.replace(/[^A-Z0-9]/g, "")} LIMIT 1`)[0] ?? null;
       if (existing && u.role !== "ADMIN" && u.departmentId && existing.departmentId && existing.departmentId !== u.departmentId) throw new Error("This roll number belongs to a student of another department.");
-      const byContact = existing ? null : email || phone ? await prisma.user.findFirst({ where: { OR: [...(email ? [{ email }] : []), ...(phone ? [{ phone }] : [])] } }) : null;
-      if (byContact && byContact.role !== "STUDENT") throw new Error("This email or phone belongs to a staff account.");
-      const userId = existing?.userId ?? byContact?.id;
+      // A student is matched only by roll number. Same name or a different roll number means a new student.
+      // If the email or phone is already used by someone else, the new student is saved without it.
+      const userId = existing?.userId;
+      let saveEmail = email, savePhone = phone;
+      if (!userId) {
+        const usedEmail = email ? await prisma.user.findUnique({ where: { email }, select: { id: true, name: true } }) : null;
+        const usedPhone = phone ? await prisma.user.findUnique({ where: { phone }, select: { id: true, name: true } }) : null;
+        if (usedEmail) { saveEmail = null; warnings.push({ row: r, name, rollNumber: roll, note: `Added as a new student, but without the email ${email} because ${usedEmail.name ?? "another account"} already uses it.` }); }
+        if (usedPhone) { savePhone = null; warnings.push({ row: r, name, rollNumber: roll, note: `Added as a new student, but without the phone ${phoneRaw} because ${usedPhone.name ?? "another account"} already uses it.` }); }
+      }
       const prev = userId ? await prisma.user.findUnique({ where: { id: userId }, select: { passwordHash: true } }) : null;
       const temp = !userId || !prev?.passwordHash || resetExisting ? tempPassword() : null;
       const pw = temp ? { passwordHash: hashPassword(temp, true), mustChangePassword: true } : {};
       const user = userId
         ? await prisma.user.update({ where: { id: userId }, data: { status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id, name, ...pw } })
-        : await prisma.user.create({ data: { email, phone, name, role: "STUDENT", status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id, ...pw } });
+        : await prisma.user.create({ data: { email: saveEmail, phone: savePhone, name, role: "STUDENT", status: "VERIFIED", universityId, campusId: campus?.id, departmentId: dept?.id, ...pw } });
       if (temp) credentials.push({ name, rollNumber: roll, password: temp, status: userId ? "password reset" : "new" });
       const data = {
         fullName: name, universityId, rollNumber: roll, program: program || "Not given", semester: col(row, "semester") || "7",
@@ -84,7 +92,7 @@ export const POST = handle(async (req: Request) => {
       };
       if (await prisma.profile.findUnique({ where: { userId: user.id } })) {
         await prisma.profile.update({ where: { userId: user.id }, data }); updated++;
-        updatedRows.push({ row: r, name, rollNumber: roll, reason: existing ? "Already on TayariHub with this roll number (registered earlier or uploaded before). Details were updated." : "A student with this email or phone was already registered. Details were updated." });
+        updatedRows.push({ row: r, name, rollNumber: roll, reason: "Already on TayariHub with this roll number (registered earlier or uploaded before). Details were updated." });
       }
       else { await prisma.profile.create({ data: { userId: user.id, ...data } }); created++; newIds.push(user.id); }
     } catch (e) {
@@ -94,5 +102,5 @@ export const POST = handle(async (req: Request) => {
   if (newIds.length) await notify(newIds, "Your TayariHub account is ready", "Your university has registered you. Your focal person will give you a temporary password. Sign in with your university and roll number.", ["EMAIL"], "/signin").catch(() => {});
   const batch = await prisma.importBatch.create({ data: { universityId, uploaderId: u.id, filename: (file as File).name?.slice(0, 200) || null, createdIds: newIds, updatedCount: updated } });
   await audit(u.id, "students.import", universityId, { created, updated, failed: failed.length, passwords: credentials.length, batchId: batch.id });
-  return { created, updated, updatedRows, failed, credentials, batchId: batch.id };
+  return { created, updated, updatedRows, warnings, failed, credentials, batchId: batch.id };
 });

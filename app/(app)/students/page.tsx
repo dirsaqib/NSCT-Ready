@@ -8,6 +8,7 @@ type S = {
   userId: string; fullName: string; rollNumber: string; program: string; semester: string; section: string | null; rejectReason: string | null; extraTimePct: number;
   readiness: number; createdAt: string; campus: { name: string } | null; department: { name: string } | null; campusName?: string | null; departmentName?: string | null; gender?: string | null;
   user: { id: string; email: string | null; phone: string | null; status: string; lastSeenAt: string | null; uploads?: { id: string; filename: string }[]; _count: { attempts: number } };
+  mocks?: Record<string, { best: number; tries: number }>;
 };
 type Detail = { user: { email: string | null; phone: string | null; status: string; profile: S }; mastery: { subject: string; correct: number; total: number }[]; topics: { subject: string; topic: string; correct: number; total: number }[]; attempts: { id: string; type: string; score: number; percentile: number | null; submittedAt: string; tabSwitches: number; flags: string[] }[] };
 
@@ -15,10 +16,13 @@ export default function StudentsPage() { return <Suspense fallback={<div classNa
 
 /** Verification queue, student records, bulk upload and per-student reports. */
 function Students() {
-  const initial = useSearchParams().get("status") ?? "PENDING";
+  const initial = useSearchParams().get("status") ?? "ALL";
   const [status, setStatus] = useState(initial);
   const [q, setQ] = useState("");
-  const { data, error, reload } = useApi<{ total: number; students: S[] }>(`/api/students?status=${status === "ALL" ? "" : status}&q=${encodeURIComponent(q)}`, [status, q]);
+  const [dept, setDept] = useState("");
+  const [sort, setSort] = useState("roll");
+  const [mock, setMock] = useState("");
+  const { data, error, reload } = useApi<{ total: number; all: number; tookMock: number; departments: { id: string | null; name: string; students: number; tookMock: number }[]; students: S[] }>(`/api/students?status=${status === "ALL" ? "" : status}&q=${encodeURIComponent(q)}&departmentId=${dept}&sort=${sort}&mock=${mock}`, [status, q, dept, sort, mock]);
   const [open, setOpen] = useState<Detail | null>(null);
   const [picked, setPicked] = useState<string[]>([]);
   const [askRemove, setAskRemove] = useState(false);
@@ -50,7 +54,7 @@ function Students() {
         <form className="row" onSubmit={async (e) => {
           e.preventDefault(); setMsg("Uploading...");
           const fd = new FormData(e.currentTarget);
-          try { const r = await upload<{ created: number; updated: number; updatedRows?: { row: number; name: string; rollNumber: string; reason: string }[]; failed: { row: number; error: string }[]; credentials: Cred[] }>("/api/students/import", fd); setMsg(`Added ${r.created} new, updated ${r.updated} already registered${r.failed.length ? `, ${r.failed.length} rows skipped` : ""}.${r.updatedRows?.length ? ` Updated: ${r.updatedRows.map((x) => `row ${x.row} ${x.name} (${x.rollNumber}): ${x.reason}`).join(" | ")}` : ""}${r.failed.length ? ` Skipped: ${r.failed.map((f) => `row ${f.row}: ${f.error}`).join(" | ")}` : ""}`); setCreds(r.credentials); reload(); }
+          try { const r = await upload<{ created: number; updated: number; updatedRows?: { row: number; name: string; rollNumber: string; reason: string }[]; warnings?: { row: number; note: string }[]; failed: { row: number; error: string }[]; credentials: Cred[] }>("/api/students/import", fd); setMsg(`Added ${r.created} new, updated ${r.updated} already registered${r.failed.length ? `, ${r.failed.length} rows skipped` : ""}.${r.updatedRows?.length ? ` Updated: ${r.updatedRows.map((x) => `row ${x.row} ${x.name} (${x.rollNumber}): ${x.reason}`).join(" | ")}` : ""}${r.warnings?.length ? ` Note: ${r.warnings.map((w) => `row ${w.row}: ${w.note}`).join(" | ")}` : ""}${r.failed.length ? ` Skipped: ${r.failed.map((f) => `row ${f.row}: ${f.error}`).join(" | ")}` : ""}`); setCreds(r.credentials); reload(); }
           catch (er) { setMsg((er as Error).message); }
         }}>
           <input type="file" name="file" accept=".xlsx" required />
@@ -64,7 +68,25 @@ function Students() {
       {msg && <div className="notice info" style={{ marginBottom: 12 }}>{msg}</div>}
       <div className="card">
         <Tabs value={status} onChange={setStatus} tabs={[["PENDING", "Waiting for verification"], ["VERIFIED", "Verified"], ["ACTIVE", "Active"], ["BLOCKED", "Deactivated"], ["ALL", "All"]]} />
-        <input type="text" placeholder="Search name or roll number" value={q} onChange={(e) => setQ(e.target.value)} style={{ maxWidth: 320, marginBottom: 12 }} />
+        {data && (
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "4px 0 12px" }}>
+            <span className="pill" style={{ fontSize: 13, padding: "6px 12px" }}><b>{data.all}</b>&nbsp;students in total</span>
+            <span className="pill" style={{ fontSize: 13, padding: "6px 12px", background: "#DDF7EE", color: "#0B7A5E" }}><b>{data.tookMock}</b>&nbsp;took a mock</span>
+            <span className="pill warn" style={{ fontSize: 13, padding: "6px 12px" }}><b>{data.all - data.tookMock}</b>&nbsp;no mock yet</span>
+            {data.departments.length > 1 && data.departments.map((d) => (
+              <button key={d.id ?? "none"} type="button" onClick={() => setDept(dept === (d.id ?? "") ? "" : d.id ?? "")} className="pill" style={{ fontSize: 12.5, padding: "6px 12px", cursor: d.id ? "pointer" : "default", border: dept === d.id ? "2px solid var(--brand)" : "1px solid var(--line)", background: "#fff" }}>
+                {d.name}: <b>&nbsp;{d.students}</b>&nbsp;<span className="muted">({d.tookMock} took a mock)</span>
+              </button>
+            ))}
+          </div>
+        )}
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", marginBottom: 12 }}>
+          <input type="text" placeholder="Search name or roll number" value={q} onChange={(e) => setQ(e.target.value)} style={{ maxWidth: 280 }} />
+          {data && data.departments.length > 1 && <select value={dept} onChange={(e) => setDept(e.target.value)}><option value="">All departments</option>{data.departments.filter((d) => d.id).map((d) => <option key={d.id!} value={d.id!}>{d.name} ({d.students})</option>)}</select>}
+          <select value={mock} onChange={(e) => setMock(e.target.value)}><option value="">Mock: everyone</option><option value="taken">Took a mock</option><option value="none">Has not taken a mock</option></select>
+          <select value={sort} onChange={(e) => setSort(e.target.value)}><option value="roll">Sort by roll number</option><option value="name">Sort by name</option><option value="new">Newest first</option></select>
+          {data && <span className="small muted" style={{ marginLeft: "auto" }}>Showing {data.students.length} of {data.total}</span>}
+        </div>
         {picked.length > 0 && (
           <div className="notice info" style={{ marginBottom: 12, display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
             <b>{picked.length} selected</b>
@@ -79,6 +101,7 @@ function Students() {
         {!data ? <Loading error={error} /> : (
           <Table rows={data.students} empty="No students here." cols={[
             [<input key="all" type="checkbox" aria-label="Select all on this page" checked={data.students.length > 0 && data.students.every((s) => picked.includes(s.userId))} onChange={(e) => setPicked(e.target.checked ? [...new Set([...picked, ...data.students.map((s) => s.userId)])] : picked.filter((id) => !data.students.some((s) => s.userId === id)))} /> as unknown as string, (s) => <input type="checkbox" aria-label={`Select ${s.fullName}`} checked={picked.includes(s.userId)} onChange={(e) => setPicked(e.target.checked ? [...picked, s.userId] : picked.filter((id) => id !== s.userId))} />],
+            ["#", (s) => <span className="tiny muted">{data.students.indexOf(s) + 1}</span>],
             ["Name", (s) => <button className="btn ghost sm" onClick={async () => setOpen(await api<Detail>(`/api/students/${s.userId}`))}><b>{s.fullName}</b></button>],
             ["Roll number", (s) => s.rollNumber],
             ["Program", (s) => <span className="small">{s.program} · {s.semester}{s.section ?? ""}</span>],
@@ -86,6 +109,9 @@ function Students() {
             ["Contact", (s) => <span className="tiny">{s.user.email ?? s.user.phone}</span>],
             ["Status", (s) => <><Pill tone={s.user.status === "PENDING" ? "warn" : s.user.status === "BLOCKED" ? "bad" : undefined}>{s.user.status.toLowerCase()}</Pill>{s.rejectReason && <div className="tiny" style={{ color: "var(--bad)" }}>Asked to fix</div>}</>],
             ["Proof", (s) => s.user.uploads?.length ? <a className="small" href={`/api/uploads/${s.user.uploads[0].id}`} target="_blank" rel="noreferrer">View proof</a> : <span className="tiny muted">Uploaded by university</span>],
+            ["Mock 1", (s) => mockCell(s.mocks?.["Mock 1"])],
+            ["Mock 2", (s) => mockCell(s.mocks?.["Mock 2"])],
+            ["Mock 3", (s) => mockCell(s.mocks?.["Mock 3"])],
             ["Tests", (s) => s.user._count.attempts],
             ["Actions", (s) => (
               <div className="row">
@@ -149,6 +175,13 @@ function Credentials({ rows, onClose }: { rows: Cred[]; onClose: () => void }) {
 }
 
 /** One PDF with a detailed page per student, filtered for a department, program or section, to share with HODs. */
+/** Best score in a mock, or a grey "not taken". */
+function mockCell(m?: { best: number; tries: number }) {
+  if (!m) return <span className="tiny" style={{ color: "#9AA6C2" }}>not taken</span>;
+  const c = m.best >= 70 ? ["#D9F3E8", "#0B7A5E"] : m.best >= 50 ? ["#FFF1D6", "#8A5A0B"] : ["#FBE0DC", "#B3372D"];
+  return <span title={`${m.tries} attempt${m.tries > 1 ? "s" : ""}, best score`} style={{ background: c[0], color: c[1], padding: "3px 8px", borderRadius: 8, fontWeight: 800, fontSize: 12 }}>{m.best}%</span>;
+}
+
 type Batch = { id: string; filename: string | null; created: number; updated: number; createdAt: string; undoneAt: string | null; canUndo: boolean };
 /** Recent Excel uploads with an Undo button, for when the wrong file was uploaded. */
 function RecentUploads({ onDone }: { onDone: (m: string) => void }) {

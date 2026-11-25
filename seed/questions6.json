@@ -1,0 +1,3075 @@
+[
+{
+"id": "q6-001",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"Error",
+"[1] [1, 2]",
+"[1] [2]",
+"[1, 2] [1, 2]"
+],
+"a": 3,
+"e": "The default list is created once and shared between calls, so both calls append to the same list.",
+"code": "def f(x, acc=[]):\n    acc.append(x)\n    return acc\na = f(1)\nb = f(2)\nprint(a, b)"
+},
+{
+"id": "q6-002",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"[0, 0, 0]",
+"[[5, 0], [0, 0], [0, 0]]",
+"Error",
+"[[5, 0], [5, 0], [5, 0]]"
+],
+"a": 3,
+"e": "[[0]*2]*3 makes three references to the same inner list, so changing one row changes all.",
+"code": "grid = [[0] * 2] * 3\ngrid[0][0] = 5\nprint(grid)"
+},
+{
+"id": "q6-003",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"0 1 2",
+"2 2 2",
+"Error",
+"2 1 0"
+],
+"a": 1,
+"e": "The lambdas capture the variable i, not its value. After the loop i is 2.",
+"code": "fs = [lambda: i for i in range(3)]\nprint(*[f() for f in fs])"
+},
+{
+"id": "q6-004",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"False True",
+"True True",
+"True False",
+"False False"
+],
+"a": 2,
+"e": "== compares values (equal). is compares identity, and a slice makes a new list.",
+"code": "a = [1, 2, 3]\nb = a[:]\nprint(a == b, a is b)"
+},
+{
+"id": "q6-005",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"Error",
+"{'x': 1, 'y': 2}",
+"{'x': 1, 'y': 2, 'x': 3}",
+"{'x': 3, 'y': 2}"
+],
+"a": 3,
+"e": "In a dict merge the later value for the same key wins.",
+"code": "d1 = {'x': 1, 'y': 2}\nd2 = {'x': 3}\nprint({**d1, **d2})"
+},
+{
+"id": "q6-006",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"1 2 [3, 4, 5]",
+"1 [2, 3, 4] 5",
+"Error",
+"[1] [2, 3, 4] [5]"
+],
+"a": 1,
+"e": "Starred assignment collects the middle values into a list.",
+"code": "a, *b, c = [1, 2, 3, 4, 5]\nprint(a, b, c)"
+},
+{
+"id": "q6-007",
+"s": "PROG",
+"t": "Python",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"10",
+"15",
+"5",
+"Error"
+],
+"a": 0,
+"e": "x inside f is local because it is assigned there, and the global x stays 10. f returns 15 but the result is not printed.",
+"code": "x = 10\ndef f():\n    x = 5\n    return x + 10\nf()\nprint(x)"
+},
+{
+"id": "q6-008",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "In C, what is printed?",
+"o": [
+"6 6",
+"6 5",
+"5 5",
+"5 6"
+],
+"a": 0,
+"e": "The pointer p changes x through *p, so both print the new value 6.",
+"code": "int x = 5;\nint *p = &x;\n*p = *p + 1;\nprintf(\"%d %d\", x, *p);"
+},
+{
+"id": "q6-009",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "In C, what is printed?",
+"o": [
+"2",
+"4",
+"3",
+"1"
+],
+"a": 2,
+"e": "x++ returns 1 then x becomes 2. ++x makes x 3 and returns 3. The && is true, so y = x = 3.",
+"code": "int x = 1, y = 0;\nif (x++ && ++x) y = x;\nprintf(\"%d\", y);"
+},
+{
+"id": "q6-010",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "In C, what is printed?",
+"o": [
+"1",
+"2",
+"Compile error",
+"0"
+],
+"a": 0,
+"e": "Integer division 7/2 gives 3, and 3 % 2 is 1.",
+"code": "printf(\"%d\", (7 / 2) % 2);"
+},
+{
+"id": "q6-011",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "In C++, what is printed?",
+"o": [
+"20 10",
+"10 20",
+"10 10",
+"20 20"
+],
+"a": 0,
+"e": "Both parameters are references, so the swap changes the caller's variables.",
+"code": "void sw(int &a, int &b) { int t = a; a = b; b = t; }\nint main() { int x = 10, y = 20; sw(x, y); cout << x << \" \" << y; }"
+},
+{
+"id": "q6-012",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "In C++, what is printed?",
+"o": [
+"B",
+"A",
+"Compile error",
+"AB"
+],
+"a": 0,
+"e": "show is virtual, so a base pointer to a B object calls B's version at run time.",
+"code": "struct A { virtual void show() { cout << \"A\"; } };\nstruct B : A { void show() override { cout << \"B\"; } };\nint main() { A *p = new B(); p->show(); }"
+},
+{
+"id": "q6-013",
+"s": "PROG",
+"t": "C and C++",
+"d": 3,
+"q": "In C, what is sizeof(arr) / sizeof(arr[0]) for int arr[] = {4, 7, 1, 9, 2};?",
+"o": [
+"Depends on the compiler",
+"20",
+"5",
+"4"
+],
+"a": 2,
+"e": "The total bytes divided by bytes per element gives the element count, 5."
+},
+{
+"id": "q6-014",
+"s": "PROG",
+"t": "Java",
+"d": 3,
+"q": "In Java, what is printed?",
+"o": [
+"true false",
+"true true",
+"false false",
+"false true"
+],
+"a": 3,
+"e": "new String creates a separate object, so == is false. equals compares the characters and is true.",
+"code": "String a = new String(\"nsct\");\nString b = new String(\"nsct\");\nSystem.out.println((a == b) + \" \" + a.equals(b));"
+},
+{
+"id": "q6-015",
+"s": "PROG",
+"t": "Java",
+"d": 3,
+"q": "In Java, what is printed?",
+"o": [
+"Compile error",
+"Parent",
+"Child",
+"ParentChild"
+],
+"a": 3,
+"e": "Creating a Child first runs the Parent constructor, then the Child constructor.",
+"code": "class Parent { Parent() { System.out.print(\"Parent\"); } }\nclass Child extends Parent { Child() { System.out.print(\"Child\"); } }\n// new Child();"
+},
+{
+"id": "q6-016",
+"s": "PROG",
+"t": "Java",
+"d": 3,
+"q": "In Java, what is printed?",
+"o": [
+"Compile error",
+"try finally",
+"finally",
+"try"
+],
+"a": 1,
+"e": "The finally block runs even when the try block returns.",
+"code": "static int f() {\n  try { System.out.print(\"try \"); return 1; }\n  finally { System.out.print(\"finally\"); }\n}\n// f();"
+},
+{
+"id": "q6-017",
+"s": "PROG",
+"t": "Java",
+"d": 3,
+"q": "Which statement about Java method overloading is correct?",
+"o": [
+"Overloads must differ in their parameter lists",
+"Overloading needs inheritance",
+"Methods differing only in return type are overloads",
+"Overloading is resolved at run time"
+],
+"a": 0,
+"e": "Overloading is chosen at compile time by the number or types of parameters. Return type alone is not enough."
+},
+{
+"id": "q6-018",
+"s": "PROG",
+"t": "OOP",
+"d": 3,
+"q": "A class Square extends Rectangle, but setting width changes height too, which breaks code that uses Rectangle. Which principle is violated?",
+"o": [
+"Liskov substitution",
+"Interface segregation",
+"Open/closed",
+"Single responsibility"
+],
+"a": 0,
+"e": "A subclass must be usable anywhere its parent is expected without surprising behaviour."
+},
+{
+"id": "q6-019",
+"s": "PROG",
+"t": "OOP",
+"d": 3,
+"q": "Which design best follows dependency inversion?",
+"o": [
+"ReportService extends MySqlDatabase",
+"ReportService depends on a Database interface passed in from outside",
+"ReportService copies SQL code into every method",
+"A ReportService creates a MySqlDatabase object inside its constructor"
+],
+"a": 1,
+"e": "High-level code should depend on abstractions, which also makes testing with a fake database easy."
+},
+{
+"id": "q6-020",
+"s": "PROG",
+"t": "Concurrency",
+"d": 3,
+"q": "Two threads each run count = count + 1 one thousand times on a shared variable without locks. The final value is:",
+"o": [
+"Always 0",
+"Always 1000",
+"Any value up to 2000, often less",
+"Always 2000"
+],
+"a": 2,
+"e": "The read, add and write steps can interleave, so updates get lost. This is a race condition."
+},
+{
+"id": "q6-021",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "What is the time complexity?",
+"o": [
+"O(n)",
+"O(log n)",
+"O(n log n)",
+"O(n^2)"
+],
+"a": 2,
+"e": "The outer loop runs n times and the inner loop doubles j, running about log n times.",
+"code": "for i in range(n):\n    j = 1\n    while j < n:\n        j *= 2"
+},
+{
+"id": "q6-022",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "Solve the recurrence T(n) = 2T(n/2) + n.",
+"o": [
+"O(n log n)",
+"O(n)",
+"O(log n)",
+"O(n^2)"
+],
+"a": 0,
+"e": "This is the merge sort recurrence. By the master theorem it is Theta(n log n)."
+},
+{
+"id": "q6-023",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "Solve the recurrence T(n) = T(n/2) + 1.",
+"o": [
+"O(n)",
+"O(n log n)",
+"O(1)",
+"O(log n)"
+],
+"a": 3,
+"e": "The problem halves each time with constant work, as in binary search."
+},
+{
+"id": "q6-024",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "Solve the recurrence T(n) = 4T(n/2) + n.",
+"o": [
+"O(n)",
+"O(n^2)",
+"O(n log n)",
+"O(n^3)"
+],
+"a": 1,
+"e": "a = 4, b = 2, so n^(log2 4) = n^2 dominates the extra n work."
+},
+{
+"id": "q6-025",
+"s": "DSA",
+"t": "Complexity",
+"d": 3,
+"q": "Naive recursive Fibonacci fib(n) = fib(n-1) + fib(n-2) runs in:",
+"o": [
+"O(n)",
+"Exponential time, about O(1.6^n)",
+"O(n log n)",
+"O(n^2)"
+],
+"a": 1,
+"e": "It recomputes the same values again and again. Memoization brings it down to O(n)."
+},
+{
+"id": "q6-026",
+"s": "DSA",
+"t": "Sorting",
+"d": 3,
+"q": "Quicksort with the first element as pivot is given an already sorted array of n items. Its running time is:",
+"o": [
+"O(n)",
+"O(log n)",
+"O(n log n)",
+"O(n^2)"
+],
+"a": 3,
+"e": "Each partition removes only the pivot, so the depth is n and total work is about n squared over 2."
+},
+{
+"id": "q6-027",
+"s": "DSA",
+"t": "Sorting",
+"d": 3,
+"q": "Which sorting algorithms are stable in their standard form?",
+"o": [
+"Quick sort and selection sort",
+"Quick sort and heap sort",
+"Merge sort and insertion sort",
+"Selection sort and heap sort"
+],
+"a": 2,
+"e": "Stable sorts keep equal keys in their original order. Merge and insertion sort do. Quick, heap and selection sort usually do not."
+},
+{
+"id": "q6-028",
+"s": "DSA",
+"t": "Sorting",
+"d": 3,
+"q": "Insertion sort on an array that is already sorted takes:",
+"o": [
+"O(1)",
+"O(n log n)",
+"O(n)",
+"O(n^2)"
+],
+"a": 2,
+"e": "Each element is compared once with its neighbour and does not move."
+},
+{
+"id": "q6-029",
+"s": "DSA",
+"t": "Searching",
+"d": 3,
+"q": "What is the maximum number of comparisons binary search needs on a sorted array of 1,000,000 items?",
+"o": [
+"About 100",
+"About 1,000",
+"About 500,000",
+"About 20"
+],
+"a": 3,
+"e": "2^20 is about 1,048,576, so at most about 20 halvings are needed."
+},
+{
+"id": "q6-030",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "The preorder traversal of a binary search tree is 50, 30, 20, 40, 70, 60, 80. What is its postorder traversal?",
+"o": [
+"20, 30, 40, 50, 60, 70, 80",
+"50, 70, 80, 60, 30, 40, 20",
+"40, 20, 30, 80, 60, 70, 50",
+"20, 40, 30, 60, 80, 70, 50"
+],
+"a": 3,
+"e": "The tree has root 50, left subtree 30 (20, 40) and right subtree 70 (60, 80). Postorder visits left, right, then root."
+},
+{
+"id": "q6-031",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "Keys 10, 20, 30 are inserted in that order into an empty AVL tree. What is the root afterwards?",
+"o": [
+"The tree stays unbalanced",
+"10",
+"30",
+"20"
+],
+"a": 3,
+"e": "The insert makes a right-right imbalance at 10, and a left rotation makes 20 the root."
+},
+{
+"id": "q6-032",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "What is the maximum height of a binary search tree with n nodes, and when does it happen?",
+"o": [
+"n - 1, when keys are inserted in sorted order",
+"n/2, always",
+"log n, when keys are random",
+"log n, always"
+],
+"a": 0,
+"e": "Sorted insertion makes a chain like a linked list, so search becomes O(n)."
+},
+{
+"id": "q6-033",
+"s": "DSA",
+"t": "Trees",
+"d": 3,
+"q": "A complete binary tree stored in a 0-indexed array has a node at index i. Where are its children?",
+"o": [
+"i + 1 and i + 2",
+"2i and 2i + 1",
+"i/2 and i/2 + 1",
+"2i + 1 and 2i + 2"
+],
+"a": 3,
+"e": "In 0-indexed heaps the left child is 2i + 1 and the right child is 2i + 2."
+},
+{
+"id": "q6-034",
+"s": "DSA",
+"t": "Heaps",
+"d": 3,
+"q": "Building a binary heap from n unsorted items with the bottom-up method takes:",
+"o": [
+"O(log n)",
+"O(n^2)",
+"O(n log n)",
+"O(n)"
+],
+"a": 3,
+"e": "Most nodes are near the bottom and sift down only a little, so the total work is linear."
+},
+{
+"id": "q6-035",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "Which algorithm finds shortest paths from one source in a graph that has negative edge weights but no negative cycles?",
+"o": [
+"Bellman-Ford",
+"Dijkstra",
+"Prim",
+"Kruskal"
+],
+"a": 0,
+"e": "Dijkstra can fail with negative weights. Bellman-Ford relaxes all edges V - 1 times and can also detect negative cycles."
+},
+{
+"id": "q6-036",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "What is the time complexity of BFS on a graph stored as an adjacency list?",
+"o": [
+"O(V^2)",
+"O(V E)",
+"O(E log V)",
+"O(V + E)"
+],
+"a": 3,
+"e": "Each vertex and each edge is processed a constant number of times."
+},
+{
+"id": "q6-037",
+"s": "DSA",
+"t": "Graphs",
+"d": 3,
+"q": "A topological order exists for a directed graph only if:",
+"o": [
+"It has no cycles",
+"All edges have equal weight",
+"It is connected",
+"It is a tree"
+],
+"a": 0,
+"e": "A cycle would require a task to come before itself."
+},
+{
+"id": "q6-038",
+"s": "DSA",
+"t": "Dynamic programming",
+"d": 3,
+"q": "The longest common subsequence of 'ABCBDAB' and 'BDCABA' has length:",
+"o": [
+"2",
+"3",
+"4",
+"5"
+],
+"a": 2,
+"e": "One LCS is BCBA, which has 4 characters."
+},
+{
+"id": "q6-039",
+"s": "DSA",
+"t": "Dynamic programming",
+"d": 3,
+"q": "Coins are 1, 3 and 4. Greedy picks the largest coin first. For amount 6, how many coins does greedy use and what is the optimum?",
+"o": [
+"Greedy 4, optimum 2",
+"Greedy 3, optimum 2",
+"Greedy 2, optimum 2",
+"Greedy 3, optimum 3"
+],
+"a": 1,
+"e": "Greedy takes 4 + 1 + 1 = 3 coins, but 3 + 3 uses only 2. This is why coin change needs dynamic programming."
+},
+{
+"id": "q6-040",
+"s": "DSA",
+"t": "Hashing",
+"d": 3,
+"q": "A hash table uses chaining with load factor alpha. The expected cost of an unsuccessful search is:",
+"o": [
+"O(n alpha)",
+"O(1 + alpha)",
+"O(1)",
+"O(log n)"
+],
+"a": 1,
+"e": "You hash in constant time and then scan a chain of average length alpha."
+},
+{
+"id": "q6-041",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "R(A, B, C, D) has dependencies A -> B and B -> C, and the key is (A, D). What is the highest normal form R is in?",
+"o": [
+"BCNF",
+"1NF",
+"3NF",
+"2NF"
+],
+"a": 1,
+"e": "A -> B is a partial dependency on part of the key (A, D), so R is not in 2NF."
+},
+{
+"id": "q6-042",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "R(A, B, C) has key A and dependencies A -> B and B -> C. R is in 2NF but not 3NF because:",
+"o": [
+"B is a key",
+"It has a partial dependency",
+"It has repeating groups",
+"C depends on A only through B, a transitive dependency"
+],
+"a": 3,
+"e": "A -> B -> C is transitive, and C depends on a non-key attribute."
+},
+{
+"id": "q6-043",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "Given F = {A -> B, B -> C, C -> D}, what is the closure A+?",
+"o": [
+"{A, B, C}",
+"{A, B, C, D}",
+"{A}",
+"{A, B}"
+],
+"a": 1,
+"e": "From A we get B, from B we get C, and from C we get D."
+},
+{
+"id": "q6-044",
+"s": "DB",
+"t": "Normalization",
+"d": 3,
+"q": "A relation is in 3NF but not BCNF. This happens when:",
+"o": [
+"A dependency X -> Y exists where X is not a superkey but Y is part of a candidate key",
+"The table has no key",
+"There is a partial dependency",
+"All attributes are atomic"
+],
+"a": 0,
+"e": "BCNF requires every determinant to be a superkey. 3NF allows it when Y is a prime attribute."
+},
+{
+"id": "q6-045",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "Table Marks has 10 rows, and 3 rows have NULL in score. What does SELECT COUNT(*), COUNT(score) FROM Marks return?",
+"o": [
+"10, 10",
+"10, 7",
+"7, 10",
+"7, 7"
+],
+"a": 1,
+"e": "COUNT(*) counts rows. COUNT(column) skips NULLs."
+},
+{
+"id": "q6-046",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "Which query lists departments with more than 5 students?",
+"o": [
+"SELECT dept FROM S GROUP BY dept HAVING COUNT(*) > 5",
+"SELECT dept FROM S HAVING dept > 5",
+"SELECT dept FROM S WHERE COUNT(*) > 5 GROUP BY dept",
+"SELECT dept, COUNT(*) > 5 FROM S"
+],
+"a": 0,
+"e": "WHERE filters rows before grouping. HAVING filters groups after aggregation."
+},
+{
+"id": "q6-047",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "Students has 4 rows and Enrolls has 6 rows. Two students have no enrolment, and each Enrolls row matches one student. How many rows does Students LEFT JOIN Enrolls return?",
+"o": [
+"6",
+"10",
+"8",
+"4"
+],
+"a": 2,
+"e": "The 6 matched rows plus 2 unmatched students with NULLs gives 8."
+},
+{
+"id": "q6-048",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "What does SELECT * FROM T WHERE col = NULL return?",
+"o": [
+"An error in every database",
+"Rows where col is NULL",
+"No rows",
+"All rows"
+],
+"a": 2,
+"e": "Any comparison with NULL is unknown, not true. Use IS NULL instead."
+},
+{
+"id": "q6-049",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "Which query finds the second highest salary?",
+"o": [
+"SELECT MAX(salary) - 1 FROM E",
+"SELECT MIN(salary) FROM E",
+"SELECT salary FROM E ORDER BY salary LIMIT 2",
+"SELECT MAX(salary) FROM E WHERE salary < (SELECT MAX(salary) FROM E)"
+],
+"a": 3,
+"e": "Take the maximum of salaries below the overall maximum."
+},
+{
+"id": "q6-050",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "Relation R has 3 rows and S has 4 rows. How many rows does R CROSS JOIN S return?",
+"o": [
+"12",
+"7",
+"1",
+"4"
+],
+"a": 0,
+"e": "A Cartesian product pairs every row of R with every row of S."
+},
+{
+"id": "q6-051",
+"s": "DB",
+"t": "Transactions",
+"d": 3,
+"q": "Transaction T1 reads a value, T2 updates and commits it, and T1 reads it again and sees a different value. This anomaly is:",
+"o": [
+"Lost update",
+"Phantom read",
+"Dirty read",
+"Non-repeatable read"
+],
+"a": 3,
+"e": "The same row read twice in one transaction gives different values."
+},
+{
+"id": "q6-052",
+"s": "DB",
+"t": "Transactions",
+"d": 3,
+"q": "Which isolation level prevents dirty reads but still allows non-repeatable reads?",
+"o": [
+"Read uncommitted",
+"Read committed",
+"Repeatable read",
+"Serializable"
+],
+"a": 1,
+"e": "Read committed reads only committed data but does not hold read locks until the end."
+},
+{
+"id": "q6-053",
+"s": "DB",
+"t": "Transactions",
+"d": 3,
+"q": "Strict two-phase locking guarantees:",
+"o": [
+"Conflict-serializable schedules with no cascading aborts",
+"No deadlocks",
+"No need for logs",
+"Fastest throughput"
+],
+"a": 0,
+"e": "Holding locks until commit prevents cascading rollback. Deadlocks are still possible."
+},
+{
+"id": "q6-054",
+"s": "DB",
+"t": "Transactions",
+"d": 3,
+"q": "A write-ahead log means:",
+"o": [
+"Log records are written to disk before the changed data pages",
+"Logs are optional",
+"Data pages are written before the log",
+"Only reads are logged"
+],
+"a": 0,
+"e": "This lets the database undo or redo changes after a crash."
+},
+{
+"id": "q6-055",
+"s": "DB",
+"t": "Indexing",
+"d": 3,
+"q": "A B+ tree index on a column is most useful for:",
+"o": [
+"Only full table scans",
+"Both exact matches and range queries such as BETWEEN",
+"Only exact matches",
+"Only text search"
+],
+"a": 1,
+"e": "B+ tree leaves are linked in order, so ranges are scanned efficiently."
+},
+{
+"id": "q6-056",
+"s": "DB",
+"t": "Indexing",
+"d": 3,
+"q": "An index on (city, age) is created. Which query can use it best?",
+"o": [
+"WHERE city = 'Lahore' AND age > 20",
+"WHERE age = 20",
+"WHERE name = 'Ali'",
+"WHERE age > 20 OR name = 'Ali'"
+],
+"a": 0,
+"e": "A composite index is used from its leftmost column. Filtering on age alone cannot use it well."
+},
+{
+"id": "q6-057",
+"s": "DB",
+"t": "ER modelling",
+"d": 3,
+"q": "A many-to-many relationship between Student and Course is converted to tables as:",
+"o": [
+"One merged table",
+"A foreign key in Student",
+"A separate table holding both primary keys",
+"A foreign key in Course"
+],
+"a": 2,
+"e": "The junction table, for example Enrollment(student_id, course_id), holds the pairs."
+},
+{
+"id": "q6-058",
+"s": "DB",
+"t": "Relational algebra",
+"d": 3,
+"q": "Which relational algebra operation matches 'students enrolled in every course'?",
+"o": [
+"Division",
+"Union",
+"Selection",
+"Projection"
+],
+"a": 0,
+"e": "Division finds values related to all tuples in another relation."
+},
+{
+"id": "q6-059",
+"s": "DB",
+"t": "NoSQL",
+"d": 3,
+"q": "Under the CAP theorem, during a network partition a distributed database must choose between:",
+"o": [
+"Indexing and storage",
+"Consistency and availability",
+"Speed and cost",
+"Security and speed"
+],
+"a": 1,
+"e": "Partition tolerance is required in practice, so the trade-off is consistency against availability."
+},
+{
+"id": "q6-060",
+"s": "DB",
+"t": "SQL",
+"d": 3,
+"q": "What does this return?",
+"o": [
+"An error",
+"Names of students with no enrolment",
+"Every student's name",
+"Names of students with at least one enrolment"
+],
+"a": 1,
+"e": "NOT EXISTS keeps students for whom the subquery finds no matching row.",
+"code": "SELECT name FROM Student s\nWHERE NOT EXISTS (\n  SELECT 1 FROM Enroll e WHERE e.sid = s.id\n);"
+},
+{
+"id": "q6-061",
+"s": "SE",
+"t": "Estimation",
+"d": 3,
+"q": "A module has cyclomatic complexity V(G) = E - N + 2P. Its control flow graph has 11 edges, 9 nodes and 1 component. What is V(G)?",
+"o": [
+"2",
+"3",
+"4",
+"20"
+],
+"a": 2,
+"e": "11 - 9 + 2 = 4, so at least 4 independent paths need tests."
+},
+{
+"id": "q6-062",
+"s": "SE",
+"t": "Testing",
+"d": 3,
+"q": "A field accepts ages 18 to 60. Using boundary value analysis, which set of values is best?",
+"o": [
+"18, 30, 60",
+"17, 18, 60, 61",
+"20, 40, 50",
+"0, 100"
+],
+"a": 1,
+"e": "Test just outside and just on each boundary, where defects are most likely."
+},
+{
+"id": "q6-063",
+"s": "SE",
+"t": "Testing",
+"d": 3,
+"q": "Statement coverage of 100% guarantees:",
+"o": [
+"Every line ran at least once, but not every branch outcome",
+"All conditions are true and false",
+"No bugs remain",
+"All paths are tested"
+],
+"a": 0,
+"e": "An if with no else can be fully covered without ever testing the false outcome."
+},
+{
+"id": "q6-064",
+"s": "SE",
+"t": "Testing",
+"d": 3,
+"q": "A team tests that old features still work after adding a new payment option. This is:",
+"o": [
+"Smoke testing",
+"Load testing",
+"Acceptance testing",
+"Regression testing"
+],
+"a": 3,
+"e": "Regression tests catch changes that break existing behaviour."
+},
+{
+"id": "q6-065",
+"s": "SE",
+"t": "Process models",
+"d": 3,
+"q": "A bank system with fixed, well-understood requirements and strict documentation needs is best suited to:",
+"o": [
+"Pure prototyping",
+"Kanban with no specs",
+"Ad hoc coding",
+"Waterfall or the V-model"
+],
+"a": 3,
+"e": "Stable requirements and regulation favour plan-driven models with test plans tied to each phase."
+},
+{
+"id": "q6-066",
+"s": "SE",
+"t": "Process models",
+"d": 3,
+"q": "The spiral model is chosen mainly when:",
+"o": [
+"Requirements are fixed",
+"There is no budget",
+"The team is one person",
+"The project has high risk that must be analysed each cycle"
+],
+"a": 3,
+"e": "Each spiral loop includes explicit risk analysis."
+},
+{
+"id": "q6-067",
+"s": "SE",
+"t": "Agile",
+"d": 3,
+"q": "In Scrum, who decides the order of the product backlog?",
+"o": [
+"Customer support",
+"Scrum master",
+"Product owner",
+"Development team"
+],
+"a": 2,
+"e": "The product owner owns and orders the backlog to maximise value."
+},
+{
+"id": "q6-068",
+"s": "SE",
+"t": "Agile",
+"d": 3,
+"q": "A team finished 20, 24 and 22 story points in three sprints. The backlog has 132 points. About how many more sprints are needed?",
+"o": [
+"8",
+"4",
+"6",
+"10"
+],
+"a": 2,
+"e": "Average velocity is 22, and 132 / 22 = 6 sprints."
+},
+{
+"id": "q6-069",
+"s": "SE",
+"t": "Estimation",
+"d": 3,
+"q": "Using COCOMO basic organic mode, effort = 2.4 x KLOC^1.05. Effort grows how with project size?",
+"o": [
+"Exponentially",
+"Slightly faster than linearly",
+"Linearly",
+"It stays constant"
+],
+"a": 1,
+"e": "An exponent a little above 1 means larger projects cost a bit more per line."
+},
+{
+"id": "q6-070",
+"s": "SE",
+"t": "Design",
+"d": 3,
+"q": "Module A uses only data passed as parameters to module B. This coupling is:",
+"o": [
+"Content coupling",
+"Common coupling",
+"Data coupling",
+"Control coupling"
+],
+"a": 2,
+"e": "Data coupling is the loosest and most desirable form."
+},
+{
+"id": "q6-071",
+"s": "SE",
+"t": "Design",
+"d": 3,
+"q": "A class handles login, sends emails and writes reports. Which principle does it break?",
+"o": [
+"Single responsibility",
+"Liskov substitution",
+"Dependency inversion",
+"Open/closed"
+],
+"a": 0,
+"e": "A class should have one reason to change."
+},
+{
+"id": "q6-072",
+"s": "SE",
+"t": "Design patterns",
+"d": 3,
+"q": "You need exactly one shared configuration object across an application. Which pattern fits?",
+"o": [
+"Decorator",
+"Singleton",
+"Adapter",
+"Observer"
+],
+"a": 1,
+"e": "Singleton ensures a single instance with global access, though it should be used sparingly."
+},
+{
+"id": "q6-073",
+"s": "SE",
+"t": "Design patterns",
+"d": 3,
+"q": "A new payment gateway has a different interface from the one your code expects. Which pattern lets you use it without changing your code?",
+"o": [
+"Factory",
+"Adapter",
+"Observer",
+"Strategy"
+],
+"a": 1,
+"e": "An adapter wraps the new class and translates calls to the expected interface."
+},
+{
+"id": "q6-074",
+"s": "SE",
+"t": "Design patterns",
+"d": 3,
+"q": "A UI must update automatically whenever stock prices change. Which pattern fits?",
+"o": [
+"Builder",
+"Prototype",
+"Singleton",
+"Observer"
+],
+"a": 3,
+"e": "Subscribers are notified when the subject's state changes."
+},
+{
+"id": "q6-075",
+"s": "SE",
+"t": "Requirements",
+"d": 3,
+"q": "'The system shall respond to 95% of searches within 2 seconds for 1,000 users' is:",
+"o": [
+"A functional requirement",
+"A non-functional (performance) requirement",
+"A user story",
+"A design constraint only"
+],
+"a": 1,
+"e": "It states how well the system works, not what it does."
+},
+{
+"id": "q6-076",
+"s": "SE",
+"t": "UML",
+"d": 3,
+"q": "In a UML class diagram, a filled diamond between Order and OrderLine means:",
+"o": [
+"Aggregation, lines can exist alone",
+"Inheritance",
+"Dependency",
+"Composition, lines are destroyed with the order"
+],
+"a": 3,
+"e": "Composition means the part's lifetime is owned by the whole."
+},
+{
+"id": "q6-077",
+"s": "SE",
+"t": "Version control",
+"d": 3,
+"q": "Two developers changed the same lines of a file on different branches. What happens when one merges the other's branch?",
+"o": [
+"Both changes are deleted",
+"The merge is impossible forever",
+"Git picks the newest change silently",
+"A merge conflict must be resolved by hand"
+],
+"a": 3,
+"e": "Git marks the conflicting hunks for a person to resolve."
+},
+{
+"id": "q6-078",
+"s": "SE",
+"t": "DevOps",
+"d": 3,
+"q": "In continuous integration, the main goal is to:",
+"o": [
+"Release once a year",
+"Merge and test changes frequently so integration problems are found early",
+"Deploy without version control",
+"Skip testing"
+],
+"a": 1,
+"e": "Each push triggers an automatic build and tests."
+},
+{
+"id": "q6-079",
+"s": "SE",
+"t": "Maintenance",
+"d": 3,
+"q": "Changing software so it runs on a new operating system without changing features is:",
+"o": [
+"Preventive maintenance",
+"Corrective maintenance",
+"Perfective maintenance",
+"Adaptive maintenance"
+],
+"a": 3,
+"e": "Adaptive maintenance responds to changes in the environment."
+},
+{
+"id": "q6-080",
+"s": "SE",
+"t": "Quality",
+"d": 3,
+"q": "A defect is found in production that was introduced during requirements. Compared with catching it in requirements review, fixing it now is usually:",
+"o": [
+"The same cost",
+"Free",
+"Cheaper",
+"Much more expensive"
+],
+"a": 3,
+"e": "Cost of fixing grows sharply in later phases."
+},
+{
+"id": "q6-081",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"Error",
+"0 1 2",
+"undefined x3",
+"3 3 3"
+],
+"a": 3,
+"e": "var is function-scoped, so all callbacks see the same i, which is 3 when they run.",
+"code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}"
+},
+{
+"id": "q6-082",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What is the order of output?",
+"o": [
+"A C D B",
+"A D B C",
+"A B C D",
+"A D C B"
+],
+"a": 3,
+"e": "Synchronous code runs first (A, D). Promise callbacks are microtasks and run before timer callbacks.",
+"code": "console.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nconsole.log('D');"
+},
+{
+"id": "q6-083",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What does [] + {} === '[object Object]' and 0.1 + 0.2 === 0.3 evaluate to, in order?",
+"o": [
+"true, false",
+"true, true",
+"false, true",
+"false, false"
+],
+"a": 0,
+"e": "[] becomes '' and {} becomes '[object Object]'. Floating point makes 0.1 + 0.2 slightly more than 0.3."
+},
+{
+"id": "q6-084",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"[1, 2, 3]",
+"Error",
+"undefined",
+"[1, 2, 3, 4]"
+],
+"a": 3,
+"e": "const stops reassigning the variable, but the array itself can still change.",
+"code": "const a = [1, 2, 3];\na.push(4);\nconsole.log(a);"
+},
+{
+"id": "q6-085",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"Error",
+"12",
+"[2, 4, 6]",
+"6"
+],
+"a": 1,
+"e": "map doubles the values to [2, 4, 6] and reduce adds them to 12.",
+"code": "const r = [1, 2, 3].map(x => x * 2).reduce((s, x) => s + x, 0);\nconsole.log(r);"
+},
+{
+"id": "q6-086",
+"s": "WEB",
+"t": "CSS",
+"d": 3,
+"q": "Which selector has the highest specificity?",
+"o": [
+"p.note",
+"a:hover",
+"div p",
+"#menu a"
+],
+"a": 3,
+"e": "An ID selector outweighs any number of classes and elements."
+},
+{
+"id": "q6-087",
+"s": "WEB",
+"t": "CSS",
+"d": 3,
+"q": "An element has width: 200px, padding: 10px and border: 5px with box-sizing: content-box. Its total rendered width is:",
+"o": [
+"230px",
+"220px",
+"215px",
+"200px"
+],
+"a": 0,
+"e": "Content 200 + padding 20 + border 10 = 230px. With border-box it would be 200px."
+},
+{
+"id": "q6-088",
+"s": "WEB",
+"t": "CSS",
+"d": 3,
+"q": "A child has position: absolute. It is positioned relative to:",
+"o": [
+"The page body always",
+"The nearest ancestor with position other than static",
+"The viewport always",
+"Its previous sibling"
+],
+"a": 1,
+"e": "If no ancestor is positioned, it falls back to the initial containing block."
+},
+{
+"id": "q6-089",
+"s": "WEB",
+"t": "HTTP",
+"d": 3,
+"q": "A client sends PUT /students/7 twice with the same body. Which property means the result is the same as sending it once?",
+"o": [
+"Caching",
+"Safety",
+"Idempotence",
+"Statelessness"
+],
+"a": 2,
+"e": "PUT and DELETE are idempotent. POST usually is not."
+},
+{
+"id": "q6-090",
+"s": "WEB",
+"t": "HTTP",
+"d": 3,
+"q": "A user is logged in but tries to open an admin page they are not allowed to see. The correct status code is:",
+"o": [
+"403 Forbidden",
+"404 Not Found",
+"500 Internal Server Error",
+"401 Unauthorized"
+],
+"a": 0,
+"e": "401 means not authenticated. 403 means authenticated but not permitted."
+},
+{
+"id": "q6-091",
+"s": "WEB",
+"t": "HTTP",
+"d": 3,
+"q": "A browser blocks a fetch from site-a.com to api.site-b.com. Which header must the API send to allow it?",
+"o": [
+"Content-Type",
+"Cache-Control",
+"Set-Cookie",
+"Access-Control-Allow-Origin"
+],
+"a": 3,
+"e": "CORS headers tell the browser which origins may read the response."
+},
+{
+"id": "q6-092",
+"s": "WEB",
+"t": "Security",
+"d": 3,
+"q": "A comment box shows user input directly in the page, and someone posts a <script> tag. This attack is:",
+"o": [
+"SQL injection",
+"CSRF",
+"Clickjacking",
+"Cross-site scripting (XSS)"
+],
+"a": 3,
+"e": "Escaping output and a Content Security Policy prevent XSS."
+},
+{
+"id": "q6-093",
+"s": "WEB",
+"t": "Security",
+"d": 3,
+"q": "Which cookie settings best protect a session cookie?",
+"o": [
+"Only Expires",
+"Domain=*",
+"No flags",
+"HttpOnly, Secure and SameSite"
+],
+"a": 3,
+"e": "HttpOnly blocks JavaScript access, Secure needs HTTPS and SameSite reduces CSRF."
+},
+{
+"id": "q6-094",
+"s": "WEB",
+"t": "Security",
+"d": 3,
+"q": "A bank form at bank.com can be submitted by a hidden form on evil.com using the victim's cookies. This is:",
+"o": [
+"Brute force",
+"XSS",
+"DNS spoofing",
+"CSRF"
+],
+"a": 3,
+"e": "Anti-CSRF tokens and SameSite cookies stop it."
+},
+{
+"id": "q6-095",
+"s": "WEB",
+"t": "Web architecture",
+"d": 3,
+"q": "Server-side rendering (SSR) mainly improves:",
+"o": [
+"Image compression",
+"Password hashing",
+"First page load speed and search engine indexing",
+"Database normalization"
+],
+"a": 2,
+"e": "The server sends ready HTML instead of an empty page that waits for JavaScript."
+},
+{
+"id": "q6-096",
+"s": "WEB",
+"t": "Web architecture",
+"d": 3,
+"q": "A REST API returns 50,000 records in one response and is slow. The best fix is:",
+"o": [
+"Send XML instead",
+"Add pagination with limit and offset or cursors",
+"Increase the font size",
+"Remove HTTPS"
+],
+"a": 1,
+"e": "Pagination returns small pages that load quickly."
+},
+{
+"id": "q6-097",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"undefined",
+"null",
+"object",
+"Error"
+],
+"a": 2,
+"e": "typeof null is 'object', a long-standing JavaScript quirk.",
+"code": "console.log(typeof null);"
+},
+{
+"id": "q6-098",
+"s": "WEB",
+"t": "JavaScript",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"undefined",
+"false",
+"Error",
+"true"
+],
+"a": 1,
+"e": "Strict equality checks type too. The number 5 and the string '5' differ.",
+"code": "console.log(5 === '5');"
+},
+{
+"id": "q6-099",
+"s": "WEB",
+"t": "React",
+"d": 3,
+"q": "In React, why does updating state with count = count + 1 directly not refresh the screen?",
+"o": [
+"Variables cannot change in JavaScript",
+"It needs a page reload",
+"State must be a string",
+"React needs the setter so it knows to re-render"
+],
+"a": 3,
+"e": "Calling setCount schedules a re-render with the new value."
+},
+{
+"id": "q6-100",
+"s": "WEB",
+"t": "Performance",
+"d": 3,
+"q": "Which change most reduces the time to first meaningful paint for a large single-page app?",
+"o": [
+"Add more fonts",
+"Code splitting and lazy loading of routes",
+"Disable caching",
+"Bundle all code into one file"
+],
+"a": 1,
+"e": "Users download only the code needed for the current page."
+},
+{
+"id": "q6-101",
+"s": "AI",
+"t": "Evaluation",
+"d": 3,
+"q": "A disease test has 90 true positives, 10 false negatives, 30 false positives and 870 true negatives. What is the precision?",
+"o": [
+"87%",
+"75%",
+"90%",
+"97%"
+],
+"a": 1,
+"e": "Precision = TP / (TP + FP) = 90 / 120 = 75%."
+},
+{
+"id": "q6-102",
+"s": "AI",
+"t": "Evaluation",
+"d": 3,
+"q": "Using the same numbers (TP 90, FN 10, FP 30, TN 870), what is the recall?",
+"o": [
+"75%",
+"87%",
+"90%",
+"97%"
+],
+"a": 2,
+"e": "Recall = TP / (TP + FN) = 90 / 100 = 90%."
+},
+{
+"id": "q6-103",
+"s": "AI",
+"t": "Evaluation",
+"d": 3,
+"q": "A fraud dataset is 99% normal and 1% fraud. A model predicts 'normal' for everything. Its accuracy is 99%. Why is this misleading?",
+"o": [
+"The dataset is too big",
+"It catches no fraud, so recall for fraud is 0",
+"Accuracy is always wrong",
+"99% is too low"
+],
+"a": 1,
+"e": "With imbalanced classes, use precision, recall, F1 or AUC."
+},
+{
+"id": "q6-104",
+"s": "AI",
+"t": "Evaluation",
+"d": 3,
+"q": "Precision is 0.6 and recall is 0.9. What is the F1 score?",
+"o": [
+"0.75",
+"0.54",
+"0.72",
+"0.80"
+],
+"a": 2,
+"e": "F1 = 2PR / (P + R) = 2 x 0.54 / 1.5 = 0.72."
+},
+{
+"id": "q6-105",
+"s": "AI",
+"t": "Model fitting",
+"d": 3,
+"q": "Training accuracy is 99% but validation accuracy is 70%. What is happening, and what helps?",
+"o": [
+"Overfitting, use regularization, more data or a simpler model",
+"Perfect fit, do nothing",
+"Underfitting, use a smaller dataset",
+"Data leakage always"
+],
+"a": 0,
+"e": "A large gap between training and validation means the model memorised the training data."
+},
+{
+"id": "q6-106",
+"s": "AI",
+"t": "Model fitting",
+"d": 3,
+"q": "Both training and validation error are high. The model is:",
+"o": [
+"Well fitted",
+"Leaking data",
+"Underfitting (high bias)",
+"Overfitting"
+],
+"a": 2,
+"e": "A more complex model or better features usually helps."
+},
+{
+"id": "q6-107",
+"s": "AI",
+"t": "Model fitting",
+"d": 3,
+"q": "Before splitting data, a student scales all features using the mean of the whole dataset. What is the problem?",
+"o": [
+"Underfitting",
+"Data leakage from the test set into training",
+"Nothing",
+"The model becomes linear"
+],
+"a": 1,
+"e": "Fit the scaler on training data only, then apply it to the test data."
+},
+{
+"id": "q6-108",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "In k-nearest neighbours, a very small k such as 1 tends to:",
+"o": [
+"Underfit",
+"Overfit and be sensitive to noise",
+"Ignore distances",
+"Always be best"
+],
+"a": 1,
+"e": "A single neighbour follows every noisy point. Larger k smooths the boundary."
+},
+{
+"id": "q6-109",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "Which statement about k-means is correct?",
+"o": [
+"It works only on text",
+"The number of clusters k must be chosen in advance",
+"It always finds the global best clustering",
+"It needs labelled data"
+],
+"a": 1,
+"e": "It is unsupervised and can get stuck in local minima, so it is run from several starts."
+},
+{
+"id": "q6-110",
+"s": "AI",
+"t": "Algorithms",
+"d": 3,
+"q": "A decision tree split uses entropy. A node has 8 positive and 8 negative examples. Its entropy is:",
+"o": [
+"1",
+"0",
+"2",
+"0.5"
+],
+"a": 0,
+"e": "An even 50/50 split gives the maximum entropy of 1 bit."
+},
+{
+"id": "q6-111",
+"s": "AI",
+"t": "Neural networks",
+"d": 3,
+"q": "Why is ReLU often preferred over sigmoid in deep hidden layers?",
+"o": [
+"It is a probability",
+"It reduces the vanishing gradient problem and is cheap to compute",
+"It never outputs zero",
+"It needs no weights"
+],
+"a": 1,
+"e": "Sigmoid saturates and its gradients shrink in deep networks."
+},
+{
+"id": "q6-112",
+"s": "AI",
+"t": "Neural networks",
+"d": 3,
+"q": "Training loss jumps up and down and never settles. The most likely first fix is:",
+"o": [
+"Add more output classes",
+"Remove the validation set",
+"Increase the learning rate",
+"Decrease the learning rate"
+],
+"a": 3,
+"e": "A learning rate that is too high makes gradient descent overshoot."
+},
+{
+"id": "q6-113",
+"s": "AI",
+"t": "Search",
+"d": 3,
+"q": "A* search is guaranteed to find the shortest path when the heuristic is:",
+"o": [
+"Random",
+"Admissible, never overestimating the true cost",
+"Always zero only",
+"Larger than the true cost"
+],
+"a": 1,
+"e": "An admissible heuristic keeps A* optimal. A zero heuristic makes it Dijkstra."
+},
+{
+"id": "q6-114",
+"s": "AI",
+"t": "Search",
+"d": 3,
+"q": "Which uninformed search guarantees the shortest path in an unweighted graph?",
+"o": [
+"Depth-first search",
+"Breadth-first search",
+"Random walk",
+"Hill climbing"
+],
+"a": 1,
+"e": "BFS explores level by level, so the first time it reaches the goal it uses the fewest edges."
+},
+{
+"id": "q6-115",
+"s": "AI",
+"t": "Probability",
+"d": 3,
+"q": "A test is 99% accurate for a disease that 1 in 1,000 people have. A random person tests positive. Roughly how likely is it they have the disease?",
+"o": [
+"About 9%",
+"50%",
+"99%",
+"1%"
+],
+"a": 0,
+"e": "Bayes' rule: about 1 true positive against about 10 false positives per 1,000 people, so about 1 in 11."
+},
+{
+"id": "q6-116",
+"s": "AI",
+"t": "NLP",
+"d": 3,
+"q": "In a transformer, the attention mechanism lets the model:",
+"o": [
+"Read words strictly left to right only",
+"Skip training",
+"Weigh how relevant every other token is when encoding each token",
+"Avoid using embeddings"
+],
+"a": 2,
+"e": "Self-attention relates all positions in one step."
+},
+{
+"id": "q6-117",
+"s": "AI",
+"t": "Generative AI",
+"d": 3,
+"q": "A chatbot confidently gives a citation that does not exist. This is called:",
+"o": [
+"Overfitting",
+"Hallucination",
+"Tokenization",
+"Regularization"
+],
+"a": 1,
+"e": "Grounding answers in retrieved sources (RAG) reduces it."
+},
+{
+"id": "q6-118",
+"s": "AI",
+"t": "Data",
+"d": 3,
+"q": "Which technique reduces 100 correlated features to a few uncorrelated components?",
+"o": [
+"K-means",
+"One-hot encoding",
+"Dropout",
+"Principal component analysis (PCA)"
+],
+"a": 3,
+"e": "PCA projects data onto the directions of greatest variance."
+},
+{
+"id": "q6-119",
+"s": "AI",
+"t": "Ethics",
+"d": 3,
+"q": "A hiring model trained on past decisions rejects more women for the same skills. The main issue is:",
+"o": [
+"Too few layers",
+"Underfitting",
+"A slow GPU",
+"Bias in the training data reflected in the model"
+],
+"a": 3,
+"e": "Models learn historical bias. Audit data and outcomes for fairness."
+},
+{
+"id": "q6-120",
+"s": "NET",
+"t": "Subnetting",
+"d": 3,
+"q": "How many usable host addresses does a /27 subnet have?",
+"o": [
+"32",
+"62",
+"28",
+"30"
+],
+"a": 3,
+"e": "2^5 = 32 addresses, minus the network and broadcast addresses, gives 30."
+},
+{
+"id": "q6-121",
+"s": "NET",
+"t": "Subnetting",
+"d": 3,
+"q": "What is the broadcast address of 192.168.10.70/26?",
+"o": [
+"192.168.10.255",
+"192.168.10.127",
+"192.168.10.64",
+"192.168.10.63"
+],
+"a": 1,
+"e": "/26 blocks are 64 wide. 70 falls in 64 to 127, so the broadcast is .127."
+},
+{
+"id": "q6-122",
+"s": "NET",
+"t": "Subnetting",
+"d": 3,
+"q": "Which subnet mask is equal to /22?",
+"o": [
+"255.255.248.0",
+"255.255.255.252",
+"255.255.254.0",
+"255.255.252.0"
+],
+"a": 3,
+"e": "22 ones means 8 + 8 + 6, and the third octet is 11111100 = 252."
+},
+{
+"id": "q6-123",
+"s": "NET",
+"t": "Subnetting",
+"d": 3,
+"q": "A company needs 6 subnets from 192.168.1.0/24, each as large as possible. Which prefix should it use?",
+"o": [
+"/26",
+"/25",
+"/28",
+"/27"
+],
+"a": 3,
+"e": "3 extra bits give 8 subnets, the smallest number at least 6. Each /27 has 30 usable hosts."
+},
+{
+"id": "q6-124",
+"s": "NET",
+"t": "Subnetting",
+"d": 3,
+"q": "Are 10.1.1.10/25 and 10.1.1.200/25 in the same subnet?",
+"o": [
+"No, the first is in 0 to 127 and the second in 128 to 255",
+"Yes",
+"Yes, all 10.x addresses are one network",
+"Cannot tell"
+],
+"a": 0,
+"e": "A /25 splits the last octet at 128."
+},
+{
+"id": "q6-125",
+"s": "NET",
+"t": "TCP",
+"d": 3,
+"q": "A TCP connection opens with which sequence?",
+"o": [
+"SYN, SYN-ACK, ACK",
+"SYN, ACK, FIN",
+"HELLO, OK",
+"ACK, SYN, SYN-ACK"
+],
+"a": 0,
+"e": "The three-way handshake synchronises sequence numbers on both sides."
+},
+{
+"id": "q6-126",
+"s": "NET",
+"t": "TCP",
+"d": 3,
+"q": "The TCP receive window is 64 KB and the round-trip time is 100 ms. Ignoring other limits, the maximum throughput is about:",
+"o": [
+"640 KB/s",
+"6.4 MB/s",
+"64 KB/s",
+"64 MB/s"
+],
+"a": 0,
+"e": "Throughput is at most window / RTT = 64 KB / 0.1 s = 640 KB/s."
+},
+{
+"id": "q6-127",
+"s": "NET",
+"t": "TCP",
+"d": 3,
+"q": "After three duplicate ACKs, TCP Reno:",
+"o": [
+"Fast retransmits the missing segment and halves the congestion window",
+"Closes the connection",
+"Doubles the window",
+"Waits for a full timeout"
+],
+"a": 0,
+"e": "Duplicate ACKs suggest one lost segment, not heavy congestion."
+},
+{
+"id": "q6-128",
+"s": "NET",
+"t": "Transport",
+"d": 3,
+"q": "A live video call prefers UDP over TCP because:",
+"o": [
+"UDP guarantees delivery",
+"Late packets are useless, and UDP avoids retransmission delays",
+"TCP cannot carry video",
+"UDP is encrypted"
+],
+"a": 1,
+"e": "Real-time media tolerates small loss better than delay."
+},
+{
+"id": "q6-129",
+"s": "NET",
+"t": "Routing",
+"d": 3,
+"q": "Which routing protocol uses link-state and Dijkstra's algorithm?",
+"o": [
+"OSPF",
+"RIP",
+"BGP",
+"ARP"
+],
+"a": 0,
+"e": "RIP is distance-vector using hop counts. BGP routes between autonomous systems."
+},
+{
+"id": "q6-130",
+"s": "NET",
+"t": "Routing",
+"d": 3,
+"q": "A router has routes 10.0.0.0/8, 10.1.0.0/16 and 10.1.2.0/24. Where does a packet to 10.1.2.5 go?",
+"o": [
+"10.0.0.0/8",
+"10.1.0.0/16",
+"10.1.2.0/24",
+"The default route"
+],
+"a": 2,
+"e": "Routers use the longest prefix match."
+},
+{
+"id": "q6-131",
+"s": "NET",
+"t": "Addressing",
+"d": 3,
+"q": "Many home devices share one public IP address through:",
+"o": [
+"VLAN",
+"DNS",
+"NAT (port address translation)",
+"ICMP"
+],
+"a": 2,
+"e": "NAT rewrites addresses and ports at the router."
+},
+{
+"id": "q6-132",
+"s": "NET",
+"t": "Delays",
+"d": 3,
+"q": "A 1,000-byte packet is sent on a 1 Mbps link. What is the transmission delay?",
+"o": [
+"8 ms",
+"1 ms",
+"80 ms",
+"0.8 ms"
+],
+"a": 0,
+"e": "8,000 bits / 1,000,000 bits per second = 8 ms."
+},
+{
+"id": "q6-133",
+"s": "NET",
+"t": "Application layer",
+"d": 3,
+"q": "When you type a website name, which happens first?",
+"o": [
+"TLS certificate check",
+"DNS lookup to find the IP address",
+"HTTP GET request",
+"TCP handshake with the web server"
+],
+"a": 1,
+"e": "The browser needs the IP address before it can connect."
+},
+{
+"id": "q6-134",
+"s": "NET",
+"t": "Cloud",
+"d": 3,
+"q": "A startup wants to deploy code without managing servers or operating systems. Which model fits best?",
+"o": [
+"IaaS",
+"On-premise",
+"PaaS or serverless",
+"Colocation"
+],
+"a": 2,
+"e": "IaaS still requires managing virtual machines."
+},
+{
+"id": "q6-135",
+"s": "NET",
+"t": "Cloud",
+"d": 3,
+"q": "An app is slow under heavy load, so the team adds more identical servers behind a load balancer. This is:",
+"o": [
+"Vertical scaling",
+"Caching",
+"Sharding the CPU",
+"Horizontal scaling"
+],
+"a": 3,
+"e": "Vertical scaling would add more CPU or RAM to one server."
+},
+{
+"id": "q6-136",
+"s": "NET",
+"t": "OSI model",
+"d": 3,
+"q": "Switches and routers mainly work at which layers?",
+"o": [
+"Both layer 7",
+"Both layer 1",
+"Switch layer 2, router layer 3",
+"Switch layer 3, router layer 2"
+],
+"a": 2,
+"e": "Switches forward by MAC address and routers by IP address."
+},
+{
+"id": "q6-137",
+"s": "NET",
+"t": "Error control",
+"d": 3,
+"q": "A 4-bit message is protected by an even parity bit. Which error can parity not detect?",
+"o": [
+"Any error",
+"Three flipped bits",
+"Two flipped bits",
+"One flipped bit"
+],
+"a": 2,
+"e": "Two flips keep the parity unchanged. CRC detects far more errors."
+},
+{
+"id": "q6-138",
+"s": "NET",
+"t": "IPv6",
+"d": 3,
+"q": "How long is an IPv6 address?",
+"o": [
+"32 bits",
+"48 bits",
+"128 bits",
+"64 bits"
+],
+"a": 2,
+"e": "IPv4 is 32 bits and MAC addresses are 48 bits."
+},
+{
+"id": "q6-139",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "Processes P1, P2 and P3 arrive at time 0 with burst times 24, 3 and 3 ms, served FCFS in that order. What is the average waiting time?",
+"o": [
+"27 ms",
+"10 ms",
+"3 ms",
+"17 ms"
+],
+"a": 3,
+"e": "Waits are 0, 24 and 27, so the average is 51 / 3 = 17 ms."
+},
+{
+"id": "q6-140",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "Using the same processes (bursts 24, 3, 3 at time 0) with shortest job first, what is the average waiting time?",
+"o": [
+"17 ms",
+"6 ms",
+"9 ms",
+"3 ms"
+],
+"a": 3,
+"e": "Order P2, P3, P1 gives waits 0, 3 and 6, so the average is 3 ms."
+},
+{
+"id": "q6-141",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "Round robin with a very large time quantum behaves like:",
+"o": [
+"FCFS",
+"Lottery scheduling",
+"SJF",
+"Priority scheduling"
+],
+"a": 0,
+"e": "Every process finishes before its quantum ends."
+},
+{
+"id": "q6-142",
+"s": "OS",
+"t": "Scheduling",
+"d": 3,
+"q": "Low-priority processes never get the CPU because new high-priority ones keep arriving. The fix is:",
+"o": [
+"Thrashing",
+"Paging",
+"Spooling",
+"Aging, which raises the priority of waiting processes"
+],
+"a": 3,
+"e": "This problem is called starvation."
+},
+{
+"id": "q6-143",
+"s": "OS",
+"t": "Deadlock",
+"d": 3,
+"q": "Banker's algorithm is used for:",
+"o": [
+"Page replacement",
+"Deadlock avoidance",
+"Disk scheduling",
+"Memory compaction"
+],
+"a": 1,
+"e": "It grants a request only if the system stays in a safe state."
+},
+{
+"id": "q6-144",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "A system uses 4 KB pages and 32-bit addresses. How many bits are used for the page offset?",
+"o": [
+"32",
+"10",
+"12",
+"20"
+],
+"a": 2,
+"e": "4 KB = 2^12 bytes, so 12 bits address a byte inside a page."
+},
+{
+"id": "q6-145",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "Reference string 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5 with 3 frames and FIFO. How many page faults occur?",
+"o": [
+"8",
+"10",
+"12",
+"9"
+],
+"a": 3,
+"e": "FIFO gives 9 faults. With 4 frames it gives 10, which is Belady's anomaly."
+},
+{
+"id": "q6-146",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "With 3 frames, the reference string 7, 0, 1, 2, 0, 3, 0, 4 uses LRU. How many page faults?",
+"o": [
+"5",
+"6",
+"8",
+"7"
+],
+"a": 1,
+"e": "Faults at 7, 0, 1, 2, 3 and 4. The repeated 0s are hits, so 6 faults."
+},
+{
+"id": "q6-147",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "Memory access takes 100 ns, TLB lookup takes 20 ns and the TLB hit ratio is 80%. What is the effective access time with a single-level page table?",
+"o": [
+"140 ns",
+"220 ns",
+"120 ns",
+"100 ns"
+],
+"a": 0,
+"e": "Hit: 20 + 100 = 120. Miss: 20 + 100 + 100 = 220. 0.8 x 120 + 0.2 x 220 = 140 ns."
+},
+{
+"id": "q6-148",
+"s": "OS",
+"t": "Memory",
+"d": 3,
+"q": "A system spends most of its time swapping pages in and out and does little useful work. This is:",
+"o": [
+"Starvation",
+"Thrashing",
+"Fragmentation",
+"Deadlock"
+],
+"a": 1,
+"e": "Too many processes compete for too little memory."
+},
+{
+"id": "q6-149",
+"s": "OS",
+"t": "Synchronization",
+"d": 3,
+"q": "A counting semaphore starts at 3. Five processes each call wait(). How many are blocked?",
+"o": [
+"0",
+"5",
+"3",
+"2"
+],
+"a": 3,
+"e": "The first three pass and the value reaches 0. The next two block."
+},
+{
+"id": "q6-150",
+"s": "OS",
+"t": "Synchronization",
+"d": 3,
+"q": "In the producer-consumer problem with a bounded buffer, which semaphores are normally used?",
+"o": [
+"Only full",
+"No semaphores",
+"mutex, empty and full",
+"Only one mutex"
+],
+"a": 2,
+"e": "empty counts free slots, full counts filled slots and mutex protects the buffer."
+},
+{
+"id": "q6-151",
+"s": "OS",
+"t": "Processes",
+"d": 3,
+"q": "What is printed by this C program (count the lines)?",
+"o": [
+"3 lines",
+"2 lines",
+"4 lines",
+"8 lines"
+],
+"a": 3,
+"e": "Each fork doubles the number of processes. Three forks make 8 processes, each printing once.",
+"code": "fork();\nfork();\nfork();\nprintf(\"hi\\n\");"
+},
+{
+"id": "q6-152",
+"s": "OS",
+"t": "Processes",
+"d": 3,
+"q": "A child process has finished but its parent has not called wait(). The child is:",
+"o": [
+"An orphan",
+"A zombie",
+"Blocked",
+"A daemon"
+],
+"a": 1,
+"e": "Its entry stays in the process table until the parent collects its exit status."
+},
+{
+"id": "q6-153",
+"s": "OS",
+"t": "Disk",
+"d": 3,
+"q": "Disk head at cylinder 50, requests 82, 170, 43, 140, 24, 16, 190. Using SSTF, which request is served first?",
+"o": [
+"43",
+"16",
+"82",
+"190"
+],
+"a": 0,
+"e": "43 is 7 cylinders away, closer than 82 at 32 away."
+},
+{
+"id": "q6-154",
+"s": "OS",
+"t": "Kernel",
+"d": 3,
+"q": "A system call switches the CPU from:",
+"o": [
+"Kernel mode to user mode",
+"One process to another always",
+"Virtual memory to physical memory",
+"User mode to kernel mode"
+],
+"a": 3,
+"e": "The kernel runs the privileged operation, then returns to user mode."
+},
+{
+"id": "q6-155",
+"s": "OS",
+"t": "File systems",
+"d": 3,
+"q": "Which allocation method avoids external fragmentation but makes random access slow?",
+"o": [
+"Fixed partitions",
+"Indexed allocation",
+"Linked allocation",
+"Contiguous"
+],
+"a": 2,
+"e": "Each block points to the next, so reaching block n means following n links."
+},
+{
+"id": "q6-156",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "Alice wants Bob to be sure a message came from her. She should sign it with:",
+"o": [
+"Her public key",
+"Her private key",
+"A shared password in the message",
+"Bob's public key"
+],
+"a": 1,
+"e": "Anyone can verify it with Alice's public key. To keep it secret she would encrypt with Bob's public key."
+},
+{
+"id": "q6-157",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "Why are passwords stored as salted hashes such as bcrypt instead of plain SHA-256?",
+"o": [
+"bcrypt is shorter",
+"Salts stop precomputed tables, and slow hashing makes guessing expensive",
+"It is required by HTML",
+"SHA-256 is reversible"
+],
+"a": 1,
+"e": "Fast hashes let attackers try billions of guesses per second."
+},
+{
+"id": "q6-158",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "In RSA with p = 5 and q = 11, what is n and phi(n)?",
+"o": [
+"n = 16, phi = 40",
+"n = 55, phi = 54",
+"n = 55, phi = 40",
+"n = 50, phi = 44"
+],
+"a": 2,
+"e": "n = 5 x 11 = 55 and phi(n) = 4 x 10 = 40."
+},
+{
+"id": "q6-159",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "Diffie-Hellman key exchange is mainly used to:",
+"o": [
+"Compress data",
+"Sign documents",
+"Agree on a shared secret over an insecure channel",
+"Hash passwords"
+],
+"a": 2,
+"e": "On its own it does not authenticate, so it is combined with certificates to stop man-in-the-middle attacks."
+},
+{
+"id": "q6-160",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "AES in ECB mode is weak for images because:",
+"o": [
+"Identical plaintext blocks give identical ciphertext blocks, revealing patterns",
+"It only works on text",
+"It is too slow",
+"It uses no key"
+],
+"a": 0,
+"e": "Modes such as GCM or CBC with random IVs hide patterns."
+},
+{
+"id": "q6-161",
+"s": "SEC",
+"t": "Web security",
+"d": 3,
+"q": "Which code is safe from SQL injection?",
+"o": [
+"A parameterized query: SELECT * FROM users WHERE name = ?",
+"\"SELECT * FROM users WHERE name = '\" + name + \"'\"",
+"Using uppercase SQL",
+"Removing spaces from input"
+],
+"a": 0,
+"e": "Parameters are sent separately from the SQL text, so input cannot change the query."
+},
+{
+"id": "q6-162",
+"s": "SEC",
+"t": "Web security",
+"d": 3,
+"q": "An attacker changes /invoice?id=1001 to id=1002 and sees another customer's invoice. This vulnerability is:",
+"o": [
+"XSS",
+"DDoS",
+"Phishing",
+"Insecure direct object reference (broken access control)"
+],
+"a": 3,
+"e": "The server must check that the logged-in user owns the record."
+},
+{
+"id": "q6-163",
+"s": "SEC",
+"t": "Authentication",
+"d": 3,
+"q": "Which combination is true two-factor authentication?",
+"o": [
+"Password and PIN",
+"Username and password",
+"Password and a code from an authenticator app on your phone",
+"Two passwords"
+],
+"a": 2,
+"e": "The factors must be different types: something you know and something you have."
+},
+{
+"id": "q6-164",
+"s": "SEC",
+"t": "Network security",
+"d": 3,
+"q": "A firewall rule allows TCP port 443 inbound and denies everything else. Which service is reachable?",
+"o": [
+"RDP",
+"SSH",
+"HTTPS",
+"Telnet"
+],
+"a": 2,
+"e": "Port 443 is HTTPS. SSH uses 22, Telnet 23 and RDP 3389."
+},
+{
+"id": "q6-165",
+"s": "SEC",
+"t": "Network security",
+"d": 3,
+"q": "An attacker on public Wi-Fi intercepts traffic between a user and a website. This is:",
+"o": [
+"SQL injection",
+"Ransomware",
+"Man-in-the-middle attack",
+"Brute force"
+],
+"a": 2,
+"e": "HTTPS with valid certificates prevents reading or changing the traffic."
+},
+{
+"id": "q6-166",
+"s": "SEC",
+"t": "Threats",
+"d": 3,
+"q": "Thousands of infected devices flood a server with requests. This is:",
+"o": [
+"Spoofing only",
+"Privilege escalation",
+"Phishing",
+"A distributed denial of service (DDoS) attack"
+],
+"a": 3,
+"e": "Rate limiting and CDN protection help."
+},
+{
+"id": "q6-167",
+"s": "SEC",
+"t": "Principles",
+"d": 3,
+"q": "Giving each user only the access they need for their job is the principle of:",
+"o": [
+"Defense in depth",
+"Least privilege",
+"Open design",
+"Security through obscurity"
+],
+"a": 1,
+"e": "It limits damage if an account is compromised."
+},
+{
+"id": "q6-168",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "HTTPS uses asymmetric cryptography mainly to:",
+"o": [
+"Authenticate the server and set up a symmetric session key",
+"Speed up DNS",
+"Compress pages",
+"Encrypt all page data"
+],
+"a": 0,
+"e": "Bulk data is then encrypted with fast symmetric ciphers such as AES."
+},
+{
+"id": "q6-169",
+"s": "SEC",
+"t": "Threats",
+"d": 3,
+"q": "A user receives an email that looks like it is from their bank, asking them to 'verify' their password on a link. This is:",
+"o": [
+"Spam only",
+"Phishing",
+"A virus scan",
+"A firewall alert"
+],
+"a": 1,
+"e": "Check the sender and the link domain, and never enter passwords from email links."
+},
+{
+"id": "q6-170",
+"s": "SEC",
+"t": "Web security",
+"d": 3,
+"q": "A buffer overflow in C can let an attacker:",
+"o": [
+"Only crash nothing",
+"Read DNS records",
+"Overwrite memory such as the return address and run their own code",
+"Change the font"
+],
+"a": 2,
+"e": "Bounds checking and safer functions prevent it."
+},
+{
+"id": "q6-171",
+"s": "SEC",
+"t": "Authentication",
+"d": 3,
+"q": "Account lockout after 5 wrong passwords mainly defends against:",
+"o": [
+"XSS",
+"Malware",
+"Online brute force password guessing",
+"SQL injection"
+],
+"a": 2,
+"e": "Rate limiting slows guessing attacks."
+},
+{
+"id": "q6-172",
+"s": "SEC",
+"t": "Cryptography",
+"d": 3,
+"q": "Which property means you cannot find two different inputs with the same hash?",
+"o": [
+"Non-repudiation",
+"Key exchange",
+"Preimage resistance",
+"Collision resistance"
+],
+"a": 3,
+"e": "MD5 and SHA-1 have broken collision resistance and should not be used for security."
+},
+{
+"id": "q6-173",
+"s": "SEC",
+"t": "Forensics",
+"d": 3,
+"q": "Why do investigators compute a hash of a disk image before analysing it?",
+"o": [
+"To encrypt it",
+"To compress it",
+"To prove later that the evidence was not changed",
+"To speed up the analysis"
+],
+"a": 2,
+"e": "Matching hashes show the image is identical to the original."
+},
+{
+"id": "q6-174",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next: 2, 6, 12, 20, 30, 42, ?",
+"o": [
+"52",
+"54",
+"56",
+"58"
+],
+"a": 2,
+"e": "The terms are n(n + 1): 7 x 8 = 56."
+},
+{
+"id": "q6-175",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next: 1, 1, 2, 6, 24, 120, ?",
+"o": [
+"600",
+"720",
+"144",
+"240"
+],
+"a": 1,
+"e": "The terms are factorials. 6! = 720."
+},
+{
+"id": "q6-176",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next: 3, 5, 9, 17, 33, ?",
+"o": [
+"65",
+"64",
+"49",
+"66"
+],
+"a": 0,
+"e": "Differences are 2, 4, 8, 16, 32. 33 + 32 = 65."
+},
+{
+"id": "q6-177",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "Find the missing number: 4, 9, 25, 49, ?, 169",
+"o": [
+"100",
+"121",
+"81",
+"144"
+],
+"a": 1,
+"e": "These are squares of primes 2, 3, 5, 7, 11, 13. 11 squared is 121."
+},
+{
+"id": "q6-178",
+"s": "PS",
+"t": "Number series",
+"d": 3,
+"q": "What comes next: 0, 1, 3, 7, 15, 31, ?",
+"o": [
+"62",
+"47",
+"63",
+"64"
+],
+"a": 2,
+"e": "Each term is 2^n - 1."
+},
+{
+"id": "q6-179",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "Pipe A fills a tank in 6 hours and pipe B in 3 hours. Together they fill it in:",
+"o": [
+"1.5 hours",
+"4.5 hours",
+"2 hours",
+"9 hours"
+],
+"a": 2,
+"e": "Rates add: 1/6 + 1/3 = 1/2 tank per hour."
+},
+{
+"id": "q6-180",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "Ali can finish a project in 10 days and Sara in 15 days. They work together for 4 days, then Ali leaves. How many more days does Sara need?",
+"o": [
+"4",
+"7",
+"5",
+"6"
+],
+"a": 2,
+"e": "Together they do 1/6 per day, so 4/6 is done in 4 days. Sara does the remaining 1/3 at 1/15 per day, which is 5 days."
+},
+{
+"id": "q6-181",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "A price rises by 20% and then falls by 20%. The final price compared with the original is:",
+"o": [
+"4% lower",
+"20% lower",
+"4% higher",
+"The same"
+],
+"a": 0,
+"e": "1.2 x 0.8 = 0.96."
+},
+{
+"id": "q6-182",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "A car travels 60 km at 30 km per hour and returns at 60 km per hour. The average speed for the round trip is:",
+"o": [
+"50 km/h",
+"35 km/h",
+"45 km/h",
+"40 km/h"
+],
+"a": 3,
+"e": "Total 120 km in 2 + 1 = 3 hours gives 40 km per hour."
+},
+{
+"id": "q6-183",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "How many 3-digit numbers can be formed from the digits 1 to 5 if no digit repeats?",
+"o": [
+"60",
+"10",
+"125",
+"20"
+],
+"a": 0,
+"e": "5 x 4 x 3 = 60."
+},
+{
+"id": "q6-184",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "A committee of 3 is chosen from 4 men and 3 women. In how many ways can it have exactly 2 women?",
+"o": [
+"18",
+"35",
+"9",
+"12"
+],
+"a": 3,
+"e": "3C2 x 4C1 = 3 x 4 = 12."
+},
+{
+"id": "q6-185",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "Two cards are drawn without replacement from a 52-card deck. What is the probability both are aces?",
+"o": [
+"1/13",
+"1/169",
+"1/221",
+"4/52"
+],
+"a": 2,
+"e": "4/52 x 3/51 = 12/2652 = 1/221."
+},
+{
+"id": "q6-186",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "A bag has 3 red and 2 blue balls. Two are drawn at random. What is the probability they are different colours?",
+"o": [
+"3/5",
+"1/2",
+"6/25",
+"2/5"
+],
+"a": 0,
+"e": "3 x 2 = 6 mixed pairs out of 5C2 = 10 pairs."
+},
+{
+"id": "q6-187",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "Rs. 10,000 is invested at 10% compound interest per year. What is the amount after 2 years?",
+"o": [
+"Rs. 11,000",
+"Rs. 12,210",
+"Rs. 12,100",
+"Rs. 12,000"
+],
+"a": 2,
+"e": "10,000 x 1.1 x 1.1 = 12,100."
+},
+{
+"id": "q6-188",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "The average of 5 numbers is 20. One number is removed and the average becomes 18. What was the removed number?",
+"o": [
+"22",
+"28",
+"20",
+"38"
+],
+"a": 1,
+"e": "Total falls from 100 to 72, so the removed number is 28."
+},
+{
+"id": "q6-189",
+"s": "PS",
+"t": "Quantitative reasoning",
+"d": 3,
+"q": "What is the remainder when 2^100 is divided by 7?",
+"o": [
+"4",
+"6",
+"2",
+"1"
+],
+"a": 2,
+"e": "Powers of 2 mod 7 repeat 2, 4, 1. 100 = 3 x 33 + 1, so the remainder is 2."
+},
+{
+"id": "q6-190",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "Five people A, B, C, D and E sit in a row. C is in the middle, A is at the left end, and B sits next to C on the right. D is not next to A. Who sits second from the left?",
+"o": [
+"D",
+"E",
+"B",
+"C"
+],
+"a": 1,
+"e": "Seats: A _ C B _. D cannot be next to A, so E is second and D is last."
+},
+{
+"id": "q6-191",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "All programmers are logical. Some logical people are artists. Which conclusion definitely follows?",
+"o": [
+"Some programmers are artists",
+"None of these",
+"No programmer is an artist",
+"All artists are logical"
+],
+"a": 1,
+"e": "The artists who are logical may or may not include any programmers."
+},
+{
+"id": "q6-192",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "A says 'B is lying.' B says 'C is lying.' C says 'A and B are both lying.' Who is telling the truth?",
+"o": [
+"A and C",
+"B only",
+"C only",
+"A only"
+],
+"a": 1,
+"e": "If B is truthful, C lies, so A and B are not both liars, which fits because A lies. Other choices lead to contradictions."
+},
+{
+"id": "q6-193",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "If the day before yesterday was Thursday, what day will it be the day after tomorrow?",
+"o": [
+"Monday",
+"Tuesday",
+"Wednesday",
+"Sunday"
+],
+"a": 0,
+"e": "Today is Saturday, so the day after tomorrow is Monday."
+},
+{
+"id": "q6-194",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "In a code, COMPUTER is written as DPNQVUFS. How is NETWORK written?",
+"o": [
+"OFUWPSL",
+"MDSVNQJ",
+"OFTXPSL",
+"OFUXPSL"
+],
+"a": 3,
+"e": "Each letter moves one place forward."
+},
+{
+"id": "q6-195",
+"s": "PS",
+"t": "Logical reasoning",
+"d": 3,
+"q": "A clock shows 3:15. What is the angle between the hour and minute hands?",
+"o": [
+"22.5 degrees",
+"0 degrees",
+"7.5 degrees",
+"15 degrees"
+],
+"a": 2,
+"e": "The minute hand is at 90 degrees and the hour hand at 97.5 degrees."
+},
+{
+"id": "q6-196",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"15",
+"10",
+"0",
+"5"
+],
+"a": 1,
+"e": "The loop visits indices 0, 2 and 4, which hold 1, 3 and 6. 1 + 3 + 6 = 10.",
+"code": "a = [1, 2, 3, 4, 6]\ns = 0\nfor i in range(0, len(a), 2):\n    s += a[i]\nprint(s)"
+},
+{
+"id": "q6-197",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"6",
+"3",
+"4",
+"5"
+],
+"a": 2,
+"e": "f(7) = 1 + f(5) = 2 + f(3) = 3 + f(1) = 3 + 1 = 4.",
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return 1 + f(n - 2)\nprint(f(7))"
+},
+{
+"id": "q6-198",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"1 3 7 15",
+"1 2 4 8",
+"1 2 4 8 16",
+"2 4 8 16"
+],
+"a": 1,
+"e": "x doubles while it is below 10: 1, 2, 4, 8.",
+"code": "x = 1\nwhile x < 10:\n    print(x, end=' ')\n    x *= 2"
+},
+{
+"id": "q6-199",
+"s": "PS",
+"t": "Code tracing",
+"d": 3,
+"q": "What is printed?",
+"o": [
+"720",
+"6",
+"120",
+"24"
+],
+"a": 2,
+"e": "The loop multiplies 1 to 5.",
+"code": "r = 1\nfor k in range(1, 6):\n    r *= k\nprint(r)"
+},
+{
+"id": "q6-200",
+"s": "PS",
+"t": "Algorithmic thinking",
+"d": 3,
+"q": "You have 8 balls, and one is heavier. Using a balance scale, what is the minimum number of weighings that always finds it?",
+"o": [
+"3",
+"2",
+"4",
+"1"
+],
+"a": 1,
+"e": "Weigh 3 against 3. If balanced, weigh the last 2. Otherwise weigh 1 against 1 from the heavier 3."
+},
+{
+"id": "q6-201",
+"s": "PS",
+"t": "Algorithmic thinking",
+"d": 3,
+"q": "A sorted list has 1,000 names. The best strategy to find a name is:",
+"o": [
+"Check every name from the start",
+"Random guessing",
+"Binary search, about 10 comparisons",
+"Sort it again first"
+],
+"a": 2,
+"e": "Halving 1,000 reaches 1 in about 10 steps."
+},
+{
+"id": "q6-202",
+"s": "PS",
+"t": "Data interpretation",
+"d": 3,
+"q": "Sales were 200 in January, 250 in February and 300 in March. What is the percentage growth from January to March?",
+"o": [
+"25%",
+"20%",
+"50%",
+"100%"
+],
+"a": 2,
+"e": "(300 - 200) / 200 = 50%."
+},
+{
+"id": "q6-203",
+"s": "PS",
+"t": "Data interpretation",
+"d": 3,
+"q": "In a class, 60% passed Maths, 50% passed English and 30% passed both. What percentage failed both?",
+"o": [
+"10%",
+"0%",
+"30%",
+"20%"
+],
+"a": 3,
+"e": "Passed at least one = 60 + 50 - 30 = 80%, so 20% failed both."
+}
+]

@@ -8,12 +8,13 @@ export type LiveStats = {
   weakTopic: string; real: boolean;
 };
 
-const FALLBACK: LiveStats = { questions: 1680, mocks: 0, mockAvg: 0, readiness: 0, practice: 0, activeToday: 0, answersToday: 0, subj: { ps: 0, prog: 0, dsa: 0 }, weakTopic: "Analytical Reasoning", real: false };
+const FALLBACK: LiveStats = { questions: 1850, mocks: 0, mockAvg: 0, readiness: 0, practice: 0, activeToday: 0, answersToday: 0, subj: { ps: 0, prog: 0, dsa: 0 }, weakTopic: "Analytical Reasoning", real: false };
 
 export async function liveStats(): Promise<LiveStats> {
   try {
     const [q, m, p, a, s, w] = await Promise.all([
-      prisma.question.count({ where: { status: "LIVE" } }),
+      // Unique questions only: a question saved twice is counted once.
+      prisma.$queryRaw<{ n: bigint }[]>`SELECT COUNT(DISTINCT regexp_replace(lower(text || coalesce(code, '')), '[^a-z0-9]', '', 'g'))::bigint AS n FROM "Question" WHERE status = 'LIVE'`,
       prisma.$queryRaw<{ n: bigint; avg: number | null }[]>`SELECT COUNT(*)::bigint AS n, AVG(score)::float AS avg FROM "Attempt" WHERE "submittedAt" IS NOT NULL AND type IN ('MOCK','NATIONAL_MOCK','DIAGNOSTIC')`,
       prisma.$queryRaw<{ n: bigint }[]>`SELECT COUNT(*)::bigint AS n FROM "Attempt" WHERE "submittedAt" IS NOT NULL AND type IN ('PRACTICE','MINI_MOCK')`,
       prisma.$queryRaw<{ users: bigint; answers: bigint }[]>`SELECT COUNT(DISTINCT a."userId")::bigint AS users, COUNT(i.id)::bigint AS answers FROM "Attempt" a LEFT JOIN "AttemptItem" i ON i."attemptId" = a.id AND i.correct IS NOT NULL WHERE a."startedAt" >= date_trunc('day', now() AT TIME ZONE 'Asia/Karachi') AT TIME ZONE 'Asia/Karachi'`,
@@ -25,7 +26,7 @@ export async function liveStats(): Promise<LiveStats> {
     const mockAvg = Math.round(m[0]?.avg ?? 0);
     const real = mocks > 0;
     return {
-      questions: q || FALLBACK.questions, mocks, mockAvg, readiness: mockAvg,
+      questions: Number(q[0]?.n ?? 0) || FALLBACK.questions, mocks, mockAvg, readiness: mockAvg,
       practice: Number(p[0]?.n ?? 0), activeToday: Number(a[0]?.users ?? 0), answersToday: Number(a[0]?.answers ?? 0),
       subj: { ps: acc("PS"), prog: acc("PROG"), dsa: acc("DSA") },
       weakTopic: w[0]?.topic || FALLBACK.weakTopic, real,

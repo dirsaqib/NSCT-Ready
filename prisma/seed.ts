@@ -254,6 +254,7 @@ async function main() {
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions3.json"), "utf8")),
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions4.json"), "utf8")),
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions5.json"), "utf8")),
+    ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions6.json"), "utf8")), // 203 NSCT-level hard questions
   ];
   const seeded = await prisma.question.count({ where: { source: "SEED" } });
   if (force || seeded < qs.length + 5) {

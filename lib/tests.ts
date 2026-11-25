@@ -57,8 +57,8 @@ async function seenBy(userId: string, types?: AttemptType[]) {
   return new Set(rows.map((r) => r.questionId));
 }
 
-// Mock 1 is the gentlest and Mock 3 the hardest, so students can see themselves improve.
-const MOCK_MIX: Record<number, Record<string, number>> = { 1: { "1": 40, "2": 45, "3": 15 }, 2: { "1": 25, "2": 50, "3": 25 }, 3: { "1": 10, "2": 45, "3": 45 } };
+// NSCT level: every mock is mostly medium and hard questions, and Mock 3 is the hardest.
+const MOCK_MIX: Record<number, Record<string, number>> = { 1: { "1": 10, "2": 50, "3": 40 }, 2: { "1": 5, "2": 40, "3": 55 }, 3: { "2": 30, "3": 70 } };
 
 /** The fixed paper for Mock 1, 2 or 3. Built from the national bank the first time anyone opens it. */
 export async function mockPaper(n: number) {
@@ -121,7 +121,7 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
     const bp = await blueprint(o.type);
     const seenMocks = await seenBy(userId, ["MOCK", "DIAGNOSTIC", "NATIONAL_MOCK"]);
     durationMin = bp.durationMin;
-    for (const [s, n] of Object.entries(bp.counts)) ids.push(...(await pick(s as Subject, n, { secure: o.type === "NATIONAL_MOCK" ? undefined : false, mix: bp.difficulty, universityId: o.type === "MOCK" ? user.universityId : null, exclude: seenMocks })));
+    for (const [s, n] of Object.entries(bp.counts)) ids.push(...(await pick(s as Subject, n, { secure: o.type === "NATIONAL_MOCK" ? undefined : false, mix: bp.difficulty ?? (o.type === "NATIONAL_MOCK" ? { "2": 40, "3": 60 } : null), universityId: o.type === "MOCK" ? user.universityId : null, exclude: seenMocks })));
   } else if (o.type === "EMPLOYER_ASSESSMENT") {
     const a = await prisma.employerAssessment.findUnique({ where: { inviteCode: o.assessmentCode ?? "" } });
     if (!a) throw new HttpError(404, "Assessment not found.");

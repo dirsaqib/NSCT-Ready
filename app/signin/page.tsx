@@ -21,6 +21,11 @@ export default function SignIn() {
   const [msg, setMsg] = useState("");
   const [busy, setBusy] = useState(false);
   const [registered, setRegistered] = useState<string | null>(null);
+  const [lockEnd, setLockEnd] = useState(0);
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => { if (lockEnd <= Date.now()) return; const t = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(t); }, [lockEnd]);
+  const left = Math.max(0, lockEnd - now);
+  const clock = `${Math.floor(left / 60000)}:${String(Math.floor((left % 60000) / 1000)).padStart(2, "0")}`;
 
   useEffect(() => {
     fetch("/api/universities").then((r) => r.json()).then((x) => setUnis(x.universities ?? [])).catch(() => {});
@@ -34,6 +39,7 @@ export default function SignIn() {
     setBusy(true); setMsg("");
     const r = await signIn("password", { login, password, universityId: mode === "student" && !login.includes("@") ? universityId : "", redirect: false });
     setBusy(false);
+    if (r?.error?.startsWith("LOCKED_")) { setLockEnd(Number(r.error.slice(7)) || Date.now() + 15 * 60000); setNow(Date.now()); return setMsg(""); }
     if (r?.error) return setMsg(r.error === "CredentialsSignin" && mode === "student" && !login.includes("@") && !universityId ? "We could not sign you in with this roll number alone. Choose your university from the list and try again, or check your password." : ERRORS[r.error] ?? `Sign-in failed: ${r.error}`);
     location.href = "/dashboard";
   };
@@ -60,8 +66,9 @@ export default function SignIn() {
             <input type={mode === "staff" ? "email" : "text"} required autoComplete="username" value={login} onChange={(e) => setLogin(e.target.value)} placeholder={mode === "student" ? "As on your university card" : "you@university.edu.pk"} />
           </label>
           <label className="f">Password<input type="password" required autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
-          <button className="btn" disabled={busy} type="submit">{busy ? "Signing in" : "Sign in"}</button>
+          <button className="btn" disabled={busy || left > 0} type="submit">{busy ? "Signing in" : left > 0 ? `Locked, try again in ${clock}` : "Sign in"}</button>
         </form>
+        {left > 0 && <div className="notice bad" style={{ marginTop: 12 }}>Too many wrong tries. This account is locked until {new Date(lockEnd).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}. Time left: <b>{clock}</b>. Trying again does not reset this timer.</div>}
         {msg && <div className="notice bad" style={{ marginTop: 12 }}>{msg}</div>}
         <div className="small" style={{ marginTop: 16, display: "grid", gap: 6 }}>
           {mode === "student"

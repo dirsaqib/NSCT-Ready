@@ -11,7 +11,7 @@ type Item = {
   language: string | null; starterCode: string | null; sampleTests: { input: string; expected: string }[]; codeAnswer: string | null; flagged: boolean;
   correctSlots?: number[]; explanation?: string; correct?: boolean | null; credit?: number | null; codePassed?: number | null; codeTotal?: number | null; timeSec?: number;
 };
-type Attempt = { id: string; type: string; label: string | null; endsAt: string | null; submitted: boolean; resultsHidden?: boolean; score: number; percentile: number | null; flags: string[]; certificate: string | null; items: Item[] };
+type Attempt = { id: string; type: string; label: string | null; endsAt: string | null; startedAt?: string; submittedAt?: string | null; submitted: boolean; resultsHidden?: boolean; score: number; percentile: number | null; flags: string[]; certificate: string | null; items: Item[] };
 type Local = { slots: number[]; code: string; flagged: boolean; time: number; checked?: { correct: boolean; correctSlots: number[]; explanation: string } };
 
 const L = "ABCDEF";
@@ -169,6 +169,8 @@ export default function TestPage({ params }: { params: { id: string } }) {
     if (it.multi) patch({ slots: s.slots.includes(slot) ? s.slots.filter((x) => x !== slot) : [...s.slots, slot] });
     else patch({ slots: [slot] });
   };
+  const blankNos = st.map((x, i) => (a.items[i].type === "CODE" ? !(x.code.trim() && x.code !== (a.items[i].starterCode ?? "")) : !x.slots.length) ? i : -1).filter((i) => i >= 0);
+  const flaggedNos = st.map((x, i) => (x.flagged ? i : -1)).filter((i) => i >= 0);
   const answered = st.filter((x, i) => (a.items[i].type === "CODE" ? x.code.trim() && x.code !== (a.items[i].starterCode ?? "") : x.slots.length)).length;
   const watermark = session?.user ? `${(session.user as { email?: string }).email ?? ""} ${(session.user as { id: string }).id.slice(-6)}` : "";
 
@@ -181,12 +183,17 @@ export default function TestPage({ params }: { params: { id: string } }) {
           {proctored && !locked && !document.fullscreenElement && <button className="btn sm sec" onClick={() => document.documentElement.requestFullscreen().catch(() => {})}>Full screen</button>}
           {locked && <span className="tiny" style={{ opacity: 0.85 }}>🔒 Locked mode</span>}
           {left != null && <span className={`timer ${left < 300 ? "low" : ""}`} role="timer" aria-live="off">{fmtTime(left)}</span>}
-          <button className="btn sm acc" disabled={busy} onClick={() => { if (locked) return setConfirming(true); const un = a.items.length - answered; if (window.confirm(practice ? "Finish practice?" : `Submit now? ${un} unanswered.`)) submit(); }}>{practice ? "Finish" : t("test.submit")}</button>
+          <button className="btn sm acc" disabled={busy} onClick={() => { if (locked) return setConfirming(true); const un = a.items.length - answered; if (practice || (!un && !flaggedNos.length)) { if (window.confirm(practice ? "Finish practice?" : "Submit now?")) submit(); } else setConfirming(true); }}>{practice ? "Finish" : t("test.submit")}</button>
         </div>
       </div>
       {confirming && (
         <div className="notice" style={{ marginBottom: 12, display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-          <b>Submit now?</b> <span className="small">{a.items.length - answered} questions are unanswered and will get no marks.</span>
+          <b>Submit now?</b> <span className="small">{a.items.length - answered ? `${a.items.length - answered} questions are left blank and will get no marks:` : "All questions are answered."}</span>
+          {blankNos.slice(0, 40).map((n) => <button key={n} className="btn sm ghost" style={{ padding: "2px 8px" }} onClick={() => { setConfirming(false); go(n); }}>Q{n + 1}</button>)}
+          {flaggedNos.length > 0 && <div style={{ flexBasis: "100%", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+            <span className="small">🚩 You flagged {flaggedNos.length} question{flaggedNos.length > 1 ? "s" : ""} to review. Check {flaggedNos.length > 1 ? "them" : "it"} before you submit:</span>
+            {flaggedNos.slice(0, 40).map((n) => <button key={n} className="btn sm ghost" style={{ padding: "2px 8px" }} onClick={() => { setConfirming(false); go(n); }}>Q{n + 1}{blankNos.includes(n) ? " (blank)" : ""}</button>)}
+          </div>}
           <button className="btn sm acc" disabled={busy} onClick={() => { setConfirming(false); submit(); }}>Yes, submit</button>
           <button className="btn sm sec" onClick={() => setConfirming(false)}>Keep going</button>
         </div>
@@ -265,21 +272,6 @@ function BookmarkButton({ questionId }: { questionId: string }) {
   return <button className="btn ghost sm" style={{ marginInlineStart: "auto" }} onClick={async () => { await api("/api/bookmarks", { method: saved ? "DELETE" : "POST", body: { questionId } }); setSaved(!saved); }}>{saved ? "Saved" : "Save question"}</button>;
 }
 
-function AiExplain({ attemptId, position }: { attemptId: string; position: number }) {
-  const [txt, setTxt] = useState("");
-  const [lang, setLang] = useState("English");
-  const [busy, setBusy] = useState(false);
-  return (
-    <div style={{ marginTop: 8 }}>
-      <div className="row">
-        <button className="btn ghost sm" disabled={busy} onClick={async () => { setBusy(true); try { setTxt((await api<{ text: string }>("/api/ai/explain", { body: { attemptId, position, lang } })).text); } catch (e) { setTxt((e as Error).message); } setBusy(false); }}>{busy ? "Thinking..." : "Explain with AI tutor"}</button>
-        <select value={lang} onChange={(e) => setLang(e.target.value)} style={{ width: "auto" }}>{["English", "Urdu", "Roman Urdu"].map((l) => <option key={l}>{l}</option>)}</select>
-      </div>
-      {txt && <div className="ai-box">{txt}</div>}
-    </div>
-  );
-}
-
 function Recheck({ attemptId, position }: { attemptId: string; position: number }) {
   const [open, setOpen] = useState(false);
   const [msg, setMsg] = useState("");
@@ -294,7 +286,7 @@ function Recheck({ attemptId, position }: { attemptId: string; position: number 
 }
 
 function Report({ a }: { a: Attempt }) {
-  const [f, setF] = useState<"all" | "wrong" | "flag">("all");
+  const [f, setF] = useState<"all" | "wrong" | "blank" | "flag">("all");
   const [cert, setCert] = useState<{ code: string; url: string; qr: string } | null>(null);
   const [certErr, setCertErr] = useState("");
   const isPractice = a.type === "PRACTICE" || a.type === "MISTAKES";
@@ -302,6 +294,11 @@ function Report({ a }: { a: Attempt }) {
   const correct = items.filter((i) => i.correct).length;
   const by: Record<string, [number, number]> = {};
   items.forEach((i) => { const b = (by[i.subject] ??= [0, 0]); b[1]++; b[0] += i.credit ?? 0; });
+  // Time used is the real clock time from pressing Start to submitting, capped at the time allowed.
+  const st0 = a.startedAt ? new Date(a.startedAt).getTime() : 0, sub0 = a.submittedAt ? new Date(a.submittedAt).getTime() : 0;
+  const cap = a.endsAt && st0 ? new Date(a.endsAt).getTime() - st0 : Infinity;
+  const usedSec = st0 && sub0 ? Math.round(Math.max(0, Math.min(sub0 - st0, cap)) / 1000) : items.reduce((s, i) => s + (i.timeSec ?? 0), 0);
+  const isBlank = (i: Item) => !i.chosenSlots.length && !i.codeAnswer;
   const canCert = ["DIAGNOSTIC", "MOCK", "NATIONAL_MOCK", "EMPLOYER_ASSESSMENT"].includes(a.type) && (!a.label || /^Mock [123]$/.test(a.label));
   return (
     <>
@@ -325,19 +322,19 @@ function Report({ a }: { a: Attempt }) {
       <div className="grid g4" style={{ marginBottom: 16 }}>
         <div className="card stat"><div className="k">Score</div><div className="v">{a.score}%</div><div className="d">{correct} of {items.length} fully correct</div></div>
         <div className="card stat"><div className="k">Percentile</div><div className="v">{a.percentile ?? "n/a"}</div><div className="d">better than {a.percentile ?? "?"}% of students (30 days)</div></div>
-        <div className="card stat"><div className="k">Time used</div><div className="v">{fmtTime(items.reduce((s, i) => s + (i.timeSec ?? 0), 0))}</div></div>
-        <div className="card stat"><div className="k">Left blank</div><div className="v">{items.filter((i) => !i.chosenSlots.length && !i.codeAnswer).length}</div></div>
+        <div className="card stat"><div className="k">Time used</div><div className="v">{fmtTime(usedSec)}</div><div className="d">from Start to Submit</div></div>
+        <div className="card stat"><div className="k">Left blank</div><div className="v">{items.filter(isBlank).length}</div><div className="d">{items.filter(isBlank).length ? `Q${items.filter(isBlank).map((i) => i.position + 1).slice(0, 12).join(", Q")}${items.filter(isBlank).length > 12 ? " ..." : ""}` : "None"}</div></div>
       </div>
       <div className="card" style={{ marginBottom: 16 }}>
         <h2>By subject</h2>
         <div className="bars">{Object.entries(by).map(([k, [c, t]]) => { const p = Math.round((100 * c) / t); return <div className="bar-row" key={k}><div><b>{SUBJECT_SHORT[k]}</b> <span className="muted tiny">{c.toFixed(1)}/{t}</span></div><div className="bar"><i className={p >= 70 ? "" : p >= 50 ? "w" : "b"} style={{ width: `${p}%` }} /></div><div className="small">{p}%</div></div>; })}</div>
       </div>
       <div className="card">
-        <div className="tabs">{(["all", "wrong", "flag"] as const).map((x) => <button key={x} className={f === x ? "on" : ""} onClick={() => setF(x)}>{x === "all" ? "All" : x === "wrong" ? "Wrong" : "Flagged"}</button>)}</div>
+        <div className="tabs">{(["all", "wrong", "blank", "flag"] as const).map((x) => <button key={x} className={f === x ? "on" : ""} onClick={() => setF(x)}>{x === "all" ? "All" : x === "wrong" ? "Wrong" : x === "blank" ? `Left blank (${items.filter(isBlank).length})` : "Flagged"}</button>)}</div>
         <div className="qlist">
-          {items.filter((i) => f === "all" || (f === "wrong" && !i.correct) || (f === "flag" && i.flagged)).map((i) => (
+          {items.filter((i) => f === "all" || (f === "wrong" && !i.correct && !isBlank(i)) || (f === "blank" && isBlank(i)) || (f === "flag" && i.flagged)).map((i) => (
             <div className="q" key={i.position}>
-              <div className="qmeta"><span className={`pill ${i.correct ? "" : "bad"}`}>{i.correct ? "Correct" : (i.credit ?? 0) > 0 ? `Partly correct (${Math.round((i.credit ?? 0) * 100)}%)` : !i.chosenSlots.length && !i.codeAnswer ? "Not answered" : "Wrong"}</span><span className="pill grey">Q{i.position + 1} · {SUBJECT_SHORT[i.subject]}</span><BookmarkButton questionId={i.questionId} /></div>
+              <div className="qmeta"><span className={`pill ${i.correct ? "" : isBlank(i) ? "warn" : "bad"}`}>{i.correct ? "Correct" : (i.credit ?? 0) > 0 ? `Partly correct (${Math.round((i.credit ?? 0) * 100)}%)` : isBlank(i) ? "Left blank (not answered)" : "Wrong"}</span><span className="pill grey">Q{i.position + 1} · {SUBJECT_SHORT[i.subject]}</span><BookmarkButton questionId={i.questionId} /></div>
               {i.scenario && <div className="small muted">{i.scenario.title}</div>}
               <b>{i.text}</b>
               {i.code && <pre className="code">{i.code}</pre>}
@@ -350,7 +347,7 @@ function Report({ a }: { a: Attempt }) {
                 </div>
               )}
               <div className="expl">{i.explanation}</div>
-              {!i.correct && <div className="row"><AiExplain attemptId={a.id} position={i.position} />{!isPractice && <Recheck attemptId={a.id} position={i.position} />}</div>}
+              {!i.correct && <div className="row">{!isPractice && <Recheck attemptId={a.id} position={i.position} />}</div>}
             </div>
           ))}
         </div>

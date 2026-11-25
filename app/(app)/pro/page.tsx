@@ -35,7 +35,7 @@ function Pro() {
   };
 
   return (
-    <Page title="Pro access" sub="Unlimited mock tests, more AI tutor help and certificates.">
+    <Page title="Pro access" sub="Unlimited mock tests and certificates.">
       {status === "paid" && <div className="notice info" style={{ marginBottom: 12 }}>Payment received. Your Pro access is active.</div>}
       {status === "failed" && <div className="notice bad" style={{ marginBottom: 12 }}>The payment did not go through. You were not charged. Please try again.</div>}
       {data.pro ? (

@@ -33,7 +33,7 @@ export default function Learn() {
 
       <div className="card" style={{ marginBottom: 16 }}>
         <div className="row between"><div><h2 style={{ margin: 0 }}>{s.name}</h2><p className="small muted" style={{ margin: "4px 0 0" }}>{s.weight}% of the NSCT</p></div>
-          <div className="row"><StartButton type="PRACTICE" subject={sub} count={10} label="Quick practice" className="btn sm sec" /><Link className="btn sm ghost" href="/tutor">Ask the AI tutor</Link></div></div>
+          <div className="row"><StartButton type="PRACTICE" subject={sub} count={10} label="Quick practice" className="btn sm sec" /></div></div>
       </div>
 
       <h3>Video lectures</h3>

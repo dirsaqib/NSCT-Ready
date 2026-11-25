@@ -25,13 +25,21 @@ export async function GET(req: Request) {
     const sp = new URL(req.url).searchParams;
     const scope = u.role === "ADMIN" && !sp.get("universityId") ? {} : profileScope(u, sp.get("universityId"));
     if ((scope as { universityId?: string }).universityId) await linkUnassigned((scope as { universityId: string }).universityId).catch(() => 0);
-    const deptFilter = sp.get("department") || "";
-    const where = { ...scope, ...(deptFilter ? { departmentId: deptFilter } : {}) };
+    const deptFilter = sp.get("department") || "", campusFilter = sp.get("campus") || "", uniFilter = sp.get("university") || "";
+    const where = { ...scope, ...(deptFilter ? { departmentId: deptFilter } : {}), ...(campusFilter ? { campusId: campusFilter } : {}), ...(uniFilter && u.role === "ADMIN" ? { universityId: uniFilter } : {}) };
 
     const [profiles, attempts] = await Promise.all([
-      prisma.profile.findMany({ where, select: { userId: true, fullName: true, rollNumber: true, program: true, semester: true, section: true, departmentId: true, department: { select: { name: true } }, user: { select: { lastSeenAt: true, status: true } } } }),
+      prisma.profile.findMany({ where, select: { userId: true, fullName: true, rollNumber: true, program: true, semester: true, section: true, departmentId: true, department: { select: { name: true } }, campusId: true, campusName: true, campus: { select: { name: true } }, universityId: true, university: { select: { name: true } }, user: { select: { lastSeenAt: true, status: true } } } }),
       mockList(u, { take: 3000 }),
     ]);
+    // National percentile: where each student's best mock stands among every student in Pakistan who took one.
+    const national = (await prisma.attempt.groupBy({ by: ["userId"], where: { type: "MOCK", label: { in: ["Mock 1", "Mock 2", "Mock 3"] }, submittedAt: { not: null } }, _max: { score: true } }))
+      .map((r) => Math.round(r._max.score ?? 0)).sort((a, b) => a - b);
+    const percentileOf = (v: number) => {
+      if (!national.length) return null;
+      let below = 0, eq = 0; for (const x of national) { if (x < v) below++; else if (x === v) eq++; }
+      return Math.round((100 * (below + eq / 2)) / national.length);
+    };
     const ids = new Set(profiles.map((p) => p.userId));
     const mine = attempts.filter((a) => ids.has(a.userId)).filter((a) => /^Mock [123]$/.test(a.label));
 
@@ -56,7 +64,7 @@ export async function GET(req: Request) {
         : `Needs support. Re-study ${weak.join(" and ") || "the basics"} with Preparation levels and videos before the next mock.`;
       return {
         userId: p.userId, fullName: p.fullName, rollNumber: p.rollNumber, program: p.program, semester: p.semester, section: p.section,
-        department: p.department?.name ?? "No department yet", mocksTaken: as.length, m1, m2, m3, best, latest,
+        department: p.department?.name ?? "No department yet", campus: p.campus?.name ?? p.campusName ?? "Main campus", university: p.university?.name ?? "", percentile: best == null ? null : percentileOf(best), mocksTaken: as.length, m1, m2, m3, best, latest,
         change: first != null && latest != null && as.length > 1 ? latest - first : null, band: b, sections: secPct, weak, advice,
         autoSubmitted: as.filter((a) => a.autoSubmitted).length,
       };
@@ -89,10 +97,21 @@ export async function GET(req: Request) {
       return { department: d, registered: xs.length, tookMock: tk.length, tookPct: pct(tk.length, xs.length), avgBest: avg(tk.map((s) => s.best!)), m1: avg(att.filter((a) => a.label === "Mock 1").map((a) => a.score)), m2: avg(att.filter((a) => a.label === "Mock 2").map((a) => a.score)), m3: avg(att.filter((a) => a.label === "Mock 3").map((a) => a.score)), bands: bands(xs), readyPct: pct(xs.filter((s) => s.band === "Ready").length, xs.length), weakest: secs.slice(0, 2).map((x) => `${x.short} ${x.pct}%`), strongest: secs.slice(-1).map((x) => `${x.short} ${x.pct}%`)[0] ?? null };
     }).sort((a, b) => b.registered - a.registered);
 
-    const filters = { departments: [...new Map(profiles.filter((p) => p.departmentId).map((p) => [p.departmentId!, p.department!.name])).entries()].map(([id, name]) => ({ id, name })) };
+    // Same summary for any grouping: programs, campuses, universities.
+    const groupBy = (keyOf: (x: (typeof students)[number]) => string) => [...new Set(students.map(keyOf))].map((name) => {
+      const xs = students.filter((x) => keyOf(x) === name), tk = xs.filter((x) => x.best != null);
+      return { name, registered: xs.length, appeared: tk.length, appearedPct: pct(tk.length, xs.length), sharePct: pct(tk.length, took.length), avgBest: avg(tk.map((x) => x.best!)), avgPercentile: avg(tk.filter((x) => x.percentile != null).map((x) => x.percentile!)), readyPct: pct(xs.filter((x) => x.band === "Ready").length, xs.length), bands: bands(xs) };
+    }).sort((a, b) => (b.avgPercentile ?? -1) - (a.avgPercentile ?? -1) || b.registered - a.registered);
+    const programs = groupBy((x) => (x.program || "Not given").toUpperCase());
+    const campuses = groupBy((x) => x.campus);
+    const universities = groupBy((x) => x.university);
+    const deptGroups = groupBy((x) => x.department);
+    const uniq = (xs: [string | null, string | undefined][]) => [...new Map(xs.filter((x) => x[0] && x[1]) as [string, string][]).entries()].map(([id, name]) => ({ id, name })).sort((a, b) => a.name.localeCompare(b.name));
+    const filters = { departments: uniq(profiles.map((p) => [p.departmentId, p.department?.name])), campuses: uniq(profiles.map((p) => [p.campusId, p.campus?.name])), universities: u.role === "ADMIN" ? uniq(profiles.map((p) => [p.universityId, p.university?.name])) : [] };
     students.sort((a, b) => (b.best ?? -1) - (a.best ?? -1) || a.rollNumber.localeCompare(b.rollNumber));
 
-    if (sp.get("format") !== "xlsx") return Response.json({ overall, departments, students, filters, scoped: !!(scope as { departmentId?: string }).departmentId });
+    if (sp.get("format") !== "xlsx") const nationalAvg = avg(national);
+    return Response.json({ overall: { ...overall, avgPercentile: avg(took.filter((x) => x.percentile != null).map((x) => x.percentile!)), nationalTakers: national.length, nationalAvg }, departments, deptGroups, programs, campuses, universities, students, filters, isAdmin: u.role === "ADMIN", scoped: !!(scope as { departmentId?: string }).departmentId });
 
     const wb = new ExcelJS.Workbook();
     const head = (ws: ExcelJS.Worksheet) => { ws.getRow(1).font = { bold: true, color: { argb: "FFFFFFFF" } }; ws.getRow(1).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF1D55CC" } }; ws.views = [{ state: "frozen", ySplit: 1 }]; };
@@ -107,9 +126,15 @@ export async function GET(req: Request) {
     departments.forEach((x) => d.addRow({ d: x.department, r: x.registered, t: x.tookMock, tp: x.tookPct, ab: x.avgBest ?? "", m1: x.m1 ?? "", m2: x.m2 ?? "", m3: x.m3 ?? "", re: x.bands.Ready, al: x.bands["Almost ready"], nw: x.bands["Needs work"], ns: x.bands["Not started"], w: x.weakest.join(", ") }));
     head(d);
     const s = wb.addWorksheet("Students");
-    s.columns = [{ header: "Student", key: "n", width: 26 }, { header: "Roll", key: "r", width: 13 }, { header: "Department", key: "d", width: 24 }, { header: "Program", key: "p", width: 12 }, { header: "Mocks taken", key: "mt", width: 11 }, { header: "Mock 1", key: "m1", width: 8 }, { header: "Mock 2", key: "m2", width: 8 }, { header: "Mock 3", key: "m3", width: 8 }, { header: "Best", key: "b", width: 7 }, { header: "Change", key: "c", width: 8 }, { header: "Readiness", key: "band", width: 14 }, ...SUBJECTS.map((x) => ({ header: `${x.short} %`, key: x.key, width: 8 })), { header: "Advice", key: "a", width: 60 }];
-    students.forEach((x) => s.addRow({ n: x.fullName, r: x.rollNumber, d: x.department, p: `${x.program} ${x.semester}${x.section ?? ""}`, mt: x.mocksTaken, m1: x.m1 ?? "", m2: x.m2 ?? "", m3: x.m3 ?? "", b: x.best ?? "", c: x.change ?? "", band: x.band, ...Object.fromEntries(SUBJECTS.map((k) => [k.key, x.sections[k.key] ?? ""])), a: x.advice }));
+    s.columns = [{ header: "Student", key: "n", width: 26 }, { header: "Roll", key: "r", width: 13 }, { header: "Department", key: "d", width: 24 }, { header: "Program", key: "p", width: 12 }, { header: "Mocks taken", key: "mt", width: 11 }, { header: "Mock 1", key: "m1", width: 8 }, { header: "Mock 2", key: "m2", width: 8 }, { header: "Mock 3", key: "m3", width: 8 }, { header: "Best", key: "b", width: 7 }, { header: "National percentile", key: "pc", width: 11 }, { header: "Campus", key: "cp", width: 16 }, { header: "Change", key: "c", width: 8 }, { header: "Readiness", key: "band", width: 14 }, ...SUBJECTS.map((x) => ({ header: `${x.short} %`, key: x.key, width: 8 })), { header: "Advice", key: "a", width: 60 }];
+    students.forEach((x) => s.addRow({ n: x.fullName, r: x.rollNumber, d: x.department, p: `${x.program} ${x.semester}${x.section ?? ""}`, mt: x.mocksTaken, m1: x.m1 ?? "", m2: x.m2 ?? "", m3: x.m3 ?? "", b: x.best ?? "", pc: x.percentile ?? "", cp: x.campus, c: x.change ?? "", band: x.band, ...Object.fromEntries(SUBJECTS.map((k) => [k.key, x.sections[k.key] ?? ""])), a: x.advice }));
     head(s);
+    for (const [title, rows] of [["Programs", programs], ["Campuses", campuses], ...(universities.length > 1 ? [["Universities", universities]] : [])] as [string, typeof programs][]) {
+      const g = wb.addWorksheet(title);
+      g.columns = [{ header: title.slice(0, -1), key: "n", width: 30 }, { header: "Registered", key: "r", width: 11 }, { header: "Appeared", key: "a", width: 10 }, { header: "Appeared %", key: "ap", width: 11 }, { header: "Share of all appeared %", key: "sp", width: 14 }, { header: "Avg best score", key: "ab", width: 12 }, { header: "Avg national percentile", key: "pc", width: 14 }, { header: "Ready %", key: "rp", width: 9 }];
+      rows.forEach((x) => g.addRow({ n: x.name, r: x.registered, a: x.appeared, ap: x.appearedPct, sp: x.sharePct, ab: x.avgBest ?? "", pc: x.avgPercentile ?? "", rp: x.readyPct }));
+      head(g);
+    }
     const buf = await wb.xlsx.writeBuffer();
     return new Response(new Uint8Array(buf as ArrayBuffer), { headers: { "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Content-Disposition": `attachment; filename="mock-analysis.xlsx"` } });
   } catch (e) {

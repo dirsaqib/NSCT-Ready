@@ -34,17 +34,17 @@ async function excel(d: MockDetail) {
     ["TayariHub mock test result"], [],
     ["Student", d.student.fullName], ["Roll number", d.student.rollNumber], ["University", d.student.university], ["Department", d.student.department ?? ""],
     ["Program", `${d.student.program} ${d.student.semester}${d.student.section ?? ""}`], ["Test", d.label], ["Date", d.submittedAt ? new Date(d.submittedAt).toLocaleString("en-GB", { timeZone: "Asia/Karachi" }) : ""],
-    ["Time taken (minutes)", d.minutes], ["Score %", d.score], ["Correct", d.correct], ["Wrong", d.wrong], ["Skipped", d.skipped], ["Total questions", d.total],
+    ["Time taken (minutes)", d.minutes], ["Score %", d.score], ["Correct", d.correct], ["Wrong", d.wrong], ["Left blank", d.skipped], ["Total questions", d.total],
     ...(d.autoSubmitted ? [["Auto-submitted", d.autoSubmitted]] : []),
   ]);
   s1.getRow(1).font = { bold: true, size: 14 }; s1.getColumn(1).width = 22; s1.getColumn(2).width = 40;
   const s2 = wb.addWorksheet("Sections");
-  s2.columns = [{ header: "Section", key: "n", width: 34 }, { header: "NSCT weight %", key: "w", width: 14 }, { header: "Questions", key: "t", width: 11 }, { header: "Correct", key: "c", width: 9 }, { header: "Wrong", key: "x", width: 8 }, { header: "Skipped", key: "s", width: 9 }, { header: "Score %", key: "p", width: 9 }];
+  s2.columns = [{ header: "Section", key: "n", width: 34 }, { header: "NSCT weight %", key: "w", width: 14 }, { header: "Questions", key: "t", width: 11 }, { header: "Correct", key: "c", width: 9 }, { header: "Wrong", key: "x", width: 8 }, { header: "Left blank", key: "s", width: 11 }, { header: "Score %", key: "p", width: 9 }];
   d.sections.forEach((s) => s2.addRow({ n: s.name, w: s.weight, t: s.total, c: s.correct, x: s.wrong, s: s.skipped, p: s.pct }));
   s2.addRow({ n: "Total", t: d.total, c: d.correct, x: d.wrong, s: d.skipped, p: d.score }).font = { bold: true };
   const s3 = wb.addWorksheet("Questions");
   s3.columns = [{ header: "No.", key: "n", width: 6 }, { header: "Section", key: "s", width: 12 }, { header: "Topic", key: "t", width: 34 }, { header: "Result", key: "r", width: 10 }, { header: "Time (sec)", key: "x", width: 10 }];
-  d.questions.forEach((q) => s3.addRow({ n: q.n, s: q.subject, t: q.topic, r: q.status, x: q.timeSec }));
+  d.questions.forEach((q) => s3.addRow({ n: q.n, s: q.subject, t: q.topic, r: q.status === "skipped" ? "left blank" : q.status, x: q.timeSec }));
   for (const ws of [s2, s3]) { ws.getRow(1).font = { bold: true, color: { argb: "FFFFFFFF" } }; ws.getRow(1).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF1D55CC" } }; }
   return new Uint8Array((await wb.xlsx.writeBuffer()) as ArrayBuffer);
 }
@@ -61,7 +61,7 @@ async function pdf(d: MockDetail) {
   doc.text(`${d.student.university}${d.student.department ? `\n${d.student.department}` : ""}`, 380, 18, { width: 171, align: "right" });
   doc.fillColor(MUTED).fontSize(8).text(`Submitted ${d.submittedAt ? new Date(d.submittedAt).toLocaleString("en-GB", { timeZone: "Asia/Karachi" }) : ""}  |  ${d.minutes} minutes${d.autoSubmitted ? `  |  Auto-submitted (${d.autoSubmitted})` : ""}`, L, 86);
 
-  const boxes: [string, string, string][] = [["Score", `${d.score}%`, tone(d.score)], ["Correct", `${d.correct}`, "#13A384"], ["Wrong", `${d.wrong}`, "#C2453A"], ["Skipped", `${d.skipped}`, "#8A5A0B"], ["Questions", `${d.total}`, NAVY]];
+  const boxes: [string, string, string][] = [["Score", `${d.score}%`, tone(d.score)], ["Correct", `${d.correct}`, "#13A384"], ["Wrong", `${d.wrong}`, "#C2453A"], ["Left blank", `${d.skipped}`, "#8A5A0B"], ["Questions", `${d.total}`, NAVY]];
   boxes.forEach(([k, v, c], i) => {
     const x = L + i * (W / 5), y = 104;
     doc.roundedRect(x + 3, y, W / 5 - 6, 52, 6).fill(TRACK);
@@ -71,7 +71,7 @@ async function pdf(d: MockDetail) {
 
   let y = 174;
   doc.fillColor(NAVY).fontSize(12).text("Section-wise result", L, y); y += 18;
-  doc.fontSize(8).fillColor(MUTED).text("Section (NSCT weight)", L, y).text("Correct", 300, y, { width: 40, align: "center" }).text("Wrong", 340, y, { width: 40, align: "center" }).text("Skipped", 380, y, { width: 40, align: "center" }).text("Score", 420, y, { width: 131 });
+  doc.fontSize(8).fillColor(MUTED).text("Section (NSCT weight)", L, y).text("Correct", 300, y, { width: 40, align: "center" }).text("Wrong", 340, y, { width: 40, align: "center" }).text("Blank", 380, y, { width: 40, align: "center" }).text("Score", 420, y, { width: 131 });
   y += 13;
   for (const s of d.sections) {
     doc.fontSize(9).fillColor(NAVY).text(`${s.name} (${s.weight}%)`, L, y, { width: 250 });

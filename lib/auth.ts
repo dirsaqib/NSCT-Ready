@@ -47,11 +47,15 @@ export const authOptions: NextAuthOptions = {
         if (!c?.login || !c?.password) return null;
         const user = await findLogin(c.login, c.universityId || undefined);
         if (!user) return null;
-        if (user.lockedUntil && user.lockedUntil > new Date()) throw new Error("LOCKED");
+        // A lock is never extended by more tries: the time left is reported and counts down to the original end.
+        if (user.lockedUntil && user.lockedUntil > new Date()) throw new Error(`LOCKED_${user.lockedUntil.getTime()}`);
         if (!verifyPassword(c.password, user.passwordHash)) {
-          const fails = user.failedLogins + 1;
-          await prisma.user.update({ where: { id: user.id }, data: { failedLogins: fails, lockedUntil: fails >= 5 ? new Date(Date.now() + 15 * 60000) : undefined } });
+          // After a lock has ended the count starts again from zero, so one wrong try does not lock again.
+          const fails = (user.lockedUntil ? 0 : user.failedLogins) + 1;
+          const until = fails >= 5 ? new Date(Date.now() + 15 * 60000) : null;
+          await prisma.user.update({ where: { id: user.id }, data: { failedLogins: fails, lockedUntil: until } });
           await audit(user.id, "signin.fail").catch(() => {});
+          if (until) throw new Error(`LOCKED_${until.getTime()}`);
           return null;
         }
         if (user.status === "BLOCKED") throw new Error("BLOCKED");
@@ -75,8 +79,10 @@ export const authOptions: NextAuthOptions = {
           token.tfa = true;
           await prisma.user.update({ where: { id: token.uid as string }, data: { failedLogins: 0 } });
         } else {
-          const fails = (u?.failedLogins ?? 0) + 1;
-          await prisma.user.update({ where: { id: token.uid as string }, data: { failedLogins: fails, lockedUntil: fails >= 5 ? new Date(Date.now() + 15 * 60000) : undefined } });
+          if (!locked) {
+            const fails = (u?.lockedUntil ? 0 : u?.failedLogins ?? 0) + 1;
+            await prisma.user.update({ where: { id: token.uid as string }, data: { failedLogins: fails, lockedUntil: fails >= 5 ? new Date(Date.now() + 15 * 60000) : null } });
+          }
         }
       }
       const db = await prisma.user.findUnique({

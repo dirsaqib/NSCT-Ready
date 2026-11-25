@@ -33,7 +33,7 @@ export default function MockResults() {
         <Card>
           <div className="tbl-wrap">
             <table>
-              <thead><tr>{data.staff && <th>Student</th>}<th>Test</th><th>Date</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Skipped</th>{SUBJ.map(([k, l]) => <th key={k} style={{ textAlign: "center" }}>{l}</th>)}<th></th></tr></thead>
+              <thead><tr>{data.staff && <th>Student</th>}<th>Test</th><th>Date</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Left blank</th>{SUBJ.map(([k, l]) => <th key={k} style={{ textAlign: "center" }}>{l}</th>)}<th></th></tr></thead>
               <tbody>
                 {data.rows.map((r) => (
                   <tr key={r.attemptId}>
@@ -42,7 +42,7 @@ export default function MockResults() {
                     <td className="tiny">{fmtDateTime(r.submittedAt)}</td>
                     <td><span style={{ background: bg(r.score), color: tone(r.score), padding: "3px 10px", borderRadius: 8, fontWeight: 800 }}>{r.score}%</span></td>
                     <td style={{ color: "#0B7A5E", fontWeight: 700 }}>{r.correct}</td><td style={{ color: "#B3372D", fontWeight: 700 }}>{r.wrong}</td><td className="muted">{r.skipped}</td>
-                    {SUBJ.map(([k]) => { const s = r.sections[k]; const p = s ? Math.round((100 * s.c) / s.t) : null; return <td key={k} style={{ textAlign: "center", padding: 4 }}>{s ? <span title={`${s.c} right, ${s.w} wrong, ${s.s} skipped`} style={{ display: "inline-block", minWidth: 40, padding: "3px 4px", borderRadius: 6, fontSize: 12, fontWeight: 700, background: bg(p!), color: tone(p!) }}>{s.c}/{s.t}</span> : "–"}</td>; })}
+                    {SUBJ.map(([k]) => { const s = r.sections[k]; const p = s ? Math.round((100 * s.c) / s.t) : null; return <td key={k} style={{ textAlign: "center", padding: 4 }}>{s ? <span title={`${s.c} right, ${s.w} wrong, ${s.s} left blank`} style={{ display: "inline-block", minWidth: 40, padding: "3px 4px", borderRadius: 6, fontSize: 12, fontWeight: 700, background: bg(p!), color: tone(p!) }}>{s.c}/{s.t}</span> : "–"}</td>; })}
                     <td><div className="row" style={{ flexWrap: "nowrap" }}>
                       <button className="btn sm" onClick={() => setOpen(r.attemptId)}>Details</button>
                       <button className="btn sm sec" onClick={() => download(`/api/results/${r.attemptId}?format=pdf`, `${r.label}-${r.rollNumber}.pdf`)}>PDF</button>
@@ -53,7 +53,7 @@ export default function MockResults() {
               </tbody>
             </table>
           </div>
-          <p className="tiny muted">Each subject shows right answers out of questions asked. Hover for wrong and skipped.</p>
+          <p className="tiny muted">Each subject shows right answers out of questions asked. Hover for wrong and left blank.</p>
         </Card>
       )}
     </Page>
@@ -75,7 +75,7 @@ function ResultDetail({ id, back }: { id: string; back: () => void }) {
         <Stat k="Score" v={<span style={{ color: tone(d.score) }}>{d.score}%</span>} d={`${d.correct} of ${d.total} correct`} />
         <Stat k="Correct" v={<span style={{ color: "#0B7A5E" }}>{d.correct}</span>} />
         <Stat k="Wrong" v={<span style={{ color: "#B3372D" }}>{d.wrong}</span>} />
-        <Stat k="Skipped" v={<span style={{ color: "#8A5A0B" }}>{d.skipped}</span>} />
+        <Stat k="Left blank" v={<span style={{ color: "#8A5A0B" }}>{d.skipped}</span>} />
       </div>
       <Card title="Section-wise result" style={{ marginBottom: 16 }}>
         <Table rows={d.sections} cols={[
@@ -83,7 +83,7 @@ function ResultDetail({ id, back }: { id: string; back: () => void }) {
           ["Questions", (s) => s.total],
           ["Correct", (s) => <b style={{ color: "#0B7A5E" }}>{s.correct}</b>],
           ["Wrong", (s) => <b style={{ color: "#B3372D" }}>{s.wrong}</b>],
-          ["Skipped", (s) => <span className="muted">{s.skipped}</span>],
+          ["Left blank", (s) => <span className="muted">{s.skipped}</span>],
           ["Score", (s) => <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 160 }}><div style={{ flex: 1, height: 10, background: "#EDF1F7", borderRadius: 99 }}><div style={{ width: `${s.pct}%`, height: "100%", borderRadius: 99, background: tone(s.pct) }} /></div><b style={{ color: tone(s.pct) }}>{s.pct}%</b></div>],
         ]} />
       </Card>
@@ -93,7 +93,7 @@ function ResultDetail({ id, back }: { id: string; back: () => void }) {
         </Card>
         <Card title="Question by question">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(54px,1fr))", gap: 6 }}>
-            {d.questions.map((x) => <span key={x.n} title={`${x.topic} · ${x.timeSec}s`} style={{ textAlign: "center", padding: "6px 2px", borderRadius: 8, fontSize: 11, fontWeight: 700, color: "#fff", background: x.status === "correct" ? "#13A384" : x.status === "wrong" ? "#C2453A" : "#B9C2D3" }}>{x.n}<div style={{ fontWeight: 500, fontSize: 9.5 }}>{x.subject}</div></span>)}
+            {d.questions.map((x) => <span key={x.n} title={`${x.topic} · ${x.status === "skipped" ? "left blank" : x.status}`} style={{ textAlign: "center", padding: "6px 2px", borderRadius: 8, fontSize: 11, fontWeight: 700, color: "#fff", background: x.status === "correct" ? "#13A384" : x.status === "wrong" ? "#C2453A" : "#B9C2D3" }}>{x.n}<div style={{ fontWeight: 500, fontSize: 9.5 }}>{x.subject}</div></span>)}
           </div>
           <p className="tiny muted">Green correct, red wrong, grey skipped. <a href={`/test/${d.attemptId}`}>Open the full review with answers →</a></p>
         </Card>

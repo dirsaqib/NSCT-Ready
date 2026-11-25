@@ -26,21 +26,29 @@ async function blueprint(key: string) {
   return { counts: fb as Record<string, number>, difficulty: null, durationMin: Math.round((DURATION_SEC[key as AttemptType] ?? 3600) / 60) };
 }
 
+const textKey = (t: string, c?: string | null) => (t + (c ?? "")).toLowerCase().replace(/[^a-z0-9]/g, "");
+
 async function pick(subject: Subject, n: number, opts: { topic?: string; difficulty?: number; secure?: boolean; mix?: Record<string, number> | null; universityId?: string | null; exclude?: Set<string> }) {
   // The national bank, plus questions the student's own university added for its students only.
   const scope = opts.universityId ? { OR: [{ scope: "NATIONAL" as const }, { scope: "UNIVERSITY" as const, authorUniversityId: opts.universityId }] } : { scope: "NATIONAL" as const };
-  const all = await prisma.question.findMany({
+  const raw = await prisma.question.findMany({
     where: { subject, status: "LIVE", ...scope, ...(opts.secure === false ? { secure: false } : {}), ...(opts.topic ? { topic: opts.topic } : {}), ...(opts.difficulty ? { difficulty: opts.difficulty } : {}) },
-    select: { id: true, difficulty: true },
+    select: { id: true, difficulty: true, text: true, code: true },
   });
-  // Random for every student, and questions this student has not seen yet come first.
-  const ex = opts.exclude;
-  const rows = ex ? [...shuffle(all.filter((r) => !ex.has(r.id))), ...shuffle(all.filter((r) => ex.has(r.id)))] : shuffle(all);
-  if (!opts.mix) return rows.slice(0, n).map((r) => r.id);
+  // The same question can exist twice in the bank (uploaded or generated again). Keep one copy only,
+  // so a paper never shows the same question twice, and treat a copy of a seen question as seen.
+  const ex = opts.exclude ?? new Set<string>();
+  const seenKeys = new Set(raw.filter((r) => ex.has(r.id)).map((r) => textKey(r.text, r.code)));
+  const byKey = new Map<string, (typeof raw)[number]>();
+  for (const r of shuffle(raw)) { const k = textKey(r.text, r.code); if (!byKey.has(k)) byKey.set(k, r); }
+  const uniq = [...byKey.entries()];
+  // Questions this student has never been given come first. Seen ones are used only if the bank runs out.
+  const fresh = uniq.filter(([k]) => !seenKeys.has(k)).map(([, r]) => r);
+  const old = uniq.filter(([k]) => seenKeys.has(k)).map(([, r]) => r);
   const out: string[] = [];
-  for (const [d, pct] of Object.entries(opts.mix)) out.push(...rows.filter((r) => String(r.difficulty) === d).slice(0, Math.round((n * pct) / 100)).map((r) => r.id));
-  const rest = rows.filter((r) => !out.includes(r.id)).map((r) => r.id);
-  return shuffle([...out, ...rest.slice(0, Math.max(0, n - out.length))]).slice(0, n);
+  if (opts.mix) for (const [d, pct] of Object.entries(opts.mix)) out.push(...fresh.filter((r) => String(r.difficulty) === d).slice(0, Math.round((n * pct) / 100)).map((r) => r.id));
+  for (const r of [...fresh, ...old]) { if (out.length >= n) break; if (!out.includes(r.id)) out.push(r.id); }
+  return shuffle(out.slice(0, n));
 }
 
 /** Questions this student has already been given, so new papers prefer fresh ones. */
@@ -111,8 +119,9 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
       windowId = w.id;
     }
     const bp = await blueprint(o.type);
+    const seenMocks = await seenBy(userId, ["MOCK", "DIAGNOSTIC", "NATIONAL_MOCK"]);
     durationMin = bp.durationMin;
-    for (const [s, n] of Object.entries(bp.counts)) ids.push(...(await pick(s as Subject, n, { secure: o.type === "NATIONAL_MOCK" ? undefined : false, mix: bp.difficulty, universityId: o.type === "MOCK" ? user.universityId : null })));
+    for (const [s, n] of Object.entries(bp.counts)) ids.push(...(await pick(s as Subject, n, { secure: o.type === "NATIONAL_MOCK" ? undefined : false, mix: bp.difficulty, universityId: o.type === "MOCK" ? user.universityId : null, exclude: seenMocks })));
   } else if (o.type === "EMPLOYER_ASSESSMENT") {
     const a = await prisma.employerAssessment.findUnique({ where: { inviteCode: o.assessmentCode ?? "" } });
     if (!a) throw new HttpError(404, "Assessment not found.");
@@ -139,6 +148,7 @@ export async function startAttempt(userId: string, o: StartOptions, ctx: { ip?: 
     const m = await prisma.mistake.findMany({ where: { userId }, select: { questionId: true }, take: 200 });
     ids = shuffle(m.map((x) => x.questionId)).slice(0, 20);
   }
+  ids = [...new Set(ids)]; // never the same question twice in one paper
   if (!ids.length) throw new HttpError(404, "No questions are available for this selection yet.");
 
   // Accommodation: extra time set by the focal person.
@@ -175,7 +185,7 @@ export async function getAttemptForStudent(userId: string, attemptId: string) {
   // Lab test results stay hidden until the department releases them.
   const done = !!a.submittedAt && (!a.labTest || a.labTest.resultsReleased);
   return {
-    id: a.id, type: a.type, label: a.label, endsAt: a.endsAt, submitted: !!a.submittedAt, resultsHidden: !!a.submittedAt && !done, score: done ? a.score : null, percentile: a.percentile,
+    id: a.id, type: a.type, label: a.label, endsAt: a.endsAt, startedAt: a.startedAt, submittedAt: a.submittedAt, submitted: !!a.submittedAt, resultsHidden: !!a.submittedAt && !done, score: done ? a.score : null, percentile: a.percentile,
     flags: done ? a.flags : [], certificate: a.certificate?.code ?? null,
     items: a.items.map((it) => {
       const q = it.question;

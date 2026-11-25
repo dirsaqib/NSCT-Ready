@@ -22,7 +22,7 @@ export async function GET(req: Request) {
       { header: "Student", key: "name", width: 26 }, { header: "Roll number", key: "roll", width: 14 }, { header: "Department", key: "dept", width: 22 },
       { header: "Program", key: "prog", width: 10 }, { header: "Semester", key: "sem", width: 9 }, { header: "Section", key: "sec", width: 8 },
       { header: "Test", key: "test", width: 12 }, { header: "Date", key: "date", width: 18 }, { header: "Score %", key: "score", width: 9 },
-      { header: "Correct", key: "c", width: 9 }, { header: "Wrong", key: "w", width: 8 }, { header: "Skipped", key: "s", width: 9 }, { header: "Total", key: "t", width: 7 },
+      { header: "Correct", key: "c", width: 9 }, { header: "Wrong", key: "w", width: 8 }, { header: "Left blank", key: "s", width: 11 }, { header: "Total", key: "t", width: 7 },
       ...subj.map((k) => ({ header: `${SUBJECTS.find((s) => s.key === k)!.short} (right/total)`, key: k, width: 14 })),
       { header: "Auto-submitted", key: "auto", width: 14 },
     ];

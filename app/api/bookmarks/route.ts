@@ -8,7 +8,7 @@ export const GET = handle(async () => {
   const u = await requireUser();
   const rows = await prisma.bookmark.findMany({
     where: { userId: u.id }, orderBy: { createdAt: "desc" },
-    include: { question: { select: { id: true, type: true, subject: true, topic: true, text: true, code: true, options: true, answers: true, explanation: true } } },
+    include: { question: { select: { id: true, type: true, subject: true, topic: true, text: true, code: true, options: true, answers: true, explanation: true, reference: true } } },
   });
   return { bookmarks: rows.map((r) => r.question) };
 });

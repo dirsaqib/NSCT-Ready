@@ -12,7 +12,8 @@
 "An error"
 ],
 "a": 1,
-"e": "\"Lahore\" has 6 characters."
+"e": "\"Lahore\" has 6 characters.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (introduction to programming)."
 },
 {
 "id": "q5-002",
@@ -27,7 +28,8 @@
 "3.0"
 ],
 "a": 1,
-"e": "Integer division truncates toward zero, giving 3."
+"e": "Integer division truncates toward zero, giving 3.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (introduction to programming)."
 },
 {
 "id": "q5-003",
@@ -42,7 +44,8 @@
 "2"
 ],
 "a": 1,
-"e": "// is floor division, so 7 // 2 is 3."
+"e": "// is floor division, so 7 // 2 is 3.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (introduction to programming)."
 },
 {
 "id": "q5-004",
@@ -57,22 +60,24 @@
 "12"
 ],
 "a": 0,
-"e": "17 = 5 x 3 + 2, so the remainder is 2."
+"e": "17 = 5 x 3 + 2, so the remainder is 2.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Operators and expressions. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (operators)."
 },
 {
 "id": "q5-005",
 "s": "PROG",
 "t": "Operators",
 "d": 2,
-"q": "In C, what is the result of: int x = 5; x += x++;",
+"q": "In C, what is the result of: int x = 5; x += x++;?",
 "o": [
-"Always 11",
-"Always 10",
+"x becomes 10",
+"x becomes 11",
 "Undefined behaviour",
-"A compile error"
+"A compile-time error"
 ],
 "a": 2,
-"e": "Modifying x twice without a sequence point is undefined behaviour in C."
+"e": "Modifying x twice without a sequence point is undefined behaviour in C.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Operators and expressions. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (operators)."
 },
 {
 "id": "q5-006",
@@ -87,7 +92,8 @@
 "float"
 ],
 "a": 2,
-"e": "A boolean holds exactly two values, true and false."
+"e": "A boolean holds exactly two values, true and false.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Data types and variables. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (data types)."
 },
 {
 "id": "q5-007",
@@ -102,7 +108,8 @@
 "32"
 ],
 "a": 1,
-"e": "One byte is 8 bits."
+"e": "One byte is 8 bits.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Data types and variables. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (data types)."
 },
 {
 "id": "q5-008",
@@ -117,7 +124,8 @@
 "-256 to 255"
 ],
 "a": 1,
-"e": "Two's complement 8-bit range is -128 to 127."
+"e": "Two's complement 8-bit range is -128 to 127.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Data types and variables. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (data types)."
 },
 {
 "id": "q5-009",
@@ -132,7 +140,8 @@
 "9"
 ],
 "a": 1,
-"e": "i takes 0, 3, 6, 9, so it prints 4 times."
+"e": "i takes 0, 3, 6, 9, so it prints 4 times.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Control structures. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (control statements)."
 },
 {
 "id": "q5-010",
@@ -147,7 +156,8 @@
 "Ends the program"
 ],
 "a": 1,
-"e": "break leaves the nearest enclosing loop."
+"e": "break leaves the nearest enclosing loop.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Control structures. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (control statements)."
 },
 {
 "id": "q5-011",
@@ -162,22 +172,24 @@
 "Static"
 ],
 "a": 1,
-"e": "Recursion means a function calls itself."
+"e": "Recursion means a function calls itself.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Functions and methods. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (functions and methods)."
 },
 {
 "id": "q5-012",
 "s": "PROG",
 "t": "Functions",
 "d": 2,
-"q": "Passing by reference means the function receives:",
+"q": "What does a function receive when an argument is passed by reference?",
 "o": [
-"A copy of the value",
-"The address or alias of the original variable",
-"Only constants",
-"Nothing"
+"A separate copy of the original variable's value",
+"The address or an alias of the original variable",
+"A constant that the function is unable to change",
+"The data type of the variable, without its value"
 ],
 "a": 1,
-"e": "Changes inside the function affect the original variable."
+"e": "Changes inside the function affect the original variable.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Functions and methods. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (functions and methods)."
 },
 {
 "id": "q5-013",
@@ -192,7 +204,9 @@
 "An error"
 ],
 "a": 1,
-"e": "The default list is created once and shared, so both calls return the same list [1, 2]."
+"e": "The default list is created once and shared, so both calls return the same list [1, 2].",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Functions and methods. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (functions and methods).",
+"x": 1
 },
 {
 "id": "q5-014",
@@ -207,37 +221,40 @@
 "Recursion"
 ],
 "a": 1,
-"e": "Encapsulation bundles data with methods and restricts direct access."
+"e": "Encapsulation bundles data with methods and restricts direct access.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism)."
 },
 {
 "id": "q5-015",
 "s": "PROG",
 "t": "OOP",
 "d": 2,
-"q": "Method overriding happens when:",
+"q": "When does method overriding happen?",
 "o": [
-"Two methods in one class share a name with different parameters",
+"A class has two methods with one name but different parameters",
 "A subclass provides its own version of a parent method",
-"A method is declared static",
-"A class has two constructors"
+"A method is declared static so that it belongs to the class",
+"A method calls itself with a smaller version of the problem"
 ],
 "a": 1,
-"e": "Overriding replaces an inherited method in the subclass."
+"e": "Overriding replaces an inherited method in the subclass.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism)."
 },
 {
 "id": "q5-016",
 "s": "PROG",
 "t": "OOP",
 "d": 2,
-"q": "Method overloading means:",
+"q": "What does method overloading mean?",
 "o": [
-"Same method name with different parameter lists",
-"A subclass replacing a method",
-"Calling a method too often",
-"A method with no body"
+"The same method name with different parameter lists",
+"The same method redefined inside a subclass of the class",
+"The same method called many times in a loop",
+"The same method declared without any body"
 ],
 "a": 0,
-"e": "Overloading is compile-time polymorphism by parameter list."
+"e": "Overloading is compile-time polymorphism by parameter list.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism)."
 },
 {
 "id": "q5-017",
@@ -252,7 +269,8 @@
 "None"
 ],
 "a": 0,
-"e": "Java supports single class inheritance. Multiple interfaces can be implemented."
+"e": "Java supports single class inheritance. Multiple interfaces can be implemented.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism)."
 },
 {
 "id": "q5-018",
@@ -267,7 +285,8 @@
 "Overloading"
 ],
 "a": 1,
-"e": "Dynamic dispatch selects the method from the actual object type."
+"e": "Dynamic dispatch selects the method from the actual object type.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism)."
 },
 {
 "id": "q5-019",
@@ -282,7 +301,9 @@
 "A type of loop"
 ],
 "a": 1,
-"e": "Constructors run when an object is created."
+"e": "Constructors run when an object is created.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism).",
+"x": 1
 },
 {
 "id": "q5-020",
@@ -297,7 +318,8 @@
 "\"abc2\""
 ],
 "a": 0,
-"e": "Multiplying a string repeats it."
+"e": "Multiplying a string repeats it.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Strings and text processing. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (strings)."
 },
 {
 "id": "q5-021",
@@ -312,7 +334,8 @@
 "\"kis\""
 ],
 "a": 1,
-"e": "Slicing takes indexes 1, 2 and 3: a, k, i."
+"e": "Slicing takes indexes 1, 2 and 3: a, k, i.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Strings and text processing. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (strings)."
 },
 {
 "id": "q5-022",
@@ -327,7 +350,9 @@
 "Depends on size"
 ],
 "a": 1,
-"e": "Arrays in C, Java and Python start at index 0."
+"e": "Arrays in C, Java and Python start at index 0.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Arrays and collections. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (arrays and collections).",
+"x": 1
 },
 {
 "id": "q5-023",
@@ -342,22 +367,25 @@
 "1"
 ],
 "a": 2,
-"e": "Indexes run from 0 to n-1."
+"e": "Indexes run from 0 to n-1.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Arrays and collections. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (arrays and collections).",
+"x": 1
 },
 {
 "id": "q5-024",
 "s": "PROG",
 "t": "Errors and exceptions",
 "d": 2,
-"q": "Accessing index 10 of a 5-element Java array throws:",
+"q": "What does accessing index 10 of a 5-element Java array throw?",
 "o": [
 "NullPointerException",
 "ArrayIndexOutOfBoundsException",
-"ClassCastException",
-"IOException"
+"IllegalArgumentException",
+"IndexOutOfRangeException"
 ],
 "a": 1,
-"e": "Java checks array bounds at run time."
+"e": "Java checks array bounds at run time.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Exception handling. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (exception handling)."
 },
 {
 "id": "q5-025",
@@ -372,7 +400,9 @@
 "Runs before try"
 ],
 "a": 1,
-"e": "finally is used for clean-up that must always happen."
+"e": "finally is used for clean-up that must always happen.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Exception handling. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (exception handling).",
+"x": 1
 },
 {
 "id": "q5-026",
@@ -387,22 +417,25 @@
 "Nothing, it is automatic"
 ],
 "a": 1,
-"e": "malloc and free are paired in C."
+"e": "malloc and free are paired in C.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Memory management. Further reading: Kernighan and Ritchie, The C Programming Language (pointers and dynamic memory).",
+"x": 1
 },
 {
 "id": "q5-027",
 "s": "PROG",
 "t": "Memory management",
 "d": 3,
-"q": "A memory leak happens when:",
+"q": "When does a memory leak happen?",
 "o": [
-"A program reads freed memory",
+"Freed memory is read again by the program",
 "Allocated memory is never released after use",
-"The stack overflows",
-"A pointer is set to NULL"
+"The stack grows past the limit of its size",
+"A pointer is set to NULL before it is used"
 ],
 "a": 1,
-"e": "Leaked memory stays reserved and cannot be reused."
+"e": "Leaked memory stays reserved and cannot be reused.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Memory management. Further reading: Kernighan and Ritchie, The C Programming Language (pointers and dynamic memory)."
 },
 {
 "id": "q5-028",
@@ -411,13 +444,14 @@
 "d": 2,
 "q": "In C, what does the & operator do before a variable name?",
 "o": [
-"Logical AND",
+"Gives the value that a pointer points to",
 "Gives the address of the variable",
-"Dereferences a pointer",
-"Declares a reference"
+"Declares the variable as a reference",
+"Performs a logical AND with the variable"
 ],
 "a": 1,
-"e": "&x is the address of x."
+"e": "&x is the address of x.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q5-029",
@@ -432,7 +466,8 @@
 "A compile error"
 ],
 "a": 1,
-"e": "* dereferences the pointer to get the value."
+"e": "* dereferences the pointer to get the value.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q5-030",
@@ -447,7 +482,8 @@
 "0"
 ],
 "a": 1,
-"e": "y and x name the same list, so x now has 4 items."
+"e": "y and x name the same list, so x now has 4 items.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q5-031",
@@ -462,7 +498,8 @@
 "Their hash codes"
 ],
 "a": 1,
-"e": "Use equals() to compare string contents."
+"e": "Use equals() to compare string contents.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes and objects in Java)."
 },
 {
 "id": "q5-032",
@@ -477,7 +514,8 @@
 "O(log n)"
 ],
 "a": 2,
-"e": "n iterations inside n iterations is n x n."
+"e": "n iterations inside n iterations is n x n.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-033",
@@ -492,7 +530,8 @@
 "sqrt(n) times"
 ],
 "a": 1,
-"e": "Doubling reaches n after log2 n steps."
+"e": "Doubling reaches n after log2 n steps.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-034",
@@ -507,7 +546,8 @@
 "Stored in a linked list"
 ],
 "a": 1,
-"e": "Binary search halves a sorted range."
+"e": "Binary search halves a sorted range.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Searching algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees)."
 },
 {
 "id": "q5-035",
@@ -522,14 +562,15 @@
 "1024"
 ],
 "a": 1,
-"e": "log2(1024) = 10, plus one final check gives about 11."
+"e": "log2(1024) = 10, plus one final check gives about 11.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Searching algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees)."
 },
 {
 "id": "q5-036",
 "s": "DSA",
 "t": "Searching",
 "d": 1,
-"q": "Linear search worst-case time is:",
+"q": "What is the worst-case time of linear search?",
 "o": [
 "O(1)",
 "O(log n)",
@@ -537,7 +578,8 @@
 "O(n^2)"
 ],
 "a": 2,
-"e": "It may check every element."
+"e": "It may check every element.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Searching algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees)."
 },
 {
 "id": "q5-037",
@@ -552,7 +594,8 @@
 "Insertion sort"
 ],
 "a": 1,
-"e": "Merge sort is always O(n log n). Quick sort can degrade to O(n^2)."
+"e": "Merge sort is always O(n log n). Quick sort can degrade to O(n^2).",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Sorting algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (sorting and order statistics)."
 },
 {
 "id": "q5-038",
@@ -567,7 +610,8 @@
 "Quick sort with first pivot"
 ],
 "a": 1,
-"e": "Insertion sort runs in near O(n) on nearly sorted input."
+"e": "Insertion sort runs in near O(n) on nearly sorted input.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Sorting algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (sorting and order statistics)."
 },
 {
 "id": "q5-039",
@@ -582,7 +626,9 @@
 "Works only on numbers"
 ],
 "a": 1,
-"e": "Stability preserves the order of equal keys."
+"e": "Stability preserves the order of equal keys.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Sorting algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (sorting and order statistics).",
+"x": 1
 },
 {
 "id": "q5-040",
@@ -597,7 +643,8 @@
 "Unchanged"
 ],
 "a": 1,
-"e": "Each pass bubbles the largest remaining element to the end."
+"e": "Each pass bubbles the largest remaining element to the end.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Sorting algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (sorting and order statistics)."
 },
 {
 "id": "q5-041",
@@ -612,7 +659,8 @@
 "Empty"
 ],
 "a": 0,
-"e": "Pops remove 3 then 2, leaving 1."
+"e": "Pops remove 3 then 2, leaving 1.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Linear data structures. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary data structures)."
 },
 {
 "id": "q5-042",
@@ -627,7 +675,8 @@
 "Graph"
 ],
 "a": 1,
-"e": "The call stack stores return addresses and local variables."
+"e": "The call stack stores return addresses and local variables.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Linear data structures. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary data structures)."
 },
 {
 "id": "q5-043",
@@ -642,7 +691,8 @@
 "A + B C *"
 ],
 "a": 1,
-"e": "Evaluate A + B first, then multiply by C."
+"e": "Evaluate A + B first, then multiply by C.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Linear data structures. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary data structures)."
 },
 {
 "id": "q5-044",
@@ -657,7 +707,8 @@
 "O(n^2)"
 ],
 "a": 0,
-"e": "Only the head pointer changes."
+"e": "Only the head pointer changes.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Linear data structures. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary data structures)."
 },
 {
 "id": "q5-045",
@@ -672,7 +723,8 @@
 "O(k^2)"
 ],
 "a": 1,
-"e": "You must walk k nodes from the head."
+"e": "You must walk k nodes from the head.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Linear data structures. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary data structures)."
 },
 {
 "id": "q5-046",
@@ -687,7 +739,8 @@
 "Any number"
 ],
 "a": 1,
-"e": "Binary means at most two children."
+"e": "Binary means at most two children.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q5-047",
@@ -702,7 +755,8 @@
 "Level order"
 ],
 "a": 1,
-"e": "Left, root, right visits keys in ascending order."
+"e": "Left, root, right visits keys in ascending order.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q5-048",
@@ -717,7 +771,8 @@
 "16"
 ],
 "a": 2,
-"e": "2^(h+1) - 1 = 2^4 - 1 = 15."
+"e": "2^(h+1) - 1 = 2^4 - 1 = 15.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q5-049",
@@ -732,7 +787,8 @@
 "O(n log n)"
 ],
 "a": 2,
-"e": "Sorted inserts create a chain like a linked list."
+"e": "Sorted inserts create a chain like a linked list.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q5-050",
@@ -747,7 +803,8 @@
 "Level order only"
 ],
 "a": 1,
-"e": "Pre-order is root, left, right."
+"e": "Pre-order is root, left, right.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q5-051",
@@ -762,7 +819,8 @@
 "Any position"
 ],
 "a": 1,
-"e": "The heap property keeps the maximum at the root."
+"e": "The heap property keeps the maximum at the root.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Non-linear data structures. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (heapsort and priority queues)."
 },
 {
 "id": "q5-052",
@@ -777,7 +835,8 @@
 "O(n^2)"
 ],
 "a": 0,
-"e": "A good hash spreads keys so lookups are constant time on average."
+"e": "A good hash spreads keys so lookups are constant time on average.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Hashing. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (hash tables)."
 },
 {
 "id": "q5-053",
@@ -792,7 +851,8 @@
 "Rotation"
 ],
 "a": 1,
-"e": "Collisions are handled by chaining or open addressing."
+"e": "Collisions are handled by chaining or open addressing.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Hashing. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (hash tables)."
 },
 {
 "id": "q5-054",
@@ -807,22 +867,24 @@
 "Tree"
 ],
 "a": 1,
-"e": "Breadth-first search explores level by level with a queue."
+"e": "Breadth-first search explores level by level with a queue.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Graph algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary graph algorithms and shortest paths)."
 },
 {
 "id": "q5-055",
 "s": "DSA",
 "t": "Graphs",
 "d": 2,
-"q": "DFS can be implemented with:",
+"q": "How can DFS be implemented?",
 "o": [
-"A queue",
-"A stack or recursion",
-"A heap only",
-"A hash table only"
+"With a queue",
+"With a stack or recursion",
+"With a min-heap",
+"With a hash table of visited nodes"
 ],
 "a": 1,
-"e": "Depth-first search goes deep using a stack."
+"e": "Depth-first search goes deep using a stack.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Graph algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary graph algorithms and shortest paths)."
 },
 {
 "id": "q5-056",
@@ -837,7 +899,9 @@
 "Undirected edges"
 ],
 "a": 1,
-"e": "Negative weights break its greedy choice. Use Bellman-Ford instead."
+"e": "Negative weights break its greedy choice. Use Bellman-Ford instead.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Graph algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary graph algorithms and shortest paths).",
+"x": 1
 },
 {
 "id": "q5-057",
@@ -852,14 +916,16 @@
 "2n"
 ],
 "a": 1,
-"e": "A connected acyclic graph with n nodes has n-1 edges."
+"e": "A connected acyclic graph with n nodes has n-1 edges.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Graph algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary graph algorithms and shortest paths).",
+"x": 1
 },
 {
 "id": "q5-058",
 "s": "DSA",
 "t": "Algorithm design",
 "d": 2,
-"q": "Merge sort is an example of:",
+"q": "Merge sort is an example of which design technique?",
 "o": [
 "Greedy",
 "Divide and conquer",
@@ -867,22 +933,24 @@
 "Backtracking"
 ],
 "a": 1,
-"e": "It splits the problem, solves halves and merges."
+"e": "It splits the problem, solves halves and merges.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Algorithm design techniques. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (divide-and-conquer, greedy algorithms and dynamic programming)."
 },
 {
 "id": "q5-059",
 "s": "DSA",
 "t": "Algorithm design",
 "d": 3,
-"q": "Dynamic programming is useful when a problem has:",
+"q": "When is dynamic programming useful?",
 "o": [
-"No sub-problems",
-"Overlapping sub-problems and optimal substructure",
-"Only one solution",
-"Random inputs"
+"The problem has independent sub-problems of equal size",
+"The problem has overlapping sub-problems and optimal substructure",
+"The problem can be solved by always taking the best local choice",
+"The problem needs every possible solution to be listed"
 ],
 "a": 1,
-"e": "DP stores sub-problem answers to avoid recomputation."
+"e": "DP stores sub-problem answers to avoid recomputation.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Algorithm design techniques. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (divide-and-conquer, greedy algorithms and dynamic programming)."
 },
 {
 "id": "q5-060",
@@ -897,7 +965,8 @@
 "A pointer"
 ],
 "a": 1,
-"e": "Without a base case, recursion never ends."
+"e": "Without a base case, recursion never ends.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Foundations of data structures and algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (divide-and-conquer and recurrences)."
 },
 {
 "id": "q5-061",
@@ -912,37 +981,40 @@
 "O(n^2)"
 ],
 "a": 2,
-"e": "Each call branches into two more calls."
+"e": "Each call branches into two more calls.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Foundations of data structures and algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (divide-and-conquer and recurrences)."
 },
 {
 "id": "q5-062",
 "s": "DB",
 "t": "SQL",
 "d": 2,
-"q": "COUNT(*) counts:",
+"q": "What does COUNT(*) count?",
 "o": [
-"Only non-null values",
-"All rows",
-"Distinct rows",
-"Columns"
+"Only rows with no NULL in any column",
+"All rows, including rows with NULLs",
+"Only the distinct rows of the result",
+"All columns that the table contains"
 ],
 "a": 1,
-"e": "COUNT(*) counts every row, including those with nulls."
+"e": "COUNT(*) counts every row, including those with nulls.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q5-063",
 "s": "DB",
 "t": "SQL",
 "d": 2,
-"q": "To sort results from highest to lowest salary you use:",
+"q": "Which clause sorts results from the highest to the lowest salary?",
 "o": [
 "ORDER BY salary ASC",
 "ORDER BY salary DESC",
-"SORT salary DOWN",
-"GROUP BY salary"
+"GROUP BY salary DESC",
+"SORT BY salary DESC"
 ],
 "a": 1,
-"e": "DESC sorts in descending order."
+"e": "DESC sorts in descending order.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q5-064",
@@ -957,7 +1029,8 @@
 "REMOVE ROWS"
 ],
 "a": 1,
-"e": "TRUNCATE empties the table quickly and keeps its definition."
+"e": "TRUNCATE empties the table quickly and keeps its definition.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q5-065",
@@ -966,13 +1039,14 @@
 "d": 3,
 "q": "What does SELECT name FROM students WHERE marks BETWEEN 50 AND 60 include?",
 "o": [
-"Marks from 51 to 59",
+"Marks from 51 to 59 only, exclusive",
 "Marks from 50 to 60 inclusive",
-"Marks below 50",
-"Only 50 and 60"
+"Marks from 50 to 59 only",
+"Marks from 51 to 60 only"
 ],
 "a": 1,
-"e": "BETWEEN is inclusive at both ends."
+"e": "BETWEEN is inclusive at both ends.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q5-066",
@@ -987,7 +1061,8 @@
 "?"
 ],
 "a": 1,
-"e": "% matches zero or more characters. _ matches exactly one."
+"e": "% matches zero or more characters. _ matches exactly one.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q5-067",
@@ -1002,22 +1077,25 @@
 "ISNULL = col"
 ],
 "a": 1,
-"e": "NULL is not equal to anything, so use IS NULL."
+"e": "NULL is not equal to anything, so use IS NULL.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL).",
+"x": 1
 },
 {
 "id": "q5-068",
 "s": "DB",
 "t": "Keys",
 "d": 3,
-"q": "A candidate key is:",
+"q": "What is a candidate key?",
 "o": [
-"Any column",
-"A minimal set of columns that can uniquely identify rows",
-"Always the first column",
-"A key that allows duplicates"
+"Any set of columns, minimal or not, that uniquely identifies rows",
+"A minimal set of columns that uniquely identifies rows",
+"A column that refers to the key of another table",
+"A generated number that is added to each new row"
 ],
 "a": 1,
-"e": "One candidate key is chosen as the primary key."
+"e": "One candidate key is chosen as the primary key.",
+"r": "NSCT area: Databases, sub-area: Relational database concepts. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to the relational model)."
 },
 {
 "id": "q5-069",
@@ -1032,7 +1110,9 @@
 "It has fewer than 10 columns"
 ],
 "a": 1,
-"e": "First normal form removes repeating groups and multi-valued cells."
+"e": "First normal form removes repeating groups and multi-valued cells.",
+"r": "NSCT area: Databases, sub-area: Database design and normalization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (relational database design).",
+"x": 1
 },
 {
 "id": "q5-070",
@@ -1047,7 +1127,9 @@
 "Null values"
 ],
 "a": 1,
-"e": "Every non-key column must depend on the whole key."
+"e": "Every non-key column must depend on the whole key.",
+"r": "NSCT area: Databases, sub-area: Database design and normalization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (relational database design).",
+"x": 1
 },
 {
 "id": "q5-071",
@@ -1062,7 +1144,9 @@
 "Indexes"
 ],
 "a": 1,
-"e": "Non-key columns must depend only on the key."
+"e": "Non-key columns must depend only on the key.",
+"r": "NSCT area: Databases, sub-area: Database design and normalization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (relational database design).",
+"x": 1
 },
 {
 "id": "q5-072",
@@ -1077,7 +1161,9 @@
 "Authorisation"
 ],
 "a": 1,
-"e": "Atomicity means all or nothing."
+"e": "Atomicity means all or nothing.",
+"r": "NSCT area: Databases, sub-area: Transaction management. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (transactions).",
+"x": 1
 },
 {
 "id": "q5-073",
@@ -1092,7 +1178,9 @@
 "Encrypted data"
 ],
 "a": 1,
-"e": "If the other transaction rolls back, the read value never existed."
+"e": "If the other transaction rolls back, the read value never existed.",
+"r": "NSCT area: Databases, sub-area: Transaction management. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (transactions).",
+"x": 1
 },
 {
 "id": "q5-074",
@@ -1107,7 +1195,9 @@
 "Schema changes"
 ],
 "a": 1,
-"e": "Indexes speed reads but add cost to writes."
+"e": "Indexes speed reads but add cost to writes.",
+"r": "NSCT area: Databases, sub-area: Indexing and file organization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (indexing).",
+"x": 1
 },
 {
 "id": "q5-075",
@@ -1122,7 +1212,8 @@
 "Recursive"
 ],
 "a": 2,
-"e": "Both sides have many, so a junction table is needed."
+"e": "Both sides have many, so a junction table is needed.",
+"r": "NSCT area: Databases, sub-area: Data models. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (database design using the E-R model)."
 },
 {
 "id": "q5-076",
@@ -1137,7 +1228,9 @@
 "Key-value pairs only"
 ],
 "a": 1,
-"e": "MongoDB is a document database."
+"e": "MongoDB is a document database.",
+"r": "NSCT area: Databases, sub-area: NoSQL databases. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (big data and NoSQL storage).",
+"x": 1
 },
 {
 "id": "q5-077",
@@ -1152,7 +1245,9 @@
 "Caching, Auditing, Privacy"
 ],
 "a": 0,
-"e": "During a network partition you must choose consistency or availability."
+"e": "During a network partition you must choose consistency or availability.",
+"r": "NSCT area: Databases, sub-area: NoSQL databases. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (big data and NoSQL storage).",
+"x": 1
 },
 {
 "id": "q5-078",
@@ -1167,7 +1262,9 @@
 "Maintenance"
 ],
 "a": 1,
-"e": "You must know what to build before designing it."
+"e": "You must know what to build before designing it.",
+"r": "NSCT area: Software Engineering, sub-area: Software process models. Further reading: Sommerville, Software Engineering (software processes).",
+"x": 1
 },
 {
 "id": "q5-079",
@@ -1182,7 +1279,9 @@
 "The team is very small"
 ],
 "a": 1,
-"e": "Waterfall moves through fixed phases in order."
+"e": "Waterfall moves through fixed phases in order.",
+"r": "NSCT area: Software Engineering, sub-area: Software process models. Further reading: Sommerville, Software Engineering (software processes).",
+"x": 1
 },
 {
 "id": "q5-080",
@@ -1197,7 +1296,8 @@
 "Release"
 ],
 "a": 1,
-"e": "Sprints usually last 1 to 4 weeks."
+"e": "Sprints usually last 1 to 4 weeks.",
+"r": "NSCT area: Software Engineering, sub-area: Agile software development. Further reading: The Scrum Guide (scrumguides.org) (roles, events and artifacts)."
 },
 {
 "id": "q5-081",
@@ -1212,37 +1312,41 @@
 "The CEO"
 ],
 "a": 1,
-"e": "The Product Owner owns and orders the backlog."
+"e": "The Product Owner owns and orders the backlog.",
+"r": "NSCT area: Software Engineering, sub-area: Agile software development. Further reading: The Scrum Guide (scrumguides.org) (roles, events and artifacts).",
+"x": 1
 },
 {
 "id": "q5-082",
 "s": "SE",
 "t": "Agile",
 "d": 2,
-"q": "The daily stand-up in Scrum is mainly for:",
+"q": "What is the daily stand-up in Scrum mainly for?",
 "o": [
-"Detailed design",
-"Syncing progress and blockers",
-"Performance reviews",
-"Client billing"
+"Reviewing the detailed design",
+"Syncing on progress and blockers",
+"Demonstrating finished features",
+"Estimating the backlog items"
 ],
 "a": 1,
-"e": "It is a short daily team sync."
+"e": "It is a short daily team sync.",
+"r": "NSCT area: Software Engineering, sub-area: Agile software development. Further reading: The Scrum Guide (scrumguides.org) (roles, events and artifacts)."
 },
 {
 "id": "q5-083",
 "s": "SE",
 "t": "Agile",
 "d": 2,
-"q": "A user story usually follows the format:",
+"q": "Which format does a user story usually follow?",
 "o": [
 "As a [role], I want [goal], so that [benefit]",
-"Input, Process, Output",
-"Given, When, Then only",
-"Problem, Cause, Fix"
+"Given [context], when [event], then [result]",
+"Input [data], process [steps], output [result]",
+"Actor [name], action [steps], system [response]"
 ],
 "a": 0,
-"e": "User stories describe value from the user's view."
+"e": "User stories describe value from the user's view.",
+"r": "NSCT area: Software Engineering, sub-area: Agile software development. Further reading: The Scrum Guide (scrumguides.org) (roles, events and artifacts)."
 },
 {
 "id": "q5-084",
@@ -1257,7 +1361,9 @@
 "Test case"
 ],
 "a": 1,
-"e": "It describes a quality (performance), not a function."
+"e": "It describes a quality (performance), not a function.",
+"r": "NSCT area: Software Engineering, sub-area: Requirements engineering. Further reading: Sommerville, Software Engineering (requirements engineering).",
+"x": 1
 },
 {
 "id": "q5-085",
@@ -1272,7 +1378,9 @@
 "Risk"
 ],
 "a": 0,
-"e": "It describes something the system does."
+"e": "It describes something the system does.",
+"r": "NSCT area: Software Engineering, sub-area: Requirements engineering. Further reading: Sommerville, Software Engineering (requirements engineering).",
+"x": 1
 },
 {
 "id": "q5-086",
@@ -1287,7 +1395,8 @@
 "Load testing"
 ],
 "a": 1,
-"e": "Unit tests check the smallest testable parts."
+"e": "Unit tests check the smallest testable parts.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing)."
 },
 {
 "id": "q5-087",
@@ -1302,7 +1411,9 @@
 "Compiler output"
 ],
 "a": 1,
-"e": "The tester does not look at the code."
+"e": "The tester does not look at the code.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing).",
+"x": 1
 },
 {
 "id": "q5-088",
@@ -1317,7 +1428,9 @@
 "Users accept the system"
 ],
 "a": 1,
-"e": "It catches features broken by new changes."
+"e": "It catches features broken by new changes.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing).",
+"x": 1
 },
 {
 "id": "q5-089",
@@ -1332,7 +1445,9 @@
 "Only 0"
 ],
 "a": 1,
-"e": "Bugs cluster at the edges of valid ranges."
+"e": "Bugs cluster at the edges of valid ranges.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing).",
+"x": 1
 },
 {
 "id": "q5-090",
@@ -1347,52 +1462,57 @@
 "The database admin"
 ],
 "a": 1,
-"e": "It confirms the system meets business needs."
+"e": "It confirms the system meets business needs.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing).",
+"x": 1
 },
 {
 "id": "q5-091",
 "s": "SE",
 "t": "Design",
 "d": 2,
-"q": "High cohesion and low coupling means:",
+"q": "What do high cohesion and low coupling mean?",
 "o": [
-"Modules do many unrelated things and depend heavily on each other",
+"Each module does many jobs and has few dependencies",
 "Each module has one focused job and few dependencies",
-"All code is in one file",
-"No modules exist"
+"Each module has one focused job and many dependencies",
+"Each module shares its data with every other module"
 ],
 "a": 1,
-"e": "This makes systems easier to change and test."
+"e": "This makes systems easier to change and test.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Sommerville, Software Engineering (design and implementation)."
 },
 {
 "id": "q5-092",
 "s": "SE",
 "t": "Design",
 "d": 2,
-"q": "The Singleton pattern ensures:",
+"q": "What does the Singleton pattern ensure?",
 "o": [
-"Many instances of a class",
+"Each subclass creates its own objects",
 "Only one instance of a class exists",
-"A class has no methods",
-"Classes cannot inherit"
+"Objects are copied from a prototype",
+"A class cannot have any subclasses"
 ],
 "a": 1,
-"e": "Used for shared resources like a configuration object."
+"e": "Used for shared resources like a configuration object.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Sommerville, Software Engineering (design and implementation)."
 },
 {
 "id": "q5-093",
 "s": "SE",
 "t": "Design",
 "d": 3,
-"q": "The Observer pattern is used when:",
+"q": "When is the Observer pattern used?",
 "o": [
-"One object must notify many dependents of a change",
-"Objects must be copied",
-"Only one instance is allowed",
-"Algorithms must be swapped at compile time"
+"When one object must notify many dependents of a change",
+"When an object must be built step by step from parts",
+"When an algorithm must be swapped while the program runs",
+"When a class must be limited to one shared instance"
 ],
 "a": 0,
-"e": "Subscribers are notified automatically on change."
+"e": "Subscribers are notified automatically on change.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Sommerville, Software Engineering (design and implementation)."
 },
 {
 "id": "q5-094",
@@ -1407,7 +1527,8 @@
 "Activity diagram"
 ],
 "a": 1,
-"e": "Class diagrams show attributes, methods and associations."
+"e": "Class diagrams show attributes, methods and associations.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Fowler, UML Distilled (class, sequence and state diagrams)."
 },
 {
 "id": "q5-095",
@@ -1422,7 +1543,8 @@
 "Deployment diagram"
 ],
 "a": 1,
-"e": "Sequence diagrams have lifelines and ordered messages."
+"e": "Sequence diagrams have lifelines and ordered messages.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Fowler, UML Distilled (class, sequence and state diagrams)."
 },
 {
 "id": "q5-096",
@@ -1437,7 +1559,9 @@
 "git pull"
 ],
 "a": 1,
-"e": "git commit saves a snapshot locally."
+"e": "git commit saves a snapshot locally.",
+"r": "NSCT area: Software Engineering, sub-area: Software configuration management. Further reading: Chacon and Straub, Pro Git (git-scm.com/book) (Git basics and branching).",
+"x": 1
 },
 {
 "id": "q5-097",
@@ -1452,22 +1576,24 @@
 "git init"
 ],
 "a": 0,
-"e": "git push sends commits to the remote."
+"e": "git push sends commits to the remote.",
+"r": "NSCT area: Software Engineering, sub-area: Software configuration management. Further reading: Chacon and Straub, Pro Git (git-scm.com/book) (Git basics and branching)."
 },
 {
 "id": "q5-098",
 "s": "SE",
 "t": "Version control",
 "d": 2,
-"q": "A merge conflict happens when:",
+"q": "When does a merge conflict happen in Git?",
 "o": [
-"Two branches change the same lines differently",
-"A repository is deleted",
-"Git is offline",
-"A commit message is empty"
+"When two branches change the same lines differently",
+"When two branches have the same name on the remote",
+"When a commit is pushed without a commit message",
+"When a branch is deleted before it has been merged"
 ],
 "a": 0,
-"e": "Git cannot decide which change to keep."
+"e": "Git cannot decide which change to keep.",
+"r": "NSCT area: Software Engineering, sub-area: Software configuration management. Further reading: Chacon and Straub, Pro Git (git-scm.com/book) (Git basics and branching)."
 },
 {
 "id": "q5-099",
@@ -1482,7 +1608,8 @@
 "<url>"
 ],
 "a": 1,
-"e": "<a href=\"...\"> creates a clickable link."
+"e": "<a href=\"...\"> creates a clickable link.",
+"r": "NSCT area: Web Development, sub-area: HTML. Further reading: MDN Web Docs (developer.mozilla.org) (HTML)."
 },
 {
 "id": "q5-100",
@@ -1497,7 +1624,8 @@
 "<heading>"
 ],
 "a": 1,
-"e": "h1 is the top-level heading."
+"e": "h1 is the top-level heading.",
+"r": "NSCT area: Web Development, sub-area: HTML. Further reading: MDN Web Docs (developer.mozilla.org) (HTML)."
 },
 {
 "id": "q5-101",
@@ -1512,7 +1640,8 @@
 "name"
 ],
 "a": 1,
-"e": "alt text helps screen readers and shows if the image fails."
+"e": "alt text helps screen readers and shows if the image fails.",
+"r": "NSCT area: Web Development, sub-area: HTML. Further reading: MDN Web Docs (developer.mozilla.org) (HTML)."
 },
 {
 "id": "q5-102",
@@ -1527,7 +1656,8 @@
 "secret"
 ],
 "a": 2,
-"e": "type=\"password\" masks the input."
+"e": "type=\"password\" masks the input.",
+"r": "NSCT area: Web Development, sub-area: HTML. Further reading: MDN Web Docs (developer.mozilla.org) (HTML)."
 },
 {
 "id": "q5-103",
@@ -1542,7 +1672,8 @@
 "<div>"
 ],
 "a": 1,
-"e": "fieldset with legend groups form controls."
+"e": "fieldset with legend groups form controls.",
+"r": "NSCT area: Web Development, sub-area: HTML. Further reading: MDN Web Docs (developer.mozilla.org) (HTML)."
 },
 {
 "id": "q5-104",
@@ -1557,7 +1688,9 @@
 "*main"
 ],
 "a": 1,
-"e": "# selects by id. . selects by class."
+"e": "# selects by id. . selects by class.",
+"r": "NSCT area: Web Development, sub-area: CSS. Further reading: MDN Web Docs (developer.mozilla.org) (CSS).",
+"x": 1
 },
 {
 "id": "q5-105",
@@ -1572,22 +1705,24 @@
 "Content"
 ],
 "a": 2,
-"e": "Content, padding, border, then margin."
+"e": "Content, padding, border, then margin.",
+"r": "NSCT area: Web Development, sub-area: CSS. Further reading: MDN Web Docs (developer.mozilla.org) (CSS)."
 },
 {
 "id": "q5-106",
 "s": "WEB",
 "t": "CSS",
 "d": 2,
-"q": "display: flex is used to:",
+"q": "What is display: flex used for?",
 "o": [
-"Hide an element",
-"Lay out children in a row or column with flexible sizing",
-"Add animation",
-"Load fonts"
+"Placing children in a two-dimensional grid of rows and columns",
+"Laying out children in a row or column with flexible sizing",
+"Taking an element out of the flow and fixing it to the viewport",
+"Letting text wrap around an element that floats to one side"
 ],
 "a": 1,
-"e": "Flexbox arranges items along one axis."
+"e": "Flexbox arranges items along one axis.",
+"r": "NSCT area: Web Development, sub-area: CSS. Further reading: MDN Web Docs (developer.mozilla.org) (CSS)."
 },
 {
 "id": "q5-107",
@@ -1602,7 +1737,9 @@
 "static"
 ],
 "a": 2,
-"e": "const cannot be reassigned. let can."
+"e": "const cannot be reassigned. let can.",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide).",
+"x": 1
 },
 {
 "id": "q5-108",
@@ -1617,7 +1754,8 @@
 "\"number\""
 ],
 "a": 1,
-"e": "A long-standing quirk: typeof null is \"object\"."
+"e": "A long-standing quirk: typeof null is \"object\".",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q5-109",
@@ -1632,7 +1770,8 @@
 "An error"
 ],
 "a": 1,
-"e": "The number is converted to a string and joined."
+"e": "The number is converted to a string and joined.",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q5-110",
@@ -1647,14 +1786,16 @@
 "Reference only for numbers"
 ],
 "a": 1,
-"e": "Strict equality does not convert types."
+"e": "Strict equality does not convert types.",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide).",
+"x": 1
 },
 {
 "id": "q5-111",
 "s": "WEB",
 "t": "JavaScript",
 "d": 3,
-"q": "What is logged? console.log([1, 2, 3].map(x => x * 2))",
+"q": "What does this JavaScript log? console.log([1, 2, 3].map(x => x * 2))",
 "o": [
 "[1, 2, 3]",
 "[2, 4, 6]",
@@ -1662,7 +1803,8 @@
 "[1, 4, 9]"
 ],
 "a": 1,
-"e": "map doubles each element."
+"e": "map doubles each element.",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q5-112",
@@ -1677,22 +1819,24 @@
 "unshift()"
 ],
 "a": 1,
-"e": "push appends. pop removes from the end."
+"e": "push appends. pop removes from the end.",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q5-113",
 "s": "WEB",
 "t": "JavaScript",
 "d": 3,
-"q": "A Promise in JavaScript represents:",
+"q": "What does a Promise represent in JavaScript?",
 "o": [
-"A loop",
+"A function that runs again at a fixed interval",
 "A value that may be available now, later or never",
-"A CSS rule",
-"A database row"
+"A variable that cannot be assigned a new value",
+"A copy of an object that is frozen against change"
 ],
 "a": 1,
-"e": "Promises handle asynchronous results."
+"e": "Promises handle asynchronous results.",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q5-114",
@@ -1707,52 +1851,56 @@
 "TRACE"
 ],
 "a": 1,
-"e": "POST sends data in the request body."
+"e": "POST sends data in the request body.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP)."
 },
 {
 "id": "q5-115",
 "s": "WEB",
 "t": "HTTP",
 "d": 2,
-"q": "HTTP status 404 means:",
+"q": "What does HTTP status 404 mean?",
 "o": [
-"Server error",
-"Not found",
-"Unauthorised",
-"OK"
+"Forbidden",
+"Not Found",
+"Bad Request",
+"Unauthorized"
 ],
 "a": 1,
-"e": "The requested resource does not exist."
+"e": "The requested resource does not exist.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP)."
 },
 {
 "id": "q5-116",
 "s": "WEB",
 "t": "HTTP",
 "d": 2,
-"q": "HTTP status 500 means:",
+"q": "What does HTTP status 500 mean?",
 "o": [
-"Not found",
+"Service unavailable",
 "Internal server error",
-"Redirect",
-"Bad request"
+"Bad gateway reply",
+"Request timed out"
 ],
 "a": 1,
-"e": "5xx codes mean the server failed."
+"e": "5xx codes mean the server failed.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP)."
 },
 {
 "id": "q5-117",
 "s": "WEB",
 "t": "HTTP",
 "d": 2,
-"q": "HTTP status 401 means:",
+"q": "What does HTTP status 401 mean?",
 "o": [
-"Forbidden",
-"Unauthorised (authentication needed)",
-"Not found",
-"Created"
+"Forbidden (authenticated, not allowed)",
+"Unauthorized (authentication needed)",
+"Not Found (resource does not exist)",
+"Bad Request (malformed request syntax)"
 ],
 "a": 1,
-"e": "The client must authenticate."
+"e": "The client must authenticate.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP)."
 },
 {
 "id": "q5-118",
@@ -1767,7 +1915,9 @@
 "DNS"
 ],
 "a": 1,
-"e": "TLS encrypts and authenticates the connection."
+"e": "TLS encrypts and authenticates the connection.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP).",
+"x": 1
 },
 {
 "id": "q5-119",
@@ -1782,22 +1932,24 @@
 "PATCH"
 ],
 "a": 2,
-"e": "DELETE removes the resource at the URL."
+"e": "DELETE removes the resource at the URL.",
+"r": "NSCT area: Web Development, sub-area: Web APIs. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP and Web APIs)."
 },
 {
 "id": "q5-120",
 "s": "WEB",
 "t": "Security",
 "d": 2,
-"q": "Cross-Site Scripting (XSS) happens when:",
+"q": "When does cross-site scripting (XSS) happen?",
 "o": [
-"A database is deleted",
+"Untrusted input is placed into a SQL query, so the query changes",
 "Untrusted input is shown on a page without escaping, so scripts run",
-"A server runs out of memory",
-"Passwords are hashed"
+"A logged-in user's browser is tricked into sending a forged request",
+"A page is loaded inside a hidden frame, so clicks are hijacked"
 ],
 "a": 1,
-"e": "Escape output and use a Content Security Policy."
+"e": "Escape output and use a Content Security Policy.",
+"r": "NSCT area: Web Development, sub-area: Web security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q5-121",
@@ -1806,13 +1958,14 @@
 "d": 2,
 "q": "Which practice improves web accessibility?",
 "o": [
-"Using only colour to show errors",
-"Adding alt text and labels to form fields",
-"Disabling keyboard navigation",
-"Using tiny fonts"
+"Using colour alone to show which fields have errors",
+"Adding alt text to images and labels to form fields",
+"Replacing text headings with images of the headings",
+"Removing focus outlines so the design looks cleaner"
 ],
 "a": 1,
-"e": "Screen readers rely on labels and alt text."
+"e": "Screen readers rely on labels and alt text.",
+"r": "NSCT area: Web Development, sub-area: Modern web development practices. Further reading: MDN Web Docs (developer.mozilla.org) (accessibility)."
 },
 {
 "id": "q5-122",
@@ -1827,7 +1980,8 @@
 "Layer 7"
 ],
 "a": 2,
-"e": "Routers forward packets using IP addresses at the network layer."
+"e": "Routers forward packets using IP addresses at the network layer.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Computer networks. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (protocol layers and service models)."
 },
 {
 "id": "q5-123",
@@ -1842,7 +1996,8 @@
 "Application"
 ],
 "a": 1,
-"e": "Switches forward frames using MAC addresses."
+"e": "Switches forward frames using MAC addresses.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Computer networks. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (protocol layers and service models)."
 },
 {
 "id": "q5-124",
@@ -1857,7 +2012,8 @@
 "SMTP"
 ],
 "a": 1,
-"e": "UDP has low overhead and no retransmission delays."
+"e": "UDP has low overhead and no retransmission delays.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Transport layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (transport layer)."
 },
 {
 "id": "q5-125",
@@ -1872,22 +2028,25 @@
 "443"
 ],
 "a": 2,
-"e": "HTTP uses 80 and HTTPS uses 443."
+"e": "HTTP uses 80 and HTTPS uses 443.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Application layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (application layer).",
+"x": 1
 },
 {
 "id": "q5-126",
 "s": "NET",
 "t": "Application layer",
 "d": 2,
-"q": "The default port for HTTPS is:",
+"q": "What is the default port for HTTPS?",
 "o": [
 "80",
 "443",
-"8080",
+"8443",
 "22"
 ],
 "a": 1,
-"e": "HTTPS runs on 443."
+"e": "HTTPS runs on 443.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Application layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (application layer)."
 },
 {
 "id": "q5-127",
@@ -1902,7 +2061,8 @@
 "25"
 ],
 "a": 1,
-"e": "SSH listens on port 22."
+"e": "SSH listens on port 22.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Application layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (application layer)."
 },
 {
 "id": "q5-128",
@@ -1917,7 +2077,9 @@
 "Emails to web pages"
 ],
 "a": 1,
-"e": "DNS resolves names like example.com to IPs."
+"e": "DNS resolves names like example.com to IPs.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Application layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (application layer).",
+"x": 1
 },
 {
 "id": "q5-129",
@@ -1932,7 +2094,9 @@
 "Send email"
 ],
 "a": 1,
-"e": "DHCP leases IP settings to hosts."
+"e": "DHCP leases IP settings to hosts.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Application layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (application layer).",
+"x": 1
 },
 {
 "id": "q5-130",
@@ -1947,7 +2111,8 @@
 "100.0.0.0/8"
 ],
 "a": 1,
-"e": "10/8, 172.16/12 and 192.168/16 are private ranges."
+"e": "10/8, 172.16/12 and 192.168/16 are private ranges.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-131",
@@ -1962,7 +2127,8 @@
 "252"
 ],
 "a": 1,
-"e": "2^8 - 2 = 254, minus network and broadcast addresses."
+"e": "2^8 - 2 = 254, minus network and broadcast addresses.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-132",
@@ -1977,7 +2143,9 @@
 "Domain name lookups"
 ],
 "a": 0,
-"e": "Network Address Translation maps private addresses to a public one."
+"e": "Network Address Translation maps private addresses to a public one.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer).",
+"x": 1
 },
 {
 "id": "q5-133",
@@ -1992,7 +2160,8 @@
 "ARP"
 ],
 "a": 2,
-"e": "Ping sends ICMP echo requests."
+"e": "Ping sends ICMP echo requests.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-134",
@@ -2007,7 +2176,9 @@
 "A free port"
 ],
 "a": 1,
-"e": "ARP maps IPv4 addresses to MAC addresses on a LAN."
+"e": "ARP maps IPv4 addresses to MAC addresses on a LAN.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Data link layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the link layer and LANs).",
+"x": 1
 },
 {
 "id": "q5-135",
@@ -2022,22 +2193,24 @@
 "Repeater"
 ],
 "a": 2,
-"e": "Routers connect networks and route packets."
+"e": "Routers connect networks and route packets.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Computer networks. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the link layer and LANs)."
 },
 {
 "id": "q5-136",
 "s": "NET",
 "t": "Network topologies",
 "d": 1,
-"q": "In a star topology, all devices connect to:",
+"q": "In a star topology, what do all devices connect to?",
 "o": [
-"Each other directly",
+"A single shared cable",
 "A central hub or switch",
-"A ring",
-"A single cable"
+"The next device in a ring",
+"Every other device directly"
 ],
 "a": 1,
-"e": "Failure of one cable affects only one device."
+"e": "Failure of one cable affects only one device.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Computer networks. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (computer networks and the Internet)."
 },
 {
 "id": "q5-137",
@@ -2052,7 +2225,8 @@
 "WPA3"
 ],
 "a": 3,
-"e": "WPA3 replaces WPA2 with stronger protection."
+"e": "WPA3 replaces WPA2 with stronger protection.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Wireless networks. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (wireless and mobile networks)."
 },
 {
 "id": "q5-138",
@@ -2067,7 +2241,8 @@
 "FaaS only"
 ],
 "a": 2,
-"e": "Infrastructure as a Service gives raw compute, storage and network."
+"e": "Infrastructure as a Service gives raw compute, storage and network.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Cloud computing. Further reading: NIST SP 800-145, The NIST Definition of Cloud Computing (service and deployment models)."
 },
 {
 "id": "q5-139",
@@ -2082,22 +2257,25 @@
 "On-premises"
 ],
 "a": 2,
-"e": "Software as a Service delivers a full application."
+"e": "Software as a Service delivers a full application.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Cloud computing. Further reading: NIST SP 800-145, The NIST Definition of Cloud Computing (service and deployment models)."
 },
 {
 "id": "q5-140",
 "s": "NET",
 "t": "Cloud computing",
 "d": 3,
-"q": "Horizontal scaling means:",
+"q": "What does horizontal scaling mean?",
 "o": [
-"Adding a bigger CPU to one server",
+"Adding more CPU and RAM to one server",
 "Adding more servers to share the load",
-"Reducing users",
-"Compressing data"
+"Moving the servers to another region",
+"Caching responses to reduce the load"
 ],
 "a": 1,
-"e": "Scale out with more machines. Scale up with a bigger machine."
+"e": "Scale out with more machines. Scale up with a bigger machine.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Cloud computing. Further reading: NIST SP 800-145, The NIST Definition of Cloud Computing (service and deployment models).",
+"x": 1
 },
 {
 "id": "q5-141",
@@ -2112,37 +2290,40 @@
 "Python"
 ],
 "a": 1,
-"e": "Linux manages hardware and runs programs."
+"e": "Linux manages hardware and runs programs.",
+"r": "NSCT area: Operating Systems, sub-area: Introduction to operating systems. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (introduction and operating-system structures)."
 },
 {
 "id": "q5-142",
 "s": "OS",
 "t": "Basics",
 "d": 2,
-"q": "The kernel is:",
+"q": "What is the kernel?",
 "o": [
-"A user application",
+"The program that reads commands typed by the user",
 "The core of the OS that manages CPU, memory and devices",
-"A type of file",
-"A web browser"
+"The firmware that tests hardware when power is applied",
+"The set of libraries that applications are linked with"
 ],
 "a": 1,
-"e": "The kernel runs in privileged mode."
+"e": "The kernel runs in privileged mode.",
+"r": "NSCT area: Operating Systems, sub-area: Introduction to operating systems. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (introduction and operating-system structures)."
 },
 {
 "id": "q5-143",
 "s": "OS",
 "t": "Processes",
 "d": 2,
-"q": "A process is:",
+"q": "What is a process?",
 "o": [
 "A program stored on disk",
 "A program in execution",
-"A CPU register",
-"A file system"
+"A thread without a stack",
+"A file loaded in memory"
 ],
 "a": 1,
-"e": "A process has code, data, stack and a state."
+"e": "A process has code, data, stack and a state.",
+"r": "NSCT area: Operating Systems, sub-area: Process management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (processes)."
 },
 {
 "id": "q5-144",
@@ -2151,13 +2332,14 @@
 "d": 2,
 "q": "Which process state means waiting for I/O to finish?",
 "o": [
-"Running",
-"Ready",
+"Running (active)",
+"Ready (queued)",
 "Blocked (waiting)",
-"Terminated"
+"Terminated (exit)"
 ],
 "a": 2,
-"e": "The process cannot run until the I/O completes."
+"e": "The process cannot run until the I/O completes.",
+"r": "NSCT area: Operating Systems, sub-area: Process management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (processes)."
 },
 {
 "id": "q5-145",
@@ -2172,7 +2354,9 @@
 "Switching keyboards"
 ],
 "a": 1,
-"e": "It lets the CPU move between processes."
+"e": "It lets the CPU move between processes.",
+"r": "NSCT area: Operating Systems, sub-area: Process management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (processes).",
+"x": 1
 },
 {
 "id": "q5-146",
@@ -2187,7 +2371,8 @@
 "Priority"
 ],
 "a": 2,
-"e": "Round Robin uses a time quantum."
+"e": "Round Robin uses a time quantum.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling)."
 },
 {
 "id": "q5-147",
@@ -2202,7 +2387,9 @@
 "27"
 ],
 "a": 1,
-"e": "Waits are 0, 24 and 27. Average = 51 / 3 = 17."
+"e": "Waits are 0, 24 and 27. Average = 51 / 3 = 17.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling).",
+"x": 1
 },
 {
 "id": "q5-148",
@@ -2217,7 +2404,8 @@
 "9"
 ],
 "a": 0,
-"e": "Order 3, 3, 24 gives waits 0, 3, 6. Average = 3."
+"e": "Order 3, 3, 24 gives waits 0, 3, 6. Average = 3.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling)."
 },
 {
 "id": "q5-149",
@@ -2232,22 +2420,24 @@
 "Spooling"
 ],
 "a": 0,
-"e": "Aging raises the priority of waiting processes over time."
+"e": "Aging raises the priority of waiting processes over time.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling)."
 },
 {
 "id": "q5-150",
 "s": "OS",
 "t": "Synchronization",
 "d": 2,
-"q": "A critical section is:",
+"q": "What is a critical section?",
 "o": [
-"Code that accesses shared resources and must not run in two threads at once",
-"The first line of a program",
-"A kernel crash",
-"A disk sector"
+"Code that uses shared resources and must not run in two threads at once",
+"Code that runs in kernel mode and cannot be interrupted by any device",
+"Code that handles errors and must finish before the program can exit",
+"Code that is run only once, when the process is first being created"
 ],
 "a": 0,
-"e": "Mutual exclusion protects shared data."
+"e": "Mutual exclusion protects shared data.",
+"r": "NSCT area: Operating Systems, sub-area: Concurrency and synchronization. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (synchronization tools)."
 },
 {
 "id": "q5-151",
@@ -2262,7 +2452,9 @@
 "The CPU overheats"
 ],
 "a": 1,
-"e": "Locks or atomic operations prevent it."
+"e": "Locks or atomic operations prevent it.",
+"r": "NSCT area: Operating Systems, sub-area: Concurrency and synchronization. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (synchronization tools).",
+"x": 1
 },
 {
 "id": "q5-152",
@@ -2277,7 +2469,8 @@
 "Circular wait"
 ],
 "a": 2,
-"e": "The condition is NO preemption. Allowing preemption breaks deadlock."
+"e": "The condition is NO preemption. Allowing preemption breaks deadlock.",
+"r": "NSCT area: Operating Systems, sub-area: Deadlocks. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (deadlocks)."
 },
 {
 "id": "q5-153",
@@ -2292,7 +2485,8 @@
 "With the largest size"
 ],
 "a": 1,
-"e": "Least Recently Used approximates optimal replacement."
+"e": "Least Recently Used approximates optimal replacement.",
+"r": "NSCT area: Operating Systems, sub-area: Memory management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (main memory and virtual memory)."
 },
 {
 "id": "q5-154",
@@ -2307,7 +2501,8 @@
 "3"
 ],
 "a": 2,
-"e": "1, 2, 3 fault. 4 replaces 1, then 1 replaces 2, then 2 replaces 3: 6 faults."
+"e": "1, 2, 3 fault. 4 replaces 1, then 1 replaces 2, then 2 replaces 3: 6 faults.",
+"r": "NSCT area: Operating Systems, sub-area: Memory management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (main memory and virtual memory)."
 },
 {
 "id": "q5-155",
@@ -2322,22 +2517,24 @@
 "whoami"
 ],
 "a": 1,
-"e": "pwd prints the working directory."
+"e": "pwd prints the working directory.",
+"r": "NSCT area: Operating Systems, sub-area: Operating system structures. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (operating-system structures and the Linux system)."
 },
 {
 "id": "q5-156",
 "s": "OS",
 "t": "Linux",
 "d": 2,
-"q": "chmod 755 file gives the owner:",
+"q": "What access does chmod 755 file give the owner?",
 "o": [
-"Read only",
+"Read and write only",
 "Read, write and execute",
-"Write only",
-"No access"
+"Read and execute only",
+"Execute only"
 ],
 "a": 1,
-"e": "7 = read + write + execute."
+"e": "7 = read + write + execute.",
+"r": "NSCT area: Operating Systems, sub-area: Operating system structures. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (operating-system structures and the Linux system)."
 },
 {
 "id": "q5-157",
@@ -2352,7 +2549,8 @@
 "C-SCAN"
 ],
 "a": 1,
-"e": "Shortest Seek Time First keeps serving nearby requests."
+"e": "Shortest Seek Time First keeps serving nearby requests.",
+"r": "NSCT area: Operating Systems, sub-area: Secondary storage management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (mass-storage structure)."
 },
 {
 "id": "q5-158",
@@ -2367,7 +2565,9 @@
 "Stores passwords"
 ],
 "a": 1,
-"e": "Examples are VMware ESXi, Hyper-V and KVM."
+"e": "Examples are VMware ESXi, Hyper-V and KVM.",
+"r": "NSCT area: Operating Systems, sub-area: Operating system structures. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (virtual machines).",
+"x": 1
 },
 {
 "id": "q5-159",
@@ -2382,7 +2582,8 @@
 "Non-repudiation"
 ],
 "a": 1,
-"e": "Integrity protects against tampering."
+"e": "Integrity protects against tampering.",
+"r": "NSCT area: Cyber Security, sub-area: Introduction to cyber security. Further reading: Stallings and Brown, Computer Security: Principles and Practice (overview)."
 },
 {
 "id": "q5-160",
@@ -2397,7 +2598,8 @@
 "3DES"
 ],
 "a": 2,
-"e": "RSA uses a public and private key pair."
+"e": "RSA uses a public and private key pair.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q5-161",
@@ -2412,7 +2614,8 @@
 "A shared password in the email"
 ],
 "a": 1,
-"e": "Only Ali's private key can decrypt it."
+"e": "Only Ali's private key can decrypt it.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q5-162",
@@ -2427,7 +2630,8 @@
 "Password"
 ],
 "a": 1,
-"e": "Anyone can verify it with the sender's public key."
+"e": "Anyone can verify it with the sender's public key.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q5-163",
@@ -2442,7 +2646,8 @@
 "A random number"
 ],
 "a": 1,
-"e": "You cannot get the input back from the hash."
+"e": "You cannot get the input back from the hash.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q5-164",
@@ -2457,7 +2662,9 @@
 "Two browsers"
 ],
 "a": 1,
-"e": "Factors are something you know, have or are."
+"e": "Factors are something you know, have or are.",
+"r": "NSCT area: Cyber Security, sub-area: Authentication and access control. Further reading: Stallings and Brown, Computer Security: Principles and Practice (user authentication).",
+"x": 1
 },
 {
 "id": "q5-165",
@@ -2472,67 +2679,72 @@
 "Somewhere you are"
 ],
 "a": 2,
-"e": "Biometrics are something you are."
+"e": "Biometrics are something you are.",
+"r": "NSCT area: Cyber Security, sub-area: Authentication and access control. Further reading: Stallings and Brown, Computer Security: Principles and Practice (user authentication)."
 },
 {
 "id": "q5-166",
 "s": "SEC",
 "t": "Access control",
 "d": 3,
-"q": "Role-Based Access Control (RBAC) assigns permissions to:",
+"q": "In Role-Based Access Control (RBAC), what are permissions assigned to?",
 "o": [
-"Individual files only",
-"Roles, and users get roles",
-"IP addresses only",
-"Passwords"
+"Users directly, one permission at a time",
+"Roles, which are then given to users",
+"Resources, through owner-defined lists",
+"Security labels on each data object"
 ],
 "a": 1,
-"e": "Users inherit permissions from their roles."
+"e": "Users inherit permissions from their roles.",
+"r": "NSCT area: Cyber Security, sub-area: Authentication and access control. Further reading: Stallings and Brown, Computer Security: Principles and Practice (access control)."
 },
 {
 "id": "q5-167",
 "s": "SEC",
 "t": "Malware",
 "d": 2,
-"q": "Ransomware:",
+"q": "What does ransomware do?",
 "o": [
-"Shows ads",
+"Records keystrokes and sends them out",
 "Encrypts files and demands payment",
-"Speeds up the system",
-"Only steals cookies"
+"Shows unwanted adverts in the browser",
+"Copies itself to other network hosts"
 ],
 "a": 1,
-"e": "Offline backups are the best defence."
+"e": "Offline backups are the best defence.",
+"r": "NSCT area: Cyber Security, sub-area: Malware and attack techniques. Further reading: Stallings and Brown, Computer Security: Principles and Practice (malicious software)."
 },
 {
 "id": "q5-168",
 "s": "SEC",
 "t": "Malware",
 "d": 2,
-"q": "A worm differs from a virus because it:",
+"q": "How does a worm differ from a virus?",
 "o": [
-"Needs a host file",
-"Spreads on its own across networks",
-"Cannot harm systems",
-"Only affects phones"
+"It needs to attach to a host program",
+"It spreads on its own across networks",
+"It only encrypts files for a ransom",
+"It hides inside a useful-looking app"
 ],
 "a": 1,
-"e": "Worms self-replicate without user action."
+"e": "Worms self-replicate without user action.",
+"r": "NSCT area: Cyber Security, sub-area: Malware and attack techniques. Further reading: Stallings and Brown, Computer Security: Principles and Practice (malicious software)."
 },
 {
 "id": "q5-169",
 "s": "SEC",
 "t": "Malware",
 "d": 2,
-"q": "A Trojan horse is malware that:",
+"q": "What is a Trojan horse?",
 "o": [
-"Spreads by itself",
-"Pretends to be useful software",
-"Only lives in RAM",
-"Is a hardware fault"
+"Malware that copies itself across a network",
+"Malware that pretends to be useful software",
+"Malware that runs only from the boot sector",
+"Malware that attaches to other program files"
 ],
 "a": 1,
-"e": "Users install it believing it is harmless."
+"e": "Users install it believing it is harmless.",
+"r": "NSCT area: Cyber Security, sub-area: Malware and attack techniques. Further reading: Stallings and Brown, Computer Security: Principles and Practice (malicious software)."
 },
 {
 "id": "q5-170",
@@ -2547,7 +2759,8 @@
 "A firewall alert"
 ],
 "a": 1,
-"e": "Phishing tricks people into revealing secrets."
+"e": "Phishing tricks people into revealing secrets.",
+"r": "NSCT area: Cyber Security, sub-area: Malware and attack techniques. Further reading: Stallings and Brown, Computer Security: Principles and Practice (human resources security)."
 },
 {
 "id": "q5-171",
@@ -2562,7 +2775,8 @@
 "Spoofing"
 ],
 "a": 1,
-"e": "Tailgating bypasses physical access control."
+"e": "Tailgating bypasses physical access control.",
+"r": "NSCT area: Cyber Security, sub-area: Malware and attack techniques. Further reading: Stallings and Brown, Computer Security: Principles and Practice (human resources security)."
 },
 {
 "id": "q5-172",
@@ -2577,7 +2791,9 @@
 "Backs up data"
 ],
 "a": 1,
-"e": "It allows or blocks traffic by rules."
+"e": "It allows or blocks traffic by rules.",
+"r": "NSCT area: Cyber Security, sub-area: Network security. Further reading: Stallings, Cryptography and Network Security (network and Internet security).",
+"x": 1
 },
 {
 "id": "q5-173",
@@ -2592,22 +2808,25 @@
 "Antivirus scanning"
 ],
 "a": 1,
-"e": "VPNs protect traffic on untrusted networks."
+"e": "VPNs protect traffic on untrusted networks.",
+"r": "NSCT area: Cyber Security, sub-area: Network security. Further reading: Stallings, Cryptography and Network Security (network and Internet security).",
+"x": 1
 },
 {
 "id": "q5-174",
 "s": "SEC",
 "t": "Network security",
 "d": 3,
-"q": "A man-in-the-middle attack is best prevented by:",
+"q": "Which measure best prevents a man-in-the-middle attack?",
 "o": [
-"Using HTTP",
+"Using a longer and stronger password",
 "Using TLS with certificate validation",
-"Turning off the firewall",
-"Sharing passwords"
+"Using a firewall that blocks port 80",
+"Using an antivirus with daily updates"
 ],
 "a": 1,
-"e": "TLS authenticates the server and encrypts traffic."
+"e": "TLS authenticates the server and encrypts traffic.",
+"r": "NSCT area: Cyber Security, sub-area: Network security. Further reading: Stallings, Cryptography and Network Security (network and Internet security)."
 },
 {
 "id": "q5-175",
@@ -2622,7 +2841,8 @@
 "Using HTTPS only"
 ],
 "a": 1,
-"e": "Parameters keep data separate from SQL code."
+"e": "Parameters keep data separate from SQL code.",
+"r": "NSCT area: Cyber Security, sub-area: Web application security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q5-176",
@@ -2637,7 +2857,8 @@
 "SOX"
 ],
 "a": 0,
-"e": "The Prevention of Electronic Crimes Act 2016."
+"e": "The Prevention of Electronic Crimes Act 2016.",
+"r": "NSCT area: Cyber Security, sub-area: Cyber laws and ethics. Further reading: Stallings and Brown, Computer Security: Principles and Practice (legal and ethical aspects)."
 },
 {
 "id": "q5-177",
@@ -2652,7 +2873,9 @@
 "Database design"
 ],
 "a": 1,
-"e": "Models improve from examples rather than fixed rules."
+"e": "Models improve from examples rather than fixed rules.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (introduction).",
+"x": 1
 },
 {
 "id": "q5-178",
@@ -2667,7 +2890,9 @@
 "Reinforcement learning"
 ],
 "a": 1,
-"e": "The output is a continuous number."
+"e": "The output is a continuous number.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (introduction).",
+"x": 1
 },
 {
 "id": "q5-179",
@@ -2682,7 +2907,8 @@
 "Dimensionality reduction"
 ],
 "a": 1,
-"e": "The output is a category."
+"e": "The output is a category.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (introduction)."
 },
 {
 "id": "q5-180",
@@ -2697,7 +2923,8 @@
 "Supervised learning"
 ],
 "a": 2,
-"e": "Clustering finds groups in unlabeled data."
+"e": "Clustering finds groups in unlabeled data.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Unsupervised learning. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (learning probabilistic models)."
 },
 {
 "id": "q5-181",
@@ -2712,52 +2939,57 @@
 "The output layer size"
 ],
 "a": 1,
-"e": "k decides how many clusters are formed."
+"e": "k decides how many clusters are formed.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Unsupervised learning. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (learning probabilistic models).",
+"x": 1
 },
 {
 "id": "q5-182",
 "s": "AI",
 "t": "Reinforcement learning",
 "d": 2,
-"q": "In reinforcement learning, an agent learns from:",
+"q": "In reinforcement learning, what does an agent learn from?",
 "o": [
-"Labelled examples",
+"Labelled examples given by a teacher",
 "Rewards and penalties from its actions",
-"Clusters",
-"SQL queries"
+"Clusters found in unlabelled data",
+"Rules written by a domain expert"
 ],
 "a": 1,
-"e": "It maximises cumulative reward."
+"e": "It maximises cumulative reward.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised and unsupervised learning. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (reinforcement learning)."
 },
 {
 "id": "q5-183",
 "s": "AI",
 "t": "Model evaluation",
 "d": 2,
-"q": "Overfitting means the model:",
+"q": "What does overfitting mean?",
 "o": [
-"Performs well on training data but poorly on new data",
-"Performs badly everywhere",
-"Is too simple",
-"Has no parameters"
+"The model does well on training data but poorly on new data",
+"The model does poorly on both training data and new data",
+"The model does well on new data but poorly on training data",
+"The model takes too long to train because it has many layers"
 ],
 "a": 0,
-"e": "It memorises noise instead of learning patterns."
+"e": "It memorises noise instead of learning patterns.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses)."
 },
 {
 "id": "q5-184",
 "s": "AI",
 "t": "Model evaluation",
 "d": 2,
-"q": "Underfitting usually means the model is:",
+"q": "What does underfitting usually mean?",
 "o": [
-"Too complex",
-"Too simple to capture the pattern",
-"Perfect",
-"Trained too long"
+"The model has memorised the training examples",
+"The model is too simple to capture the pattern",
+"The model was trained for too many epochs",
+"The model has too many features and layers"
 ],
 "a": 1,
-"e": "Both training and test errors are high."
+"e": "Both training and test errors are high.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses)."
 },
 {
 "id": "q5-185",
@@ -2772,7 +3004,9 @@
 "TN / (TN + FP)"
 ],
 "a": 1,
-"e": "Of all predicted positives, how many were correct."
+"e": "Of all predicted positives, how many were correct.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses).",
+"x": 1
 },
 {
 "id": "q5-186",
@@ -2787,7 +3021,9 @@
 "FP / (FP + TN)"
 ],
 "a": 0,
-"e": "Of all actual positives, how many were found."
+"e": "Of all actual positives, how many were found.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses).",
+"x": 1
 },
 {
 "id": "q5-187",
@@ -2802,7 +3038,8 @@
 "Training loss"
 ],
 "a": 1,
-"e": "High recall means few false negatives."
+"e": "High recall means few false negatives.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses)."
 },
 {
 "id": "q5-188",
@@ -2817,7 +3054,9 @@
 "Rows and columns"
 ],
 "a": 0,
-"e": "Test data checks performance on unseen examples."
+"e": "Test data checks performance on unseen examples.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses).",
+"x": 1
 },
 {
 "id": "q5-189",
@@ -2832,22 +3071,25 @@
 "Labels"
 ],
 "a": 1,
-"e": "Without it, stacked layers act like one linear layer."
+"e": "Without it, stacked layers act like one linear layer.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks).",
+"x": 1
 },
 {
 "id": "q5-190",
 "s": "AI",
 "t": "Neural networks",
 "d": 2,
-"q": "ReLU outputs:",
+"q": "What does the ReLU activation function output?",
 "o": [
 "max(0, x)",
 "1 / (1 + e^-x)",
-"x^2",
-"Always 1"
+"max(-1, x)",
+"min(0, x)"
 ],
 "a": 0,
-"e": "ReLU passes positives and zeroes negatives."
+"e": "ReLU passes positives and zeroes negatives.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks)."
 },
 {
 "id": "q5-191",
@@ -2862,22 +3104,25 @@
 "Split data"
 ],
 "a": 1,
-"e": "Gradients flow backward from the loss."
+"e": "Gradients flow backward from the loss.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks).",
+"x": 1
 },
 {
 "id": "q5-192",
 "s": "AI",
 "t": "Neural networks",
 "d": 3,
-"q": "A learning rate that is too high can cause:",
+"q": "What can a learning rate that is too high cause?",
 "o": [
-"Very slow training",
-"Training to overshoot and diverge",
-"Perfect accuracy",
-"No change in weights"
+"Training that is stable but very slow",
+"Training that overshoots and diverges",
+"Weights that stay at their first values",
+"A model that memorises the training set"
 ],
 "a": 1,
-"e": "Big steps jump over the minimum."
+"e": "Big steps jump over the minimum.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks)."
 },
 {
 "id": "q5-193",
@@ -2892,22 +3137,24 @@
 "K-means"
 ],
 "a": 1,
-"e": "Convolutional layers detect spatial features."
+"e": "Convolutional layers detect spatial features.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks)."
 },
 {
 "id": "q5-194",
 "s": "AI",
 "t": "Deep learning",
 "d": 3,
-"q": "Transformers rely mainly on:",
+"q": "What do transformers mainly rely on?",
 "o": [
-"Convolutions",
+"Convolution filters",
 "Attention mechanisms",
-"Decision trees",
-"K-nearest neighbours"
+"Recurrent hidden states",
+"Decision tree ensembles"
 ],
 "a": 1,
-"e": "Self-attention relates every token to every other token."
+"e": "Self-attention relates every token to every other token.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks)."
 },
 {
 "id": "q5-195",
@@ -2922,37 +3169,40 @@
 "Linear search"
 ],
 "a": 2,
-"e": "A* uses f(n) = g(n) + h(n)."
+"e": "A* uses f(n) = g(n) + h(n).",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Introduction to AI. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (search, logic and knowledge representation)."
 },
 {
 "id": "q5-196",
 "s": "AI",
 "t": "Algorithms",
 "d": 2,
-"q": "A decision tree splits data using features that:",
+"q": "How does a decision tree choose the feature for a split?",
 "o": [
-"Are random",
-"Best separate the classes, e.g. by information gain",
-"Have the most missing values",
-"Are always numeric"
+"It picks the one with the most distinct values, so that each branch of the tree is small",
+"It picks the one that best separates the classes, for example by information gain",
+"It picks features in the order in which the columns appear in the dataset",
+"It picks the one that has the highest correlation with the other features"
 ],
 "a": 1,
-"e": "Gini or entropy measure split quality."
+"e": "Gini or entropy measure split quality.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (decision trees, Bayesian learning and instance-based learning)."
 },
 {
 "id": "q5-197",
 "s": "AI",
 "t": "Algorithms",
 "d": 2,
-"q": "K-Nearest Neighbours classifies a point by:",
+"q": "How does K-Nearest Neighbours classify a new point?",
 "o": [
-"Training weights",
-"The majority class of its k closest points",
-"A single rule",
-"Random choice"
+"By the class of the nearest cluster centroid",
+"By the majority class of its k closest points",
+"By a weighted sum passed through a threshold",
+"By a sequence of feature tests from the root"
 ],
 "a": 1,
-"e": "KNN is a lazy, instance-based method."
+"e": "KNN is a lazy, instance-based method.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (decision trees, Bayesian learning and instance-based learning)."
 },
 {
 "id": "q5-198",
@@ -2967,7 +3217,9 @@
 "Database keys"
 ],
 "a": 0,
-"e": "LLMs generate text one token at a time."
+"e": "LLMs generate text one token at a time.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (sequence modelling).",
+"x": 1
 },
 {
 "id": "q5-199",
@@ -2982,7 +3234,9 @@
 "Large screens"
 ],
 "a": 1,
-"e": "Models learn the patterns, including unfair ones, in their data."
+"e": "Models learn the patterns, including unfair ones, in their data.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: AI ethics, security and privacy. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (philosophy, ethics and safety of AI).",
+"x": 1
 },
 {
 "id": "q5-200",
@@ -2997,7 +3251,8 @@
 "101110"
 ],
 "a": 1,
-"e": "47 = 101111 in base 2."
+"e": "47 = 101111 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-201",
@@ -3012,7 +3267,8 @@
 "10001001"
 ],
 "a": 0,
-"e": "138 = 10001010 in base 2."
+"e": "138 = 10001010 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-202",
@@ -3027,7 +3283,8 @@
 "101010"
 ],
 "a": 1,
-"e": "40 = 101000 in base 2."
+"e": "40 = 101000 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-203",
@@ -3042,7 +3299,8 @@
 "11000"
 ],
 "a": 0,
-"e": "23 = 10111 in base 2."
+"e": "23 = 10111 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-204",
@@ -3057,7 +3315,8 @@
 "10111010"
 ],
 "a": 2,
-"e": "187 = 10111011 in base 2."
+"e": "187 = 10111011 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-205",
@@ -3072,7 +3331,8 @@
 "1100100"
 ],
 "a": 1,
-"e": "102 = 1100110 in base 2."
+"e": "102 = 1100110 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-206",
@@ -3087,7 +3347,8 @@
 "11011100"
 ],
 "a": 0,
-"e": "222 = 11011110 in base 2."
+"e": "222 = 11011110 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-207",
@@ -3102,7 +3363,8 @@
 "1111011"
 ],
 "a": 3,
-"e": "123 = 1111011 in base 2."
+"e": "123 = 1111011 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-208",
@@ -3117,7 +3379,8 @@
 "10110011"
 ],
 "a": 0,
-"e": "180 = 10110100 in base 2."
+"e": "180 = 10110100 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-209",
@@ -3132,7 +3395,8 @@
 "11100010"
 ],
 "a": 3,
-"e": "226 = 11100010 in base 2."
+"e": "226 = 11100010 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-210",
@@ -3147,7 +3411,8 @@
 "1000000"
 ],
 "a": 1,
-"e": "66 = 1000010 in base 2."
+"e": "66 = 1000010 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-211",
@@ -3162,7 +3427,8 @@
 "1111011"
 ],
 "a": 1,
-"e": "122 = 1111010 in base 2."
+"e": "122 = 1111010 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-212",
@@ -3177,7 +3443,8 @@
 "1101101"
 ],
 "a": 3,
-"e": "109 = 1101101 in base 2."
+"e": "109 = 1101101 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-213",
@@ -3192,7 +3459,8 @@
 "10101100"
 ],
 "a": 3,
-"e": "172 = 10101100 in base 2."
+"e": "172 = 10101100 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-214",
@@ -3207,7 +3475,8 @@
 "1000010"
 ],
 "a": 2,
-"e": "65 = 1000001 in base 2."
+"e": "65 = 1000001 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-215",
@@ -3222,7 +3491,8 @@
 "1011001"
 ],
 "a": 1,
-"e": "90 = 1011010 in base 2."
+"e": "90 = 1011010 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-216",
@@ -3237,7 +3507,8 @@
 "1011101"
 ],
 "a": 3,
-"e": "93 = 1011101 in base 2."
+"e": "93 = 1011101 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-217",
@@ -3252,7 +3523,8 @@
 "11000100"
 ],
 "a": 0,
-"e": "195 = 11000011 in base 2."
+"e": "195 = 11000011 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-218",
@@ -3267,7 +3539,8 @@
 "10110000"
 ],
 "a": 3,
-"e": "176 = 10110000 in base 2."
+"e": "176 = 10110000 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-219",
@@ -3282,7 +3555,8 @@
 "100111"
 ],
 "a": 3,
-"e": "39 = 100111 in base 2."
+"e": "39 = 100111 in base 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-220",
@@ -3297,7 +3571,8 @@
 "B1"
 ],
 "a": 2,
-"e": "178 = 11 x 16 + 2, which is B2 in hex."
+"e": "178 = 11 x 16 + 2, which is B2 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-221",
@@ -3312,7 +3587,8 @@
 "7F"
 ],
 "a": 0,
-"e": "111 = 6 x 16 + 15, which is 6F in hex."
+"e": "111 = 6 x 16 + 15, which is 6F in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-222",
@@ -3327,7 +3603,8 @@
 "94"
 ],
 "a": 2,
-"e": "147 = 9 x 16 + 3, which is 93 in hex."
+"e": "147 = 9 x 16 + 3, which is 93 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-223",
@@ -3342,7 +3619,8 @@
 "5A"
 ],
 "a": 2,
-"e": "89 = 5 x 16 + 9, which is 59 in hex."
+"e": "89 = 5 x 16 + 9, which is 59 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-224",
@@ -3357,7 +3635,8 @@
 "8F"
 ],
 "a": 0,
-"e": "144 = 9 x 16 + 0, which is 90 in hex."
+"e": "144 = 9 x 16 + 0, which is 90 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-225",
@@ -3372,7 +3651,8 @@
 "73"
 ],
 "a": 0,
-"e": "114 = 7 x 16 + 2, which is 72 in hex."
+"e": "114 = 7 x 16 + 2, which is 72 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-226",
@@ -3387,7 +3667,8 @@
 "F2"
 ],
 "a": 1,
-"e": "226 = 14 x 16 + 2, which is E2 in hex."
+"e": "226 = 14 x 16 + 2, which is E2 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-227",
@@ -3402,7 +3683,8 @@
 "8A"
 ],
 "a": 0,
-"e": "139 = 8 x 16 + 11, which is 8B in hex."
+"e": "139 = 8 x 16 + 11, which is 8B in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-228",
@@ -3417,7 +3699,8 @@
 "85"
 ],
 "a": 1,
-"e": "134 = 8 x 16 + 6, which is 86 in hex."
+"e": "134 = 8 x 16 + 6, which is 86 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-229",
@@ -3432,7 +3715,8 @@
 "54"
 ],
 "a": 1,
-"e": "68 = 4 x 16 + 4, which is 44 in hex."
+"e": "68 = 4 x 16 + 4, which is 44 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-230",
@@ -3447,7 +3731,8 @@
 "E1"
 ],
 "a": 1,
-"e": "224 = 14 x 16 + 0, which is E0 in hex."
+"e": "224 = 14 x 16 + 0, which is E0 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-231",
@@ -3462,7 +3747,8 @@
 "70"
 ],
 "a": 2,
-"e": "113 = 7 x 16 + 1, which is 71 in hex."
+"e": "113 = 7 x 16 + 1, which is 71 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-232",
@@ -3477,7 +3763,8 @@
 "4F"
 ],
 "a": 0,
-"e": "63 = 3 x 16 + 15, which is 3F in hex."
+"e": "63 = 3 x 16 + 15, which is 3F in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-233",
@@ -3492,7 +3779,8 @@
 "F7"
 ],
 "a": 0,
-"e": "246 = 15 x 16 + 6, which is F6 in hex."
+"e": "246 = 15 x 16 + 6, which is F6 in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-234",
@@ -3507,7 +3795,8 @@
 "8B"
 ],
 "a": 0,
-"e": "138 = 8 x 16 + 10, which is 8A in hex."
+"e": "138 = 8 x 16 + 10, which is 8A in hex.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-235",
@@ -3522,7 +3811,8 @@
 "75"
 ],
 "a": 0,
-"e": "Adding the place values of 1001010 gives 74."
+"e": "Adding the place values of 1001010 gives 74.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-236",
@@ -3537,7 +3827,8 @@
 "186"
 ],
 "a": 2,
-"e": "Adding the place values of 10111000 gives 184."
+"e": "Adding the place values of 10111000 gives 184.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-237",
@@ -3552,7 +3843,8 @@
 "85"
 ],
 "a": 1,
-"e": "Adding the place values of 1010011 gives 83."
+"e": "Adding the place values of 1010011 gives 83.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-238",
@@ -3567,7 +3859,8 @@
 "79"
 ],
 "a": 0,
-"e": "Adding the place values of 1001110 gives 78."
+"e": "Adding the place values of 1001110 gives 78.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-239",
@@ -3582,7 +3875,8 @@
 "59"
 ],
 "a": 2,
-"e": "Adding the place values of 111010 gives 58."
+"e": "Adding the place values of 111010 gives 58.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-240",
@@ -3597,7 +3891,8 @@
 "36"
 ],
 "a": 0,
-"e": "Adding the place values of 100011 gives 35."
+"e": "Adding the place values of 100011 gives 35.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-241",
@@ -3612,7 +3907,8 @@
 "68"
 ],
 "a": 1,
-"e": "Adding the place values of 1000010 gives 66."
+"e": "Adding the place values of 1000010 gives 66.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-242",
@@ -3627,7 +3923,8 @@
 "73"
 ],
 "a": 3,
-"e": "Adding the place values of 1001001 gives 73."
+"e": "Adding the place values of 1001001 gives 73.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-243",
@@ -3642,7 +3939,8 @@
 "116"
 ],
 "a": 0,
-"e": "Adding the place values of 1110010 gives 114."
+"e": "Adding the place values of 1110010 gives 114.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-244",
@@ -3657,7 +3955,8 @@
 "32"
 ],
 "a": 2,
-"e": "Adding the place values of 11111 gives 31."
+"e": "Adding the place values of 11111 gives 31.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-245",
@@ -3672,7 +3971,8 @@
 "12"
 ],
 "a": 3,
-"e": "Adding the place values of 1100 gives 12."
+"e": "Adding the place values of 1100 gives 12.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-246",
@@ -3687,7 +3987,8 @@
 "129"
 ],
 "a": 1,
-"e": "Adding the place values of 10000000 gives 128."
+"e": "Adding the place values of 10000000 gives 128.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-247",
@@ -3702,7 +4003,8 @@
 "19"
 ],
 "a": 3,
-"e": "Adding the place values of 10011 gives 19."
+"e": "Adding the place values of 10011 gives 19.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-248",
@@ -3717,7 +4019,8 @@
 "44"
 ],
 "a": 3,
-"e": "Adding the place values of 101100 gives 44."
+"e": "Adding the place values of 101100 gives 44.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-249",
@@ -3732,7 +4035,8 @@
 "113"
 ],
 "a": 1,
-"e": "Adding the place values of 1110000 gives 112."
+"e": "Adding the place values of 1110000 gives 112.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data representation and abstraction. Further reading: Rosen, Discrete Mathematics and Its Applications (number theory and integer representations)."
 },
 {
 "id": "q5-250",
@@ -3747,7 +4051,8 @@
 "33"
 ],
 "a": 2,
-"e": "Each term adds 3, so the next is 32."
+"e": "Each term adds 3, so the next is 32.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-251",
@@ -3762,7 +4067,8 @@
 "83"
 ],
 "a": 2,
-"e": "Each term adds 9, so the next is 74."
+"e": "Each term adds 9, so the next is 74.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-252",
@@ -3777,7 +4083,8 @@
 "42"
 ],
 "a": 3,
-"e": "Each term adds 5, so the next is 42."
+"e": "Each term adds 5, so the next is 42.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-253",
@@ -3792,7 +4099,8 @@
 "80"
 ],
 "a": 3,
-"e": "Each term adds 10, so the next is 80."
+"e": "Each term adds 10, so the next is 80.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-254",
@@ -3807,7 +4115,8 @@
 "81"
 ],
 "a": 2,
-"e": "Each term adds 12, so the next is 80."
+"e": "Each term adds 12, so the next is 80.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-255",
@@ -3822,7 +4131,8 @@
 "68"
 ],
 "a": 1,
-"e": "Each term adds 11, so the next is 69."
+"e": "Each term adds 11, so the next is 69.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-256",
@@ -3837,7 +4147,8 @@
 "50"
 ],
 "a": 1,
-"e": "Each term adds 5, so the next is 49."
+"e": "Each term adds 5, so the next is 49.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-257",
@@ -3852,7 +4163,8 @@
 "86"
 ],
 "a": 1,
-"e": "Each term adds 11, so the next is 75."
+"e": "Each term adds 11, so the next is 75.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-258",
@@ -3867,7 +4179,8 @@
 "21"
 ],
 "a": 2,
-"e": "Each term adds 2, so the next is 20."
+"e": "Each term adds 2, so the next is 20.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-259",
@@ -3882,7 +4195,8 @@
 "51"
 ],
 "a": 1,
-"e": "Each term adds 8, so the next is 50."
+"e": "Each term adds 8, so the next is 50.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-260",
@@ -3897,7 +4211,8 @@
 "27"
 ],
 "a": 3,
-"e": "Each term adds 4, so the next is 27."
+"e": "Each term adds 4, so the next is 27.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-261",
@@ -3912,7 +4227,8 @@
 "50"
 ],
 "a": 3,
-"e": "Each term adds 4, so the next is 50."
+"e": "Each term adds 4, so the next is 50.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-262",
@@ -3927,7 +4243,8 @@
 "64"
 ],
 "a": 0,
-"e": "Each term adds 9, so the next is 55."
+"e": "Each term adds 9, so the next is 55.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-263",
@@ -3942,7 +4259,8 @@
 "79"
 ],
 "a": 1,
-"e": "Each term adds 11, so the next is 68."
+"e": "Each term adds 11, so the next is 68.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-264",
@@ -3957,7 +4275,8 @@
 "60"
 ],
 "a": 1,
-"e": "Each term adds 6, so the next is 59."
+"e": "Each term adds 6, so the next is 59.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-265",
@@ -3972,7 +4291,8 @@
 "38"
 ],
 "a": 0,
-"e": "Each term adds 7, so the next is 39."
+"e": "Each term adds 7, so the next is 39.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-266",
@@ -3987,7 +4307,8 @@
 "25"
 ],
 "a": 1,
-"e": "Each term adds 2, so the next is 26."
+"e": "Each term adds 2, so the next is 26.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-267",
@@ -4002,7 +4323,8 @@
 "75"
 ],
 "a": 0,
-"e": "Each term adds 10, so the next is 65."
+"e": "Each term adds 10, so the next is 65.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-268",
@@ -4017,7 +4339,8 @@
 "61"
 ],
 "a": 0,
-"e": "Each term adds 8, so the next is 62."
+"e": "Each term adds 8, so the next is 62.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-269",
@@ -4032,7 +4355,8 @@
 "69"
 ],
 "a": 1,
-"e": "Each term adds 12, so the next is 70."
+"e": "Each term adds 12, so the next is 70.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-270",
@@ -4047,7 +4371,8 @@
 "64"
 ],
 "a": 3,
-"e": "Each term is multiplied by 2, so the next is 64."
+"e": "Each term is multiplied by 2, so the next is 64.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-271",
@@ -4062,7 +4387,8 @@
 "240"
 ],
 "a": 0,
-"e": "Each term is multiplied by 2, so the next is 160."
+"e": "Each term is multiplied by 2, so the next is 160.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-272",
@@ -4077,7 +4403,8 @@
 "98"
 ],
 "a": 0,
-"e": "Each term is multiplied by 2, so the next is 192."
+"e": "Each term is multiplied by 2, so the next is 192.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-273",
@@ -4092,7 +4419,8 @@
 "408"
 ],
 "a": 1,
-"e": "Each term is multiplied by 3, so the next is 1215."
+"e": "Each term is multiplied by 3, so the next is 1215.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-274",
@@ -4107,7 +4435,8 @@
 "327"
 ],
 "a": 0,
-"e": "Each term is multiplied by 3, so the next is 972."
+"e": "Each term is multiplied by 3, so the next is 972.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-275",
@@ -4122,7 +4451,8 @@
 "192"
 ],
 "a": 0,
-"e": "Each term is multiplied by 2, so the next is 128."
+"e": "Each term is multiplied by 2, so the next is 128.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-276",
@@ -4137,7 +4467,8 @@
 "1944"
 ],
 "a": 2,
-"e": "Each term is multiplied by 3, so the next is 1458."
+"e": "Each term is multiplied by 3, so the next is 1458.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-277",
@@ -4152,7 +4483,8 @@
 "94"
 ],
 "a": 1,
-"e": "Each term is multiplied by 2, so the next is 96."
+"e": "Each term is multiplied by 2, so the next is 96.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-278",
@@ -4167,7 +4499,8 @@
 "41"
 ],
 "a": 3,
-"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 41."
+"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 41.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-279",
@@ -4182,7 +4515,8 @@
 "40"
 ],
 "a": 3,
-"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 40."
+"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 40.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-280",
@@ -4197,7 +4531,8 @@
 "32"
 ],
 "a": 1,
-"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 30."
+"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 30.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-281",
@@ -4212,7 +4547,8 @@
 "32"
 ],
 "a": 2,
-"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 30."
+"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 30.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-282",
@@ -4227,7 +4563,8 @@
 "25"
 ],
 "a": 0,
-"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 23."
+"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 23.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-283",
@@ -4242,7 +4579,8 @@
 "43"
 ],
 "a": 0,
-"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 42."
+"e": "The differences increase by 1 each time (3, 4, 5 ...), so the next difference is 8 and the answer is 42.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-284",
@@ -4257,7 +4595,8 @@
 "36"
 ],
 "a": 0,
-"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 34."
+"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 34.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-285",
@@ -4272,7 +4611,8 @@
 "27"
 ],
 "a": 3,
-"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 27."
+"e": "The differences increase by 1 each time (1, 2, 3 ...), so the next difference is 6 and the answer is 27.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-286",
@@ -4287,7 +4627,8 @@
 "37"
 ],
 "a": 2,
-"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 36."
+"e": "The differences increase by 1 each time (2, 3, 4 ...), so the next difference is 7 and the answer is 36.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q5-287",
@@ -4302,7 +4643,8 @@
 "1680"
 ],
 "a": 0,
-"e": "35/100 x 2400 = 840."
+"e": "35/100 x 2400 = 840.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-288",
@@ -4317,7 +4659,8 @@
 "140"
 ],
 "a": 3,
-"e": "35/100 x 400 = 140."
+"e": "35/100 x 400 = 140.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-289",
@@ -4332,7 +4675,8 @@
 "23"
 ],
 "a": 1,
-"e": "10/100 x 200 = 20."
+"e": "10/100 x 200 = 20.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-290",
@@ -4347,7 +4691,8 @@
 "264"
 ],
 "a": 1,
-"e": "12/100 x 1200 = 144."
+"e": "12/100 x 1200 = 144.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-291",
@@ -4362,7 +4707,8 @@
 "175"
 ],
 "a": 0,
-"e": "25/100 x 500 = 125."
+"e": "25/100 x 500 = 125.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-292",
@@ -4377,7 +4723,8 @@
 "91"
 ],
 "a": 2,
-"e": "12/100 x 800 = 96."
+"e": "12/100 x 800 = 96.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-293",
@@ -4392,7 +4739,8 @@
 "360"
 ],
 "a": 3,
-"e": "30/100 x 1200 = 360."
+"e": "30/100 x 1200 = 360.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-294",
@@ -4407,7 +4755,8 @@
 "900"
 ],
 "a": 0,
-"e": "30/100 x 1500 = 450."
+"e": "30/100 x 1500 = 450.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-295",
@@ -4422,7 +4771,8 @@
 "800"
 ],
 "a": 0,
-"e": "30/100 x 2000 = 600."
+"e": "30/100 x 2000 = 600.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-296",
@@ -4437,7 +4787,8 @@
 "100"
 ],
 "a": 0,
-"e": "25/100 x 200 = 50."
+"e": "25/100 x 200 = 50.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-297",
@@ -4452,7 +4803,8 @@
 "500"
 ],
 "a": 2,
-"e": "15/100 x 2000 = 300."
+"e": "15/100 x 2000 = 300.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-298",
@@ -4467,7 +4819,8 @@
 "375"
 ],
 "a": 1,
-"e": "15/100 x 1500 = 225."
+"e": "15/100 x 1500 = 225.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-299",
@@ -4482,7 +4835,8 @@
 "200"
 ],
 "a": 3,
-"e": "25/100 x 800 = 200."
+"e": "25/100 x 800 = 200.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-300",
@@ -4497,7 +4851,8 @@
 "480"
 ],
 "a": 1,
-"e": "Discount = 480, so the price is 3200 - 480 = 2720."
+"e": "Discount = 480, so the price is 3200 - 480 = 2720.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-301",
@@ -4512,7 +4867,8 @@
 "600"
 ],
 "a": 3,
-"e": "Discount = 200, so the price is 800 - 200 = 600."
+"e": "Discount = 200, so the price is 800 - 200 = 600.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-302",
@@ -4527,7 +4883,8 @@
 "3500"
 ],
 "a": 1,
-"e": "Discount = 1000, so the price is 4000 - 1000 = 3000."
+"e": "Discount = 1000, so the price is 4000 - 1000 = 3000.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-303",
@@ -4542,7 +4899,8 @@
 "1350"
 ],
 "a": 1,
-"e": "Discount = 300, so the price is 1500 - 300 = 1200."
+"e": "Discount = 300, so the price is 1500 - 300 = 1200.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-304",
@@ -4557,7 +4915,8 @@
 "150"
 ],
 "a": 0,
-"e": "Discount = 150, so the price is 1500 - 150 = 1350."
+"e": "Discount = 150, so the price is 1500 - 150 = 1350.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-305",
@@ -4572,7 +4931,8 @@
 "300"
 ],
 "a": 0,
-"e": "Discount = 300, so the price is 1200 - 300 = 900."
+"e": "Discount = 300, so the price is 1200 - 300 = 900.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-306",
@@ -4587,7 +4947,8 @@
 "1125"
 ],
 "a": 3,
-"e": "Discount = 375, so the price is 1500 - 375 = 1125."
+"e": "Discount = 375, so the price is 1500 - 375 = 1125.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-307",
@@ -4602,7 +4963,8 @@
 "2187"
 ],
 "a": 2,
-"e": "Discount = 625, so the price is 2500 - 625 = 1875."
+"e": "Discount = 625, so the price is 2500 - 625 = 1875.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-308",
@@ -4617,7 +4979,8 @@
 "60"
 ],
 "a": 3,
-"e": "Distance = speed x time = 30 x 2 = 60 km."
+"e": "Distance = speed x time = 30 x 2 = 60 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-309",
@@ -4632,7 +4995,8 @@
 "240"
 ],
 "a": 1,
-"e": "Distance = speed x time = 40 x 5 = 200 km."
+"e": "Distance = speed x time = 40 x 5 = 200 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-310",
@@ -4647,7 +5011,8 @@
 "35"
 ],
 "a": 2,
-"e": "Distance = speed x time = 30 x 5 = 150 km."
+"e": "Distance = speed x time = 30 x 5 = 150 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-311",
@@ -4662,7 +5027,8 @@
 "90"
 ],
 "a": 3,
-"e": "Distance = speed x time = 45 x 2 = 90 km."
+"e": "Distance = speed x time = 45 x 2 = 90 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-312",
@@ -4677,7 +5043,8 @@
 "250"
 ],
 "a": 0,
-"e": "Distance = speed x time = 50 x 4 = 200 km."
+"e": "Distance = speed x time = 50 x 4 = 200 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-313",
@@ -4692,7 +5059,8 @@
 "240"
 ],
 "a": 0,
-"e": "Distance = speed x time = 80 x 4 = 320 km."
+"e": "Distance = speed x time = 80 x 4 = 320 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-314",
@@ -4707,7 +5075,8 @@
 "52"
 ],
 "a": 2,
-"e": "Distance = speed x time = 50 x 2 = 100 km."
+"e": "Distance = speed x time = 50 x 2 = 100 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-315",
@@ -4722,7 +5091,8 @@
 "80"
 ],
 "a": 0,
-"e": "Distance = speed x time = 40 x 3 = 120 km."
+"e": "Distance = speed x time = 40 x 3 = 120 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-316",
@@ -4737,7 +5107,8 @@
 "75"
 ],
 "a": 2,
-"e": "Distance = speed x time = 72 x 3 = 216 km."
+"e": "Distance = speed x time = 72 x 3 = 216 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-317",
@@ -4752,7 +5123,8 @@
 "90"
 ],
 "a": 2,
-"e": "Distance = speed x time = 45 x 3 = 135 km."
+"e": "Distance = speed x time = 45 x 3 = 135 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-318",
@@ -4767,7 +5139,8 @@
 "216"
 ],
 "a": 0,
-"e": "Distance = speed x time = 72 x 2 = 144 km."
+"e": "Distance = speed x time = 72 x 2 = 144 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-319",
@@ -4782,7 +5155,8 @@
 "240"
 ],
 "a": 2,
-"e": "Distance = speed x time = 60 x 3 = 180 km."
+"e": "Distance = speed x time = 60 x 3 = 180 km.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-320",
@@ -4797,7 +5171,8 @@
 "9"
 ],
 "a": 0,
-"e": "Combined rate = 1/3 + 1/12, so time = 3x12/(3+12) = 2.4 days."
+"e": "Combined rate = 1/3 + 1/12, so time = 3x12/(3+12) = 2.4 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-321",
@@ -4812,7 +5187,8 @@
 "22"
 ],
 "a": 0,
-"e": "Combined rate = 1/8 + 1/14, so time = 8x14/(8+14) = 5.1 days."
+"e": "Combined rate = 1/8 + 1/14, so time = 8x14/(8+14) = 5.1 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-322",
@@ -4827,7 +5203,8 @@
 "18"
 ],
 "a": 1,
-"e": "Combined rate = 1/6 + 1/12, so time = 6x12/(6+12) = 4.0 days."
+"e": "Combined rate = 1/6 + 1/12, so time = 6x12/(6+12) = 4.0 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-323",
@@ -4842,7 +5219,8 @@
 "2.9"
 ],
 "a": 3,
-"e": "Combined rate = 1/4 + 1/10, so time = 4x10/(4+10) = 2.9 days."
+"e": "Combined rate = 1/4 + 1/10, so time = 4x10/(4+10) = 2.9 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-324",
@@ -4857,7 +5235,8 @@
 "10"
 ],
 "a": 1,
-"e": "Combined rate = 1/3 + 1/7, so time = 3x7/(3+7) = 2.1 days."
+"e": "Combined rate = 1/3 + 1/7, so time = 3x7/(3+7) = 2.1 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-325",
@@ -4872,7 +5251,8 @@
 "19"
 ],
 "a": 0,
-"e": "Combined rate = 1/6 + 1/13, so time = 6x13/(6+13) = 4.1 days."
+"e": "Combined rate = 1/6 + 1/13, so time = 6x13/(6+13) = 4.1 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-326",
@@ -4887,7 +5267,8 @@
 "9.0"
 ],
 "a": 1,
-"e": "Combined rate = 1/8 + 1/10, so time = 8x10/(8+10) = 4.4 days."
+"e": "Combined rate = 1/8 + 1/10, so time = 8x10/(8+10) = 4.4 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-327",
@@ -4902,7 +5283,8 @@
 "6"
 ],
 "a": 2,
-"e": "Combined rate = 1/7 + 1/13, so time = 7x13/(7+13) = 4.5 days."
+"e": "Combined rate = 1/7 + 1/13, so time = 7x13/(7+13) = 4.5 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-328",
@@ -4917,7 +5299,8 @@
 "56"
 ],
 "a": 0,
-"e": "Sum = 270, divided by 5 = 54."
+"e": "Sum = 270, divided by 5 = 54.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-329",
@@ -4932,7 +5315,8 @@
 "55"
 ],
 "a": 0,
-"e": "Sum = 265, divided by 5 = 53."
+"e": "Sum = 265, divided by 5 = 53.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-330",
@@ -4947,7 +5331,8 @@
 "38"
 ],
 "a": 2,
-"e": "Sum = 205, divided by 5 = 41."
+"e": "Sum = 205, divided by 5 = 41.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-331",
@@ -4962,7 +5347,8 @@
 "250"
 ],
 "a": 0,
-"e": "Sum = 250, divided by 5 = 50."
+"e": "Sum = 250, divided by 5 = 50.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-332",
@@ -4977,7 +5363,8 @@
 "47"
 ],
 "a": 3,
-"e": "Sum = 235, divided by 5 = 47."
+"e": "Sum = 235, divided by 5 = 47.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-333",
@@ -4992,7 +5379,8 @@
 "58"
 ],
 "a": 3,
-"e": "Sum = 290, divided by 5 = 58."
+"e": "Sum = 290, divided by 5 = 58.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-334",
@@ -5007,7 +5395,8 @@
 "50"
 ],
 "a": 3,
-"e": "Sum = 250, divided by 5 = 50."
+"e": "Sum = 250, divided by 5 = 50.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-335",
@@ -5022,7 +5411,8 @@
 "64"
 ],
 "a": 0,
-"e": "Sum = 335, divided by 5 = 67."
+"e": "Sum = 335, divided by 5 = 67.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-336",
@@ -5037,7 +5427,8 @@
 "64"
 ],
 "a": 0,
-"e": "Sum = 310, divided by 5 = 62."
+"e": "Sum = 310, divided by 5 = 62.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-337",
@@ -5052,7 +5443,8 @@
 "61"
 ],
 "a": 3,
-"e": "Sum = 305, divided by 5 = 61."
+"e": "Sum = 305, divided by 5 = 61.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-338",
@@ -5067,7 +5459,8 @@
 "41"
 ],
 "a": 0,
-"e": "Sum = 220, divided by 5 = 44."
+"e": "Sum = 220, divided by 5 = 44.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-339",
@@ -5082,7 +5475,8 @@
 "330"
 ],
 "a": 1,
-"e": "Sum = 330, divided by 5 = 66."
+"e": "Sum = 330, divided by 5 = 66.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-340",
@@ -5097,7 +5491,8 @@
 "72"
 ],
 "a": 2,
-"e": "C(9,2) = 36. Order does not matter in a committee."
+"e": "C(9,2) = 36. Order does not matter in a committee.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting)."
 },
 {
 "id": "q5-341",
@@ -5112,7 +5507,8 @@
 "14"
 ],
 "a": 2,
-"e": "C(7,2) = 21. Order does not matter in a committee."
+"e": "C(7,2) = 21. Order does not matter in a committee.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting)."
 },
 {
 "id": "q5-342",
@@ -5127,7 +5523,8 @@
 "210"
 ],
 "a": 2,
-"e": "C(7,3) = 35. Order does not matter in a committee."
+"e": "C(7,3) = 35. Order does not matter in a committee.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting)."
 },
 {
 "id": "q5-343",
@@ -5142,7 +5539,8 @@
 "10"
 ],
 "a": 3,
-"e": "C(5,2) = 10. Order does not matter in a committee."
+"e": "C(5,2) = 10. Order does not matter in a committee.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting)."
 },
 {
 "id": "q5-344",
@@ -5157,7 +5555,8 @@
 "216"
 ],
 "a": 2,
-"e": "C(6,3) = 20. Order does not matter in a committee."
+"e": "C(6,3) = 20. Order does not matter in a committee.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting)."
 },
 {
 "id": "q5-345",
@@ -5172,7 +5571,8 @@
 "64"
 ],
 "a": 0,
-"e": "C(8,2) = 28. Order does not matter in a committee."
+"e": "C(8,2) = 28. Order does not matter in a committee.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting)."
 },
 {
 "id": "q5-346",
@@ -5187,7 +5587,8 @@
 "39"
 ],
 "a": 1,
-"e": "Each ratio part is 36/9 = 4 students, so girls = 9 x 4 = 36."
+"e": "Each ratio part is 36/9 = 4 students, so girls = 9 x 4 = 36.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-347",
@@ -5202,7 +5603,8 @@
 "33"
 ],
 "a": 0,
-"e": "Each ratio part is 40/10 = 4 students, so girls = 7 x 4 = 28."
+"e": "Each ratio part is 40/10 = 4 students, so girls = 7 x 4 = 28.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-348",
@@ -5217,7 +5619,8 @@
 "39"
 ],
 "a": 0,
-"e": "Each ratio part is 28/7 = 4 students, so girls = 8 x 4 = 32."
+"e": "Each ratio part is 28/7 = 4 students, so girls = 8 x 4 = 32.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-349",
@@ -5232,7 +5635,8 @@
 "16"
 ],
 "a": 0,
-"e": "Each ratio part is 24/6 = 4 students, so girls = 8 x 4 = 32."
+"e": "Each ratio part is 24/6 = 4 students, so girls = 8 x 4 = 32.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-350",
@@ -5247,7 +5651,8 @@
 "23"
 ],
 "a": 0,
-"e": "Each ratio part is 20/5 = 4 students, so girls = 5 x 4 = 20."
+"e": "Each ratio part is 20/5 = 4 students, so girls = 5 x 4 = 20.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-351",
@@ -5262,7 +5667,8 @@
 "17"
 ],
 "a": 0,
-"e": "Each ratio part is 20/5 = 4 students, so girls = 3 x 4 = 12."
+"e": "Each ratio part is 20/5 = 4 students, so girls = 3 x 4 = 12.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-352",
@@ -5277,14 +5683,15 @@
 "15"
 ],
 "a": 1,
-"e": "Each ratio part is 36/9 = 4 students, so girls = 5 x 4 = 20."
+"e": "Each ratio part is 36/9 = 4 students, so girls = 5 x 4 = 20.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q5-353",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "4 6",
 "6 4",
@@ -5293,14 +5700,15 @@
 ],
 "a": 1,
 "e": "The three lines swap x and y without a temp variable, giving 6 4.",
-"code": "x = 4\ny = 6\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 4\ny = 6\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-354",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "4 2",
 "6 4",
@@ -5309,14 +5717,15 @@
 ],
 "a": 2,
 "e": "The three lines swap x and y without a temp variable, giving 2 4.",
-"code": "x = 4\ny = 2\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 4\ny = 2\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-355",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "9 3",
 "3 12",
@@ -5325,14 +5734,15 @@
 ],
 "a": 3,
 "e": "The three lines swap x and y without a temp variable, giving 3 9.",
-"code": "x = 9\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 9\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-356",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "5 7",
 "2 5",
@@ -5341,14 +5751,15 @@
 ],
 "a": 2,
 "e": "The three lines swap x and y without a temp variable, giving 5 2.",
-"code": "x = 2\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 2\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-357",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "5 9",
 "5 14",
@@ -5357,14 +5768,15 @@
 ],
 "a": 0,
 "e": "The three lines swap x and y without a temp variable, giving 5 9.",
-"code": "x = 9\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 9\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-358",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "8 9",
 "9 8",
@@ -5373,14 +5785,15 @@
 ],
 "a": 0,
 "e": "The three lines swap x and y without a temp variable, giving 8 9.",
-"code": "x = 9\ny = 8\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 9\ny = 8\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-359",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "13 7",
 "6 13",
@@ -5389,14 +5802,15 @@
 ],
 "a": 3,
 "e": "The three lines swap x and y without a temp variable, giving 6 7.",
-"code": "x = 7\ny = 6\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 7\ny = 6\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-360",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "5 12",
 "12 7",
@@ -5405,14 +5819,15 @@
 ],
 "a": 2,
 "e": "The three lines swap x and y without a temp variable, giving 5 7.",
-"code": "x = 7\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 7\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-361",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "3 6",
 "6 3",
@@ -5421,14 +5836,15 @@
 ],
 "a": 0,
 "e": "The three lines swap x and y without a temp variable, giving 3 6.",
-"code": "x = 6\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 6\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-362",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "3 8",
 "11 8",
@@ -5437,14 +5853,15 @@
 ],
 "a": 0,
 "e": "The three lines swap x and y without a temp variable, giving 3 8.",
-"code": "x = 8\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 8\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-363",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "5 3",
 "3 2",
@@ -5453,14 +5870,15 @@
 ],
 "a": 3,
 "e": "The three lines swap x and y without a temp variable, giving 2 3.",
-"code": "x = 3\ny = 2\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 3\ny = 2\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-364",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "2 4",
 "4 2",
@@ -5469,14 +5887,15 @@
 ],
 "a": 1,
 "e": "The three lines swap x and y without a temp variable, giving 4 2.",
-"code": "x = 2\ny = 4\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 2\ny = 4\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-365",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "8 4",
 "8 12",
@@ -5485,14 +5904,15 @@
 ],
 "a": 0,
 "e": "The three lines swap x and y without a temp variable, giving 8 4.",
-"code": "x = 4\ny = 8\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 4\ny = 8\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-366",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "10 7",
 "7 3",
@@ -5501,14 +5921,15 @@
 ],
 "a": 2,
 "e": "The three lines swap x and y without a temp variable, giving 3 7.",
-"code": "x = 7\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 7\ny = 3\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-367",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "5 9",
 "5 4",
@@ -5517,14 +5938,15 @@
 ],
 "a": 1,
 "e": "The three lines swap x and y without a temp variable, giving 5 4.",
-"code": "x = 4\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)"
+"code": "x = 4\ny = 5\nx = x + y\ny = x - y\nx = x - y\nprint(x, y)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-368",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "10",
 "5",
@@ -5533,14 +5955,15 @@
 ],
 "a": 2,
 "e": "It adds 1 to 5: 5 x 6 / 2 = 15.",
-"code": "total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)"
+"code": "total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-369",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "10",
 "6",
@@ -5549,14 +5972,15 @@
 ],
 "a": 0,
 "e": "It adds 1 to 4: 4 x 5 / 2 = 10.",
-"code": "total = 0\nfor i in range(1, 5):\n    total += i\nprint(total)"
+"code": "total = 0\nfor i in range(1, 5):\n    total += i\nprint(total)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-370",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "36",
 "7",
@@ -5565,14 +5989,15 @@
 ],
 "a": 2,
 "e": "It adds 1 to 7: 7 x 8 / 2 = 28.",
-"code": "total = 0\nfor i in range(1, 8):\n    total += i\nprint(total)"
+"code": "total = 0\nfor i in range(1, 8):\n    total += i\nprint(total)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-371",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "9",
 "45",
@@ -5581,14 +6006,15 @@
 ],
 "a": 1,
 "e": "It adds 1 to 9: 9 x 10 / 2 = 45.",
-"code": "total = 0\nfor i in range(1, 10):\n    total += i\nprint(total)"
+"code": "total = 0\nfor i in range(1, 10):\n    total += i\nprint(total)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-372",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "15",
 "6",
@@ -5597,14 +6023,15 @@
 ],
 "a": 2,
 "e": "It adds 1 to 6: 6 x 7 / 2 = 21.",
-"code": "total = 0\nfor i in range(1, 7):\n    total += i\nprint(total)"
+"code": "total = 0\nfor i in range(1, 7):\n    total += i\nprint(total)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-373",
 "s": "PS",
 "t": "Code tracing",
 "d": 2,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "36",
 "8",
@@ -5613,7 +6040,8 @@
 ],
 "a": 0,
 "e": "It adds 1 to 8: 8 x 9 / 2 = 36.",
-"code": "total = 0\nfor i in range(1, 9):\n    total += i\nprint(total)"
+"code": "total = 0\nfor i in range(1, 9):\n    total += i\nprint(total)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-374",
@@ -5629,7 +6057,8 @@
 ],
 "a": 0,
 "e": "f computes the factorial, 6! = 720.",
-"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-375",
@@ -5645,7 +6074,8 @@
 ],
 "a": 3,
 "e": "f computes the factorial, 5! = 120.",
-"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-376",
@@ -5661,7 +6091,8 @@
 ],
 "a": 1,
 "e": "f computes the factorial, 7! = 5040.",
-"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-377",
@@ -5677,7 +6108,8 @@
 ],
 "a": 1,
 "e": "f computes the factorial, 3! = 6.",
-"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-378",
@@ -5693,7 +6125,8 @@
 ],
 "a": 2,
 "e": "f computes the factorial, 4! = 24.",
-"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)"
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-379",
@@ -5709,7 +6142,8 @@
 ],
 "a": 3,
 "e": "Halving 12 reaches 1 after 3 steps (about log2 n).",
-"code": "n = 12\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 12\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-380",
@@ -5725,7 +6159,8 @@
 ],
 "a": 2,
 "e": "Halving 26 reaches 1 after 4 steps (about log2 n).",
-"code": "n = 26\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 26\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-381",
@@ -5741,7 +6176,8 @@
 ],
 "a": 1,
 "e": "Halving 44 reaches 1 after 5 steps (about log2 n).",
-"code": "n = 44\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 44\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-382",
@@ -5757,7 +6193,8 @@
 ],
 "a": 3,
 "e": "Halving 14 reaches 1 after 3 steps (about log2 n).",
-"code": "n = 14\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 14\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-383",
@@ -5773,7 +6210,8 @@
 ],
 "a": 3,
 "e": "Halving 42 reaches 1 after 5 steps (about log2 n).",
-"code": "n = 42\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 42\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-384",
@@ -5789,7 +6227,8 @@
 ],
 "a": 0,
 "e": "Halving 48 reaches 1 after 5 steps (about log2 n).",
-"code": "n = 48\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 48\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-385",
@@ -5805,7 +6244,8 @@
 ],
 "a": 0,
 "e": "Halving 60 reaches 1 after 5 steps (about log2 n).",
-"code": "n = 60\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 60\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-386",
@@ -5821,7 +6261,8 @@
 ],
 "a": 1,
 "e": "Halving 24 reaches 1 after 4 steps (about log2 n).",
-"code": "n = 24\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 24\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-387",
@@ -5837,7 +6278,8 @@
 ],
 "a": 1,
 "e": "Halving 36 reaches 1 after 5 steps (about log2 n).",
-"code": "n = 36\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 36\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-388",
@@ -5853,7 +6295,8 @@
 ],
 "a": 1,
 "e": "Halving 21 reaches 1 after 4 steps (about log2 n).",
-"code": "n = 21\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 21\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-389",
@@ -5869,7 +6312,8 @@
 ],
 "a": 0,
 "e": "Halving 45 reaches 1 after 5 steps (about log2 n).",
-"code": "n = 45\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 45\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-390",
@@ -5885,14 +6329,15 @@
 ],
 "a": 3,
 "e": "Halving 59 reaches 1 after 5 steps (about log2 n).",
-"code": "n = 59\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1"
+"code": "n = 59\ncount = 0\nwhile n > 1:\n    n = n // 2\n    count += 1",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-391",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "3",
 "98",
@@ -5901,14 +6346,15 @@
 ],
 "a": 2,
 "e": "The loop keeps the largest value, 37.",
-"code": "nums = [11, 27, 6, 14, 37, 3]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [11, 27, 6, 14, 37, 3]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-392",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "42",
 "26",
@@ -5917,14 +6363,15 @@
 ],
 "a": 0,
 "e": "The loop keeps the largest value, 42.",
-"code": "nums = [26, 37, 42, 28, 15, 41]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [26, 37, 42, 28, 15, 41]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-393",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "46",
 "6",
@@ -5933,14 +6380,15 @@
 ],
 "a": 0,
 "e": "The loop keeps the largest value, 46.",
-"code": "nums = [8, 37, 21, 36, 46, 20]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [8, 37, 21, 36, 46, 20]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-394",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "15",
 "4",
@@ -5949,14 +6397,15 @@
 ],
 "a": 3,
 "e": "The loop keeps the largest value, 41.",
-"code": "nums = [28, 4, 19, 41, 27, 15]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [28, 4, 19, 41, 27, 15]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-395",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "20",
 "3",
@@ -5965,14 +6414,15 @@
 ],
 "a": 2,
 "e": "The loop keeps the largest value, 47.",
-"code": "nums = [15, 33, 28, 47, 3, 20]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [15, 33, 28, 47, 3, 20]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-396",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "1",
 "6",
@@ -5981,14 +6431,15 @@
 ],
 "a": 3,
 "e": "The loop keeps the largest value, 42.",
-"code": "nums = [14, 21, 26, 33, 42, 1]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [14, 21, 26, 33, 42, 1]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-397",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "6",
 "48",
@@ -5997,14 +6448,15 @@
 ],
 "a": 1,
 "e": "The loop keeps the largest value, 48.",
-"code": "nums = [13, 20, 15, 48, 34, 9]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [13, 20, 15, 48, 34, 9]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-398",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "1",
 "22",
@@ -6013,14 +6465,15 @@
 ],
 "a": 1,
 "e": "The loop keeps the largest value, 22.",
-"code": "nums = [7, 11, 2, 22, 10, 1]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [7, 11, 2, 22, 10, 1]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-399",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "45",
 "48",
@@ -6029,14 +6482,15 @@
 ],
 "a": 1,
 "e": "The loop keeps the largest value, 48.",
-"code": "nums = [45, 19, 11, 48, 32, 35]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [45, 19, 11, 48, 32, 35]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-400",
 "s": "PS",
 "t": "Code tracing",
 "d": 1,
-"q": "What does this print?",
+"q": "What does this Python code print?",
 "o": [
 "3",
 "10",
@@ -6045,7 +6499,8 @@
 ],
 "a": 2,
 "e": "The loop keeps the largest value, 48.",
-"code": "nums = [10, 41, 48, 40, 3, 5]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)"
+"code": "nums = [10, 41, 48, 40, 3, 5]\nbest = nums[0]\nfor x in nums:\n    if x > best:\n        best = x\nprint(best)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q5-401",
@@ -6060,7 +6515,8 @@
 "126"
 ],
 "a": 3,
-"e": "2^(32-25) - 2 = 126 (minus network and broadcast)."
+"e": "2^(32-25) - 2 = 126 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-402",
@@ -6075,7 +6531,8 @@
 "31"
 ],
 "a": 2,
-"e": "2^(32-26) - 2 = 62 (minus network and broadcast)."
+"e": "2^(32-26) - 2 = 62 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-403",
@@ -6090,7 +6547,8 @@
 "15"
 ],
 "a": 0,
-"e": "2^(32-27) - 2 = 30 (minus network and broadcast)."
+"e": "2^(32-27) - 2 = 30 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-404",
@@ -6105,7 +6563,8 @@
 "17"
 ],
 "a": 1,
-"e": "2^(32-28) - 2 = 14 (minus network and broadcast)."
+"e": "2^(32-28) - 2 = 14 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-405",
@@ -6120,7 +6579,8 @@
 "3"
 ],
 "a": 2,
-"e": "2^(32-29) - 2 = 6 (minus network and broadcast)."
+"e": "2^(32-29) - 2 = 6 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-406",
@@ -6135,7 +6595,8 @@
 "5"
 ],
 "a": 0,
-"e": "2^(32-30) - 2 = 2 (minus network and broadcast)."
+"e": "2^(32-30) - 2 = 2 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-407",
@@ -6150,7 +6611,8 @@
 "255"
 ],
 "a": 0,
-"e": "2^(32-23) - 2 = 510 (minus network and broadcast)."
+"e": "2^(32-23) - 2 = 510 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-408",
@@ -6165,7 +6627,8 @@
 "1022"
 ],
 "a": 3,
-"e": "2^(32-22) - 2 = 1022 (minus network and broadcast)."
+"e": "2^(32-22) - 2 = 1022 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-409",
@@ -6180,7 +6643,8 @@
 "1023"
 ],
 "a": 1,
-"e": "2^(32-21) - 2 = 2046 (minus network and broadcast)."
+"e": "2^(32-21) - 2 = 2046 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-410",
@@ -6195,7 +6659,8 @@
 "4094"
 ],
 "a": 3,
-"e": "2^(32-20) - 2 = 4094 (minus network and broadcast)."
+"e": "2^(32-20) - 2 = 4094 (minus network and broadcast).",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-411",
@@ -6210,7 +6675,8 @@
 "255.255.255.224"
 ],
 "a": 2,
-"e": "/24 means 24 leading 1 bits, which is 255.255.255.0."
+"e": "/24 means 24 leading 1 bits, which is 255.255.255.0.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-412",
@@ -6225,7 +6691,8 @@
 "255.255.255.0"
 ],
 "a": 0,
-"e": "/25 means 25 leading 1 bits, which is 255.255.255.128."
+"e": "/25 means 25 leading 1 bits, which is 255.255.255.128.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-413",
@@ -6240,7 +6707,8 @@
 "255.255.240.0"
 ],
 "a": 0,
-"e": "/26 means 26 leading 1 bits, which is 255.255.255.192."
+"e": "/26 means 26 leading 1 bits, which is 255.255.255.192.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-414",
@@ -6255,7 +6723,8 @@
 "255.255.255.224"
 ],
 "a": 3,
-"e": "/27 means 27 leading 1 bits, which is 255.255.255.224."
+"e": "/27 means 27 leading 1 bits, which is 255.255.255.224.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-415",
@@ -6270,7 +6739,8 @@
 "255.255.255.252"
 ],
 "a": 0,
-"e": "/28 means 28 leading 1 bits, which is 255.255.255.240."
+"e": "/28 means 28 leading 1 bits, which is 255.255.255.240.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-416",
@@ -6285,7 +6755,8 @@
 "255.255.255.248"
 ],
 "a": 3,
-"e": "/29 means 29 leading 1 bits, which is 255.255.255.248."
+"e": "/29 means 29 leading 1 bits, which is 255.255.255.248.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-417",
@@ -6300,7 +6771,8 @@
 "255.255.255.224"
 ],
 "a": 1,
-"e": "/30 means 30 leading 1 bits, which is 255.255.255.252."
+"e": "/30 means 30 leading 1 bits, which is 255.255.255.252.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-418",
@@ -6315,7 +6787,8 @@
 "255.255.255.248"
 ],
 "a": 0,
-"e": "/16 means 16 leading 1 bits, which is 255.255.0.0."
+"e": "/16 means 16 leading 1 bits, which is 255.255.0.0.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-419",
@@ -6330,7 +6803,8 @@
 "255.255.255.0"
 ],
 "a": 2,
-"e": "/20 means 20 leading 1 bits, which is 255.255.240.0."
+"e": "/20 means 20 leading 1 bits, which is 255.255.240.0.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer)."
 },
 {
 "id": "q5-420",
@@ -6345,7 +6819,9 @@
 "255.255.255.252"
 ],
 "a": 0,
-"e": "/22 means 22 leading 1 bits, which is 255.255.252.0."
+"e": "/22 means 22 leading 1 bits, which is 255.255.252.0.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer).",
+"x": 1
 },
 {
 "id": "q5-421",
@@ -6361,7 +6837,8 @@
 ],
 "a": 2,
 "e": "Two nested loops over n.",
-"code": "for i in range(n):\n    for j in range(n):\n        work()"
+"code": "for i in range(n):\n    for j in range(n):\n        work()",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-422",
@@ -6377,7 +6854,8 @@
 ],
 "a": 1,
 "e": "Two loops one after another add up to 2n, which is O(n).",
-"code": "for i in range(n):\n    work()\nfor j in range(n):\n    work()"
+"code": "for i in range(n):\n    work()\nfor j in range(n):\n    work()",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-423",
@@ -6393,7 +6871,8 @@
 ],
 "a": 2,
 "e": "i doubles each step.",
-"code": "i = 1\nwhile i < n:\n    i = i * 2"
+"code": "i = 1\nwhile i < n:\n    i = i * 2",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-424",
@@ -6409,7 +6888,8 @@
 ],
 "a": 2,
 "e": "An O(log n) loop inside an O(n) loop.",
-"code": "for i in range(n):\n    j = 1\n    while j < n:\n        j = j * 2"
+"code": "for i in range(n):\n    j = 1\n    while j < n:\n        j = j * 2",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-425",
@@ -6425,7 +6905,8 @@
 ],
 "a": 0,
 "e": "About n^2/2 steps, which is O(n^2).",
-"code": "for i in range(n):\n    for j in range(i):\n        work()"
+"code": "for i in range(n):\n    for j in range(i):\n        work()",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-426",
@@ -6441,7 +6922,8 @@
 ],
 "a": 1,
 "e": "A fixed number of steps.",
-"code": "x = arr[0] + arr[n - 1]"
+"code": "x = arr[0] + arr[n - 1]",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-427",
@@ -6457,7 +6939,8 @@
 ],
 "a": 3,
 "e": "Three nested loops over n.",
-"code": "for i in range(n):\n    for j in range(n):\n        for k in range(n):\n            work()"
+"code": "for i in range(n):\n    for j in range(n):\n        for k in range(n):\n            work()",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q5-428",
@@ -6473,6 +6956,7 @@
 ],
 "a": 2,
 "e": "The loop runs a fixed 100 times, independent of n.",
-"code": "for i in range(100):\n    work()"
+"code": "for i in range(100):\n    work()",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 }
 ]

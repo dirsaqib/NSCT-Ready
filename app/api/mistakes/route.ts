@@ -9,7 +9,7 @@ export const GET = handle(async () => {
     where: { userId: u.id },
     orderBy: { addedAt: "desc" },
     take: 100,
-    include: { question: { select: { id: true, subject: true, topic: true, text: true, code: true, options: true, answers: true, type: true, explanation: true } } },
+    include: { question: { select: { id: true, subject: true, topic: true, text: true, code: true, options: true, answers: true, type: true, explanation: true, reference: true } } },
   });
   return { mistakes: rows.map((r) => r.question) };
 });

@@ -4,7 +4,7 @@
 "s": "PROG",
 "t": "Python",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "Error",
 "[1] [1, 2]",
@@ -13,30 +13,32 @@
 ],
 "a": 3,
 "e": "The default list is created once and shared between calls, so both calls append to the same list.",
-"code": "def f(x, acc=[]):\n    acc.append(x)\n    return acc\na = f(1)\nb = f(2)\nprint(a, b)"
+"code": "def f(x, acc=[]):\n    acc.append(x)\n    return acc\na = f(1)\nb = f(2)\nprint(a, b)",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q6-002",
 "s": "PROG",
 "t": "Python",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
-"[0, 0, 0]",
 "[[5, 0], [0, 0], [0, 0]]",
-"Error",
+"[[5, 5], [5, 5], [5, 5]]",
+"[[5, 0], [5, 0], [0, 0]]",
 "[[5, 0], [5, 0], [5, 0]]"
 ],
 "a": 3,
 "e": "[[0]*2]*3 makes three references to the same inner list, so changing one row changes all.",
-"code": "grid = [[0] * 2] * 3\ngrid[0][0] = 5\nprint(grid)"
+"code": "grid = [[0] * 2] * 3\ngrid[0][0] = 5\nprint(grid)",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q6-003",
 "s": "PROG",
 "t": "Python",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "0 1 2",
 "2 2 2",
@@ -45,14 +47,15 @@
 ],
 "a": 1,
 "e": "The lambdas capture the variable i, not its value. After the loop i is 2.",
-"code": "fs = [lambda: i for i in range(3)]\nprint(*[f() for f in fs])"
+"code": "fs = [lambda: i for i in range(3)]\nprint(*[f() for f in fs])",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q6-004",
 "s": "PROG",
 "t": "Python",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "False True",
 "True True",
@@ -61,14 +64,15 @@
 ],
 "a": 2,
 "e": "== compares values (equal). is compares identity, and a slice makes a new list.",
-"code": "a = [1, 2, 3]\nb = a[:]\nprint(a == b, a is b)"
+"code": "a = [1, 2, 3]\nb = a[:]\nprint(a == b, a is b)",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q6-005",
 "s": "PROG",
 "t": "Python",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "Error",
 "{'x': 1, 'y': 2}",
@@ -77,30 +81,32 @@
 ],
 "a": 3,
 "e": "In a dict merge the later value for the same key wins.",
-"code": "d1 = {'x': 1, 'y': 2}\nd2 = {'x': 3}\nprint({**d1, **d2})"
+"code": "d1 = {'x': 1, 'y': 2}\nd2 = {'x': 3}\nprint({**d1, **d2})",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q6-006",
 "s": "PROG",
 "t": "Python",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "1 2 [3, 4, 5]",
 "1 [2, 3, 4] 5",
-"Error",
-"[1] [2, 3, 4] [5]"
+"[1] [2, 3, 4] [5]",
+"(1, [2, 3, 4], 5)"
 ],
 "a": 1,
 "e": "Starred assignment collects the middle values into a list.",
-"code": "a, *b, c = [1, 2, 3, 4, 5]\nprint(a, b, c)"
+"code": "a, *b, c = [1, 2, 3, 4, 5]\nprint(a, b, c)",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q6-007",
 "s": "PROG",
 "t": "Python",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "10",
 "15",
@@ -109,7 +115,8 @@
 ],
 "a": 0,
 "e": "x inside f is local because it is assigned there, and the global x stays 10. f returns 15 but the result is not printed.",
-"code": "x = 10\ndef f():\n    x = 5\n    return x + 10\nf()\nprint(x)"
+"code": "x = 10\ndef f():\n    x = 5\n    return x + 10\nf()\nprint(x)",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Python documentation (docs.python.org) (the Python tutorial)."
 },
 {
 "id": "q6-008",
@@ -125,7 +132,8 @@
 ],
 "a": 0,
 "e": "The pointer p changes x through *p, so both print the new value 6.",
-"code": "int x = 5;\nint *p = &x;\n*p = *p + 1;\nprintf(\"%d %d\", x, *p);"
+"code": "int x = 5;\nint *p = &x;\n*p = *p + 1;\nprintf(\"%d %d\", x, *p);",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q6-009",
@@ -141,7 +149,8 @@
 ],
 "a": 2,
 "e": "x++ returns 1 then x becomes 2. ++x makes x 3 and returns 3. The && is true, so y = x = 3.",
-"code": "int x = 1, y = 0;\nif (x++ && ++x) y = x;\nprintf(\"%d\", y);"
+"code": "int x = 1, y = 0;\nif (x++ && ++x) y = x;\nprintf(\"%d\", y);",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q6-010",
@@ -157,7 +166,8 @@
 ],
 "a": 0,
 "e": "Integer division 7/2 gives 3, and 3 % 2 is 1.",
-"code": "printf(\"%d\", (7 / 2) % 2);"
+"code": "printf(\"%d\", (7 / 2) % 2);",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q6-011",
@@ -173,7 +183,8 @@
 ],
 "a": 0,
 "e": "Both parameters are references, so the swap changes the caller's variables.",
-"code": "void sw(int &a, int &b) { int t = a; a = b; b = t; }\nint main() { int x = 10, y = 20; sw(x, y); cout << x << \" \" << y; }"
+"code": "void sw(int &a, int &b) { int t = a; a = b; b = t; }\nint main() { int x = 10, y = 20; sw(x, y); cout << x << \" \" << y; }",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q6-012",
@@ -189,7 +200,8 @@
 ],
 "a": 0,
 "e": "show is virtual, so a base pointer to a B object calls B's version at run time.",
-"code": "struct A { virtual void show() { cout << \"A\"; } };\nstruct B : A { void show() override { cout << \"B\"; } };\nint main() { A *p = new B(); p->show(); }"
+"code": "struct A { virtual void show() { cout << \"A\"; } };\nstruct B : A { void show() override { cout << \"B\"; } };\nint main() { A *p = new B(); p->show(); }",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q6-013",
@@ -204,7 +216,8 @@
 "4"
 ],
 "a": 2,
-"e": "The total bytes divided by bytes per element gives the element count, 5."
+"e": "The total bytes divided by bytes per element gives the element count, 5.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Programming fundamentals. Further reading: Kernighan and Ritchie, The C Programming Language (types, operators, pointers and arrays)."
 },
 {
 "id": "q6-014",
@@ -220,7 +233,8 @@
 ],
 "a": 3,
 "e": "new String creates a separate object, so == is false. equals compares the characters and is true.",
-"code": "String a = new String(\"nsct\");\nString b = new String(\"nsct\");\nSystem.out.println((a == b) + \" \" + a.equals(b));"
+"code": "String a = new String(\"nsct\");\nString b = new String(\"nsct\");\nSystem.out.println((a == b) + \" \" + a.equals(b));",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes and objects in Java)."
 },
 {
 "id": "q6-015",
@@ -236,7 +250,8 @@
 ],
 "a": 3,
 "e": "Creating a Child first runs the Parent constructor, then the Child constructor.",
-"code": "class Parent { Parent() { System.out.print(\"Parent\"); } }\nclass Child extends Parent { Child() { System.out.print(\"Child\"); } }\n// new Child();"
+"code": "class Parent { Parent() { System.out.print(\"Parent\"); } }\nclass Child extends Parent { Child() { System.out.print(\"Child\"); } }\n// new Child();",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes and objects in Java)."
 },
 {
 "id": "q6-016",
@@ -252,7 +267,8 @@
 ],
 "a": 1,
 "e": "The finally block runs even when the try block returns.",
-"code": "static int f() {\n  try { System.out.print(\"try \"); return 1; }\n  finally { System.out.print(\"finally\"); }\n}\n// f();"
+"code": "static int f() {\n  try { System.out.print(\"try \"); return 1; }\n  finally { System.out.print(\"finally\"); }\n}\n// f();",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes and objects in Java)."
 },
 {
 "id": "q6-017",
@@ -267,7 +283,8 @@
 "Overloading is resolved at run time"
 ],
 "a": 0,
-"e": "Overloading is chosen at compile time by the number or types of parameters. Return type alone is not enough."
+"e": "Overloading is chosen at compile time by the number or types of parameters. Return type alone is not enough.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes and objects in Java)."
 },
 {
 "id": "q6-018",
@@ -282,7 +299,8 @@
 "Single responsibility"
 ],
 "a": 0,
-"e": "A subclass must be usable anywhere its parent is expected without surprising behaviour."
+"e": "A subclass must be usable anywhere its parent is expected without surprising behaviour.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism)."
 },
 {
 "id": "q6-019",
@@ -297,22 +315,24 @@
 "A ReportService creates a MySqlDatabase object inside its constructor"
 ],
 "a": 1,
-"e": "High-level code should depend on abstractions, which also makes testing with a fake database easy."
+"e": "High-level code should depend on abstractions, which also makes testing with a fake database easy.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Object-oriented programming. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (classes, inheritance and polymorphism)."
 },
 {
 "id": "q6-020",
 "s": "PROG",
 "t": "Concurrency",
 "d": 3,
-"q": "Two threads each run count = count + 1 one thousand times on a shared variable without locks. The final value is:",
+"q": "Two threads each run count = count + 1 one thousand times on a shared variable without locks. What is the final value?",
 "o": [
-"Always 0",
-"Always 1000",
-"Any value up to 2000, often less",
-"Always 2000"
+"Exactly 2000 on every run",
+"Exactly 1000 on every run",
+"Some value up to 2000, often less",
+"Some value above 2000 on certain runs"
 ],
 "a": 2,
-"e": "The read, add and write steps can interleave, so updates get lost. This is a race condition."
+"e": "The read, add and write steps can interleave, so updates get lost. This is a race condition.",
+"r": "NSCT area: Programming (C++/Java/Python), sub-area: Introduction to concurrency and parallelism. Further reading: Deitel and Deitel, C++ How to Program and Java How to Program (concurrency)."
 },
 {
 "id": "q6-021",
@@ -328,7 +348,8 @@
 ],
 "a": 2,
 "e": "The outer loop runs n times and the inner loop doubles j, running about log n times.",
-"code": "for i in range(n):\n    j = 1\n    while j < n:\n        j *= 2"
+"code": "for i in range(n):\n    j = 1\n    while j < n:\n        j *= 2",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q6-022",
@@ -343,7 +364,8 @@
 "O(n^2)"
 ],
 "a": 0,
-"e": "This is the merge sort recurrence. By the master theorem it is Theta(n log n)."
+"e": "This is the merge sort recurrence. By the master theorem it is Theta(n log n).",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q6-023",
@@ -358,7 +380,8 @@
 "O(log n)"
 ],
 "a": 3,
-"e": "The problem halves each time with constant work, as in binary search."
+"e": "The problem halves each time with constant work, as in binary search.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q6-024",
@@ -373,22 +396,24 @@
 "O(n^3)"
 ],
 "a": 1,
-"e": "a = 4, b = 2, so n^(log2 4) = n^2 dominates the extra n work."
+"e": "a = 4, b = 2, so n^(log2 4) = n^2 dominates the extra n work.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q6-025",
 "s": "DSA",
 "t": "Complexity",
 "d": 3,
-"q": "Naive recursive Fibonacci fib(n) = fib(n-1) + fib(n-2) runs in:",
+"q": "What is the running time of naive recursive Fibonacci, fib(n) = fib(n-1) + fib(n-2)?",
 "o": [
-"O(n)",
-"Exponential time, about O(1.6^n)",
-"O(n log n)",
-"O(n^2)"
+"O(n^2), quadratic",
+"About O(1.6^n), exponential",
+"O(n log n), linearithmic",
+"O(n), linear"
 ],
 "a": 1,
-"e": "It recomputes the same values again and again. Memoization brings it down to O(n)."
+"e": "It recomputes the same values again and again. Memoization brings it down to O(n).",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Complexity and optimization. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (growth of functions)."
 },
 {
 "id": "q6-026",
@@ -403,7 +428,8 @@
 "O(n^2)"
 ],
 "a": 3,
-"e": "Each partition removes only the pivot, so the depth is n and total work is about n squared over 2."
+"e": "Each partition removes only the pivot, so the depth is n and total work is about n squared over 2.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Sorting algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (sorting and order statistics)."
 },
 {
 "id": "q6-027",
@@ -418,7 +444,8 @@
 "Selection sort and heap sort"
 ],
 "a": 2,
-"e": "Stable sorts keep equal keys in their original order. Merge and insertion sort do. Quick, heap and selection sort usually do not."
+"e": "Stable sorts keep equal keys in their original order. Merge and insertion sort do. Quick, heap and selection sort usually do not.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Sorting algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (sorting and order statistics)."
 },
 {
 "id": "q6-028",
@@ -433,7 +460,8 @@
 "O(n^2)"
 ],
 "a": 2,
-"e": "Each element is compared once with its neighbour and does not move."
+"e": "Each element is compared once with its neighbour and does not move.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Sorting algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (sorting and order statistics)."
 },
 {
 "id": "q6-029",
@@ -448,7 +476,8 @@
 "About 20"
 ],
 "a": 3,
-"e": "2^20 is about 1,048,576, so at most about 20 halvings are needed."
+"e": "2^20 is about 1,048,576, so at most about 20 halvings are needed.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Searching algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees)."
 },
 {
 "id": "q6-030",
@@ -463,7 +492,8 @@
 "20, 40, 30, 60, 80, 70, 50"
 ],
 "a": 3,
-"e": "The tree has root 50, left subtree 30 (20, 40) and right subtree 70 (60, 80). Postorder visits left, right, then root."
+"e": "The tree has root 50, left subtree 30 (20, 40) and right subtree 70 (60, 80). Postorder visits left, right, then root.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q6-031",
@@ -478,7 +508,8 @@
 "20"
 ],
 "a": 3,
-"e": "The insert makes a right-right imbalance at 10, and a left rotation makes 20 the root."
+"e": "The insert makes a right-right imbalance at 10, and a left rotation makes 20 the root.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q6-032",
@@ -488,12 +519,13 @@
 "q": "What is the maximum height of a binary search tree with n nodes, and when does it happen?",
 "o": [
 "n - 1, when keys are inserted in sorted order",
-"n/2, always",
-"log n, when keys are random",
-"log n, always"
+"log n, when keys are inserted in sorted order",
+"n / 2, when keys are inserted in random order",
+"n - 1, when keys are inserted in random order"
 ],
 "a": 0,
-"e": "Sorted insertion makes a chain like a linked list, so search becomes O(n)."
+"e": "Sorted insertion makes a chain like a linked list, so search becomes O(n).",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q6-033",
@@ -508,7 +540,8 @@
 "2i + 1 and 2i + 2"
 ],
 "a": 3,
-"e": "In 0-indexed heaps the left child is 2i + 1 and the right child is 2i + 2."
+"e": "In 0-indexed heaps the left child is 2i + 1 and the right child is 2i + 2.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Tree algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (binary search trees and balanced trees)."
 },
 {
 "id": "q6-034",
@@ -523,7 +556,8 @@
 "O(n)"
 ],
 "a": 3,
-"e": "Most nodes are near the bottom and sift down only a little, so the total work is linear."
+"e": "Most nodes are near the bottom and sift down only a little, so the total work is linear.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Non-linear data structures. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (heapsort and priority queues)."
 },
 {
 "id": "q6-035",
@@ -538,7 +572,8 @@
 "Kruskal"
 ],
 "a": 0,
-"e": "Dijkstra can fail with negative weights. Bellman-Ford relaxes all edges V - 1 times and can also detect negative cycles."
+"e": "Dijkstra can fail with negative weights. Bellman-Ford relaxes all edges V - 1 times and can also detect negative cycles.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Graph algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary graph algorithms and shortest paths)."
 },
 {
 "id": "q6-036",
@@ -553,7 +588,8 @@
 "O(V + E)"
 ],
 "a": 3,
-"e": "Each vertex and each edge is processed a constant number of times."
+"e": "Each vertex and each edge is processed a constant number of times.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Graph algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary graph algorithms and shortest paths)."
 },
 {
 "id": "q6-037",
@@ -568,7 +604,8 @@
 "It is a tree"
 ],
 "a": 0,
-"e": "A cycle would require a task to come before itself."
+"e": "A cycle would require a task to come before itself.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Graph algorithms. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (elementary graph algorithms and shortest paths)."
 },
 {
 "id": "q6-038",
@@ -583,7 +620,8 @@
 "5"
 ],
 "a": 2,
-"e": "One LCS is BCBA, which has 4 characters."
+"e": "One LCS is BCBA, which has 4 characters.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Algorithm design techniques. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (dynamic programming)."
 },
 {
 "id": "q6-039",
@@ -598,7 +636,8 @@
 "Greedy 3, optimum 3"
 ],
 "a": 1,
-"e": "Greedy takes 4 + 1 + 1 = 3 coins, but 3 + 3 uses only 2. This is why coin change needs dynamic programming."
+"e": "Greedy takes 4 + 1 + 1 = 3 coins, but 3 + 3 uses only 2. This is why coin change needs dynamic programming.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Algorithm design techniques. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (dynamic programming)."
 },
 {
 "id": "q6-040",
@@ -613,7 +652,8 @@
 "O(log n)"
 ],
 "a": 1,
-"e": "You hash in constant time and then scan a chain of average length alpha."
+"e": "You hash in constant time and then scan a chain of average length alpha.",
+"r": "NSCT area: Data Structures and Algorithms, sub-area: Hashing. Further reading: Cormen, Leiserson, Rivest and Stein, Introduction to Algorithms (hash tables)."
 },
 {
 "id": "q6-041",
@@ -628,22 +668,24 @@
 "2NF"
 ],
 "a": 1,
-"e": "A -> B is a partial dependency on part of the key (A, D), so R is not in 2NF."
+"e": "A -> B is a partial dependency on part of the key (A, D), so R is not in 2NF.",
+"r": "NSCT area: Databases, sub-area: Database design and normalization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (relational database design)."
 },
 {
 "id": "q6-042",
 "s": "DB",
 "t": "Normalization",
 "d": 3,
-"q": "R(A, B, C) has key A and dependencies A -> B and B -> C. R is in 2NF but not 3NF because:",
+"q": "R(A, B, C) has key A and dependencies A -> B and B -> C. Why is R in 2NF but not in 3NF?",
 "o": [
-"B is a key",
-"It has a partial dependency",
-"It has repeating groups",
+"C depends on part of the key only, a partial dependency",
+"B and C hold repeating groups, so values are not atomic",
+"B is a second candidate key, so R has overlapping keys",
 "C depends on A only through B, a transitive dependency"
 ],
 "a": 3,
-"e": "A -> B -> C is transitive, and C depends on a non-key attribute."
+"e": "A -> B -> C is transitive, and C depends on a non-key attribute.",
+"r": "NSCT area: Databases, sub-area: Database design and normalization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (relational database design)."
 },
 {
 "id": "q6-043",
@@ -658,22 +700,24 @@
 "{A, B}"
 ],
 "a": 1,
-"e": "From A we get B, from B we get C, and from C we get D."
+"e": "From A we get B, from B we get C, and from C we get D.",
+"r": "NSCT area: Databases, sub-area: Database design and normalization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (relational database design)."
 },
 {
 "id": "q6-044",
 "s": "DB",
 "t": "Normalization",
 "d": 3,
-"q": "A relation is in 3NF but not BCNF. This happens when:",
+"q": "When is a relation in 3NF but not in BCNF?",
 "o": [
-"A dependency X -> Y exists where X is not a superkey but Y is part of a candidate key",
-"The table has no key",
-"There is a partial dependency",
-"All attributes are atomic"
+"When X -> Y holds, X is not a superkey, and Y is part of a candidate key",
+"When X -> Y holds, X is part of a key, and Y is a non-key attribute",
+"When X -> Y holds, X is a superkey, and Y is a multivalued non-key attribute",
+"When X -> Y holds, X is a non-key attribute, and Y is also non-key"
 ],
 "a": 0,
-"e": "BCNF requires every determinant to be a superkey. 3NF allows it when Y is a prime attribute."
+"e": "BCNF requires every determinant to be a superkey. 3NF allows it when Y is a prime attribute.",
+"r": "NSCT area: Databases, sub-area: Database design and normalization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (relational database design)."
 },
 {
 "id": "q6-045",
@@ -688,7 +732,8 @@
 "7, 7"
 ],
 "a": 1,
-"e": "COUNT(*) counts rows. COUNT(column) skips NULLs."
+"e": "COUNT(*) counts rows. COUNT(column) skips NULLs.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q6-046",
@@ -703,7 +748,8 @@
 "SELECT dept, COUNT(*) > 5 FROM S"
 ],
 "a": 0,
-"e": "WHERE filters rows before grouping. HAVING filters groups after aggregation."
+"e": "WHERE filters rows before grouping. HAVING filters groups after aggregation.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q6-047",
@@ -718,7 +764,8 @@
 "4"
 ],
 "a": 2,
-"e": "The 6 matched rows plus 2 unmatched students with NULLs gives 8."
+"e": "The 6 matched rows plus 2 unmatched students with NULLs gives 8.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q6-048",
@@ -733,7 +780,8 @@
 "All rows"
 ],
 "a": 2,
-"e": "Any comparison with NULL is unknown, not true. Use IS NULL instead."
+"e": "Any comparison with NULL is unknown, not true. Use IS NULL instead.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q6-049",
@@ -742,13 +790,14 @@
 "d": 3,
 "q": "Which query finds the second highest salary?",
 "o": [
-"SELECT MAX(salary) - 1 FROM E",
-"SELECT MIN(salary) FROM E",
-"SELECT salary FROM E ORDER BY salary LIMIT 2",
+"SELECT MAX(salary) - 1 FROM E WHERE salary IS NOT NULL",
+"SELECT MIN(salary) FROM E WHERE salary < (SELECT MAX(salary) FROM E)",
+"SELECT salary FROM E ORDER BY salary ASC LIMIT 1 OFFSET 1",
 "SELECT MAX(salary) FROM E WHERE salary < (SELECT MAX(salary) FROM E)"
 ],
 "a": 3,
-"e": "Take the maximum of salaries below the overall maximum."
+"e": "Take the maximum of salaries below the overall maximum.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q6-050",
@@ -763,22 +812,24 @@
 "4"
 ],
 "a": 0,
-"e": "A Cartesian product pairs every row of R with every row of S."
+"e": "A Cartesian product pairs every row of R with every row of S.",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q6-051",
 "s": "DB",
 "t": "Transactions",
 "d": 3,
-"q": "Transaction T1 reads a value, T2 updates and commits it, and T1 reads it again and sees a different value. This anomaly is:",
+"q": "Transaction T1 reads a value, T2 updates and commits it, and T1 reads it again and sees a different value. Which anomaly is this?",
 "o": [
-"Lost update",
-"Phantom read",
-"Dirty read",
+"Lost update anomaly",
+"Phantom read anomaly",
+"Dirty read anomaly",
 "Non-repeatable read"
 ],
 "a": 3,
-"e": "The same row read twice in one transaction gives different values."
+"e": "The same row read twice in one transaction gives different values.",
+"r": "NSCT area: Databases, sub-area: Transaction management. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (transactions)."
 },
 {
 "id": "q6-052",
@@ -793,52 +844,56 @@
 "Serializable"
 ],
 "a": 1,
-"e": "Read committed reads only committed data but does not hold read locks until the end."
+"e": "Read committed reads only committed data but does not hold read locks until the end.",
+"r": "NSCT area: Databases, sub-area: Transaction management. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (transactions)."
 },
 {
 "id": "q6-053",
 "s": "DB",
 "t": "Transactions",
 "d": 3,
-"q": "Strict two-phase locking guarantees:",
+"q": "What does strict two-phase locking guarantee?",
 "o": [
 "Conflict-serializable schedules with no cascading aborts",
-"No deadlocks",
-"No need for logs",
-"Fastest throughput"
+"Conflict-serializable schedules with no deadlocks",
+"Deadlock-free schedules that also give the highest throughput",
+"Recoverable schedules that need no transaction log"
 ],
 "a": 0,
-"e": "Holding locks until commit prevents cascading rollback. Deadlocks are still possible."
+"e": "Holding locks until commit prevents cascading rollback. Deadlocks are still possible.",
+"r": "NSCT area: Databases, sub-area: Transaction management. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (transactions)."
 },
 {
 "id": "q6-054",
 "s": "DB",
 "t": "Transactions",
 "d": 3,
-"q": "A write-ahead log means:",
+"q": "What does write-ahead logging require?",
 "o": [
-"Log records are written to disk before the changed data pages",
-"Logs are optional",
-"Data pages are written before the log",
-"Only reads are logged"
+"Log records reach disk before the changed data pages",
+"Data pages reach disk before their log records",
+"Log records are written only after a transaction commits",
+"Data pages are written twice so one copy is a backup"
 ],
 "a": 0,
-"e": "This lets the database undo or redo changes after a crash."
+"e": "This lets the database undo or redo changes after a crash.",
+"r": "NSCT area: Databases, sub-area: Transaction management. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (transactions)."
 },
 {
 "id": "q6-055",
 "s": "DB",
 "t": "Indexing",
 "d": 3,
-"q": "A B+ tree index on a column is most useful for:",
+"q": "What is a B+ tree index on a column most useful for?",
 "o": [
-"Only full table scans",
+"Exact matches only, because the keys are hashed",
 "Both exact matches and range queries such as BETWEEN",
-"Only exact matches",
-"Only text search"
+"Pattern searches such as LIKE '%text%' in long strings",
+"Full table scans that must read every row in order"
 ],
 "a": 1,
-"e": "B+ tree leaves are linked in order, so ranges are scanned efficiently."
+"e": "B+ tree leaves are linked in order, so ranges are scanned efficiently.",
+"r": "NSCT area: Databases, sub-area: Indexing and file organization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (indexing)."
 },
 {
 "id": "q6-056",
@@ -849,26 +904,28 @@
 "o": [
 "WHERE city = 'Lahore' AND age > 20",
 "WHERE age = 20",
-"WHERE name = 'Ali'",
-"WHERE age > 20 OR name = 'Ali'"
+"WHERE age > 20 OR city = 'Lahore'",
+"WHERE name = 'Ali' AND age = 20"
 ],
 "a": 0,
-"e": "A composite index is used from its leftmost column. Filtering on age alone cannot use it well."
+"e": "A composite index is used from its leftmost column. Filtering on age alone cannot use it well.",
+"r": "NSCT area: Databases, sub-area: Indexing and file organization. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (indexing)."
 },
 {
 "id": "q6-057",
 "s": "DB",
 "t": "ER modelling",
 "d": 3,
-"q": "A many-to-many relationship between Student and Course is converted to tables as:",
+"q": "How is a many-to-many relationship between Student and Course converted to tables?",
 "o": [
-"One merged table",
-"A foreign key in Student",
-"A separate table holding both primary keys",
-"A foreign key in Course"
+"A foreign key to Course placed in Student",
+"A foreign key to Student placed in Course",
+"A separate table that holds both primary keys",
+"One merged table with repeated course columns"
 ],
 "a": 2,
-"e": "The junction table, for example Enrollment(student_id, course_id), holds the pairs."
+"e": "The junction table, for example Enrollment(student_id, course_id), holds the pairs.",
+"r": "NSCT area: Databases, sub-area: Data models. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (database design using the E-R model)."
 },
 {
 "id": "q6-058",
@@ -883,22 +940,24 @@
 "Projection"
 ],
 "a": 0,
-"e": "Division finds values related to all tuples in another relation."
+"e": "Division finds values related to all tuples in another relation.",
+"r": "NSCT area: Databases, sub-area: Relational algebra and calculus. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (the relational algebra)."
 },
 {
 "id": "q6-059",
 "s": "DB",
 "t": "NoSQL",
 "d": 3,
-"q": "Under the CAP theorem, during a network partition a distributed database must choose between:",
+"q": "Under the CAP theorem, what must a distributed database choose between during a network partition?",
 "o": [
-"Indexing and storage",
+"Durability and transaction isolation",
 "Consistency and availability",
-"Speed and cost",
-"Security and speed"
+"Latency and throughput",
+"Replication and sharding"
 ],
 "a": 1,
-"e": "Partition tolerance is required in practice, so the trade-off is consistency against availability."
+"e": "Partition tolerance is required in practice, so the trade-off is consistency against availability.",
+"r": "NSCT area: Databases, sub-area: NoSQL databases. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (big data and NoSQL storage)."
 },
 {
 "id": "q6-060",
@@ -907,14 +966,15 @@
 "d": 3,
 "q": "What does this return?",
 "o": [
-"An error",
+"Names of students enrolled in every course",
 "Names of students with no enrolment",
-"Every student's name",
+"Names of all students in the table",
 "Names of students with at least one enrolment"
 ],
 "a": 1,
 "e": "NOT EXISTS keeps students for whom the subquery finds no matching row.",
-"code": "SELECT name FROM Student s\nWHERE NOT EXISTS (\n  SELECT 1 FROM Enroll e WHERE e.sid = s.id\n);"
+"code": "SELECT name FROM Student s\nWHERE NOT EXISTS (\n  SELECT 1 FROM Enroll e WHERE e.sid = s.id\n);",
+"r": "NSCT area: Databases, sub-area: SQL. Further reading: Silberschatz, Korth and Sudarshan, Database System Concepts (introduction to SQL)."
 },
 {
 "id": "q6-061",
@@ -929,7 +989,8 @@
 "20"
 ],
 "a": 2,
-"e": "11 - 9 + 2 = 4, so at least 4 independent paths need tests."
+"e": "11 - 9 + 2 = 4, so at least 4 independent paths need tests.",
+"r": "NSCT area: Software Engineering, sub-area: Software metrics. Further reading: Sommerville, Software Engineering (project planning and estimation)."
 },
 {
 "id": "q6-062",
@@ -944,22 +1005,24 @@
 "0, 100"
 ],
 "a": 1,
-"e": "Test just outside and just on each boundary, where defects are most likely."
+"e": "Test just outside and just on each boundary, where defects are most likely.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing)."
 },
 {
 "id": "q6-063",
 "s": "SE",
 "t": "Testing",
 "d": 3,
-"q": "Statement coverage of 100% guarantees:",
+"q": "What does 100% statement coverage guarantee?",
 "o": [
 "Every line ran at least once, but not every branch outcome",
-"All conditions are true and false",
-"No bugs remain",
-"All paths are tested"
+"Every condition was evaluated as both true and false at least once",
+"Every possible path through the code was executed",
+"Every requirement has at least one passing test"
 ],
 "a": 0,
-"e": "An if with no else can be fully covered without ever testing the false outcome."
+"e": "An if with no else can be fully covered without ever testing the false outcome.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing)."
 },
 {
 "id": "q6-064",
@@ -974,7 +1037,8 @@
 "Regression testing"
 ],
 "a": 3,
-"e": "Regression tests catch changes that break existing behaviour."
+"e": "Regression tests catch changes that break existing behaviour.",
+"r": "NSCT area: Software Engineering, sub-area: Software testing. Further reading: Sommerville, Software Engineering (software testing)."
 },
 {
 "id": "q6-065",
@@ -989,22 +1053,24 @@
 "Waterfall or the V-model"
 ],
 "a": 3,
-"e": "Stable requirements and regulation favour plan-driven models with test plans tied to each phase."
+"e": "Stable requirements and regulation favour plan-driven models with test plans tied to each phase.",
+"r": "NSCT area: Software Engineering, sub-area: Software process models. Further reading: Sommerville, Software Engineering (software processes)."
 },
 {
 "id": "q6-066",
 "s": "SE",
 "t": "Process models",
 "d": 3,
-"q": "The spiral model is chosen mainly when:",
+"q": "When is the spiral model mainly chosen?",
 "o": [
-"Requirements are fixed",
-"There is no budget",
-"The team is one person",
-"The project has high risk that must be analysed each cycle"
+"When the requirements are fixed and fully documented at the start",
+"When the product must be delivered in a single final release",
+"When the team is small and the project lasts only a few weeks",
+"When the project has high risk that must be analysed in each cycle"
 ],
 "a": 3,
-"e": "Each spiral loop includes explicit risk analysis."
+"e": "Each spiral loop includes explicit risk analysis.",
+"r": "NSCT area: Software Engineering, sub-area: Software process models. Further reading: Sommerville, Software Engineering (software processes)."
 },
 {
 "id": "q6-067",
@@ -1019,7 +1085,8 @@
 "Development team"
 ],
 "a": 2,
-"e": "The product owner owns and orders the backlog to maximise value."
+"e": "The product owner owns and orders the backlog to maximise value.",
+"r": "NSCT area: Software Engineering, sub-area: Agile software development. Further reading: The Scrum Guide (scrumguides.org) (roles, events and artifacts)."
 },
 {
 "id": "q6-068",
@@ -1034,22 +1101,24 @@
 "10"
 ],
 "a": 2,
-"e": "Average velocity is 22, and 132 / 22 = 6 sprints."
+"e": "Average velocity is 22, and 132 / 22 = 6 sprints.",
+"r": "NSCT area: Software Engineering, sub-area: Agile software development. Further reading: The Scrum Guide (scrumguides.org) (roles, events and artifacts)."
 },
 {
 "id": "q6-069",
 "s": "SE",
 "t": "Estimation",
 "d": 3,
-"q": "Using COCOMO basic organic mode, effort = 2.4 x KLOC^1.05. Effort grows how with project size?",
+"q": "In basic COCOMO organic mode, effort = 2.4 x KLOC^1.05. How does effort grow with project size?",
 "o": [
-"Exponentially",
+"Exactly linearly",
 "Slightly faster than linearly",
-"Linearly",
-"It stays constant"
+"Exponentially",
+"Much slower than linearly (logarithmic)"
 ],
 "a": 1,
-"e": "An exponent a little above 1 means larger projects cost a bit more per line."
+"e": "An exponent a little above 1 means larger projects cost a bit more per line.",
+"r": "NSCT area: Software Engineering, sub-area: Software metrics. Further reading: Sommerville, Software Engineering (project planning and estimation)."
 },
 {
 "id": "q6-070",
@@ -1064,7 +1133,8 @@
 "Control coupling"
 ],
 "a": 2,
-"e": "Data coupling is the loosest and most desirable form."
+"e": "Data coupling is the loosest and most desirable form.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Sommerville, Software Engineering (design and implementation)."
 },
 {
 "id": "q6-071",
@@ -1079,7 +1149,8 @@
 "Open/closed"
 ],
 "a": 0,
-"e": "A class should have one reason to change."
+"e": "A class should have one reason to change.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Sommerville, Software Engineering (design and implementation)."
 },
 {
 "id": "q6-072",
@@ -1094,7 +1165,8 @@
 "Observer"
 ],
 "a": 1,
-"e": "Singleton ensures a single instance with global access, though it should be used sparingly."
+"e": "Singleton ensures a single instance with global access, though it should be used sparingly.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Gamma, Helm, Johnson and Vlissides, Design Patterns (the pattern catalogue)."
 },
 {
 "id": "q6-073",
@@ -1109,7 +1181,8 @@
 "Strategy"
 ],
 "a": 1,
-"e": "An adapter wraps the new class and translates calls to the expected interface."
+"e": "An adapter wraps the new class and translates calls to the expected interface.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Gamma, Helm, Johnson and Vlissides, Design Patterns (the pattern catalogue)."
 },
 {
 "id": "q6-074",
@@ -1124,37 +1197,40 @@
 "Observer"
 ],
 "a": 3,
-"e": "Subscribers are notified when the subject's state changes."
+"e": "Subscribers are notified when the subject's state changes.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Gamma, Helm, Johnson and Vlissides, Design Patterns (the pattern catalogue)."
 },
 {
 "id": "q6-075",
 "s": "SE",
 "t": "Requirements",
 "d": 3,
-"q": "'The system shall respond to 95% of searches within 2 seconds for 1,000 users' is:",
+"q": "'The system shall respond to 95% of searches within 2 seconds for 1,000 users.' What kind of requirement is this?",
 "o": [
-"A functional requirement",
+"A functional (search feature) requirement",
 "A non-functional (performance) requirement",
-"A user story",
-"A design constraint only"
+"A domain (business rule) requirement",
+"A user (acceptance test) requirement"
 ],
 "a": 1,
-"e": "It states how well the system works, not what it does."
+"e": "It states how well the system works, not what it does.",
+"r": "NSCT area: Software Engineering, sub-area: Requirements engineering. Further reading: Sommerville, Software Engineering (requirements engineering)."
 },
 {
 "id": "q6-076",
 "s": "SE",
 "t": "UML",
 "d": 3,
-"q": "In a UML class diagram, a filled diamond between Order and OrderLine means:",
+"q": "In a UML class diagram, what does a filled diamond between Order and OrderLine mean?",
 "o": [
-"Aggregation, lines can exist alone",
-"Inheritance",
-"Dependency",
-"Composition, lines are destroyed with the order"
+"Aggregation: the lines can exist without the order",
+"Inheritance: an order line is a kind of order",
+"Dependency: the order uses lines only briefly",
+"Composition: the lines are destroyed with the order"
 ],
 "a": 3,
-"e": "Composition means the part's lifetime is owned by the whole."
+"e": "Composition means the part's lifetime is owned by the whole.",
+"r": "NSCT area: Software Engineering, sub-area: Software design. Further reading: Fowler, UML Distilled (class, sequence and state diagrams)."
 },
 {
 "id": "q6-077",
@@ -1169,22 +1245,24 @@
 "A merge conflict must be resolved by hand"
 ],
 "a": 3,
-"e": "Git marks the conflicting hunks for a person to resolve."
+"e": "Git marks the conflicting hunks for a person to resolve.",
+"r": "NSCT area: Software Engineering, sub-area: Software configuration management. Further reading: Chacon and Straub, Pro Git (git-scm.com/book) (Git basics and branching)."
 },
 {
 "id": "q6-078",
 "s": "SE",
 "t": "DevOps",
 "d": 3,
-"q": "In continuous integration, the main goal is to:",
+"q": "What is the main goal of continuous integration?",
 "o": [
-"Release once a year",
-"Merge and test changes frequently so integration problems are found early",
-"Deploy without version control",
-"Skip testing"
+"Releasing every change to customers as soon as the developer commits it",
+"Merging and testing changes often so integration problems are found early",
+"Keeping each developer on a separate branch until the end of the project",
+"Replacing unit tests with one manual test cycle before each release"
 ],
 "a": 1,
-"e": "Each push triggers an automatic build and tests."
+"e": "Each push triggers an automatic build and tests.",
+"r": "NSCT area: Software Engineering, sub-area: Software configuration management. Further reading: Sommerville, Software Engineering (DevOps and code management)."
 },
 {
 "id": "q6-079",
@@ -1199,29 +1277,31 @@
 "Adaptive maintenance"
 ],
 "a": 3,
-"e": "Adaptive maintenance responds to changes in the environment."
+"e": "Adaptive maintenance responds to changes in the environment.",
+"r": "NSCT area: Software Engineering, sub-area: Software maintenance and evolution. Further reading: Sommerville, Software Engineering (software evolution)."
 },
 {
 "id": "q6-080",
 "s": "SE",
 "t": "Quality",
 "d": 3,
-"q": "A defect is found in production that was introduced during requirements. Compared with catching it in requirements review, fixing it now is usually:",
+"q": "A defect introduced during requirements is found in production. Compared with catching it in a requirements review, what does fixing it now usually cost?",
 "o": [
-"The same cost",
-"Free",
-"Cheaper",
+"About the same amount",
+"Slightly more",
+"Slightly less",
 "Much more expensive"
 ],
 "a": 3,
-"e": "Cost of fixing grows sharply in later phases."
+"e": "Cost of fixing grows sharply in later phases.",
+"r": "NSCT area: Software Engineering, sub-area: Software quality assurance. Further reading: Sommerville, Software Engineering (quality management)."
 },
 {
 "id": "q6-081",
 "s": "WEB",
 "t": "JavaScript",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this JavaScript code print?",
 "o": [
 "Error",
 "0 1 2",
@@ -1230,7 +1310,8 @@
 ],
 "a": 3,
 "e": "var is function-scoped, so all callbacks see the same i, which is 3 when they run.",
-"code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}"
+"code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q6-082",
@@ -1246,7 +1327,8 @@
 ],
 "a": 3,
 "e": "Synchronous code runs first (A, D). Promise callbacks are microtasks and run before timer callbacks.",
-"code": "console.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nconsole.log('D');"
+"code": "console.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nconsole.log('D');",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q6-083",
@@ -1261,14 +1343,15 @@
 "false, false"
 ],
 "a": 0,
-"e": "[] becomes '' and {} becomes '[object Object]'. Floating point makes 0.1 + 0.2 slightly more than 0.3."
+"e": "[] becomes '' and {} becomes '[object Object]'. Floating point makes 0.1 + 0.2 slightly more than 0.3.",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q6-084",
 "s": "WEB",
 "t": "JavaScript",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this JavaScript code print?",
 "o": [
 "[1, 2, 3]",
 "Error",
@@ -1277,14 +1360,15 @@
 ],
 "a": 3,
 "e": "const stops reassigning the variable, but the array itself can still change.",
-"code": "const a = [1, 2, 3];\na.push(4);\nconsole.log(a);"
+"code": "const a = [1, 2, 3];\na.push(4);\nconsole.log(a);",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q6-085",
 "s": "WEB",
 "t": "JavaScript",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this JavaScript code print?",
 "o": [
 "Error",
 "12",
@@ -1293,7 +1377,8 @@
 ],
 "a": 1,
 "e": "map doubles the values to [2, 4, 6] and reduce adds them to 12.",
-"code": "const r = [1, 2, 3].map(x => x * 2).reduce((s, x) => s + x, 0);\nconsole.log(r);"
+"code": "const r = [1, 2, 3].map(x => x * 2).reduce((s, x) => s + x, 0);\nconsole.log(r);",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q6-086",
@@ -1308,7 +1393,8 @@
 "#menu a"
 ],
 "a": 3,
-"e": "An ID selector outweighs any number of classes and elements."
+"e": "An ID selector outweighs any number of classes and elements.",
+"r": "NSCT area: Web Development, sub-area: CSS. Further reading: MDN Web Docs (developer.mozilla.org) (CSS)."
 },
 {
 "id": "q6-087",
@@ -1323,22 +1409,24 @@
 "200px"
 ],
 "a": 0,
-"e": "Content 200 + padding 20 + border 10 = 230px. With border-box it would be 200px."
+"e": "Content 200 + padding 20 + border 10 = 230px. With border-box it would be 200px.",
+"r": "NSCT area: Web Development, sub-area: CSS. Further reading: MDN Web Docs (developer.mozilla.org) (CSS)."
 },
 {
 "id": "q6-088",
 "s": "WEB",
 "t": "CSS",
 "d": 3,
-"q": "A child has position: absolute. It is positioned relative to:",
+"q": "A child element has position: absolute. What is it positioned relative to?",
 "o": [
-"The page body always",
-"The nearest ancestor with position other than static",
-"The viewport always",
-"Its previous sibling"
+"The nearest ancestor that has a fixed width set",
+"The nearest ancestor whose position is not static",
+"The body element of the page, in every case",
+"The sibling element that comes just before it"
 ],
 "a": 1,
-"e": "If no ancestor is positioned, it falls back to the initial containing block."
+"e": "If no ancestor is positioned, it falls back to the initial containing block.",
+"r": "NSCT area: Web Development, sub-area: CSS. Further reading: MDN Web Docs (developer.mozilla.org) (CSS)."
 },
 {
 "id": "q6-089",
@@ -1353,7 +1441,8 @@
 "Statelessness"
 ],
 "a": 2,
-"e": "PUT and DELETE are idempotent. POST usually is not."
+"e": "PUT and DELETE are idempotent. POST usually is not.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP)."
 },
 {
 "id": "q6-090",
@@ -1368,7 +1457,8 @@
 "401 Unauthorized"
 ],
 "a": 0,
-"e": "401 means not authenticated. 403 means authenticated but not permitted."
+"e": "401 means not authenticated. 403 means authenticated but not permitted.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP)."
 },
 {
 "id": "q6-091",
@@ -1377,28 +1467,30 @@
 "d": 3,
 "q": "A browser blocks a fetch from site-a.com to api.site-b.com. Which header must the API send to allow it?",
 "o": [
-"Content-Type",
-"Cache-Control",
-"Set-Cookie",
+"Access-Control-Request-Method",
+"Content-Security-Policy",
+"Strict-Transport-Security",
 "Access-Control-Allow-Origin"
 ],
 "a": 3,
-"e": "CORS headers tell the browser which origins may read the response."
+"e": "CORS headers tell the browser which origins may read the response.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (HTTP)."
 },
 {
 "id": "q6-092",
 "s": "WEB",
 "t": "Security",
 "d": 3,
-"q": "A comment box shows user input directly in the page, and someone posts a <script> tag. This attack is:",
+"q": "A comment box shows user input directly in the page, and someone posts a <script> tag. Which attack is this?",
 "o": [
-"SQL injection",
-"CSRF",
-"Clickjacking",
+"SQL injection (SQLi)",
+"Cross-site request forgery",
+"Clickjacking (UI redress)",
 "Cross-site scripting (XSS)"
 ],
 "a": 3,
-"e": "Escaping output and a Content Security Policy prevent XSS."
+"e": "Escaping output and a Content Security Policy prevent XSS.",
+"r": "NSCT area: Web Development, sub-area: Web security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q6-093",
@@ -1407,13 +1499,14 @@
 "d": 3,
 "q": "Which cookie settings best protect a session cookie?",
 "o": [
-"Only Expires",
-"Domain=*",
-"No flags",
+"Expires, Path and Domain",
+"Secure, Path and Max-Age",
+"HttpOnly, Domain and Expires",
 "HttpOnly, Secure and SameSite"
 ],
 "a": 3,
-"e": "HttpOnly blocks JavaScript access, Secure needs HTTPS and SameSite reduces CSRF."
+"e": "HttpOnly blocks JavaScript access, Secure needs HTTPS and SameSite reduces CSRF.",
+"r": "NSCT area: Web Development, sub-area: Web security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q6-094",
@@ -1428,44 +1521,47 @@
 "CSRF"
 ],
 "a": 3,
-"e": "Anti-CSRF tokens and SameSite cookies stop it."
+"e": "Anti-CSRF tokens and SameSite cookies stop it.",
+"r": "NSCT area: Web Development, sub-area: Web security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q6-095",
 "s": "WEB",
 "t": "Web architecture",
 "d": 3,
-"q": "Server-side rendering (SSR) mainly improves:",
+"q": "What does server-side rendering (SSR) mainly improve?",
 "o": [
-"Image compression",
-"Password hashing",
+"Speed of navigation after the first page load",
+"Security of the data stored in the browser",
 "First page load speed and search engine indexing",
-"Database normalization"
+"Offline use when the network is unavailable"
 ],
 "a": 2,
-"e": "The server sends ready HTML instead of an empty page that waits for JavaScript."
+"e": "The server sends ready HTML instead of an empty page that waits for JavaScript.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (how the web works)."
 },
 {
 "id": "q6-096",
 "s": "WEB",
 "t": "Web architecture",
 "d": 3,
-"q": "A REST API returns 50,000 records in one response and is slow. The best fix is:",
+"q": "A REST API returns 50,000 records in one response and is slow. What is the best fix?",
 "o": [
-"Send XML instead",
-"Add pagination with limit and offset or cursors",
-"Increase the font size",
-"Remove HTTPS"
+"Return the records as XML instead of JSON",
+"Add pagination with limit and offset, or cursors",
+"Send the records over a persistent WebSocket connection",
+"Raise the server's request timeout limit"
 ],
 "a": 1,
-"e": "Pagination returns small pages that load quickly."
+"e": "Pagination returns small pages that load quickly.",
+"r": "NSCT area: Web Development, sub-area: Web architecture and protocols. Further reading: MDN Web Docs (developer.mozilla.org) (how the web works)."
 },
 {
 "id": "q6-097",
 "s": "WEB",
 "t": "JavaScript",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this JavaScript code print?",
 "o": [
 "undefined",
 "null",
@@ -1474,14 +1570,15 @@
 ],
 "a": 2,
 "e": "typeof null is 'object', a long-standing JavaScript quirk.",
-"code": "console.log(typeof null);"
+"code": "console.log(typeof null);",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q6-098",
 "s": "WEB",
 "t": "JavaScript",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this JavaScript code print?",
 "o": [
 "undefined",
 "false",
@@ -1490,7 +1587,8 @@
 ],
 "a": 1,
 "e": "Strict equality checks type too. The number 5 and the string '5' differ.",
-"code": "console.log(5 === '5');"
+"code": "console.log(5 === '5');",
+"r": "NSCT area: Web Development, sub-area: JavaScript. Further reading: MDN Web Docs (developer.mozilla.org) (JavaScript guide)."
 },
 {
 "id": "q6-099",
@@ -1499,13 +1597,14 @@
 "d": 3,
 "q": "In React, why does updating state with count = count + 1 directly not refresh the screen?",
 "o": [
-"Variables cannot change in JavaScript",
-"It needs a page reload",
-"State must be a string",
-"React needs the setter so it knows to re-render"
+"React freezes state variables so that they cannot be changed",
+"React copies state to the server before it updates the screen",
+"React updates the screen only after the next network request",
+"React needs the setter call so that it knows to re-render"
 ],
 "a": 3,
-"e": "Calling setCount schedules a re-render with the new value."
+"e": "Calling setCount schedules a re-render with the new value.",
+"r": "NSCT area: Web Development, sub-area: Frontend frameworks. Further reading: MDN Web Docs (developer.mozilla.org) (client-side frameworks)."
 },
 {
 "id": "q6-100",
@@ -1514,13 +1613,14 @@
 "d": 3,
 "q": "Which change most reduces the time to first meaningful paint for a large single-page app?",
 "o": [
-"Add more fonts",
+"Bundling all of the code into a single file",
 "Code splitting and lazy loading of routes",
-"Disable caching",
-"Bundle all code into one file"
+"Inlining every image as a Base64 string",
+"Loading all fonts before the first render"
 ],
 "a": 1,
-"e": "Users download only the code needed for the current page."
+"e": "Users download only the code needed for the current page.",
+"r": "NSCT area: Web Development, sub-area: Performance optimization. Further reading: MDN Web Docs (developer.mozilla.org) (web performance)."
 },
 {
 "id": "q6-101",
@@ -1535,7 +1635,8 @@
 "97%"
 ],
 "a": 1,
-"e": "Precision = TP / (TP + FP) = 90 / 120 = 75%."
+"e": "Precision = TP / (TP + FP) = 90 / 120 = 75%.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses)."
 },
 {
 "id": "q6-102",
@@ -1550,22 +1651,24 @@
 "97%"
 ],
 "a": 2,
-"e": "Recall = TP / (TP + FN) = 90 / 100 = 90%."
+"e": "Recall = TP / (TP + FN) = 90 / 100 = 90%.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses)."
 },
 {
 "id": "q6-103",
 "s": "AI",
 "t": "Evaluation",
 "d": 3,
-"q": "A fraud dataset is 99% normal and 1% fraud. A model predicts 'normal' for everything. Its accuracy is 99%. Why is this misleading?",
+"q": "A fraud dataset is 99% normal and 1% fraud. A model that predicts 'normal' for everything has 99% accuracy. Why is this misleading?",
 "o": [
-"The dataset is too big",
-"It catches no fraud, so recall for fraud is 0",
-"Accuracy is always wrong",
-"99% is too low"
+"It overfits, so accuracy on new data will be much lower",
+"It catches no fraud, so recall for the fraud class is 0",
+"It has high variance, so accuracy changes on every run",
+"It leaks test data, so the accuracy figure is inflated"
 ],
 "a": 1,
-"e": "With imbalanced classes, use precision, recall, F1 or AUC."
+"e": "With imbalanced classes, use precision, recall, F1 or AUC.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses)."
 },
 {
 "id": "q6-104",
@@ -1580,7 +1683,8 @@
 "0.80"
 ],
 "a": 2,
-"e": "F1 = 2PR / (P + R) = 2 x 0.54 / 1.5 = 0.72."
+"e": "F1 = 2PR / (P + R) = 2 x 0.54 / 1.5 = 0.72.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Mitchell, Machine Learning (evaluating hypotheses)."
 },
 {
 "id": "q6-105",
@@ -1589,28 +1693,30 @@
 "d": 3,
 "q": "Training accuracy is 99% but validation accuracy is 70%. What is happening, and what helps?",
 "o": [
-"Overfitting, use regularization, more data or a simpler model",
-"Perfect fit, do nothing",
-"Underfitting, use a smaller dataset",
-"Data leakage always"
+"Overfitting. Use regularization, more data or a simpler model",
+"Underfitting. Use a larger model and train for more epochs",
+"Data leakage. Remove the features that contain the target",
+"Class imbalance. Re-sample the data so classes are equal"
 ],
 "a": 0,
-"e": "A large gap between training and validation means the model memorised the training data."
+"e": "A large gap between training and validation means the model memorised the training data.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Goodfellow, Bengio and Courville, Deep Learning (machine learning basics: capacity, overfitting and underfitting)."
 },
 {
 "id": "q6-106",
 "s": "AI",
 "t": "Model fitting",
 "d": 3,
-"q": "Both training and validation error are high. The model is:",
+"q": "Both training error and validation error are high. What is the model doing?",
 "o": [
-"Well fitted",
-"Leaking data",
+"Overfitting (high variance)",
+"Fitting well (balanced)",
 "Underfitting (high bias)",
-"Overfitting"
+"Memorising (zero bias)"
 ],
 "a": 2,
-"e": "A more complex model or better features usually helps."
+"e": "A more complex model or better features usually helps.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Goodfellow, Bengio and Courville, Deep Learning (machine learning basics: capacity, overfitting and underfitting)."
 },
 {
 "id": "q6-107",
@@ -1619,28 +1725,30 @@
 "d": 3,
 "q": "Before splitting data, a student scales all features using the mean of the whole dataset. What is the problem?",
 "o": [
-"Underfitting",
-"Data leakage from the test set into training",
-"Nothing",
-"The model becomes linear"
+"The model underfits because the scale is too small",
+"Information from the test set leaks into training",
+"The features lose their correlation with the target",
+"The test set becomes too small to give a fair score"
 ],
 "a": 1,
-"e": "Fit the scaler on training data only, then apply it to the test data."
+"e": "Fit the scaler on training data only, then apply it to the test data.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Model evaluation. Further reading: Goodfellow, Bengio and Courville, Deep Learning (machine learning basics: capacity, overfitting and underfitting)."
 },
 {
 "id": "q6-108",
 "s": "AI",
 "t": "Algorithms",
 "d": 3,
-"q": "In k-nearest neighbours, a very small k such as 1 tends to:",
+"q": "In k-nearest neighbours, what does a very small k such as 1 tend to do?",
 "o": [
-"Underfit",
+"Underfit and ignore local detail",
 "Overfit and be sensitive to noise",
-"Ignore distances",
-"Always be best"
+"Smooth the decision boundary",
+"Make prediction much slower"
 ],
 "a": 1,
-"e": "A single neighbour follows every noisy point. Larger k smooths the boundary."
+"e": "A single neighbour follows every noisy point. Larger k smooths the boundary.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (decision trees, Bayesian learning and instance-based learning)."
 },
 {
 "id": "q6-109",
@@ -1649,13 +1757,14 @@
 "d": 3,
 "q": "Which statement about k-means is correct?",
 "o": [
-"It works only on text",
+"The labels of some points must be known in advance",
 "The number of clusters k must be chosen in advance",
-"It always finds the global best clustering",
-"It needs labelled data"
+"The result is the same for every starting position",
+"The clusters found can have any shape and density"
 ],
 "a": 1,
-"e": "It is unsupervised and can get stuck in local minima, so it is run from several starts."
+"e": "It is unsupervised and can get stuck in local minima, so it is run from several starts.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (decision trees, Bayesian learning and instance-based learning)."
 },
 {
 "id": "q6-110",
@@ -1670,7 +1779,8 @@
 "0.5"
 ],
 "a": 0,
-"e": "An even 50/50 split gives the maximum entropy of 1 bit."
+"e": "An even 50/50 split gives the maximum entropy of 1 bit.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Supervised learning. Further reading: Mitchell, Machine Learning (decision trees, Bayesian learning and instance-based learning)."
 },
 {
 "id": "q6-111",
@@ -1679,13 +1789,14 @@
 "d": 3,
 "q": "Why is ReLU often preferred over sigmoid in deep hidden layers?",
 "o": [
-"It is a probability",
+"It keeps every output between 0 and 1, like a probability",
 "It reduces the vanishing gradient problem and is cheap to compute",
-"It never outputs zero",
-"It needs no weights"
+"It is smooth at zero, so gradients are defined everywhere",
+"It needs fewer weights, so the network can be trained with much less data"
 ],
 "a": 1,
-"e": "Sigmoid saturates and its gradients shrink in deep networks."
+"e": "Sigmoid saturates and its gradients shrink in deep networks.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks)."
 },
 {
 "id": "q6-112",
@@ -1700,22 +1811,24 @@
 "Decrease the learning rate"
 ],
 "a": 3,
-"e": "A learning rate that is too high makes gradient descent overshoot."
+"e": "A learning rate that is too high makes gradient descent overshoot.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (deep feedforward networks)."
 },
 {
 "id": "q6-113",
 "s": "AI",
 "t": "Search",
 "d": 3,
-"q": "A* search is guaranteed to find the shortest path when the heuristic is:",
+"q": "A* search is guaranteed to find the shortest path when its heuristic has which property?",
 "o": [
-"Random",
-"Admissible, never overestimating the true cost",
-"Always zero only",
-"Larger than the true cost"
+"It is greedy and always picks the closest neighbour",
+"It is admissible and never overestimates the true cost",
+"It is pessimistic and never underestimates the cost",
+"It is constant and returns the same value everywhere"
 ],
 "a": 1,
-"e": "An admissible heuristic keeps A* optimal. A zero heuristic makes it Dijkstra."
+"e": "An admissible heuristic never overestimates, which keeps A* optimal. A heuristic that overestimates can make A* miss the shortest path.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Introduction to AI. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (solving problems by searching)."
 },
 {
 "id": "q6-114",
@@ -1730,7 +1843,8 @@
 "Hill climbing"
 ],
 "a": 1,
-"e": "BFS explores level by level, so the first time it reaches the goal it uses the fewest edges."
+"e": "BFS explores level by level, so the first time it reaches the goal it uses the fewest edges.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Introduction to AI. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (solving problems by searching)."
 },
 {
 "id": "q6-115",
@@ -1745,22 +1859,24 @@
 "1%"
 ],
 "a": 0,
-"e": "Bayes' rule: about 1 true positive against about 10 false positives per 1,000 people, so about 1 in 11."
+"e": "Bayes' rule: about 1 true positive against about 10 false positives per 1,000 people, so about 1 in 11.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Mathematical foundations. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (quantifying uncertainty)."
 },
 {
 "id": "q6-116",
 "s": "AI",
 "t": "NLP",
 "d": 3,
-"q": "In a transformer, the attention mechanism lets the model:",
+"q": "In a transformer, what does the attention mechanism let the model do?",
 "o": [
-"Read words strictly left to right only",
-"Skip training",
+"Process the tokens strictly one at a time from left to right",
+"Shrink the input by merging neighbouring tokens together",
 "Weigh how relevant every other token is when encoding each token",
-"Avoid using embeddings"
+"Store the whole training set so that answers can be looked up"
 ],
 "a": 2,
-"e": "Self-attention relates all positions in one step."
+"e": "Self-attention relates all positions in one step.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Natural language processing. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (natural language processing)."
 },
 {
 "id": "q6-117",
@@ -1775,7 +1891,8 @@
 "Regularization"
 ],
 "a": 1,
-"e": "Grounding answers in retrieved sources (RAG) reduces it."
+"e": "Grounding answers in retrieved sources (RAG) reduces it.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Deep learning. Further reading: Goodfellow, Bengio and Courville, Deep Learning (sequence modelling)."
 },
 {
 "id": "q6-118",
@@ -1784,28 +1901,30 @@
 "d": 3,
 "q": "Which technique reduces 100 correlated features to a few uncorrelated components?",
 "o": [
-"K-means",
-"One-hot encoding",
-"Dropout",
+"K-means clustering of the rows into 100 groups",
+"One-hot encoding of categories",
+"L1 regularization (lasso)",
 "Principal component analysis (PCA)"
 ],
 "a": 3,
-"e": "PCA projects data onto the directions of greatest variance."
+"e": "PCA projects data onto the directions of greatest variance.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: Data collection and pre-processing. Further reading: Mitchell, Machine Learning (concept learning and data)."
 },
 {
 "id": "q6-119",
 "s": "AI",
 "t": "Ethics",
 "d": 3,
-"q": "A hiring model trained on past decisions rejects more women for the same skills. The main issue is:",
+"q": "A hiring model trained on past decisions rejects more women than men with the same skills. What is the main issue?",
 "o": [
-"Too few layers",
-"Underfitting",
-"A slow GPU",
-"Bias in the training data reflected in the model"
+"The model is too small to learn the hiring rules",
+"The learning rate was set too high during training",
+"The test set was larger than the training set",
+"Bias in the training data is reflected in the model"
 ],
 "a": 3,
-"e": "Models learn historical bias. Audit data and outcomes for fairness."
+"e": "Models learn historical bias. Audit data and outcomes for fairness.",
+"r": "NSCT area: AI / Machine Learning and Data Analytics, sub-area: AI ethics, security and privacy. Further reading: Russell and Norvig, Artificial Intelligence: A Modern Approach (philosophy, ethics and safety of AI)."
 },
 {
 "id": "q6-120",
@@ -1820,7 +1939,8 @@
 "30"
 ],
 "a": 3,
-"e": "2^5 = 32 addresses, minus the network and broadcast addresses, gives 30."
+"e": "2^5 = 32 addresses, minus the network and broadcast addresses, gives 30.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (IPv4 addressing)."
 },
 {
 "id": "q6-121",
@@ -1835,7 +1955,8 @@
 "192.168.10.63"
 ],
 "a": 1,
-"e": "/26 blocks are 64 wide. 70 falls in 64 to 127, so the broadcast is .127."
+"e": "/26 blocks are 64 wide. 70 falls in 64 to 127, so the broadcast is .127.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (IPv4 addressing)."
 },
 {
 "id": "q6-122",
@@ -1850,7 +1971,8 @@
 "255.255.252.0"
 ],
 "a": 3,
-"e": "22 ones means 8 + 8 + 6, and the third octet is 11111100 = 252."
+"e": "22 ones means 8 + 8 + 6, and the third octet is 11111100 = 252.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (IPv4 addressing)."
 },
 {
 "id": "q6-123",
@@ -1865,7 +1987,8 @@
 "/27"
 ],
 "a": 3,
-"e": "3 extra bits give 8 subnets, the smallest number at least 6. Each /27 has 30 usable hosts."
+"e": "3 extra bits give 8 subnets, the smallest number at least 6. Each /27 has 30 usable hosts.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (IPv4 addressing)."
 },
 {
 "id": "q6-124",
@@ -1874,13 +1997,14 @@
 "d": 3,
 "q": "Are 10.1.1.10/25 and 10.1.1.200/25 in the same subnet?",
 "o": [
-"No, the first is in 0 to 127 and the second in 128 to 255",
-"Yes",
-"Yes, all 10.x addresses are one network",
-"Cannot tell"
+"No. The first is in 0 to 127 and the second is in 128 to 255",
+"Yes. A /25 mask keeps all 256 addresses of the last octet in one subnet",
+"Yes. Both addresses share the same first three octets",
+"No. A /25 mask puts every address in its own subnet"
 ],
 "a": 0,
-"e": "A /25 splits the last octet at 128."
+"e": "A /25 splits the last octet at 128.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (IPv4 addressing)."
 },
 {
 "id": "q6-125",
@@ -1895,14 +2019,15 @@
 "ACK, SYN, SYN-ACK"
 ],
 "a": 0,
-"e": "The three-way handshake synchronises sequence numbers on both sides."
+"e": "The three-way handshake synchronises sequence numbers on both sides.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Transport layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (transport layer)."
 },
 {
 "id": "q6-126",
 "s": "NET",
 "t": "TCP",
 "d": 3,
-"q": "The TCP receive window is 64 KB and the round-trip time is 100 ms. Ignoring other limits, the maximum throughput is about:",
+"q": "The TCP receive window is 64 KB and the round-trip time is 100 ms. Ignoring other limits, what is the maximum throughput?",
 "o": [
 "640 KB/s",
 "6.4 MB/s",
@@ -1910,37 +2035,40 @@
 "64 MB/s"
 ],
 "a": 0,
-"e": "Throughput is at most window / RTT = 64 KB / 0.1 s = 640 KB/s."
+"e": "Throughput is at most window / RTT = 64 KB / 0.1 s = 640 KB/s.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Transport layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (transport layer)."
 },
 {
 "id": "q6-127",
 "s": "NET",
 "t": "TCP",
 "d": 3,
-"q": "After three duplicate ACKs, TCP Reno:",
+"q": "What does TCP Reno do after three duplicate ACKs?",
 "o": [
 "Fast retransmits the missing segment and halves the congestion window",
-"Closes the connection",
-"Doubles the window",
-"Waits for a full timeout"
+"Waits for the retransmission timer and resets the window to one segment",
+"Retransmits every unacknowledged segment and doubles the window",
+"Closes the connection and opens a new one with a three-way handshake"
 ],
 "a": 0,
-"e": "Duplicate ACKs suggest one lost segment, not heavy congestion."
+"e": "Duplicate ACKs suggest one lost segment, not heavy congestion.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Transport layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (transport layer)."
 },
 {
 "id": "q6-128",
 "s": "NET",
 "t": "Transport",
 "d": 3,
-"q": "A live video call prefers UDP over TCP because:",
+"q": "Why does a live video call prefer UDP over TCP?",
 "o": [
-"UDP guarantees delivery",
+"UDP delivers every packet in order, and TCP may reorder them",
 "Late packets are useless, and UDP avoids retransmission delays",
-"TCP cannot carry video",
-"UDP is encrypted"
+"UDP encrypts the media stream, and TCP sends it as plain text",
+"UDP adapts its rate to congestion, and TCP sends at a fixed rate"
 ],
 "a": 1,
-"e": "Real-time media tolerates small loss better than delay."
+"e": "Real-time media tolerates small loss better than delay.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Transport layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (transport layer)."
 },
 {
 "id": "q6-129",
@@ -1955,7 +2083,8 @@
 "ARP"
 ],
 "a": 0,
-"e": "RIP is distance-vector using hop counts. BGP routes between autonomous systems."
+"e": "RIP is distance-vector using hop counts. BGP routes between autonomous systems.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer: control plane)."
 },
 {
 "id": "q6-130",
@@ -1970,7 +2099,8 @@
 "The default route"
 ],
 "a": 2,
-"e": "Routers use the longest prefix match."
+"e": "Routers use the longest prefix match.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer: control plane)."
 },
 {
 "id": "q6-131",
@@ -1985,7 +2115,9 @@
 "ICMP"
 ],
 "a": 2,
-"e": "NAT rewrites addresses and ports at the router."
+"e": "NAT rewrites addresses and ports at the router.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (IPv4 addressing).",
+"x": 1
 },
 {
 "id": "q6-132",
@@ -2000,7 +2132,8 @@
 "0.8 ms"
 ],
 "a": 0,
-"e": "8,000 bits / 1,000,000 bits per second = 8 ms."
+"e": "8,000 bits / 1,000,000 bits per second = 8 ms.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Data communication. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (delay, loss and throughput)."
 },
 {
 "id": "q6-133",
@@ -2015,7 +2148,8 @@
 "TCP handshake with the web server"
 ],
 "a": 1,
-"e": "The browser needs the IP address before it can connect."
+"e": "The browser needs the IP address before it can connect.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Application layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (application layer)."
 },
 {
 "id": "q6-134",
@@ -2024,43 +2158,46 @@
 "d": 3,
 "q": "A startup wants to deploy code without managing servers or operating systems. Which model fits best?",
 "o": [
-"IaaS",
-"On-premise",
+"IaaS with virtual machines",
+"On-premise bare-metal servers",
 "PaaS or serverless",
-"Colocation"
+"Colocation in a data centre"
 ],
 "a": 2,
-"e": "IaaS still requires managing virtual machines."
+"e": "IaaS still requires managing virtual machines.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Cloud computing. Further reading: NIST SP 800-145, The NIST Definition of Cloud Computing (service and deployment models)."
 },
 {
 "id": "q6-135",
 "s": "NET",
 "t": "Cloud",
 "d": 3,
-"q": "An app is slow under heavy load, so the team adds more identical servers behind a load balancer. This is:",
+"q": "An app is slow under heavy load, so the team adds more identical servers behind a load balancer. What is this called?",
 "o": [
 "Vertical scaling",
-"Caching",
-"Sharding the CPU",
+"Response caching",
+"Database sharding",
 "Horizontal scaling"
 ],
 "a": 3,
-"e": "Vertical scaling would add more CPU or RAM to one server."
+"e": "Vertical scaling would add more CPU or RAM to one server.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Cloud computing. Further reading: NIST SP 800-145, The NIST Definition of Cloud Computing (service and deployment models)."
 },
 {
 "id": "q6-136",
 "s": "NET",
 "t": "OSI model",
 "d": 3,
-"q": "Switches and routers mainly work at which layers?",
+"q": "At which layers do switches and routers mainly work?",
 "o": [
-"Both layer 7",
-"Both layer 1",
+"Switch layer 3, router layer 2",
+"Switch layer 1, router layer 2",
 "Switch layer 2, router layer 3",
-"Switch layer 3, router layer 2"
+"Switch layer 2, router layer 4"
 ],
 "a": 2,
-"e": "Switches forward by MAC address and routers by IP address."
+"e": "Switches forward by MAC address and routers by IP address.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Computer networks. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (protocol layers and service models)."
 },
 {
 "id": "q6-137",
@@ -2075,7 +2212,8 @@
 "One flipped bit"
 ],
 "a": 2,
-"e": "Two flips keep the parity unchanged. CRC detects far more errors."
+"e": "Two flips keep the parity unchanged. CRC detects far more errors.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Data link layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (error detection and correction)."
 },
 {
 "id": "q6-138",
@@ -2090,7 +2228,8 @@
 "64 bits"
 ],
 "a": 2,
-"e": "IPv4 is 32 bits and MAC addresses are 48 bits."
+"e": "IPv4 is 32 bits and MAC addresses are 48 bits.",
+"r": "NSCT area: Computer Networks and Cloud Computing, sub-area: Network layer. Further reading: Kurose and Ross, Computer Networking: A Top-Down Approach (the network layer: data plane)."
 },
 {
 "id": "q6-139",
@@ -2105,7 +2244,8 @@
 "17 ms"
 ],
 "a": 3,
-"e": "Waits are 0, 24 and 27, so the average is 51 / 3 = 17 ms."
+"e": "Waits are 0, 24 and 27, so the average is 51 / 3 = 17 ms.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling)."
 },
 {
 "id": "q6-140",
@@ -2120,7 +2260,8 @@
 "3 ms"
 ],
 "a": 3,
-"e": "Order P2, P3, P1 gives waits 0, 3 and 6, so the average is 3 ms."
+"e": "Order P2, P3, P1 gives waits 0, 3 and 6, so the average is 3 ms.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling)."
 },
 {
 "id": "q6-141",
@@ -2135,37 +2276,40 @@
 "Priority scheduling"
 ],
 "a": 0,
-"e": "Every process finishes before its quantum ends."
+"e": "Every process finishes before its quantum ends.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling)."
 },
 {
 "id": "q6-142",
 "s": "OS",
 "t": "Scheduling",
 "d": 3,
-"q": "Low-priority processes never get the CPU because new high-priority ones keep arriving. The fix is:",
+"q": "Low-priority processes never get the CPU because new high-priority ones keep arriving. What fixes this?",
 "o": [
-"Thrashing",
-"Paging",
-"Spooling",
+"Preemption, which stops long processes when a new one arrives",
+"Swapping, which moves the waiting processes out to the disk",
+"Spooling, which queues the waiting processes on a device",
 "Aging, which raises the priority of waiting processes"
 ],
 "a": 3,
-"e": "This problem is called starvation."
+"e": "This problem is called starvation.",
+"r": "NSCT area: Operating Systems, sub-area: CPU scheduling. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (CPU scheduling)."
 },
 {
 "id": "q6-143",
 "s": "OS",
 "t": "Deadlock",
 "d": 3,
-"q": "Banker's algorithm is used for:",
+"q": "What is the Banker's algorithm used for?",
 "o": [
-"Page replacement",
+"Deadlock prevention",
 "Deadlock avoidance",
-"Disk scheduling",
-"Memory compaction"
+"Deadlock detection",
+"Deadlock recovery"
 ],
 "a": 1,
-"e": "It grants a request only if the system stays in a safe state."
+"e": "It grants a request only if the system stays in a safe state.",
+"r": "NSCT area: Operating Systems, sub-area: Deadlocks. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (deadlocks)."
 },
 {
 "id": "q6-144",
@@ -2180,7 +2324,8 @@
 "20"
 ],
 "a": 2,
-"e": "4 KB = 2^12 bytes, so 12 bits address a byte inside a page."
+"e": "4 KB = 2^12 bytes, so 12 bits address a byte inside a page.",
+"r": "NSCT area: Operating Systems, sub-area: Memory management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (main memory and virtual memory)."
 },
 {
 "id": "q6-145",
@@ -2195,7 +2340,8 @@
 "9"
 ],
 "a": 3,
-"e": "FIFO gives 9 faults. With 4 frames it gives 10, which is Belady's anomaly."
+"e": "FIFO gives 9 faults. With 4 frames it gives 10, which is Belady's anomaly.",
+"r": "NSCT area: Operating Systems, sub-area: Memory management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (main memory and virtual memory)."
 },
 {
 "id": "q6-146",
@@ -2210,7 +2356,8 @@
 "7"
 ],
 "a": 1,
-"e": "Faults at 7, 0, 1, 2, 3 and 4. The repeated 0s are hits, so 6 faults."
+"e": "Faults at 7, 0, 1, 2, 3 and 4. The repeated 0s are hits, so 6 faults.",
+"r": "NSCT area: Operating Systems, sub-area: Memory management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (main memory and virtual memory)."
 },
 {
 "id": "q6-147",
@@ -2225,7 +2372,8 @@
 "100 ns"
 ],
 "a": 0,
-"e": "Hit: 20 + 100 = 120. Miss: 20 + 100 + 100 = 220. 0.8 x 120 + 0.2 x 220 = 140 ns."
+"e": "Hit: 20 + 100 = 120. Miss: 20 + 100 + 100 = 220. 0.8 x 120 + 0.2 x 220 = 140 ns.",
+"r": "NSCT area: Operating Systems, sub-area: Memory management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (main memory and virtual memory)."
 },
 {
 "id": "q6-148",
@@ -2240,7 +2388,8 @@
 "Deadlock"
 ],
 "a": 1,
-"e": "Too many processes compete for too little memory."
+"e": "Too many processes compete for too little memory.",
+"r": "NSCT area: Operating Systems, sub-area: Memory management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (main memory and virtual memory)."
 },
 {
 "id": "q6-149",
@@ -2255,7 +2404,8 @@
 "2"
 ],
 "a": 3,
-"e": "The first three pass and the value reaches 0. The next two block."
+"e": "The first three pass and the value reaches 0. The next two block.",
+"r": "NSCT area: Operating Systems, sub-area: Concurrency and synchronization. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (synchronization tools)."
 },
 {
 "id": "q6-150",
@@ -2264,13 +2414,14 @@
 "d": 3,
 "q": "In the producer-consumer problem with a bounded buffer, which semaphores are normally used?",
 "o": [
-"Only full",
-"No semaphores",
+"mutex, read and write",
+"lock, wait and signal",
 "mutex, empty and full",
-"Only one mutex"
+"mutex and one counter only"
 ],
 "a": 2,
-"e": "empty counts free slots, full counts filled slots and mutex protects the buffer."
+"e": "empty counts free slots, full counts filled slots and mutex protects the buffer.",
+"r": "NSCT area: Operating Systems, sub-area: Concurrency and synchronization. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (synchronization tools)."
 },
 {
 "id": "q6-151",
@@ -2286,7 +2437,8 @@
 ],
 "a": 3,
 "e": "Each fork doubles the number of processes. Three forks make 8 processes, each printing once.",
-"code": "fork();\nfork();\nfork();\nprintf(\"hi\\n\");"
+"code": "fork();\nfork();\nfork();\nprintf(\"hi\\n\");",
+"r": "NSCT area: Operating Systems, sub-area: Process management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (processes)."
 },
 {
 "id": "q6-152",
@@ -2301,7 +2453,8 @@
 "A daemon"
 ],
 "a": 1,
-"e": "Its entry stays in the process table until the parent collects its exit status."
+"e": "Its entry stays in the process table until the parent collects its exit status.",
+"r": "NSCT area: Operating Systems, sub-area: Process management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (processes)."
 },
 {
 "id": "q6-153",
@@ -2316,7 +2469,8 @@
 "190"
 ],
 "a": 0,
-"e": "43 is 7 cylinders away, closer than 82 at 32 away."
+"e": "43 is 7 cylinders away, closer than 82 at 32 away.",
+"r": "NSCT area: Operating Systems, sub-area: Secondary storage management. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (mass-storage structure)."
 },
 {
 "id": "q6-154",
@@ -2331,7 +2485,8 @@
 "User mode to kernel mode"
 ],
 "a": 3,
-"e": "The kernel runs the privileged operation, then returns to user mode."
+"e": "The kernel runs the privileged operation, then returns to user mode.",
+"r": "NSCT area: Operating Systems, sub-area: Operating system structures. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (operating-system structures)."
 },
 {
 "id": "q6-155",
@@ -2346,7 +2501,8 @@
 "Contiguous"
 ],
 "a": 2,
-"e": "Each block points to the next, so reaching block n means following n links."
+"e": "Each block points to the next, so reaching block n means following n links.",
+"r": "NSCT area: Operating Systems, sub-area: File systems. Further reading: Silberschatz, Galvin and Gagne, Operating System Concepts (file-system interface and implementation)."
 },
 {
 "id": "q6-156",
@@ -2361,7 +2517,8 @@
 "Bob's public key"
 ],
 "a": 1,
-"e": "Anyone can verify it with Alice's public key. To keep it secret she would encrypt with Bob's public key."
+"e": "Anyone can verify it with Alice's public key. To keep it secret she would encrypt with Bob's public key.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q6-157",
@@ -2370,13 +2527,14 @@
 "d": 3,
 "q": "Why are passwords stored as salted hashes such as bcrypt instead of plain SHA-256?",
 "o": [
-"bcrypt is shorter",
-"Salts stop precomputed tables, and slow hashing makes guessing expensive",
-"It is required by HTML",
-"SHA-256 is reversible"
+"bcrypt output is shorter, so the password table uses less disk space",
+"Salts defeat precomputed tables, and slow hashing makes guessing costly",
+"SHA-256 can be reversed with the right key, but bcrypt cannot be",
+"bcrypt encrypts with a per-user key that the server can later decrypt"
 ],
 "a": 1,
-"e": "Fast hashes let attackers try billions of guesses per second."
+"e": "Fast hashes let attackers try billions of guesses per second.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q6-158",
@@ -2391,67 +2549,72 @@
 "n = 50, phi = 44"
 ],
 "a": 2,
-"e": "n = 5 x 11 = 55 and phi(n) = 4 x 10 = 40."
+"e": "n = 5 x 11 = 55 and phi(n) = 4 x 10 = 40.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q6-159",
 "s": "SEC",
 "t": "Cryptography",
 "d": 3,
-"q": "Diffie-Hellman key exchange is mainly used to:",
+"q": "What is the Diffie-Hellman key exchange mainly used for?",
 "o": [
-"Compress data",
-"Sign documents",
-"Agree on a shared secret over an insecure channel",
-"Hash passwords"
+"Signing a document so that its sender can be verified",
+"Encrypting large files faster than symmetric ciphers",
+"Agreeing on a shared secret over an insecure channel",
+"Storing passwords in a form that cannot be reversed"
 ],
 "a": 2,
-"e": "On its own it does not authenticate, so it is combined with certificates to stop man-in-the-middle attacks."
+"e": "On its own it does not authenticate, so it is combined with certificates to stop man-in-the-middle attacks.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q6-160",
 "s": "SEC",
 "t": "Cryptography",
 "d": 3,
-"q": "AES in ECB mode is weak for images because:",
+"q": "Why is AES in ECB mode weak for encrypting images?",
 "o": [
-"Identical plaintext blocks give identical ciphertext blocks, revealing patterns",
-"It only works on text",
-"It is too slow",
-"It uses no key"
+"Identical plaintext blocks give identical ciphertext blocks",
+"The same key is reused for every image that is encrypted",
+"The block size is too small to hold a full row of pixels",
+"The initialisation vector is sent along with the ciphertext"
 ],
 "a": 0,
-"e": "Modes such as GCM or CBC with random IVs hide patterns."
+"e": "Modes such as GCM or CBC with random IVs hide patterns.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q6-161",
 "s": "SEC",
 "t": "Web security",
 "d": 3,
-"q": "Which code is safe from SQL injection?",
+"q": "Which approach is safe from SQL injection?",
 "o": [
-"A parameterized query: SELECT * FROM users WHERE name = ?",
-"\"SELECT * FROM users WHERE name = '\" + name + \"'\"",
-"Using uppercase SQL",
-"Removing spaces from input"
+"A parameterized query such as SELECT * FROM users WHERE name = ?",
+"A query built by joining SQL text with the user's input",
+"A query that converts the user's input to uppercase first",
+"A query that is sent only after spaces are removed from the user's input"
 ],
 "a": 0,
-"e": "Parameters are sent separately from the SQL text, so input cannot change the query."
+"e": "Parameters are sent separately from the SQL text, so input cannot change the query.",
+"r": "NSCT area: Cyber Security, sub-area: Web application security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q6-162",
 "s": "SEC",
 "t": "Web security",
 "d": 3,
-"q": "An attacker changes /invoice?id=1001 to id=1002 and sees another customer's invoice. This vulnerability is:",
+"q": "An attacker changes /invoice?id=1001 to id=1002 and sees another customer's invoice. Which vulnerability is this?",
 "o": [
-"XSS",
-"DDoS",
-"Phishing",
+"Reflected cross-site scripting (injection)",
+"Cross-site request forgery (session riding through a forged link)",
+"Security misconfiguration (verbose errors)",
 "Insecure direct object reference (broken access control)"
 ],
 "a": 3,
-"e": "The server must check that the logged-in user owns the record."
+"e": "The server must check that the logged-in user owns the record.",
+"r": "NSCT area: Cyber Security, sub-area: Web application security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q6-163",
@@ -2460,13 +2623,14 @@
 "d": 3,
 "q": "Which combination is true two-factor authentication?",
 "o": [
-"Password and PIN",
-"Username and password",
-"Password and a code from an authenticator app on your phone",
-"Two passwords"
+"A password and a four-digit PIN code",
+"A password and a memorable security question",
+"A password and a code from an authenticator app",
+"A fingerprint scan and a face recognition scan"
 ],
 "a": 2,
-"e": "The factors must be different types: something you know and something you have."
+"e": "The factors must be of different types: something you know and something you have. A password with a PIN, or two biometrics, is still one type.",
+"r": "NSCT area: Cyber Security, sub-area: Authentication and access control. Further reading: Stallings and Brown, Computer Security: Principles and Practice (user authentication)."
 },
 {
 "id": "q6-164",
@@ -2481,22 +2645,24 @@
 "Telnet"
 ],
 "a": 2,
-"e": "Port 443 is HTTPS. SSH uses 22, Telnet 23 and RDP 3389."
+"e": "Port 443 is HTTPS. SSH uses 22, Telnet 23 and RDP 3389.",
+"r": "NSCT area: Cyber Security, sub-area: Network security. Further reading: Stallings, Cryptography and Network Security (network and Internet security)."
 },
 {
 "id": "q6-165",
 "s": "SEC",
 "t": "Network security",
 "d": 3,
-"q": "An attacker on public Wi-Fi intercepts traffic between a user and a website. This is:",
+"q": "An attacker on public Wi-Fi intercepts traffic between a user and a website. Which attack is this?",
 "o": [
-"SQL injection",
-"Ransomware",
-"Man-in-the-middle attack",
-"Brute force"
+"A denial of service attack",
+"A credential stuffing attack",
+"A man-in-the-middle attack",
+"A cross-site scripting attack"
 ],
 "a": 2,
-"e": "HTTPS with valid certificates prevents reading or changing the traffic."
+"e": "HTTPS with valid certificates prevents reading or changing the traffic.",
+"r": "NSCT area: Cyber Security, sub-area: Network security. Further reading: Stallings, Cryptography and Network Security (network and Internet security)."
 },
 {
 "id": "q6-166",
@@ -2505,13 +2671,14 @@
 "d": 3,
 "q": "Thousands of infected devices flood a server with requests. This is:",
 "o": [
-"Spoofing only",
-"Privilege escalation",
-"Phishing",
+"A man-in-the-middle interception attack",
+"A privilege escalation attack on the server",
+"A credential stuffing attack on user accounts",
 "A distributed denial of service (DDoS) attack"
 ],
 "a": 3,
-"e": "Rate limiting and CDN protection help."
+"e": "Rate limiting and CDN protection help.",
+"r": "NSCT area: Cyber Security, sub-area: Malware and attack techniques. Further reading: Stallings and Brown, Computer Security: Principles and Practice (denial-of-service attacks and intrusion detection)."
 },
 {
 "id": "q6-167",
@@ -2526,22 +2693,24 @@
 "Security through obscurity"
 ],
 "a": 1,
-"e": "It limits damage if an account is compromised."
+"e": "It limits damage if an account is compromised.",
+"r": "NSCT area: Cyber Security, sub-area: Security principles. Further reading: Stallings and Brown, Computer Security: Principles and Practice (overview)."
 },
 {
 "id": "q6-168",
 "s": "SEC",
 "t": "Cryptography",
 "d": 3,
-"q": "HTTPS uses asymmetric cryptography mainly to:",
+"q": "In HTTPS, what is asymmetric cryptography mainly used for?",
 "o": [
-"Authenticate the server and set up a symmetric session key",
-"Speed up DNS",
-"Compress pages",
-"Encrypt all page data"
+"Authenticating the server and agreeing on a symmetric session key",
+"Encrypting every page and image of the site with the server's public key",
+"Compressing the page data before it is sent to the browser",
+"Hiding the website's domain name from the internet provider"
 ],
 "a": 0,
-"e": "Bulk data is then encrypted with fast symmetric ciphers such as AES."
+"e": "Bulk data is then encrypted with fast symmetric ciphers such as AES.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q6-169",
@@ -2556,37 +2725,40 @@
 "A firewall alert"
 ],
 "a": 1,
-"e": "Check the sender and the link domain, and never enter passwords from email links."
+"e": "Check the sender and the link domain, and never enter passwords from email links.",
+"r": "NSCT area: Cyber Security, sub-area: Malware and attack techniques. Further reading: Stallings and Brown, Computer Security: Principles and Practice (denial-of-service attacks and intrusion detection)."
 },
 {
 "id": "q6-170",
 "s": "SEC",
 "t": "Web security",
 "d": 3,
-"q": "A buffer overflow in C can let an attacker:",
+"q": "What can a buffer overflow in a C program allow an attacker to do?",
 "o": [
-"Only crash nothing",
-"Read DNS records",
-"Overwrite memory such as the return address and run their own code",
-"Change the font"
+"Read the source code of the program from its binary",
+"Bypass the login form by injecting a database query",
+"Overwrite the return address and run code of their choice",
+"Capture packets that other users send across the same network"
 ],
 "a": 2,
-"e": "Bounds checking and safer functions prevent it."
+"e": "Bounds checking and safer functions prevent it.",
+"r": "NSCT area: Cyber Security, sub-area: Web application security. Further reading: OWASP Top 10 (owasp.org) (web application risks)."
 },
 {
 "id": "q6-171",
 "s": "SEC",
 "t": "Authentication",
 "d": 3,
-"q": "Account lockout after 5 wrong passwords mainly defends against:",
+"q": "Account lockout after 5 wrong passwords mainly defends against which attack?",
 "o": [
-"XSS",
-"Malware",
+"Offline cracking of stolen hashes",
+"Phishing emails sent to the user",
 "Online brute force password guessing",
-"SQL injection"
+"Session cookies stolen through XSS"
 ],
 "a": 2,
-"e": "Rate limiting slows guessing attacks."
+"e": "Rate limiting slows guessing attacks.",
+"r": "NSCT area: Cyber Security, sub-area: Authentication and access control. Further reading: Stallings and Brown, Computer Security: Principles and Practice (user authentication)."
 },
 {
 "id": "q6-172",
@@ -2601,7 +2773,8 @@
 "Collision resistance"
 ],
 "a": 3,
-"e": "MD5 and SHA-1 have broken collision resistance and should not be used for security."
+"e": "MD5 and SHA-1 have broken collision resistance and should not be used for security.",
+"r": "NSCT area: Cyber Security, sub-area: Cryptography. Further reading: Stallings, Cryptography and Network Security (symmetric ciphers, public-key cryptography and hash functions)."
 },
 {
 "id": "q6-173",
@@ -2610,13 +2783,14 @@
 "d": 3,
 "q": "Why do investigators compute a hash of a disk image before analysing it?",
 "o": [
-"To encrypt it",
-"To compress it",
+"To recover deleted files from the unused space",
+"To decrypt protected folders found on the disk",
 "To prove later that the evidence was not changed",
-"To speed up the analysis"
+"To compress the image so that it loads faster"
 ],
 "a": 2,
-"e": "Matching hashes show the image is identical to the original."
+"e": "Matching hashes show the image is identical to the original.",
+"r": "NSCT area: Cyber Security, sub-area: Digital forensics. Further reading: Stallings and Brown, Computer Security: Principles and Practice (security auditing)."
 },
 {
 "id": "q6-174",
@@ -2631,7 +2805,8 @@
 "58"
 ],
 "a": 2,
-"e": "The terms are n(n + 1): 7 x 8 = 56."
+"e": "The terms are n(n + 1): 7 x 8 = 56.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q6-175",
@@ -2646,7 +2821,8 @@
 "240"
 ],
 "a": 1,
-"e": "The terms are factorials. 6! = 720."
+"e": "The terms are factorials. 6! = 720.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q6-176",
@@ -2661,7 +2837,8 @@
 "66"
 ],
 "a": 0,
-"e": "Differences are 2, 4, 8, 16, 32. 33 + 32 = 65."
+"e": "Differences are 2, 4, 8, 16, 32. 33 + 32 = 65.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q6-177",
@@ -2676,7 +2853,8 @@
 "144"
 ],
 "a": 1,
-"e": "These are squares of primes 2, 3, 5, 7, 11, 13. 11 squared is 121."
+"e": "These are squares of primes 2, 3, 5, 7, 11, 13. 11 squared is 121.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q6-178",
@@ -2691,7 +2869,8 @@
 "64"
 ],
 "a": 2,
-"e": "Each term is 2^n - 1."
+"e": "Each term is 2^n - 1.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Pattern recognition. Further reading: Rosen, Discrete Mathematics and Its Applications (sequences and summations)."
 },
 {
 "id": "q6-179",
@@ -2706,7 +2885,8 @@
 "9 hours"
 ],
 "a": 2,
-"e": "Rates add: 1/6 + 1/3 = 1/2 tank per hour."
+"e": "Rates add: 1/6 + 1/3 = 1/2 tank per hour.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-180",
@@ -2721,7 +2901,8 @@
 "6"
 ],
 "a": 2,
-"e": "Together they do 1/6 per day, so 4/6 is done in 4 days. Sara does the remaining 1/3 at 1/15 per day, which is 5 days."
+"e": "Together they do 1/6 per day, so 4/6 is done in 4 days. Sara does the remaining 1/3 at 1/15 per day, which is 5 days.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-181",
@@ -2736,7 +2917,8 @@
 "The same"
 ],
 "a": 0,
-"e": "1.2 x 0.8 = 0.96."
+"e": "1.2 x 0.8 = 0.96.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-182",
@@ -2751,7 +2933,8 @@
 "40 km/h"
 ],
 "a": 3,
-"e": "Total 120 km in 2 + 1 = 3 hours gives 40 km per hour."
+"e": "Total 120 km in 2 + 1 = 3 hours gives 40 km per hour.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-183",
@@ -2766,7 +2949,8 @@
 "20"
 ],
 "a": 0,
-"e": "5 x 4 x 3 = 60."
+"e": "5 x 4 x 3 = 60.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-184",
@@ -2781,7 +2965,8 @@
 "12"
 ],
 "a": 3,
-"e": "3C2 x 4C1 = 3 x 4 = 12."
+"e": "3C2 x 4C1 = 3 x 4 = 12.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-185",
@@ -2796,7 +2981,8 @@
 "4/52"
 ],
 "a": 2,
-"e": "4/52 x 3/51 = 12/2652 = 1/221."
+"e": "4/52 x 3/51 = 12/2652 = 1/221.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-186",
@@ -2811,7 +2997,8 @@
 "2/5"
 ],
 "a": 0,
-"e": "3 x 2 = 6 mixed pairs out of 5C2 = 10 pairs."
+"e": "3 x 2 = 6 mixed pairs out of 5C2 = 10 pairs.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-187",
@@ -2826,7 +3013,8 @@
 "Rs. 12,000"
 ],
 "a": 2,
-"e": "10,000 x 1.1 x 1.1 = 12,100."
+"e": "10,000 x 1.1 x 1.1 = 12,100.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-188",
@@ -2841,7 +3029,8 @@
 "38"
 ],
 "a": 1,
-"e": "Total falls from 100 to 72, so the removed number is 28."
+"e": "Total falls from 100 to 72, so the removed number is 28.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-189",
@@ -2856,7 +3045,8 @@
 "1"
 ],
 "a": 2,
-"e": "Powers of 2 mod 7 repeat 2, 4, 1. 100 = 3 x 33 + 1, so the remainder is 2."
+"e": "Powers of 2 mod 7 repeat 2, 4, 1. 100 = 3 x 33 + 1, so the remainder is 2.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Mathematical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (counting and probability)."
 },
 {
 "id": "q6-190",
@@ -2871,7 +3061,8 @@
 "C"
 ],
 "a": 1,
-"e": "Seats: A _ C B _. D cannot be next to A, so E is second and D is last."
+"e": "Seats: A _ C B _. D cannot be next to A, so E is second and D is last.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Logical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (logic and proofs)."
 },
 {
 "id": "q6-191",
@@ -2886,7 +3077,9 @@
 "All artists are logical"
 ],
 "a": 1,
-"e": "The artists who are logical may or may not include any programmers."
+"e": "The artists who are logical may or may not include any programmers.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Logical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (logic and proofs).",
+"x": 1
 },
 {
 "id": "q6-192",
@@ -2901,7 +3094,8 @@
 "A only"
 ],
 "a": 1,
-"e": "If B is truthful, C lies, so A and B are not both liars, which fits because A lies. Other choices lead to contradictions."
+"e": "If B is truthful, C lies, so A and B are not both liars, which fits because A lies. Other choices lead to contradictions.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Logical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (logic and proofs)."
 },
 {
 "id": "q6-193",
@@ -2916,7 +3110,8 @@
 "Sunday"
 ],
 "a": 0,
-"e": "Today is Saturday, so the day after tomorrow is Monday."
+"e": "Today is Saturday, so the day after tomorrow is Monday.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Logical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (logic and proofs)."
 },
 {
 "id": "q6-194",
@@ -2931,7 +3126,8 @@
 "OFUXPSL"
 ],
 "a": 3,
-"e": "Each letter moves one place forward."
+"e": "Each letter moves one place forward.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Logical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (logic and proofs)."
 },
 {
 "id": "q6-195",
@@ -2946,14 +3142,15 @@
 "15 degrees"
 ],
 "a": 2,
-"e": "The minute hand is at 90 degrees and the hour hand at 97.5 degrees."
+"e": "The minute hand is at 90 degrees and the hour hand at 97.5 degrees.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Logical reasoning. Further reading: Rosen, Discrete Mathematics and Its Applications (logic and proofs)."
 },
 {
 "id": "q6-196",
 "s": "PS",
 "t": "Code tracing",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "15",
 "10",
@@ -2962,14 +3159,15 @@
 ],
 "a": 1,
 "e": "The loop visits indices 0, 2 and 4, which hold 1, 3 and 6. 1 + 3 + 6 = 10.",
-"code": "a = [1, 2, 3, 4, 6]\ns = 0\nfor i in range(0, len(a), 2):\n    s += a[i]\nprint(s)"
+"code": "a = [1, 2, 3, 4, 6]\ns = 0\nfor i in range(0, len(a), 2):\n    s += a[i]\nprint(s)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q6-197",
 "s": "PS",
 "t": "Code tracing",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "6",
 "3",
@@ -2978,14 +3176,15 @@
 ],
 "a": 2,
 "e": "f(7) = 1 + f(5) = 2 + f(3) = 3 + f(1) = 3 + 1 = 4.",
-"code": "def f(n):\n    if n <= 1:\n        return 1\n    return 1 + f(n - 2)\nprint(f(7))"
+"code": "def f(n):\n    if n <= 1:\n        return 1\n    return 1 + f(n - 2)\nprint(f(7))",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q6-198",
 "s": "PS",
 "t": "Code tracing",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "1 3 7 15",
 "1 2 4 8",
@@ -2994,14 +3193,15 @@
 ],
 "a": 1,
 "e": "x doubles while it is below 10: 1, 2, 4, 8.",
-"code": "x = 1\nwhile x < 10:\n    print(x, end=' ')\n    x *= 2"
+"code": "x = 1\nwhile x < 10:\n    print(x, end=' ')\n    x *= 2",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q6-199",
 "s": "PS",
 "t": "Code tracing",
 "d": 3,
-"q": "What is printed?",
+"q": "What does this Python code print?",
 "o": [
 "720",
 "6",
@@ -3010,7 +3210,8 @@
 ],
 "a": 2,
 "e": "The loop multiplies 1 to 5.",
-"code": "r = 1\nfor k in range(1, 6):\n    r *= k\nprint(r)"
+"code": "r = 1\nfor k in range(1, 6):\n    r *= k\nprint(r)",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Problem solving using programming. Further reading: Python documentation (docs.python.org) (tutorial on control flow)."
 },
 {
 "id": "q6-200",
@@ -3025,22 +3226,24 @@
 "1"
 ],
 "a": 1,
-"e": "Weigh 3 against 3. If balanced, weigh the last 2. Otherwise weigh 1 against 1 from the heavier 3."
+"e": "Weigh 3 against 3. If balanced, weigh the last 2. Otherwise weigh 1 against 1 from the heavier 3.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Algorithmic thinking. Further reading: Levitin, Introduction to the Design and Analysis of Algorithms (algorithm design basics)."
 },
 {
 "id": "q6-201",
 "s": "PS",
 "t": "Algorithmic thinking",
 "d": 3,
-"q": "A sorted list has 1,000 names. The best strategy to find a name is:",
+"q": "A sorted list has 1,000 names. Which strategy finds a name fastest?",
 "o": [
-"Check every name from the start",
-"Random guessing",
+"Linear search, about 10 comparisons",
+"Binary search, about 500 comparisons",
 "Binary search, about 10 comparisons",
-"Sort it again first"
+"Linear search, about 100 comparisons"
 ],
 "a": 2,
-"e": "Halving 1,000 reaches 1 in about 10 steps."
+"e": "Halving 1,000 reaches 1 in about 10 steps.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Algorithmic thinking. Further reading: Levitin, Introduction to the Design and Analysis of Algorithms (algorithm design basics)."
 },
 {
 "id": "q6-202",
@@ -3055,7 +3258,8 @@
 "100%"
 ],
 "a": 2,
-"e": "(300 - 200) / 200 = 50%."
+"e": "(300 - 200) / 200 = 50%.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data-driven problem solving. Further reading: Rosen, Discrete Mathematics and Its Applications (discrete probability)."
 },
 {
 "id": "q6-203",
@@ -3070,6 +3274,7 @@
 "20%"
 ],
 "a": 3,
-"e": "Passed at least one = 60 + 50 - 30 = 80%, so 20% failed both."
+"e": "Passed at least one = 60 + 50 - 30 = 80%, so 20% failed both.",
+"r": "NSCT area: Problem Solving and Analytical Skills, sub-area: Data-driven problem solving. Further reading: Rosen, Discrete Mathematics and Its Applications (discrete probability)."
 }
 ]

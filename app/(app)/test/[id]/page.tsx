@@ -9,10 +9,10 @@ type Item = {
   position: number; questionId: string; type: "SINGLE" | "MULTI" | "SCENARIO" | "CODE"; subject: string; topic: string; text: string; code: string | null;
   scenario: { title: string; passage: string } | null; multi: boolean; selectCount: number; options: string[]; chosenSlots: number[];
   language: string | null; starterCode: string | null; sampleTests: { input: string; expected: string }[]; codeAnswer: string | null; flagged: boolean;
-  correctSlots?: number[]; explanation?: string; correct?: boolean | null; credit?: number | null; codePassed?: number | null; codeTotal?: number | null; timeSec?: number;
+  correctSlots?: number[]; explanation?: string; reference?: string | null; correct?: boolean | null; credit?: number | null; codePassed?: number | null; codeTotal?: number | null; timeSec?: number;
 };
 type Attempt = { id: string; type: string; label: string | null; endsAt: string | null; startedAt?: string; submittedAt?: string | null; submitted: boolean; resultsHidden?: boolean; score: number; percentile: number | null; flags: string[]; certificate: string | null; items: Item[] };
-type Local = { slots: number[]; code: string; flagged: boolean; time: number; checked?: { correct: boolean; correctSlots: number[]; explanation: string } };
+type Local = { slots: number[]; code: string; flagged: boolean; time: number; checked?: { correct: boolean; correctSlots: number[]; explanation: string; reference?: string | null } };
 
 const L = "ABCDEF";
 const deviceId = () => {
@@ -242,7 +242,7 @@ export default function TestPage({ params }: { params: { id: string } }) {
             </div>
           )}
 
-          {s.checked && <div className="expl"><b>{s.checked.correct ? "Correct." : "Not quite."}</b> {s.checked.explanation}</div>}
+          {s.checked && <div className="expl"><b>{s.checked.correct ? "Correct." : "Not quite."}</b> {s.checked.explanation}{s.checked.reference && <div className="tiny muted" style={{ marginTop: 6 }}>Reference: {s.checked.reference}</div>}</div>}
           <div className="row between" style={{ marginTop: 16 }}>
             <div className="row">
               <button className="btn sec sm" disabled={idx === 0} onClick={() => go(idx - 1)}>{t("test.previous")}</button>
@@ -346,7 +346,7 @@ function Report({ a }: { a: Attempt }) {
                   Correct answer: <b style={{ color: "var(--good)" }}>{(i.correctSlots ?? []).map((x) => i.options[x]).join(", ")}</b>
                 </div>
               )}
-              <div className="expl">{i.explanation}</div>
+              <div className="expl">{i.explanation}{i.reference && <div className="tiny muted" style={{ marginTop: 6 }}>Reference: {i.reference}</div>}</div>
               {!i.correct && <div className="row">{!isPractice && <Recheck attemptId={a.id} position={i.position} />}</div>}
             </div>
           ))}

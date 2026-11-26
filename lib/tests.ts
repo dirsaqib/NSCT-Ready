@@ -58,7 +58,7 @@ async function seenBy(userId: string, types?: AttemptType[]) {
 }
 
 // NSCT level: every mock is mostly medium and hard questions, and Mock 3 is the hardest.
-const MOCK_MIX: Record<number, Record<string, number>> = { 1: { "1": 10, "2": 50, "3": 40 }, 2: { "1": 5, "2": 40, "3": 55 }, 3: { "2": 30, "3": 70 } };
+const MOCK_MIX: Record<number, Record<string, number>> = { 1: { "2": 55, "3": 45 }, 2: { "2": 40, "3": 60 }, 3: { "2": 30, "3": 70 } };
 
 /** The fixed paper for Mock 1, 2 or 3. Built from the national bank the first time anyone opens it. */
 export async function mockPaper(n: number) {
@@ -199,7 +199,7 @@ export async function getAttemptForStudent(userId: string, attemptId: string) {
         language: q.language, starterCode: q.starterCode, sampleTests: tests.filter((t) => !t.hidden).map((t) => ({ input: t.input, expected: t.expected })),
         codeAnswer: it.code, flagged: it.flagged,
         ...(done
-          ? { correctSlots: q.answers.map((x) => it.optionOrder.indexOf(x)), explanation: q.explanation, correct: it.correct, credit: it.credit, codePassed: it.codePassed, codeTotal: it.codeTotal, timeSec: it.timeSec }
+          ? { correctSlots: q.answers.map((x) => it.optionOrder.indexOf(x)), explanation: q.explanation, reference: q.reference, correct: it.correct, credit: it.credit, codePassed: it.codePassed, codeTotal: it.codeTotal, timeSec: it.timeSec }
           : {}),
       };
     }),
@@ -265,7 +265,7 @@ export async function checkPracticeAnswer(userId: string, attemptId: string, ans
     ({ correct, credit } = gradeChoice(q.type, q.answers, chosen, await getSetting<boolean>("test.multiSelectPartialCredit")));
     await prisma.attemptItem.update({ where: { id: it.id }, data: { chosen, timeSec: clampTime(ans.timeSec) } });
   }
-  return { correct, credit, correctSlots: q.answers.map((x) => it.optionOrder.indexOf(x)), explanation: q.explanation, run };
+  return { correct, credit, correctSlots: q.answers.map((x) => it.optionOrder.indexOf(x)), explanation: q.explanation, reference: q.reference, run };
 }
 
 /** Run visible sample tests while writing code. Hidden tests run only at submit. */

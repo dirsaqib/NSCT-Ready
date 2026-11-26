@@ -3,7 +3,7 @@ import StartButton from "@/components/StartButton";
 import { SUBJECT_SHORT } from "@/components/api";
 import { Page, useApi, Loading } from "@/components/ui";
 
-type Q = { id: string; type: string; subject: string; topic: string; text: string; code: string | null; options: string[]; answers: number[]; explanation: string };
+type Q = { id: string; type: string; subject: string; topic: string; text: string; code: string | null; options: string[]; answers: number[]; explanation: string; reference?: string | null };
 
 export default function Mistakes() {
   const { data, error } = useApi<{ mistakes: Q[] }>("/api/mistakes");
@@ -19,7 +19,7 @@ export default function Mistakes() {
               <b>{q.text}</b>
               {q.code && <pre className="code">{q.code}</pre>}
               {q.type !== "CODE" && <div className="small">Correct answer: <b>{q.answers.map((a) => q.options[a]).join(", ")}</b></div>}
-              <div className="small muted">{q.explanation}</div>
+              <div className="small muted">{q.explanation}</div>{q.reference && <div className="tiny muted">Reference: {q.reference}</div>}
             </div>
           ))}
         </div>

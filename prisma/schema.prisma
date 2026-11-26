@@ -345,6 +345,8 @@ model Question {
   options            String[]
   answers            Int[]
   explanation        String
+  reference          String?           // NSCT syllabus area and further reading
+  seedRev            Int               @default(0) // revision of the reviewed bank this row was last synced to
   scenarioId         String?
   scenario           Scenario?         @relation(fields: [scenarioId], references: [id])
   language           String?

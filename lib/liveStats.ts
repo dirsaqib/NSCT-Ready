@@ -8,7 +8,7 @@ export type LiveStats = {
   weakTopic: string; real: boolean;
 };
 
-const FALLBACK: LiveStats = { questions: 1850, mocks: 0, mockAvg: 0, readiness: 0, practice: 0, activeToday: 0, answersToday: 0, subj: { ps: 0, prog: 0, dsa: 0 }, weakTopic: "Analytical Reasoning", real: false };
+const FALLBACK: LiveStats = { questions: 1650, mocks: 0, mockAvg: 0, readiness: 0, practice: 0, activeToday: 0, answersToday: 0, subj: { ps: 0, prog: 0, dsa: 0 }, weakTopic: "Analytical Reasoning", real: false };
 
 export async function liveStats(): Promise<LiveStats> {
   try {

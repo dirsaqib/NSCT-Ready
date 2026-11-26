@@ -206,7 +206,9 @@ const CAMPUSES: Record<string, [string, string][]> = {
 };
 const COMPUTING_PROGRAMS = ["BS Computer Science", "BS Software Engineering", "BS Information Technology", "BS Artificial Intelligence", "BS Data Science", "BS Cyber Security"];
 
-type SeedQ = { id: string; s: Subject; t: string; d: number; q: string; code?: string; o: string[]; a: number; e: string };
+type SeedQ = { id: string; s: Subject; t: string; d: number; q: string; code?: string; o: string[]; a: number; e: string; r?: string; x?: number };
+// Raise this number whenever the reviewed bank in seed/questions*.json changes. Existing rows are then updated once.
+const SEED_REV = 2;
 
 async function main() {
   // Runs on every Vercel build. Each part checks what is already there and fills only what is missing,
@@ -254,14 +256,43 @@ async function main() {
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions3.json"), "utf8")),
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions4.json"), "utf8")),
     ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions5.json"), "utf8")),
-    ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions6.json"), "utf8")), // 203 NSCT-level hard questions
+    ...JSON.parse(readFileSync(join(process.cwd(), "seed", "questions6.json"), "utf8")),
   ];
+  // Bank review sync: questions already in the database take the reviewed wording, options, difficulty and reference.
+  // Questions marked "x" in the files (near-duplicates and weak items) are retired, so students no longer get them.
+  // Runs once per SEED_REV. A question an admin retired by hand stays retired.
+  const toRow = (x: SeedQ) => ({ id: `seed-${x.id}`, qtext: x.q, code: x.code || null, options: x.o, answers: [x.a], explanation: x.e, difficulty: x.d, reference: x.r ?? null, status: x.x ? "RETIRED" : "LIVE", hash: contentHash(x.q, x.o) });
+  const stale = await prisma.question.count({ where: { source: "SEED", seedRev: { lt: SEED_REV }, id: { in: qs.map((x) => `seed-${x.id}`) } } });
+  if (stale > 0) {
+    let done = 0;
+    for (let i = 0; i < qs.length; i += 200) {
+      const rows = qs.slice(i, i + 200).map(toRow);
+      try {
+        done += await prisma.$executeRaw`
+          UPDATE "Question" q SET "text" = v.qtext, "code" = v.code, "options" = v.options, "answers" = v.answers, "explanation" = v.explanation,
+            "difficulty" = v.difficulty, "reference" = v.reference, "contentHash" = v.hash, "seedRev" = ${SEED_REV}, "updatedAt" = now(),
+            "status" = CASE WHEN q."status" = 'RETIRED' THEN q."status" ELSE v.status::"QuestionStatus" END
+          FROM jsonb_to_recordset(${JSON.stringify(rows)}::jsonb) AS v(id text, qtext text, code text, options text[], answers int[], explanation text, difficulty int, reference text, status text, hash text)
+          WHERE q.id = v.id AND q."source" = 'SEED' AND q."seedRev" < ${SEED_REV}`;
+      } catch (e) {
+        // Slower but simple fallback, one row at a time, so a deploy never fails on the sync.
+        console.log(`Seed: bulk sync failed for a batch, using row updates. ${(e as Error).message.slice(0, 200)}`);
+        for (const r of rows) {
+          const cur = await prisma.question.findFirst({ where: { id: r.id, source: "SEED", seedRev: { lt: SEED_REV } }, select: { status: true } });
+          if (!cur) continue;
+          await prisma.question.update({ where: { id: r.id }, data: { text: r.qtext, code: r.code, options: r.options, answers: r.answers, explanation: r.explanation, difficulty: r.difficulty, reference: r.reference, contentHash: r.hash, seedRev: SEED_REV, status: cur.status === "RETIRED" ? "RETIRED" : (r.status as "LIVE" | "RETIRED") } });
+          done++;
+        }
+      }
+    }
+    console.log(`Seed: question bank review synced, ${done} questions updated.`);
+  }
   const seeded = await prisma.question.count({ where: { source: "SEED" } });
   if (force || seeded < qs.length + 5) {
     // createMany with skipDuplicates is one query, so it is fast even from a distant build region.
     await prisma.question.createMany({
       skipDuplicates: true,
-      data: qs.map((x) => ({ id: `seed-${x.id}`, type: "SINGLE" as const, subject: x.s, topic: x.t, difficulty: x.d, text: x.q, code: x.code || null, options: x.o, answers: [x.a], explanation: x.e, source: "SEED" as const, status: "LIVE" as const, contentHash: contentHash(x.q, x.o) })),
+      data: qs.map((x) => ({ id: `seed-${x.id}`, type: "SINGLE" as const, subject: x.s, topic: x.t, difficulty: x.d, text: x.q, code: x.code || null, options: x.o, answers: [x.a], explanation: x.e, reference: x.r ?? null, seedRev: SEED_REV, source: "SEED" as const, status: x.x ? ("RETIRED" as const) : ("LIVE" as const), contentHash: contentHash(x.q, x.o) })),
     });
     // Example multi-select, scenario and coding questions so every question type can be tried.
     const extras = [

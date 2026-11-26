@@ -2,7 +2,7 @@
 import { api, SUBJECT_SHORT } from "@/components/api";
 import { Page, useApi, Loading } from "@/components/ui";
 
-type Q = { id: string; type: string; subject: string; topic: string; text: string; code: string | null; options: string[]; answers: number[]; explanation: string };
+type Q = { id: string; type: string; subject: string; topic: string; text: string; code: string | null; options: string[]; answers: number[]; explanation: string; reference?: string | null };
 
 export default function Bookmarks() {
   const { data, error, reload } = useApi<{ bookmarks: Q[] }>("/api/bookmarks");
@@ -16,7 +16,7 @@ export default function Bookmarks() {
               <button className="btn ghost sm" onClick={async () => { await api("/api/bookmarks", { method: "DELETE", body: { questionId: q.id } }); reload(); }}>Remove</button></div>
             <b>{q.text}</b>{q.code && <pre className="code">{q.code}</pre>}
             {q.type !== "CODE" && <ol type="A" className="small">{q.options.map((o, i) => <li key={i} style={q.answers.includes(i) ? { color: "var(--good)", fontWeight: 700 } : {}}>{o}</li>)}</ol>}
-            <div className="small muted">{q.explanation}</div>
+            <div className="small muted">{q.explanation}</div>{q.reference && <div className="tiny muted">Reference: {q.reference}</div>}
           </div>
         ))}
         {!data.bookmarks.length && <div className="empty">No saved questions yet. Use Save question during practice.</div>}
